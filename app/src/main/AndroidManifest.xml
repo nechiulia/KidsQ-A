@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestGeorgiana"></activity>
+        <activity android:name=".TestGeorgiana" />
+        <activity android:name=".activity_testionut"></activity>
     </application>
 
 </manifest>
