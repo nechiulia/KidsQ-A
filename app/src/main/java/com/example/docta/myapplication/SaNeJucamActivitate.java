@@ -18,7 +18,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-initComponents();
+        initComponents();
     }
     private void initComponents(){
 
@@ -27,6 +27,8 @@ initComponents();
         btnScoala=findViewById(R.id.jucam_btn_scoala);
 
         btnLogica.setOnClickListener(deschideTest());
+        btnMediu.setOnClickListener(deschideTest());
+        btnScoala.setOnClickListener(deschideTest());
     }
     private View.OnClickListener deschideTest(){
 
