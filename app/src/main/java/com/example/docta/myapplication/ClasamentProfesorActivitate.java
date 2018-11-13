@@ -16,7 +16,7 @@ public  class ClasamentProfesorActivitate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitate_clasamentProfesor);
+        setContentView(R.layout.activitate_clasamentprofesor);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
