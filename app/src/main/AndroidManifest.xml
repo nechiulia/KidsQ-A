@@ -19,6 +19,7 @@
         <activity android:name=".SaInvatamActivitate" />
         <activity android:name=".SaNeJucamActivitate" />
         <activity android:name=".InvatamCategorieActivitate"></activity>
+        <activity android:name=".activity_testionut"></activity>
     </application>
 
 </manifest>
