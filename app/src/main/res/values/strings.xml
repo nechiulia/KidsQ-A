@@ -1,5 +1,27 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="main_txt_profesor">Profesor</string>
+    <string name="main_txt_elev">Elev</string>
+    <string name="loginelev_btn_autentificare">Autentificare</string>
+    <string name="loginelev_btn_crearecont">Creare cont</string>
+    <string name="title_activity_login_elev_autentificare">LoginElevAutentificareActivity</string>
+    <string name="lae_tid_navatar_hint">Nume avatar</string>
+    <string name="lae_btn_cont">Continua</string>
+    <string name="lecc_numeavatar_hint">Nume avatar</string>
+    <string name="lecc_tv_varsta">Varsta</string>
+    <string name="lecc_rb_baietel">Baietel</string>
+    <string name="lecc_rb_fetita">Fetita</string>
+    <string name="lecc_btn_creare">Creare</string>
+    <string-array name="lecc_spn_varsta">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
     <string name="ppj_tv_welcome">Bine ai venit, nume avatar!</string>
     <string name="ppj_btn_invatam_text">Să învățăm!</string>
     <string name="ppj_btn_jucam_text">Să ne jucăm!</string>
