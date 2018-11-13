@@ -36,7 +36,7 @@
         <activity android:name=".SetariActivitate"></activity>
         <activity android:name=".SetariDesignActivitate"></activity>
         <activity android:name=".SetariElevActivitate"></activity>
-        
+
     </application>
 
 </manifest>

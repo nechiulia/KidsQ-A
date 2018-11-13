@@ -11,6 +11,7 @@ import android.widget.Spinner;
 public class CreareContElevActivitate extends AppCompatActivity {
 
     private Button btn_back;
+    private Button btn_creare;
     private Spinner spn_varsta;
     Intent intent;
 
@@ -31,6 +32,15 @@ public class CreareContElevActivitate extends AppCompatActivity {
         spn_varsta=findViewById(R.id.lecc_spinner_varsta);
         ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(getApplicationContext(),R.array.lecc_spn_varsta,R.layout.support_simple_spinner_dropdown_item);
         spn_varsta.setAdapter(adapter);
+
+        btn_creare=findViewById(R.id.lecc_btn_creare);
+        btn_creare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
