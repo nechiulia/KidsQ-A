@@ -23,7 +23,7 @@ import java.util.List;
 public class ListaEleviActivitate extends AppCompatActivity {
 
     private Button btn_adauga_elev;
-    private List<Elev> elevi= new ArrayList<>();
+     List<Elev> elevi= new ArrayList<>();
     private ListView lvElevi;
     BottomNavigationView bottomNavigationView;
     @Override
