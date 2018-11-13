@@ -20,11 +20,15 @@ public class AutentificareElevActivitate extends AppCompatActivity {
 
         btn_back=findViewById(R.id.lae_btn_back);
 
-        btn_back.setOnClickListener(v -> {
-            intent=new Intent(getApplicationContext(),ContElevActivitate.class);
-            startActivity(intent);
-
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(getApplicationContext(),ContElevActivitate.class);
+                startActivity(intent);
+            }
         });
+
+
 
         btn_continua=findViewById(R.id.lea_btn_continua);
         btn_continua.setOnClickListener(new View.OnClickListener() {
