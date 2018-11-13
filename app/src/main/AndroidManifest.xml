@@ -16,13 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SaInvatamActivitate" />
-        <activity android:name=".SaNeJucamActivitate" />
-        <activity android:name=".InvatamCategorieActivitate"/>
-        <activity android:name=".ListaEleviActivitate"/>
-        <activity android:name=".ClasamentProfesorActivitate"/>
-        <activity android:name=".PareriActivitate"/>
-        <activity android:name=".SetariActivitate"/>
+
+        <activity android:name=".AutentificareElevActivitate"></activity>
+        <activity android:name=".AutentificareProfesorActivitate"></activity>
+        <activity android:name=".AvatareActivitate"></activity>
+        <activity android:name=".ClasamentElevActivitate"></activity>
+        <activity android:name=".ClasamentProfesorActivitate"></activity>
+        <activity android:name=".ContElevActivitate"></activity>
+        <activity android:name=".CreareContElevActivitate"></activity>
+        <activity android:name=".IntrebareaZileiActivitate"></activity>
+        <activity android:name=".IntrebariActivitate"></activity>
+        <activity android:name=".InvatamCategorieActivitate"></activity>
+        <activity android:name=".ListaEleviActivitate"></activity>
+        <activity android:name=".PareriActivitate"></activity>
+        <activity android:name=".RezultatActivitate"></activity>
+        <activity android:name=".SaInvatamActivitate"></activity>
+        <activity android:name=".SaNeJucamActivitate"></activity>
+        <activity android:name=".SetariActivitate"></activity>
+        <activity android:name=".SetariDesignActivitate"></activity>
+        <activity android:name=".SetariElevActivitate"></activity>
+
+
     </application>
 
 </manifest>

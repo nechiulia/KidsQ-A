@@ -52,8 +52,22 @@
 
     <string name="test_informare_next">Informare next</string>
     <string name="test_informare_back">Informare back</string>
-
-
+    <string name="clasament_tv_top">Clasament</string>
+    <string name="setari_tv_seratilemele">Setarile contului meu</string>
+    <string name="setari_tv_avatar">Avatar: </string>
+    <string name="setari_btn_design">Design</string>
+    <string name="setari_btn_logout">Logout</string>
+    <string name="design_tv_background">Culoare fundal:</string>
+    <string name="design_tv_font">Font</string>
+    <string name="design_tv_textsize">Dimensiune text</string>
+    <string name="loginprof_tid_email_hint">Email</string>
+    <string name="loginprof_tid_parola_hint">Parola</string>
+    <string name="loginprof_btn_login">Autentificare</string>
+    <string-array name="setari_spn_dificultati">
+        <item>Usor</item>
+        <item>Mediu</item>
+        <item>Greu</item>
+    </string-array>
     <string name="menu_profile" />
     <string name="menu_listaElevi" />
     <string name="menu_setari" />
