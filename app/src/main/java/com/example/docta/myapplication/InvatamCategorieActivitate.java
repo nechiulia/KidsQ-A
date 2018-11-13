@@ -28,7 +28,7 @@ public class InvatamCategorieActivitate extends AppCompatActivity {
        imgBtnNext=findViewById(R.id.invatam_categ_imgBtn_inainte);
        tvNr=findViewById(R.id.invatam_categ_tv_nr_curent);
        tvInfo=findViewById(R.id.invatam_categ_tv_informatie);
-       imagineInfo=findViewById(R.id.imageView);
+       imagineInfo=findViewById(R.id.invatam_categ_imgBtn);
        if(tvNr.getText().toString().equals("1/10")){
            imgBtnBack.setVisibility(View.INVISIBLE);
        }
