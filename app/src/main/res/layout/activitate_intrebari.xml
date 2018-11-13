@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Intrebari">
+
+    <ImageView
+        android:id="@+id/intrebari_iv_imagine"
+        android:layout_width="267dp"
+        android:layout_height="210dp"
+        android:layout_above="@+id/intrebari_tv_intrebare"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="37dp" />
+
+    <TextView
+        android:id="@+id/intrebari_tv_intrebare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/intrebari_rg_raspunsuri"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="54dp"
+        android:text="@string/intrebari_tv_intrebare_str"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/intrebari_btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:text="@string/intrebari_btn_confirm_str" />
+
+    <RadioGroup
+        android:id="@+id/intrebari_rg_raspunsuri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/intrebari_btn_confirm"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="299dp"
+        android:layout_marginRight="299dp"
+        android:layout_marginBottom="19dp">
+
+        <RadioButton
+            android:id="@+id/intrebari_rb_raspuns1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intrebari_rb_raspuns1_str" />
+        <RadioButton
+            android:id="@+id/intrebari_rb_raspuns2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intrebari_rb_raspuns2_str" />
+
+        <RadioButton
+            android:id="@+id/intrebari_rb_raspuns3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/intrebari_rb_raspuns3_str" />
+
+    </RadioGroup>
+
+</RelativeLayout>
