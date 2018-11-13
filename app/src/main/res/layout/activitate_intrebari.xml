@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/intrebari_iv_imagine"
-        android:layout_width="267dp"
-        android:layout_height="210dp"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
         android:layout_above="@+id/intrebari_tv_intrebare"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
