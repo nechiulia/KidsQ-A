@@ -43,7 +43,10 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
         btnTestulZilei.setOnClickListener(deschideTest());
         btnAvatareleMele.setOnClickListener(deschideAvatare());
-        
+        btnClasament.setOnClickListener(deschideClasament());
+        btnSetari.setOnClickListener(deschideSetari());
+        imgBtnParere.setOnClickListener(deschidePareri());
+
    }
    private View.OnClickListener startSaInvatam(){
        return new View.OnClickListener() {
@@ -90,6 +93,45 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AvatareActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschideClasament(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ClasamentElevActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschideSetari(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SetariElevActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschidePareri(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PareriActivitate.class);
                 startActivity(intent);
             }
 

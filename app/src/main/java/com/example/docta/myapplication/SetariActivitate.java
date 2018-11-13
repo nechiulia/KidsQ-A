@@ -7,9 +7,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class SetariActivitate extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    private Button btn_salveaza;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +34,22 @@ public class SetariActivitate extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),ListaEleviActivitate.class));
                         break;
                     case R.id.menu_profil:
-                        startActivity(new Intent(getApplicationContext(),PareriActivitate.class));
+                        startActivity(new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class));
                         break;
                 }
                 return false;
             }
         });
+
+        btn_salveaza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void initComponent(){
+        btn_salveaza=findViewById(R.id.setari_salveaza_btn);
     }
 }
