@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PaginaPrincipalaJocActivitate">
+        <activity android:name=".PrincipalaActivitate">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +28,7 @@
         <activity android:name=".IntrebariActivitate"></activity>
         <activity android:name=".InvatamCategorieActivitate"></activity>
         <activity android:name=".ListaEleviActivitate"></activity>
+        <activity android:name=".PaginaPrincipalaJocActivitate"></activity>
         <activity android:name=".PareriActivitate"></activity>
         <activity android:name=".RezultatActivitate"></activity>
         <activity android:name=".SaInvatamActivitate"></activity>
