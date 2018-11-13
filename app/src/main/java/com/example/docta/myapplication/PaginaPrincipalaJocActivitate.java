@@ -36,10 +36,14 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         btnSetari=findViewById(R.id.ppj_btn_setari);
         imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
+
+
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());
-
-
+        btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
+        btnTestulZilei.setOnClickListener(deschideTest());
+        btnAvatareleMele.setOnClickListener(deschideAvatare());
+        
    }
    private View.OnClickListener startSaInvatam(){
        return new View.OnClickListener() {
@@ -59,6 +63,40 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             }
         };
     }
+    private View.OnClickListener deschideIntrebareaZilei(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), IntrebareaZileiActivitate.class);
+                startActivity(intent);
+            }
+        };
+    }
+    private View.OnClickListener deschideTest(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+    private View.OnClickListener deschideAvatare(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AvatareActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
 
 
 }
