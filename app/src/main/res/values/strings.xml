@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="menu_profile" />
+    <string name="menu_listaElevi" />
+    <string name="menu_setari" />
+    <string name="menu_clasament" />
+    <string name="setari_email_hint">Email</string>
+    <string name="setari_parolaV_hint">Parola Veche</string>
+    <string name="setari_parolaN_hint">Parola Noua</string>
+    <string name="setari_parolaC_hint">Confirm Parola</string>
+    <string name="et_btn_trimite">Trimite</string>
+    <string name="Adaugare_elev">+</string>
+    <string name="Stergere_elev">-</string>
+    <string name="pareri_tv_parere">Spune-ti parerea!</string>
+    <string name="setari_btn_salveaza">Salveaza</string>
 </resources>
