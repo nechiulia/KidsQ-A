@@ -9,6 +9,7 @@ import android.widget.Button;
 public class PrincipalaActivitate extends AppCompatActivity
 {
     private Button elev_btn;
+    private Button prof_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,16 +19,19 @@ public class PrincipalaActivitate extends AppCompatActivity
 
         elev_btn=findViewById(R.id.main_btn_elev);
 
-        elev_btn.setOnClickListener(new View.OnClickListener()
-                                    {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
-                                            startActivity(intent);
-                                        }
-                                    }
+        elev_btn.setOnClickListener(v -> {
+            Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
+            startActivity(intent);
+        }
         );
 
+        prof_btn=findViewById(R.id.main_btn_prof);
+
+        prof_btn.setOnClickListener(v -> {
+                    Intent intent=new Intent(getApplicationContext(),AutentificareProfesorActivitate.class);
+                    startActivity(intent);
+                }
+        );
 
 
     }
