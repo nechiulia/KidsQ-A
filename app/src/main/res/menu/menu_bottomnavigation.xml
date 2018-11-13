@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_profil"
+        android:title="@string/menu_profile"
+        android:icon="@drawable/profile">
+    </item>
+
+    <item
+        android:id="@+id/menu_lista"
+        android:title="@string/menu_listaElevi"
+        android:icon="@drawable/listaelevi">
+    </item>
+
+    <item
+        android:id="@+id/menu_setari"
+        android:title="@string/menu_setari"
+        android:icon="@drawable/setari">
+    </item>
+
+    <item
+        android:id="@+id/menu_clasament"
+        android:title="@string/menu_clasament"
+        android:icon="@drawable/clasament">
+    </item>
+</menu>
