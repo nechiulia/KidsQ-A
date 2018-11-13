@@ -17,6 +17,7 @@ public class SetariActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_setari);
+        initComponent();
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         Menu menu = bottomNavigationView.getMenu();
