@@ -37,13 +37,14 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
 
-
+        String nume= getIntent().getStringExtra("NUME_KEY");
+        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());
         btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
         btnTestulZilei.setOnClickListener(deschideTest());
         btnAvatareleMele.setOnClickListener(deschideAvatare());
-        
+
    }
    private View.OnClickListener startSaInvatam(){
        return new View.OnClickListener() {
