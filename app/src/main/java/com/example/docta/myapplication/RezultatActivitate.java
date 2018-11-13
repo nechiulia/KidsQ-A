@@ -3,7 +3,7 @@ package com.example.docta.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Rezultat extends AppCompatActivity {
+public class RezultatActivitate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
