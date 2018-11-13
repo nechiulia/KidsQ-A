@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".InvatamCategorieActivitate">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="85">
+    <TextView
+        android:id="@+id/invatam_categ_tv_nr_curent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invatam_categ_tv_nr_text" />
+
+    <ImageView
+        android:id="@+id/invatam_categ_imgBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/invatam_categ_imgBtn_descriere"
+        app:srcCompat="@drawable/imagine_de_informare" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/invatam_categ_tv_informatie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invatam_categ_tv_descriere" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="210dp" />
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15">>
+
+        <ImageButton
+            android:id="@+id/invatam_categ_imgBtn_inapoi"
+            android:layout_width="74dp"
+            android:layout_height="59dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/invatam_categ_imgBtnInapoi_descriere"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.304"
+            app:srcCompat="@drawable/arrowback" />
+
+        <ImageButton
+            android:id="@+id/invatam_categ_imgBtn_inainte"
+            android:layout_width="68dp"
+            android:layout_height="59dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/invatam_categ_imgBtnInainte_descriere"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrownext" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>
