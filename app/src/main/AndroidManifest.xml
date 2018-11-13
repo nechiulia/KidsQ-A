@@ -20,8 +20,6 @@
         <activity android:name=".SaNeJucamActivitate" />
         <activity android:name=".InvatamCategorieActivitate"></activity>
         <activity android:name=".activity_testionut"></activity>
-
-        <android:theme="@style/AppTheme"/>
 </application>
 
 </manifest>
