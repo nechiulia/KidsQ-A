@@ -37,13 +37,17 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
 
-
+        String nume= getIntent().getStringExtra("NUME_KEY");
+        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());
         btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
         btnTestulZilei.setOnClickListener(deschideTest());
         btnAvatareleMele.setOnClickListener(deschideAvatare());
-        
+        btnClasament.setOnClickListener(deschideClasament());
+        btnSetari.setOnClickListener(deschideSetari());
+        imgBtnParere.setOnClickListener(deschidePareri());
+
    }
    private View.OnClickListener startSaInvatam(){
        return new View.OnClickListener() {
@@ -90,6 +94,45 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AvatareActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschideClasament(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ClasamentElevActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschideSetari(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SetariElevActivitate.class);
+                startActivity(intent);
+            }
+
+        };
+
+    }
+
+    private View.OnClickListener deschidePareri(){
+
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PareriActivitate.class);
                 startActivity(intent);
             }
 

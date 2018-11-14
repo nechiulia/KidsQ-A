@@ -22,9 +22,11 @@ public class ClasamentElevActivitate extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
+                startActivity(intent);
             }
         });
 
     }
+
 }

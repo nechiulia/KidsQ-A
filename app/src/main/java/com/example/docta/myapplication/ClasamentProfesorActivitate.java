@@ -38,9 +38,9 @@ public  class ClasamentProfesorActivitate extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(),SetariActivitate.class);
                         startActivity(intent);
                         break;
-                    case R.id.menu_clasament:
-                        intent = new Intent(getApplicationContext(),ClasamentProfesorActivitate.class);
-                        startActivity(intent);
+
+                    case R.id.menu_profil:
+                        startActivity(new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class));
                         break;
 
                 }
