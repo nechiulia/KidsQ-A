@@ -14,18 +14,18 @@ public class RezultatActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_rezultat);
-        initComponent();
+        initComponents();
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
     }
 
-    private void initComponent(){
+    private void initComponents(){
+
         btn_back=findViewById(R.id.rezultat_btn_inapoi);
     }
 }

@@ -53,17 +53,18 @@ public class CreareContElevActivitate extends AppCompatActivity {
         spn_varsta = findViewById(R.id.lecc_spinner_varsta);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.lecc_spn_varsta, R.layout.support_simple_spinner_dropdown_item);
         spn_varsta.setAdapter(adapter);
-
         btn_creare = findViewById(R.id.lecc_btn_creare);
         tvNume=findViewById(R.id.lecc_tid_numeavatar);
         rgGen=findViewById(R.id.lecc_rg_fb);
-     /*   btn_back.setOnClickListener(new View.OnClickListener() {
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), ContElevActivitate.class);
-                startActivity(intent);
+               /* intent = new Intent(getApplicationContext(), ContElevActivitate.class);
+                startActivity(intent);*/
+               onBackPressed();
             }
-        });*/
+        });
 
 
         btn_creare.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +81,7 @@ public class CreareContElevActivitate extends AppCompatActivity {
 
                 sharedPreferences=getSharedPreferences(Constante.CONT_STATUT_PREF,MODE_PRIVATE);
                 String statut= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
-                if (statut.compareTo("profesor")==0) {
+                if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                     String nume = tvNume.getText().toString();
                     int gen= rgGen.getCheckedRadioButtonId();
                     int varsta = Integer.parseInt(spn_varsta.getSelectedItem().toString());
@@ -89,7 +90,7 @@ public class CreareContElevActivitate extends AppCompatActivity {
                     intent.putExtra(Constante.ADAUGARE_ELEV_KEY,elev);
                     setResult(RESULT_OK, intent);
                     finish();
-                } else if (statut.compareTo("elev")==0){
+                } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     intent = new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
                     intent.putExtra(Constante.NUME_KEY, tvNume.getText().toString());
                     startActivity(intent);

@@ -117,4 +117,13 @@
     <string name="adaptor_elevi_eroare_nume">Eroare preluare nume</string>
     <string name="elevi_adaptor_gen_baiat">Băiat</string>
     <string name="elevi_adaptor_gen_fata">Fată</string>
+    <string name="utilizator_preferences_elev">elev</string>
+    <string name="invatam_categorie_toast_felicitari">Felicitări! Ai parcurs toți pașii acestei categorii.</string>
+    <string name="principala_utilizator_elev_pref_message">elev</string>
+    <string name="principala_utilizator_profesor_pref_message">profesor</string>
+    <string name="ajutor_tv_titlu_text">Întrebări frecvente</string>
+    <string name="ajutor_tv_alDoilea_raspuns">Avatarele se pot cumpăra cu monede obținute pe baza punctajului, accesând categoria Avatarele mele din pagina principală.</string>
+    <string name="ajutor_tv_aDouaIntrebare">2. Cum pot obține noi avatare?</string>
+    <string name="ajutor_tv_alDoileaRaspuns">Pentru orice modificare a contului intră la Setări.</string>
+    <string name="ajutor_tv_primaIntrebare">1. Cum îmi pot modifica numele avatarului?</string>
 </resources>
