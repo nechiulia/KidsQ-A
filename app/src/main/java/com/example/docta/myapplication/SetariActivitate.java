@@ -28,6 +28,7 @@ public class SetariActivitate extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
+
                     case R.id.menu_clasament:
                         startActivity(new Intent(getApplicationContext(),ClasamentProfesorActivitate.class));
                         break;

@@ -94,7 +94,7 @@
     <string name="rezultat_tv_intrcorecte_str">Numar intrebari corecte</string>
     <string name="rezultat_tid_intrcorecte_str" />
     <string name="intrebari_btn_confirm_str">Confirm</string>
-    <string name="intrebari_rb_raspuns1_str">Optiounea 1</string>
+    <string name="intrebari_rb_raspuns1_str">Optiunea 1</string>
     <string name="intrebari_rb_raspuns2_str">Optiunea 2</string>
     <string name="intrebari_rb_raspuns3_str">Optiunea 3</string>
     <string name="intrebari_tv_intrebare_str">Aici va fi text</string>
