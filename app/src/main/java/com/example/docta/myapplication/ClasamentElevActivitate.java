@@ -15,17 +15,17 @@ public class ClasamentElevActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_clasament_elev);
-
-
-        btn_back=findViewById(R.id.clasament_btn_back);
-
+        initComponents();
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
+
+    }
+    private void initComponents(){
+        btn_back=findViewById(R.id.clasament_btn_back);
 
     }
 

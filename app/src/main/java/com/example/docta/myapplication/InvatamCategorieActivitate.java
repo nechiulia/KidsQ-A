@@ -34,8 +34,7 @@ public class InvatamCategorieActivitate extends AppCompatActivity {
        }
        else if (tvNr.getText().toString().equals("10/10")){
            imgBtnBack.setVisibility(View.VISIBLE);
-           Toast.makeText(getApplicationContext(),"Felicitări! Ai parcurs toți pașii acestei categorii.", Toast.LENGTH_LONG);
-           this.finish();
+           Toast.makeText(getApplicationContext(),getString(R.string.invatam_categorie_toast_felicitari), Toast.LENGTH_LONG);
        }
        else {
            imgBtnBack.setVisibility(View.VISIBLE);

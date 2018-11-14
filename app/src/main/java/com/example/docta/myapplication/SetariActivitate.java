@@ -52,6 +52,7 @@ public class SetariActivitate extends AppCompatActivity {
     }
 
     private void initComponent(){
+
         btn_salveaza=findViewById(R.id.setari_salveaza_btn);
     }
 }

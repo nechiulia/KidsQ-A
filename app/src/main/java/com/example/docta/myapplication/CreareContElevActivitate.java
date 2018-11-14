@@ -42,17 +42,18 @@ public class CreareContElevActivitate extends AppCompatActivity {
         spn_varsta = findViewById(R.id.lecc_spinner_varsta);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.lecc_spn_varsta, R.layout.support_simple_spinner_dropdown_item);
         spn_varsta.setAdapter(adapter);
-
         btn_creare = findViewById(R.id.lecc_btn_creare);
         tvNume=findViewById(R.id.lecc_tid_numeavatar);
         rgGen=findViewById(R.id.lecc_rg_fb);
-     /*   btn_back.setOnClickListener(new View.OnClickListener() {
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), ContElevActivitate.class);
-                startActivity(intent);
+               /* intent = new Intent(getApplicationContext(), ContElevActivitate.class);
+                startActivity(intent);*/
+               onBackPressed();
             }
-        });*/
+        });
 
 
         btn_creare.setOnClickListener(new View.OnClickListener() {

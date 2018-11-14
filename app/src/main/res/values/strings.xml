@@ -117,4 +117,8 @@
     <string name="adaptor_elevi_eroare_nume">Eroare preluare nume</string>
     <string name="elevi_adaptor_gen_baiat">Băiat</string>
     <string name="elevi_adaptor_gen_fata">Fată</string>
+    <string name="utilizator_preferences_elev">elev</string>
+    <string name="invatam_categorie_toast_felicitari">Felicitări! Ai parcurs toți pașii acestei categorii.</string>
+    <string name="prinipala_utilizator_elev_pref_message">elev</string>
+    <string name="prinipala_utilizator_profesor_pref_message">profesor</string>
 </resources>

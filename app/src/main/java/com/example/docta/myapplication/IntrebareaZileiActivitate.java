@@ -14,7 +14,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebarea_zilei);
-        initComponent();
+        initComponents();
 
         btn_rezultat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,7 +25,8 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
         });
     }
 
-    private void initComponent(){
+    private void initComponents(){
+
         btn_rezultat=findViewById(R.id.intrebarea_zilei_btn_confirm);
     }
 
