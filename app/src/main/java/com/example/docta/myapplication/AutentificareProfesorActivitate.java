@@ -30,8 +30,7 @@ public class AutentificareProfesorActivitate extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent=new Intent(getApplicationContext(), PrincipalaActivitate.class);
-                startActivity(intent);
+               onBackPressed();
             }
         });
     }

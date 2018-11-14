@@ -28,7 +28,7 @@ public class PrincipalaActivitate extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
-                editor.putString(Constante.UTILIZATOR_PREF, getString(R.string.prinipala_utilizator_elev_pref_message));
+                editor.putString(Constante.UTILIZATOR_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 boolean result= editor.commit();
                 startActivity(intent);
 
@@ -42,7 +42,7 @@ public class PrincipalaActivitate extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),AutentificareProfesorActivitate.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
-                editor.putString(Constante.UTILIZATOR_PREF, getString(R.string.prinipala_utilizator_profesor_pref_message));
+                editor.putString(Constante.UTILIZATOR_PREF, getString(R.string.principala_utilizator_profesor_pref_message));
                 boolean result= editor.commit();
                 startActivity(intent);
             }

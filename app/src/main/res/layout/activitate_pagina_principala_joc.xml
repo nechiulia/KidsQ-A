@@ -146,4 +146,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/gold_star" />
 
+    <Button
+        android:id="@+id/ppj_btn_inapoi_la_profesor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Înapoi la profesor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ppj_btn_setari"
+        app:layout_constraintVertical_bias="0.88"
+        android:visibility="invisible"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -62,7 +62,7 @@ public class CreareContElevActivitate extends AppCompatActivity {
 
                 sharedPreferences=getSharedPreferences(Constante.CONT_STATUT_PREF,MODE_PRIVATE);
                 String statut= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
-                if (statut.compareTo("profesor")==0) {
+                if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                     String nume = tvNume.getText().toString();
                     int gen= rgGen.getCheckedRadioButtonId();
                     int varsta = Integer.parseInt(spn_varsta.getSelectedItem().toString());
@@ -71,7 +71,7 @@ public class CreareContElevActivitate extends AppCompatActivity {
                     intent.putExtra(Constante.ADAUGARE_ELEV_KEY,elev);
                     setResult(RESULT_OK, intent);
                     finish();
-                } else if (statut.compareTo("elev")==0){
+                } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     intent = new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
                     intent.putExtra(Constante.NUME_KEY, tvNume.getText().toString());
                     startActivity(intent);

@@ -27,6 +27,7 @@ public class ListaEleviActivitate extends AppCompatActivity {
      List<Elev> elevi= new ArrayList<Elev>();
     private ListView lvElevi;
     BottomNavigationView bottomNavigationView;
+    private Button btnInapoiProfesor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,6 +58,7 @@ public class ListaEleviActivitate extends AppCompatActivity {
 
                     case R.id.menu_profil:
                         startActivity(new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class));
+
                         break;
 
                 }
@@ -99,6 +101,7 @@ public class ListaEleviActivitate extends AppCompatActivity {
     private void initComponents()
     { bottomNavigationView = findViewById(R.id.bottomNavigationView);
         btn_adauga_elev=findViewById(R.id.listaElevi_btn_adaugaElev);
+        btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
         lvElevi= findViewById(R.id.listaElevi_lv_listaElevi);
 
         //EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(), R.layout.lv_elevi_rand, elevi, getLayoutInflater());
