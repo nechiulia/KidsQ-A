@@ -24,6 +24,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private TextView tvNumeAvatar;
     private Button btnInapoiProfesor;
     private SharedPreferences sharedPreferences;
+    private ImageButton imgBtnAjutor;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,8 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
         btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
+        imgBtnAjutor=findViewById(R.id.ppj_imgBtn_intrebare);
+
         sharedPreferences= getSharedPreferences(Constante.CONT_STATUT_PREF, MODE_PRIVATE);
         String utilizator= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
         if(utilizator.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
@@ -62,6 +65,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         btnSetari.setOnClickListener(deschideSetari());
         imgBtnParere.setOnClickListener(deschidePareri());
         btnInapoiProfesor.setOnClickListener(inapoiLaProfesor());
+        imgBtnAjutor.setOnClickListener(deschideAjutor());
    }
    private View.OnClickListener inapoiLaProfesor(){
         return new View.OnClickListener() {
@@ -159,6 +163,15 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
 
         };
 
+    }
+    private View.OnClickListener deschideAjutor(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AjutorActivitate.class);
+                startActivity(intent);
+            }
+        };
     }
 
 
