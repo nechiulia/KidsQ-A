@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.docta.myapplication.util.Constante;
+
 public class AutentificareElevActivitate extends AppCompatActivity {
 
     private Button btn_back;
@@ -21,6 +23,7 @@ public class AutentificareElevActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_autentifcare_elev);
 
        initComponents();
+
         btn_back.setOnClickListener(v -> {
             intent=new Intent(getApplicationContext(),ContElevActivitate.class);
             startActivity(intent);
@@ -33,7 +36,7 @@ public class AutentificareElevActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 String nume= tvNume.getText().toString();
                 intent=new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class);
-                intent.putExtra("NUME_KEY", nume);
+                intent.putExtra(Constante.NUME_KEY, nume);
                 startActivity(intent);
             }
         });

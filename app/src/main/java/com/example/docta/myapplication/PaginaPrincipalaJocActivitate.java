@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.docta.myapplication.util.Constante;
+
 public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
 
     private Button btnJucam;
@@ -37,7 +39,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
 
-        String nume= getIntent().getStringExtra("NUME_KEY");
+        String nume= getIntent().getStringExtra(Constante.NUME_KEY);
         tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());

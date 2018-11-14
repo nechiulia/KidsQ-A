@@ -39,17 +39,14 @@ public class EleviAdaptor extends ArrayAdapter<Elev> {
         View rand = inflater.inflate(resource, parent, false);
 
         TextView tvNume = rand.findViewById(R.id.lv_elevi_rand_nume);
-       // TextView tvGen = rand.findViewById(R.id.lv_elevi_rand_gen);
+        TextView tvGen = rand.findViewById(R.id.lv_elevi_rand_gen);
         TextView tvVarsta = rand.findViewById(R.id.lv_elevi_rand_varsta);
 
         Elev elev= elevi.get(position);
 
-        /*tvNume.setText(elev.getNumeAvatar() != null ?
-              elev.getNumeAvatar().toString()
-                : context.getString(R.string.adaptor_elevi_eroare_nume));*/
         tvNume.setText(elev.getNumeAvatar());
-        //tvGen.setText(elev.isGen() ? context.getString(R.string.elevi_adaptor_gen_baiat) : context.getString(R.string.elevi_adaptor_gen_fata));
         tvVarsta.setText(elev.getVarsta());
+        tvGen.setText(elev.getGen()==R.id.lecc_rb_baietel? "baiat":"fata");
 
         return rand;
     }

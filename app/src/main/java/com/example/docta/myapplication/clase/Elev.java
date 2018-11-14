@@ -3,19 +3,17 @@ package com.example.docta.myapplication.clase;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.docta.myapplication.R;
+
 import java.text.ParseException;
 
 public class Elev implements Parcelable {
 private String numeAvatar;
 private int varsta;
-private boolean gen=true;
+private int gen;
 
-public Elev(){
-    this.numeAvatar="";
-    this.varsta=7;
-    this.gen=true;
-}
-    public Elev(String numeAvatar, int varsta, boolean gen) {
+
+    public Elev(String numeAvatar, int varsta, int gen) {
         this.numeAvatar = numeAvatar;
         this.varsta = varsta;
         this.gen = gen;
@@ -49,27 +47,34 @@ public Elev(){
         this.varsta = varsta;
     }
 
-    public boolean isGen() {
+    public int getGen() {
         return gen;
     }
 
-    public void setGen(boolean gen) {
+    public void setGen(int gen) {
         this.gen = gen;
     }
 
     @Override
     public String toString() {
-        return "Elev: " +
-                "Nume avatar: '" + numeAvatar + '\'' +
-                ", varsta: " + varsta +
-                ", gen: " + gen ;
+        String result="";
+        result+= numeAvatar + "         "+
+              + varsta +" ani     " ;
+        if(gen== R.id.lecc_rb_baietel ){
+            result+="   Băiat";
+        }
+        else if (gen==R.id.lecc_rb_fetita) result+="    Fată";
+
+        return  result;
     }
 
-    private Elev(Parcel in) {
+    private Elev(Parcel in)
+
+    {
 
         numeAvatar = in.readString();
         varsta = in.readInt();
-        //gen = Boolean.parseBoolean(in.readString());
+        gen=in.readInt();
     }
 
     @Override
@@ -81,7 +86,6 @@ public Elev(){
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(numeAvatar);
         dest.writeInt(varsta);
-
-     //   dest.writeString(String.valueOf(gen));
+        dest.writeInt(gen);
     }
 }

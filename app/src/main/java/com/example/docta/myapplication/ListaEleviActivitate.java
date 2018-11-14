@@ -9,11 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.Constante;
+import com.example.docta.myapplication.util.Constante;
 import com.example.docta.myapplication.clase.Elev;
 import com.example.docta.myapplication.clase.EleviAdaptor;
 
@@ -23,7 +24,7 @@ import java.util.List;
 public class ListaEleviActivitate extends AppCompatActivity {
 
     private Button btn_adauga_elev;
-     List<Elev> elevi= new ArrayList<>();
+     List<Elev> elevi= new ArrayList<Elev>();
     private ListView lvElevi;
     BottomNavigationView bottomNavigationView;
     @Override
@@ -67,7 +68,6 @@ public class ListaEleviActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), CreareContElevActivitate.class);
-                //startActivity(intent);
                 startActivityForResult(intent, Constante.ADAUGARE_ELEV_REQUEST_CODE);
             }
         });
@@ -82,14 +82,10 @@ public class ListaEleviActivitate extends AppCompatActivity {
 
             Elev elev = data.getParcelableExtra(Constante.ADAUGARE_ELEV_KEY);
             if(elev!=null){
-                Toast.makeText(getApplicationContext(),
-                        elev.toString(),
-                        Toast.LENGTH_LONG).show();
                 elevi.add(elev);
-
-                EleviAdaptor adapter = (EleviAdaptor) lvElevi.getAdapter();
+                ArrayAdapter<Elev> adapter = (ArrayAdapter<Elev>) lvElevi.getAdapter();
+                //EleviAdaptor adapter = (EleviAdaptor)lvElevi.getAdapter();
                 adapter.notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(), "Elev adaugat", Toast.LENGTH_LONG).show();
             }
 
         } else {
@@ -104,9 +100,9 @@ public class ListaEleviActivitate extends AppCompatActivity {
     { bottomNavigationView = findViewById(R.id.bottomNavigationView);
         btn_adauga_elev=findViewById(R.id.listaElevi_btn_adaugaElev);
         lvElevi= findViewById(R.id.listaElevi_lv_listaElevi);
-        EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(),
-                R.layout.lv_elevi_rand, elevi, getLayoutInflater());
 
+        //EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(), R.layout.lv_elevi_rand, elevi, getLayoutInflater());
+        ArrayAdapter<Elev> adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, elevi);
         lvElevi.setAdapter(adapter);
     }
 }

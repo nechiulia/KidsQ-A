@@ -1,44 +1,59 @@
 package com.example.docta.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.Constante;
+import com.example.docta.myapplication.util.Constante;
+
 
 public class PrincipalaActivitate extends AppCompatActivity
 {
     private Button elev_btn;
     private Button prof_btn;
-    private  boolean statut;
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_principala);
+        initComponents();
+        elev_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
+                SharedPreferences.Editor editor= sharedPreferences.edit();
+                editor.putString(Constante.UTILIZATOR_PREF, "elev");
+                boolean result= editor.commit();
+                startActivity(intent);
 
+            }
+        }) ;
+
+
+
+        prof_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),AutentificareProfesorActivitate.class);
+                SharedPreferences.Editor editor= sharedPreferences.edit();
+                editor.putString(Constante.UTILIZATOR_PREF, "profesor");
+                boolean result= editor.commit();
+                startActivity(intent);
+            }
+        });
+
+
+    }
+    private void initComponents(){
         elev_btn=findViewById(R.id.main_btn_elev);
-
-        elev_btn.setOnClickListener(v -> {
-            Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
-            /*statut=false;
-            intent.putExtra(Constante.STATUT_KEY, statut);*/
-            startActivity(intent);
-        }
-        );
-
         prof_btn=findViewById(R.id.main_btn_prof);
-
-        prof_btn.setOnClickListener(v -> {
-                    Intent intent=new Intent(getApplicationContext(),AutentificareProfesorActivitate.class);
-                    statut=true;
-                    intent.putExtra("STATUT KEY",statut);
-                    startActivity(intent);
-                }
-        );
-
+        sharedPreferences=getSharedPreferences(Constante.CONT_STATUT_PREF, MODE_PRIVATE);
 
     }
 }
