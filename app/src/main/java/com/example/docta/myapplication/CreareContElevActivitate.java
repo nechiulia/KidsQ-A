@@ -74,6 +74,10 @@ public class CreareContElevActivitate extends AppCompatActivity {
             }
         });
 
+        btn_creare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 sharedPreferences=getSharedPreferences(Constante.CONT_STATUT_PREF,MODE_PRIVATE);
                 String statut= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
                 if (statut.compareTo("profesor")==0) {
