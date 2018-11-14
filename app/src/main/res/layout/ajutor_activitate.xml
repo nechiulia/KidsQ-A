@@ -48,4 +48,30 @@
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_prima_intrebare" />
+    <TextView
+        android:id="@+id/ajutor_tv_aDoua_intrebare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+
+        android:linksClickable="true"
+        android:text="2. Cum pot obține noi avatare?"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_primul_raspuns" />
+
+    <TextView
+        android:id="@+id/ajutor_tv_alDoilea_raspuns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Avatarele se pot cumpăra cu monede obținute pe baza punctajului."
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_aDoua_intrebare" />
 </android.support.constraint.ConstraintLayout>

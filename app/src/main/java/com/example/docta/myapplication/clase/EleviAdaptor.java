@@ -46,7 +46,7 @@ public class EleviAdaptor extends ArrayAdapter<Elev> {
 
         tvNume.setText(elev.getNumeAvatar());
         tvVarsta.setText(elev.getVarsta());
-        tvGen.setText(elev.getGen()==R.id.lecc_rb_baietel? "baiat":"fata");
+        tvGen.setText(elev.getGen()==R.id.lecc_rb_baietel? "Băiat":"Fată");
 
         return rand;
     }
