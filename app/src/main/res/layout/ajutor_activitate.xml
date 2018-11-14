@@ -31,7 +31,7 @@
         android:layout_marginTop="8dp"
 
         android:linksClickable="true"
-        android:text="1. Cum îmi pot modifica numele avatarului?"
+        android:text="@string/ajutor_tv_primaIntrebare"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:text="Pentru orice modificare a contului intră la Setări."
+        android:text="@string/ajutor_tv_alDoileaRaspuns"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_prima_intrebare" />
@@ -57,7 +57,7 @@
         android:layout_marginTop="8dp"
 
         android:linksClickable="true"
-        android:text="2. Cum pot obține noi avatare?"
+        android:text="@string/ajutor_tv_aDouaIntrebare"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
-        android:text="Avatarele se pot cumpăra cu monede obținute pe baza punctajului."
+        android:text="@string/ajutor_tv_alDoilea_raspuns"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_aDoua_intrebare" />
