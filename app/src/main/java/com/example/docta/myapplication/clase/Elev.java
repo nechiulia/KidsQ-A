@@ -1,15 +1,35 @@
 package com.example.docta.myapplication.clase;
 
-public class Elev {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.example.docta.myapplication.R;
+
+import java.text.ParseException;
+
+public class Elev implements Parcelable {
 private String numeAvatar;
 private int varsta;
-private boolean gen;
+private int gen;
 
-    public Elev(String numeAvatar, int varsta, boolean gen) {
+
+    public Elev(String numeAvatar, int varsta, int gen) {
         this.numeAvatar = numeAvatar;
         this.varsta = varsta;
         this.gen = gen;
     }
+
+    public static final Creator<Elev> CREATOR = new Creator<Elev>() {
+        @Override
+        public Elev createFromParcel(Parcel in) {
+            return new Elev(in);
+        }
+
+        @Override
+        public Elev[] newArray(int size) {
+            return new Elev[size];
+        }
+    };
 
     public String getNumeAvatar() {
         return numeAvatar;
@@ -27,20 +47,45 @@ private boolean gen;
         this.varsta = varsta;
     }
 
-    public boolean isGen() {
+    public int getGen() {
         return gen;
     }
 
-    public void setGen(boolean gen) {
+    public void setGen(int gen) {
         this.gen = gen;
     }
 
     @Override
     public String toString() {
-        return "Elev{" +
-                "Nume avatar: '" + numeAvatar + '\'' +
-                ", varsta: " + varsta +
-                ", gen: " + gen +
-                '}';
+        String result="";
+        result+= numeAvatar + "         "+
+              + varsta +" ani     " ;
+        if(gen== R.id.lecc_rb_baietel ){
+            result+="   Băiat";
+        }
+        else if (gen==R.id.lecc_rb_fetita) result+="    Fată";
+
+        return  result;
+    }
+
+    private Elev(Parcel in)
+
+    {
+
+        numeAvatar = in.readString();
+        varsta = in.readInt();
+        gen=in.readInt();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(numeAvatar);
+        dest.writeInt(varsta);
+        dest.writeInt(gen);
     }
 }

@@ -58,4 +58,23 @@
             android:text="@string/Stergere_elev"
             android:textSize="35dp"/>
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/listaElevi_tv_listaElevi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+
+        android:text="Listă elevi"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/listaElevi_lv_listaElevi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

@@ -41,6 +41,7 @@ public class SetariElevActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(), PrincipalaActivitate.class);
+                startActivity(intent);
             }
         });
 

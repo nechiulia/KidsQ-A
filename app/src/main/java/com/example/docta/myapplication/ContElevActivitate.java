@@ -23,13 +23,13 @@ public class ContElevActivitate extends AppCompatActivity {
         tie_nume_avatar = findViewById(R.id.autentificare_elev_tid_numeavatar);
          btn_back=findViewById(R.id.loginelev_btn_back);
 
-         btn_back.setOnClickListener(new View.OnClickListener() {
+        /* btn_back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  intent=new Intent(getApplicationContext(),PrincipalaActivitate.class);
                  startActivity(intent);
              }
-         });
+         });*/
 
          btn_autentificare=findViewById(R.id.loginelev_btn_autentificare);
 
