@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AutentificareElevActivitate"></activity>
         <activity android:name=".AutentificareProfesorActivitate"></activity>
         <activity android:name=".AvatareActivitate"></activity>
         <activity android:name=".ClasamentElevActivitate"></activity>
