@@ -34,6 +34,17 @@ public class CreareContElevActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_creare_cont_elev);
         intent=getIntent();
 
+        btn_back=findViewById(R.id.lecc_btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(getApplicationContext(),ContElevActivitate.class);
+                startActivity(intent);
+            }
+        });
+
+        spn_varsta=findViewById(R.id.lecc_spinner_varsta);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.lecc_spn_varsta,R.layout.support_simple_spinner_dropdown_item);
         initComponents();
     }
 
@@ -55,6 +66,14 @@ public class CreareContElevActivitate extends AppCompatActivity {
             }
         });
 
+
+        btn_creare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent=new Intent(getApplicationContext(),ContElevActivitate.class);
+                startActivity(intent);
+            }
+        });
 
         btn_creare.setOnClickListener(new View.OnClickListener() {
             @Override
