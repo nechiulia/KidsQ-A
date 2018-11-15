@@ -34,7 +34,9 @@
         <activity android:name=".SetariActivitate" />
         <activity android:name=".SetariDesignActivitate" />
         <activity android:name=".SetariElevActivitate" />
-        <activity android:name=".AjutorActivitate"></activity>
+        <activity android:name=".AjutorActivitate" />
+        <activity android:name=".SarciniActivitate" />
+        <activity android:name=".SarciniAdaugareActivitate"></activity>
     </application>
 
 </manifest>

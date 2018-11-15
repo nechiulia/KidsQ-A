@@ -7,4 +7,10 @@ public interface Constante {
     String CONT_STATUT_PREF="ProfesorSauElev";
     String UTILIZATOR_PREF="utilizator";
     String NUME_KEY="numeAvatar";
+
+    int ADAUGARE_SAA_REQUEST_CODE=102;
+    String ADAUGA_SAA_KEY="adaugaTask";
+
+
+
 }

@@ -126,4 +126,8 @@
     <string name="ajutor_tv_aDouaIntrebare">2. Cum pot obține noi avatare?</string>
     <string name="ajutor_tv_alDoileaRaspuns">Pentru orice modificare a contului intră la Setări.</string>
     <string name="ajutor_tv_primaIntrebare">1. Cum îmi pot modifica numele avatarului?</string>
+    <string name="sarcini_info_hint">info</string>
+    <string name="ppj_txt_sarcini">Sarcini</string>
+    <string name="as_btn_adauga">Adaugare</string>
+    <string name="sa_txt_eroare">Eroare primire date din Adaugare Sarcini</string>
 </resources>
