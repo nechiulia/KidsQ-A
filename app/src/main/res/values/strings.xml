@@ -129,4 +129,16 @@
     <string name="cumpara_avatare_tv_cumpara_avatar">Cumpara alt avatar</string>
     <string name="avatare_disponibile_tv_alte_avatare">Alte avatare disponibile</string>
     <string name="avatare_disponibile_btn_cumpara_avatare">Cumpara avatare</string>
+    <string name="intrebarea_zilei_tv_countdown">10:00</string>
+    <string name="intrebarea_zilei_btn_incepe">Incepe test</string>
+    <string-array name="setari_design_spn_dimensiuni_text">
+        <item>Mic</item>
+        <item>Mediu</item>
+        <item>Mare</item>
+    </string-array>
+    <string-array name="setari_design_spn_font_text">
+        <item>Arial</item>
+        <item>Times New Roman</item>
+        <item>Calibri</item>
+    </string-array>
 </resources>
