@@ -126,4 +126,7 @@
     <string name="ajutor_tv_aDouaIntrebare">2. Cum pot obține noi avatare?</string>
     <string name="ajutor_tv_alDoileaRaspuns">Pentru orice modificare a contului intră la Setări.</string>
     <string name="ajutor_tv_primaIntrebare">1. Cum îmi pot modifica numele avatarului?</string>
+    <string name="cumpara_avatare_tv_cumpara_avatar">Cumpara alt avatar</string>
+    <string name="avatare_disponibile_tv_alte_avatare">Alte avatare disponibile</string>
+    <string name="avatare_disponibile_btn_cumpara_avatare">Cumpara avatare</string>
 </resources>

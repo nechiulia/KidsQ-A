@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AutentificareProfesorActivitate" />
-        <activity android:name=".AvatareActivitate" />
+        <activity android:name=".CumparaAvatareActivitate" />
         <activity android:name=".ClasamentElevActivitate" />
         <activity android:name=".ClasamentProfesorActivitate" />
         <activity android:name=".ContElevActivitate" />
@@ -34,7 +34,8 @@
         <activity android:name=".SetariActivitate" />
         <activity android:name=".SetariDesignActivitate" />
         <activity android:name=".SetariElevActivitate" />
-        <activity android:name=".AjutorActivitate"></activity>
+        <activity android:name=".AjutorActivitate" />
+        <activity android:name=".AvatareleMeleActivitate"></activity>
     </application>
 
 </manifest>
