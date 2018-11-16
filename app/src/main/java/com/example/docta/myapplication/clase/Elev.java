@@ -69,9 +69,7 @@ private int gen;
     }
 
     private Elev(Parcel in)
-
     {
-
         numeAvatar = in.readString();
         varsta = in.readInt();
         gen=in.readInt();
