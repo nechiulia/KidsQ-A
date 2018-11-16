@@ -92,7 +92,7 @@ public class SetariActivitate extends AppCompatActivity {
         }else if(tie_parola_noua.getText() == null || tie_parola_noua.getText().toString().trim().isEmpty() || tie_parola_noua.getText().toString().contains(" ")){
             tie_parola_noua.setError(getString(R.string.autentificare_profesor_parola_eroare));
             return false;
-        }else if(tie_parola_confirm.getText().toString() != tie_parola_noua.getText().toString()){
+        }else if(tie_parola_confirm.getText().toString().compareTo( tie_parola_noua.getText().toString())!=0){
             tie_parola_confirm.setError(getString(R.string.setari_parolaConfirm_eroare));
             return false;
         }
