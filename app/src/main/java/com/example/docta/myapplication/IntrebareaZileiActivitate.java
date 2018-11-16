@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class IntrebareaZileiActivitate extends AppCompatActivity {
 
@@ -17,6 +20,10 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeftInMiliseconds=600000; //10 min
     private boolean timerunning;
+    private RadioGroup rgRaspunsuri;
+    private RadioButton rbR1;
+    private RadioButton rbR2;
+    private RadioButton rbR3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,22 +34,33 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
         btn_rezultat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), RezultatActivitate.class);
-                startActivity(intent);
+                if(rbR1.isChecked() || rbR2.isChecked()||rbR3.isChecked()){
+                    Intent intent=new Intent(getApplicationContext(), RezultatActivitate.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.intrebarea_zilei_toast__selecteaza_raspuns), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
 
     private void initComponents(){
-
+        rgRaspunsuri=findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
         btn_rezultat=findViewById(R.id.intrebarea_zilei_btn_confirm);
         countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
         btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);
+        btn_rezultat.setVisibility(View.INVISIBLE);
+        rbR1=findViewById(R.id.intrebarea_zilei_rb_answear1);
+        rbR2=findViewById(R.id.intrebarea_zilei_rb_answear2);
+        rbR3=findViewById(R.id.intrebarea_zilei_rb_answear3);
 
         btn_countdown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startStop();
+               btn_rezultat.setVisibility(View.VISIBLE);
+                startStop();
             }
         });
     }

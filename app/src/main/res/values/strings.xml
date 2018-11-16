@@ -146,4 +146,7 @@
     <string name="as_btn_adauga">Adaugare</string>
     <string name="sa_txt_eroare">Eroare primire date din Adaugare Sarcini</string>
     <string name="intrebari_tv_nr_intrebari">/10</string>
+    <string name="ppj_tv_bine_ai_venit_null">Bine ai venit!</string>
+    <string name="ppj_utilizator_default_pref">elev</string>
+    <string name="intrebarea_zilei_toast__selecteaza_raspuns">Selecteaza un raspuns!</string>
 </resources>

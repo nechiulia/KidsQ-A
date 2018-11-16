@@ -49,7 +49,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         btnSarcini=findViewById(R.id.ppj_btn_sarcini);
 
         sharedPreferences= getSharedPreferences(Constante.CONT_STATUT_PREF, MODE_PRIVATE);
-        String utilizator= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
+        String utilizator= sharedPreferences.getString(Constante.UTILIZATOR_PREF, getString(R.string.ppj_utilizator_default_pref));
         if(utilizator.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btnInapoiProfesor.setVisibility(View.VISIBLE);
         }
@@ -58,7 +58,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         }
         String nume= getIntent().getStringExtra(Constante.NUME_KEY);
         if (nume==null){
-            tvNumeAvatar.setText("Bine ai venit!");
+            tvNumeAvatar.setText(getString(R.string.ppj_tv_bine_ai_venit_null));
         }
         else {
         tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);}

@@ -82,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_iv_difetente" />
 
     <RadioGroup
-        android:id="@+id/intrebarea_zilei_rg_answers"
+        android:id="@+id/intrebarea_zilei_rg_raspunsuri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -120,7 +120,7 @@
         android:id="@+id/intrebarea_zilei_btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/intrebarea_zilei_rg_answers"
+        android:layout_below="@+id/intrebarea_zilei_rg_raspunsuri"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -131,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_rg_answers" />
+        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_rg_raspunsuri" />
 
     <Button
         android:id="@+id/intrebarea_zilei_btn_incepe_test"
