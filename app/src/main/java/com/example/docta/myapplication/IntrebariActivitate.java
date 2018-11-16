@@ -18,12 +18,7 @@ import android.widget.Toast;
 
 public class IntrebariActivitate extends AppCompatActivity {
     private TextView tvNrIntrebare;
-    private Button btnConfirm;
     private int nrCurent=1;
-    private RadioGroup rgOptiuniRaspuns;
-    private RadioButton rbR1;
-    private RadioButton rbR2;
-    private RadioButton rbR3;
     private RadioGroup rg_raspunsuri;
     private RadioButton rb_raspuns;
     private Button btn_confirm;
@@ -35,10 +30,6 @@ public class IntrebariActivitate extends AppCompatActivity {
         initComponents();
     }
 
-
-    public void initComps(){
-
-    }
 
     private View.OnClickListener confirmRaspuns(){
         return new View.OnClickListener(){
@@ -82,9 +73,7 @@ public class IntrebariActivitate extends AppCompatActivity {
         btn_confirm.setOnClickListener(confirmRaspuns());
         nrCurent=1;
         tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
-        rbR1=findViewById(R.id.intrebari_rb_raspuns1);
-        rbR2=findViewById(R.id.intrebari_rb_raspuns2);
-        rbR3=findViewById(R.id.intrebari_rb_raspuns3);
+
 
 
     }
