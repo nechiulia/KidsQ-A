@@ -57,7 +57,11 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             btnInapoiProfesor.setVisibility(View.INVISIBLE);
         }
         String nume= getIntent().getStringExtra(Constante.NUME_KEY);
-        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
+        if (nume==null){
+            tvNumeAvatar.setText("Bine ai venit!");
+        }
+        else {
+        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);}
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());
         btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
