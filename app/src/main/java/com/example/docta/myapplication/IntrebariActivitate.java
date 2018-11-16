@@ -46,7 +46,6 @@ public class IntrebariActivitate extends AppCompatActivity {
                     else {
                         tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
                         rg_raspunsuri.clearCheck();
-
                     }
                 }
             }
@@ -60,8 +59,10 @@ public class IntrebariActivitate extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),getString(R.string.intrebarea_zilei_raspuns_eroare),Toast.LENGTH_LONG).show();
             return false;
         }
-
-        return true;
+        else {
+            rb_raspuns.setError(null);
+            return true;
+        }
 
     }
 
