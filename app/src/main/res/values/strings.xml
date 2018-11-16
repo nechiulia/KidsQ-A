@@ -46,7 +46,7 @@
     <string name="invatam_categ_imgBtnInapoi_descriere">Inapoi</string>
     <string name="invatam_categ_imgBtnInainte_descriere">Inainte</string>
     <string name="invatam_categ_tv_nr_text">1/10</string>
-    <string name="test_nr_poza">2/10</string>
+    <string name="test_nr_poza">/10</string>
     <string name="test_nr_poza_back">1/10</string>
 
     <string name="test_informare_next">Informare next</string>
