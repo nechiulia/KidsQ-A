@@ -63,6 +63,9 @@ public class SetariActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 if(isValid()) {
                     Toast.makeText(getApplicationContext(),"Date salvate cu succes",Toast.LENGTH_LONG).show();
+                    SharedPreferences.Editor editor= sharedPreferences.edit();
+                    editor.putString(Constante.PAROLA_PREF, tie_parola_noua.getText().toString());
+                    boolean result= editor.commit();
                     finish();
                 }
 
