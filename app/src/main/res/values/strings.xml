@@ -145,4 +145,5 @@
     <string name="ppj_txt_sarcini">Sarcini</string>
     <string name="as_btn_adauga">Adaugare</string>
     <string name="sa_txt_eroare">Eroare primire date din Adaugare Sarcini</string>
+    <string name="intrebari_tv_nr_intrebari">/10</string>
 </resources>
