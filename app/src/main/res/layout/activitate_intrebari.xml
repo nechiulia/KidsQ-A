@@ -29,26 +29,30 @@
         android:id="@+id/intrebari_tv_intrebare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/intrebari_tv_intrebare_str"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/intrebari_iv_imagine"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intrebari_iv_imagine" />
 
     <RadioGroup
         android:id="@+id/intrebari_rg_raspunsuri"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/intrebari_tv_intrebare">
 
         <RadioButton
@@ -56,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebari_rb_raspuns1_str" />
+
         <RadioButton
             android:id="@+id/intrebari_rb_raspuns2"
             android:layout_width="wrap_content"
@@ -69,21 +74,24 @@
             android:text="@string/intrebari_rb_raspuns3_str" />
 
     </RadioGroup>
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/intrebari_btn_confirm"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:layout_marginTop="25dp"
-        app:layout_constraintTop_toBottomOf="@id/intrebari_rg_raspunsuri">
-        <Button
-            android:id="@+id/intrebari_btn_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/intrebari_btn_confirm_str"
-           />
-    </LinearLayout>
+        android:text="@string/intrebari_btn_confirm_str"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intrebari_rg_raspunsuri" />
+
 
     <TextView
         android:id="@+id/intrebari_tv_nr_intrebare"

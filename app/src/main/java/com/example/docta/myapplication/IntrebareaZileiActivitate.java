@@ -49,15 +49,12 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     }
 
     private void initComponents(){
-        rgRaspunsuri=findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
         btn_rezultat=findViewById(R.id.intrebarea_zilei_btn_confirm);
         countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
         btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);
         btn_rezultat.setVisibility(View.INVISIBLE);
-        rbR1=findViewById(R.id.intrebarea_zilei_rb_raspuns1);
-        rbR2=findViewById(R.id.intrebarea_zilei_rb_raspuns2);
-        rbR3=findViewById(R.id.intrebarea_zilei_rb_raspuns3);
-
+        rg_optiuni = findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
+        rb_rapuns3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
         btn_countdown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +70,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
         }else{
             startTimer();
         }
-        rg_optiuni = findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
-        rb_rapuns3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
+
     }
 
     public boolean isValid(){
