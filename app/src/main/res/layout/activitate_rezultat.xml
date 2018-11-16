@@ -6,8 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fundal"
-    tools:context=".RezultatActivitate">
+    tools:context=".RezultatActivitate"
+    android:weightSum="100">
 
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="85">
 
     <Space android:layout_width="match_parent"
         android:layout_height="70dp"/>
@@ -83,12 +89,20 @@
         android:layout_gravity="center"
         android:src="@mipmap/ic_launcher"/>
 
+</LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15">
     <Button
         android:id="@+id/rezultat_btn_inapoi"
+
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:text="@string/rezultat_btn_inapoi_str" />
 
+</LinearLayout>
 </LinearLayout>

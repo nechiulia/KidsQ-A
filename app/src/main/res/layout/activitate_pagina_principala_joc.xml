@@ -144,9 +144,6 @@
         android:text="@string/ppj_btn_setari_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ppj_btn_sarcini"
-        app:layout_constraintHorizontal_bias="0.824"
-
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ppj_btn_clasament" />
 
     <ImageButton
