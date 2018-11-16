@@ -19,7 +19,8 @@ public class RezultatActivitate extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
+                startActivity(intent);
             }
         });
     }
