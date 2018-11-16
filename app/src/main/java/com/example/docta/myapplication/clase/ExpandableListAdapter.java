@@ -62,35 +62,35 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final String raspuns = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater inflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.ex_list_item, null);
+            convertView = inflater.inflate(R.layout.ex_list_item, null);
         }
 
-        TextView txtListChild = convertView
+        TextView tvRaspuns = convertView
                 .findViewById(R.id.tv_ex_list_item);
 
-        txtListChild.setText(childText);
+        tvRaspuns.setText(raspuns);
         return convertView;
     }
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition);
+        String titlu = (String) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
+            LayoutInflater inflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.ex_list_group, null);
+            convertView = inflater.inflate(R.layout.ex_list_group, null);
         }
 
-        TextView lblListHeader = convertView
+        TextView tvTitlu = convertView
                 .findViewById(R.id.tv_ex_list_group);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setText(headerTitle);
+        tvTitlu.setTypeface(null, Typeface.BOLD);
+        tvTitlu.setText(titlu);
 
         return convertView;
     }
