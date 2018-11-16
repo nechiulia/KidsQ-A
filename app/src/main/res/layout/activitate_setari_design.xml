@@ -65,6 +65,7 @@
 
     <Spinner
         android:id="@+id/design_spn_font"
+        android:background="@color/alb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -82,13 +83,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:text="@string/design_tv_textsize"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/design_spn_font" />
 
     <Spinner
         android:id="@+id/design_spn_textsize"
+        android:background="@color/alb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
