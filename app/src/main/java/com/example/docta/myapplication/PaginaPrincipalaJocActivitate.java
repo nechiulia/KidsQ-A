@@ -23,6 +23,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private ImageButton imgBtnParere;
     private TextView tvNumeAvatar;
     private Button btnInapoiProfesor;
+    private Button btnSarcini;
     private SharedPreferences sharedPreferences;
     private ImageButton imgBtnAjutor;
     Intent intent;
@@ -45,6 +46,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
         btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
         imgBtnAjutor=findViewById(R.id.ppj_imgBtn_intrebare);
+        btnSarcini=findViewById(R.id.ppj_btn_sarcini);
 
         sharedPreferences= getSharedPreferences(Constante.CONT_STATUT_PREF, MODE_PRIVATE);
         String utilizator= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
@@ -66,6 +68,18 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         imgBtnParere.setOnClickListener(deschidePareri());
         btnInapoiProfesor.setOnClickListener(inapoiLaProfesor());
         imgBtnAjutor.setOnClickListener(deschideAjutor());
+        btnSarcini.setOnClickListener(startSarcini());
+   }
+
+   private View.OnClickListener startSarcini()
+   {
+       return new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(),SarciniActivitate.class);
+            startActivity(intent);
+           }
+       };
    }
    private View.OnClickListener inapoiLaProfesor(){
         return new View.OnClickListener() {
@@ -121,7 +135,6 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), AvatareleMeleActivitate.class);
                 startActivity(intent);
             }
-
         };
 
     }
@@ -134,7 +147,6 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ClasamentElevActivitate.class);
                 startActivity(intent);
             }
-
         };
 
     }
