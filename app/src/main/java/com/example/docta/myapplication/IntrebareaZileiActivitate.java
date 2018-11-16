@@ -39,13 +39,6 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
         btn_rezultat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(rbR1.isChecked() || rbR2.isChecked()||rbR3.isChecked()){
-                    Intent intent=new Intent(getApplicationContext(), RezultatActivitate.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.intrebarea_zilei_toast__selecteaza_raspuns), Toast.LENGTH_LONG).show();
-                }
 
                 if (isValid()) {
                     Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);

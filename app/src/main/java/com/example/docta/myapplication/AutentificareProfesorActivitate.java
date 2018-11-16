@@ -1,6 +1,7 @@
 package com.example.docta.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class AutentificareProfesorActivitate extends AppCompatActivity {
     private Button btn_login;
     private Button btn_back;
     Intent intent;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,10 @@ public class AutentificareProfesorActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 if(isValid()) {
                     intent = new Intent(getApplicationContext(), ListaEleviActivitate.class);
+                    SharedPreferences.Editor editor= sharedPreferences.edit();
+                    editor.putString(Constante.PAROLA_PREF, tie_parola.getText().toString());
+                    editor.putString(Constante.EMAIL_PREF, tie_email.getText().toString());
+                    boolean result= editor.commit();
                     startActivity(intent);
                 }
             }
@@ -49,6 +55,8 @@ public class AutentificareProfesorActivitate extends AppCompatActivity {
         tie_parola = findViewById(R.id.loginprof_tid_parola);
         btn_login=findViewById(R.id.loginprof_btn_login);
         btn_back=findViewById(R.id.loginprof_btn_back);
+        sharedPreferences=getSharedPreferences(Constante.PAROLA_PROF_PREF, MODE_PRIVATE);
+
     }
 
     public boolean isValid(){

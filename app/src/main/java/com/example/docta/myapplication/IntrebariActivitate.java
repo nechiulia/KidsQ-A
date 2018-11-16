@@ -18,12 +18,7 @@ import android.widget.Toast;
 
 public class IntrebariActivitate extends AppCompatActivity {
     private TextView tvNrIntrebare;
-    private Button btnConfirm;
     private int nrCurent=1;
-    private RadioGroup rgOptiuniRaspuns;
-    private RadioButton rbR1;
-    private RadioButton rbR2;
-    private RadioButton rbR3;
     private RadioGroup rg_raspunsuri;
     private RadioButton rb_raspuns;
     private Button btn_confirm;
@@ -32,23 +27,26 @@ public class IntrebariActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebari);
-        initComps();
+        initComponents();
     }
 
-
-    public void initComps(){
-        rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
-        rb_raspuns = findViewById(R.id.intrebari_rb_raspuns3);
-        btn_confirm = findViewById(R.id.intrebari_btn_confirm);
-        btn_confirm.setOnClickListener(confirmRaspuns());
-    }
 
     private View.OnClickListener confirmRaspuns(){
         return new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if (isValid()) {
-                    rb_raspuns.setTextColor(Color.GREEN);
+                   // rb_raspuns.setTextColor(Color.GREEN);
+
+                    nrCurent++;
+                    if(nrCurent==11){
+                        Intent intent= new Intent(getApplicationContext(), RezultatActivitate.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
+                        rg_raspunsuri.clearCheck();
+                    }
                 }
             }
         };
@@ -61,45 +59,25 @@ public class IntrebariActivitate extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),getString(R.string.intrebarea_zilei_raspuns_eroare),Toast.LENGTH_LONG).show();
             return false;
         }
-        initComponents();
-        return true;
+        else {
+            rb_raspuns.setError(null);
+            return true;
+        }
 
     }
 
     private void initComponents(){
         tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
-        btnConfirm=findViewById(R.id.intrebari_btn_confirm);
-        btnConfirm.setOnClickListener(confirm());
-        rgOptiuniRaspuns= findViewById(R.id.intrebari_rg_raspunsuri);
+        rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
+        rb_raspuns = findViewById(R.id.intrebari_rb_raspuns3);
+        btn_confirm = findViewById(R.id.intrebari_btn_confirm);
+        btn_confirm.setOnClickListener(confirmRaspuns());
         nrCurent=1;
         tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
-        rbR1=findViewById(R.id.intrebari_rb_raspuns1);
-        rbR2=findViewById(R.id.intrebari_rb_raspuns2);
-        rbR3=findViewById(R.id.intrebari_rb_raspuns3);
+
 
 
     }
 
-    public View.OnClickListener confirm(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nrCurent++;
-                if(nrCurent==11){
-                    Intent intent= new Intent(getApplicationContext(), RezultatActivitate.class);
-                    startActivity(intent);
-                }
-                else if(rbR1.isChecked() || rbR2.isChecked()||rbR3.isChecked()){
-                    tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
-                    rgOptiuniRaspuns.clearCheck();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.intrebarea_zilei_toast__selecteaza_raspuns), Toast.LENGTH_LONG).show();
-                    nrCurent--;
-                }
 
-
-            }
-        };
-    }
 }

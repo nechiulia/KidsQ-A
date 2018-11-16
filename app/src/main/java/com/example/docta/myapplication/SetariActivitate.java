@@ -1,6 +1,7 @@
 package com.example.docta.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -27,6 +28,7 @@ public class SetariActivitate extends AppCompatActivity {
     private TextInputEditText tie_parola_confirm;
 
     private Button btn_salveaza;
+    private SharedPreferences sharedPreferences;
     Intent intent = getIntent();
 
     @Override
@@ -61,6 +63,9 @@ public class SetariActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 if(isValid()) {
                     Toast.makeText(getApplicationContext(),"Date salvate cu succes",Toast.LENGTH_LONG).show();
+                    SharedPreferences.Editor editor= sharedPreferences.edit();
+                    editor.putString(Constante.PAROLA_PREF, tie_parola_noua.getText().toString());
+                    boolean result= editor.commit();
                     finish();
                 }
 
@@ -77,25 +82,31 @@ public class SetariActivitate extends AppCompatActivity {
         tie_parola_veche = findViewById(R.id.setari_parolaV_edit);
         tie_parola_noua = findViewById(R.id.setari_parolaN_edit);
         tie_parola_confirm = findViewById(R.id.setari_parolaC_edit);
-
+        sharedPreferences=getSharedPreferences(Constante.PAROLA_PROF_PREF, MODE_PRIVATE);
     }
 
     private boolean isValid(){
+        String parolaVeche= sharedPreferences.getString(Constante.PAROLA_PREF, null);
+        String email = sharedPreferences.getString(Constante.EMAIL_PREF,null);
+        if(tie_email.getText().toString().compareTo(email)!=0 || tie_parola_veche.getText().toString().compareTo(parolaVeche)!=0) {
+            Toast.makeText(getApplicationContext(), "Email-ul si parola introduse nu corespund!",Toast.LENGTH_LONG).show();
+            tie_parola_veche.setText("");
+            return false;}
+            if (TextUtils.isEmpty(tie_email.getText()) || !Patterns.EMAIL_ADDRESS.matcher(tie_email.getText().toString()).matches()
+                    || tie_email.getText().toString().trim().isEmpty()) {
+                tie_email.setError(getText(R.string.autentificare_profesor_email_eroare));
+                return false;
+            } else if ( tie_parola_veche.getText().toString().trim().isEmpty() || tie_parola_veche.getText().toString().contains(" ")) {
+                tie_parola_veche.setError(getString(R.string.setari_parolaVeche_eroare));
+                return false;
+            } else if (tie_parola_noua.getText() == null || tie_parola_noua.getText().toString().trim().isEmpty() || tie_parola_noua.getText().toString().contains(" ")) {
+                tie_parola_noua.setError(getString(R.string.autentificare_profesor_parola_eroare));
+                return false;
+            } else if (tie_parola_confirm.getText().toString().compareTo(tie_parola_noua.getText().toString()) != 0) {
+                tie_parola_confirm.setError(getString(R.string.setari_parolaConfirm_eroare));
+                return false;
+            }
 
-        if(TextUtils.isEmpty(tie_email.getText()) || !Patterns.EMAIL_ADDRESS.matcher(tie_email.getText().toString()).matches()
-                || tie_email.getText().toString().trim().isEmpty() ){
-            tie_email.setError(getText(R.string.autentificare_profesor_email_eroare));
-            return false;
-        }else if(tie_parola_veche.getText().toString().trim().isEmpty()||tie_parola_veche.getText().toString().contains(" ")){
-            tie_parola_veche.setError(getString(R.string.setari_parolaVeche_eroare));
-            return false;
-        }else if(tie_parola_noua.getText() == null || tie_parola_noua.getText().toString().trim().isEmpty() || tie_parola_noua.getText().toString().contains(" ")){
-            tie_parola_noua.setError(getString(R.string.autentificare_profesor_parola_eroare));
-            return false;
-        }else if(tie_parola_confirm.getText().toString() != tie_parola_noua.getText().toString()){
-            tie_parola_confirm.setError(getString(R.string.setari_parolaConfirm_eroare));
-            return false;
-        }
         return true;
     }
 

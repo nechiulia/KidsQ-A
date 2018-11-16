@@ -11,6 +11,9 @@ public interface Constante {
 
     int ADAUGARE_SAA_REQUEST_CODE=102;
     String ADAUGA_SAA_KEY="adaugaTask";
+    String PAROLA_PROF_PREF="tineMinteParola";
+    String PAROLA_PREF="astaEParolaVeche";
+    String  EMAIL_PREF="acestaaEEmailul";
 
 
 
