@@ -61,7 +61,8 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             tvNumeAvatar.setText(getString(R.string.ppj_tv_bine_ai_venit_null));
         }
         else {
-        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);}
+        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
+        }
         btnInvatam.setOnClickListener(startSaInvatam());
         btnJucam.setOnClickListener(startSaNeJucam());
         btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
