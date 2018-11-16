@@ -24,7 +24,8 @@
             android:id="@+id/loginprof_tid_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/loginprof_tid_email_hint" />
+            android:hint="@string/loginprof_tid_email_hint"
+            android:inputType="textEmailAddress"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -44,7 +45,8 @@
             android:id="@+id/loginprof_tid_parola"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/loginprof_tid_parola_hint" />
+            android:hint="@string/loginprof_tid_parola_hint"
+            android:inputType="textPassword"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button

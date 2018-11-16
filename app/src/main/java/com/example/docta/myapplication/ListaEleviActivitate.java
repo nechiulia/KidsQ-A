@@ -43,24 +43,17 @@ public class ListaEleviActivitate extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Intent intent;
                 switch (menuItem.getItemId()) {
-
-
                     case R.id.menu_setari:
                         intent = new Intent(getApplicationContext(),SetariActivitate.class);
-
                         startActivity(intent);
                         break;
                     case R.id.menu_clasament:
                         intent = new Intent(getApplicationContext(),ClasamentProfesorActivitate.class);
-
                         startActivity(intent);
                         break;
-
                     case R.id.menu_profil:
                         startActivity(new Intent(getApplicationContext(),PaginaPrincipalaJocActivitate.class));
-
                         break;
-
                 }
                 return false;
             }

@@ -28,7 +28,8 @@
             android:id="@+id/autentificare_elev_tid_numeavatar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/lae_tid_navatar_hint" />
+            android:hint="@string/lae_tid_navatar_hint"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <Button

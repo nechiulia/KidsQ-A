@@ -28,35 +28,30 @@ public class SarciniAdaugareActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_adaugare_sarcini);
-
+        initComps();
         intent=getIntent();
-        btn_adaugare=findViewById(R.id.as_btn_adaugare);
-        cv_data=findViewById(R.id.as_cv_data);
-        tid_info=findViewById(R.id.as_tid_info);
+
 
 
         cv_data.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
                 date = cv_data.getDate();
-                Toast.makeText(view.getContext(), "Year=" + year + " Month=" + (month+1) + " Day=" + dayOfMonth, Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), "An=" + year + " Luna=" + (month+1) + " Zi=" + dayOfMonth, Toast.LENGTH_LONG).show();
                 datafinal=dayOfMonth+"/"+(month+1)+"/"+year;
-
-
             }
         });
 
         btn_adaugare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isValid()) {
+                    String info = tid_info.getText().toString();
+                    Sarcini sarcini = new Sarcini(datafinal, info);
 
-                String info=tid_info.getText().toString();
-                Sarcini sarcini= new Sarcini(datafinal,info);
-
-                intent.putExtra(Constante.ADAUGA_SAA_KEY,sarcini);
-                setResult(RESULT_OK,intent);
-                finish();
-
+                    intent.putExtra(Constante.ADAUGA_SAA_KEY, sarcini);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
         });
 
@@ -64,4 +59,18 @@ public class SarciniAdaugareActivitate extends AppCompatActivity {
 
 
     }
+    private void initComps(){
+        btn_adaugare=findViewById(R.id.as_btn_adaugare);
+        cv_data=findViewById(R.id.as_cv_data);
+        tid_info=findViewById(R.id.as_tid_info);
+    }
+
+    private boolean isValid(){
+        if(tid_info.getText().toString().trim().isEmpty()){
+            tid_info.setError(getString(R.string.sarcini_infoactivitate_eroare));
+            return false;
+        }
+        return true;
+    }
+
 }

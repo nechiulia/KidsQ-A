@@ -130,4 +130,18 @@
     <string name="ppj_txt_sarcini">Sarcini</string>
     <string name="as_btn_adauga">Adaugare</string>
     <string name="sa_txt_eroare">Eroare primire date din Adaugare Sarcini</string>
+    <string name="autentificare_profesor_email_eroare">Email-ul nu este valid, exemplu@yahoo.com</string>
+    <string name="autentificare_profesor_parola_eroare">Parola a fost introdusa in mod eronat</string>
+    <string name="cont_elev_numeavatar_eroare">Numele nu a fost introdus corect</string>
+    <string name="creare_cont_elev_numeavatar_eroare">Numele nu este introdus corect</string>
+    <string name="creare_cont_elev_gen_eroare">Genul nu a fost selectat</string>
+    <string name="creare_cont_elev_varsta_alegere">Alege varsta</string>
+    <string name="creare_cont_elev_varsta_eroare">Varsta nu a fost selectata</string>
+    <string name="intrebarea_zilei_raspuns_eroare">Selectati un raspuns</string>
+    <string name="parere_ratingbar_eroare">Inca nu v-ati exprimat parerea</string>
+    <string name="parere_multimum">Multimim pentru parere</string>
+    <string name="parere_eroare">Nu v-ati spus parerea</string>
+    <string name="setari_parolaVeche_eroare">Parola este incorecta</string>
+    <string name="setari_parolaConfirm_eroare">Confirmati parola!</string>
+    <string name="sarcini_infoactivitate_eroare">Introduceti o activitate</string>
 </resources>

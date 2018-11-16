@@ -54,12 +54,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:progress="20"
+            android:min="1"
+            android:max="5"
             android:layout_width="196dp"
             android:layout_height="wrap_content"
             android:indeterminate="false"
             style="?android:attr/progressBarStyleHorizontal"
             />
+        <TextView
+            android:id="@+id/pareri_tv_medie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ceva"
+            android:textSize="16dp"/>
 
         <Button
             android:id="@+id/pareri_btn_salveaza"
