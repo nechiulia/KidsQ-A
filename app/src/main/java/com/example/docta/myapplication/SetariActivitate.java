@@ -89,7 +89,7 @@ public class SetariActivitate extends AppCompatActivity {
         String parolaVeche= sharedPreferences.getString(Constante.PAROLA_PREF, null);
         String email = sharedPreferences.getString(Constante.EMAIL_PREF,null);
         if(tie_email.getText().toString().compareTo(email)!=0 || tie_parola_veche.getText().toString().compareTo(parolaVeche)!=0) {
-            Toast.makeText(getApplicationContext(), "Email-ul si parola introduse nu corespund!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.setari_email_parola_eroare,Toast.LENGTH_LONG).show();
             tie_parola_veche.setText("");
             return false;}
             if (TextUtils.isEmpty(tie_email.getText()) || !Patterns.EMAIL_ADDRESS.matcher(tie_email.getText().toString()).matches()

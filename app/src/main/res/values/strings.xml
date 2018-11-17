@@ -163,4 +163,8 @@
     <string name="ppj_tv_bine_ai_venit_null">Bine ai venit!</string>
     <string name="ppj_utilizator_default_pref">elev</string>
     <string name="intrebarea_zilei_toast__selecteaza_raspuns">Selecteaza un raspuns!</string>
+    <string name="sarcini_an">An=</string>
+    <string name="sarcini_luna">Luna=</string>
+    <string name="sarcini_zi">Zi=</string>
+    <string name="setari_email_parola_eroare">Email-ul si parola introduse nu corespund!</string>
 </resources>
