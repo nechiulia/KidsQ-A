@@ -2,9 +2,9 @@ package com.example.docta.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.clase.ExpandableListAdapter;
@@ -23,7 +23,10 @@ public class AjutorActivitate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ajutor_activitate);
+        setContentView(R.layout.activitate_ajutor);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         initComponents();
         CreareLista();
 
@@ -44,7 +47,7 @@ public class AjutorActivitate extends AppCompatActivity {
                                 + listaRaspunsuri.get(
                                 listaIntrebari.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
-                        .show();
+                        .cancel();
                 return false;
             }
         });
@@ -55,7 +58,7 @@ public class AjutorActivitate extends AppCompatActivity {
             public void onGroupExpand(int groupPosition) {
                 Toast.makeText(getApplicationContext(),
                         listaIntrebari.get(groupPosition),
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).cancel();
             }
         });
 
@@ -82,6 +85,15 @@ public class AjutorActivitate extends AppCompatActivity {
         listaRaspunsuri.put(listaIntrebari.get(0),raspuns1);
         listaRaspunsuri.put(listaIntrebari.get(1),raspuns2);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id= item.getItemId();
+        if(id==android.R.id.home){
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
