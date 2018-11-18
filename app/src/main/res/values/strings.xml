@@ -185,4 +185,8 @@
     <string name="lv_elevi__nume">Nume</string>
     <string name="lv_elevi_varsta">Varsta</string>
     <string name="lv_elevi_gen">Gen</string>
+    <string name="sarcini_an">An=</string>
+    <string name="sarcini_luna">Luna=</string>
+    <string name="sarcini_zi">Zi=</string>
+    <string name="setari_email_parola_eroare">Email-ul si parola introduse nu corespund!</string>
 </resources>

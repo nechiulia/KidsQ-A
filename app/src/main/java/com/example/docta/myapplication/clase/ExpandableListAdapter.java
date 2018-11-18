@@ -7,16 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-
 import com.example.docta.myapplication.R;
-
 import java.util.HashMap;
 import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
-    private List<String> listaIntrebari; // header titles
-    // child data in format of header title, child title
+    private List<String> listaIntrebari;
     private HashMap<String, List<String>> listaRaspunsuri;
 
     public ExpandableListAdapter(Context context, List<String> listaIntrebari,
