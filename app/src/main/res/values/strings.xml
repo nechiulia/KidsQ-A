@@ -154,7 +154,7 @@
     <string name="creare_cont_elev_varsta_eroare">Varsta nu a fost selectata</string>
     <string name="intrebarea_zilei_raspuns_eroare">Selectati un raspuns</string>
     <string name="parere_ratingbar_eroare">Inca nu v-ati exprimat parerea</string>
-    <string name="parere_multimum">Multimim pentru parere</string>
+    <string name="parere_multimum">Multumim pentru parere</string>
     <string name="parere_eroare">Nu v-ati spus parerea</string>
     <string name="setari_parolaVeche_eroare">Parola este incorecta</string>
     <string name="setari_parolaConfirm_eroare">Confirmati parola!</string>
@@ -163,4 +163,26 @@
     <string name="ppj_tv_bine_ai_venit_null">Bine ai venit!</string>
     <string name="ppj_utilizator_default_pref">elev</string>
     <string name="intrebarea_zilei_toast__selecteaza_raspuns">Selecteaza un raspuns!</string>
+    <string name="setari_prof_toast_succes">Date salvate cu succes</string>
+    <string name="setari_prof_toast_parolanecoresp">Email-ul si parola introduse nu corespund!</string>
+    <string name="avatarele_mele_iv_cd_avatar">Avatar</string>
+    <string name="clasament_elev_tv_titlu">Clasament Elevi</string>
+    <string name="creare_cont_iv_cd_baiat">Imagine baiat</string>
+    <string name="creare_cont_iv_cd_fata">Imagine fata</string>
+    <string name="cumpara_avatare_iv_cd_avatar">Avatar</string>
+    <string name="intrebarea_zilei_iv_poza1">Poza 1</string>
+    <string name="intrebarea_zilei_iv_poza2">Poza 2</string>
+    <string name="intrebari_iv_cd_intrebare">Imagine intrebare</string>
+    <string name="invatam_categorii_btn_inapoi">Înapoi la categorii</string>
+    <string name="lista_elevi_tv_titlu">Listă elevi</string>
+    <string name="ppj_btn_inapoi_la_profesor">Înapoi la profesor</string>
+    <string name="ppj_imgbtn_intrebari_frecvente">Intrebari frecvente</string>
+    <string name="pareri_tv_medie">Medie</string>
+    <string name="rezultat_iv_cd_avatar_cadou">Avatar premiu</string>
+    <string name="setari_design_iv_cd_fundal">Fundal</string>
+    <string name="setari_cont_iv_cd_avatar">Avatar</string>
+    <string name="setari_cont_tv_dificultate">Dificultate:</string>
+    <string name="lv_elevi__nume">Nume</string>
+    <string name="lv_elevi_varsta">Varsta</string>
+    <string name="lv_elevi_gen">Gen</string>
 </resources>

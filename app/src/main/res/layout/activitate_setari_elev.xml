@@ -17,7 +17,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/setari_tv_seratilemele"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +42,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/setari_cont_iv_cd_avatar"
         app:layout_constraintStart_toEndOf="@+id/setari_tv_avatar"
         app:layout_constraintTop_toBottomOf="@+id/setari_tv_setarilemele"
         android:background="@drawable/sboy" />
@@ -53,7 +54,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="120dp"
-        android:text="Dificultate: "
+        android:text="@string/setari_cont_tv_dificultate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/setari_tv_avatar" />
 

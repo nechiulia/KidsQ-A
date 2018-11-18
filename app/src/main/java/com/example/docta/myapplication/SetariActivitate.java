@@ -62,7 +62,7 @@ public class SetariActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()) {
-                    Toast.makeText(getApplicationContext(),"Date salvate cu succes",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),getString(R.string.setari_prof_toast_succes),Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor editor= sharedPreferences.edit();
                     editor.putString(Constante.PAROLA_PREF, tie_parola_noua.getText().toString());
                     boolean result= editor.commit();
@@ -89,7 +89,7 @@ public class SetariActivitate extends AppCompatActivity {
         String parolaVeche= sharedPreferences.getString(Constante.PAROLA_PREF, null);
         String email = sharedPreferences.getString(Constante.EMAIL_PREF,null);
         if(tie_email.getText().toString().compareTo(email)!=0 || tie_parola_veche.getText().toString().compareTo(parolaVeche)!=0) {
-            Toast.makeText(getApplicationContext(), "Email-ul si parola introduse nu corespund!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.setari_prof_toast_parolanecoresp),Toast.LENGTH_LONG).show();
             tie_parola_veche.setText("");
             return false;}
             if (TextUtils.isEmpty(tie_email.getText()) || !Patterns.EMAIL_ADDRESS.matcher(tie_email.getText().toString()).matches()

@@ -70,7 +70,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
 
-        android:text="Listă elevi"
+        android:text="@string/lista_elevi_tv_titlu"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/listaElevi_lv_listaElevi"
         app:layout_constraintEnd_toEndOf="parent"

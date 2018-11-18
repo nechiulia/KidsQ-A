@@ -27,6 +27,7 @@
         android:layout_marginLeft="48dp"
         android:layout_marginTop="90dp"
         android:background="@color/colorPrimary"
+        android:contentDescription="@string/setari_design_iv_cd_fundal"
         app:layout_constraintStart_toEndOf="@+id/design_tv_background"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="90dp"
+        android:contentDescription="@string/setari_design_iv_cd_fundal"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintStart_toEndOf="@+id/desing_img_background1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,6 +51,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="90dp"
         android:background="@color/alb"
+        android:contentDescription="@string/setari_design_iv_cd_fundal"
         app:layout_constraintStart_toEndOf="@+id/desing_img_background2"
         app:layout_constraintTop_toTopOf="parent" />
 

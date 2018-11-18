@@ -31,6 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/sboy"/>
@@ -45,6 +46,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_iv_avatar6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatare_disponibile_tv_cumpara" />
@@ -61,6 +63,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="32dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_iv_avatar5"
         app:layout_constraintEnd_toStartOf="@+id/avatare_disponibile_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
@@ -78,6 +81,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_iv_avatar4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatare_disponibile_tv_cumpara" />
@@ -91,6 +95,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_btn_inapoi"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -105,6 +110,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_btn_inapoi"
         app:layout_constraintEnd_toStartOf="@+id/avatare_disponibile_iv_avatar4"
         app:layout_constraintHorizontal_bias="0.0"
@@ -119,6 +125,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_disponibile_btn_inapoi"
         app:layout_constraintStart_toStartOf="parent" />
 

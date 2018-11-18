@@ -32,6 +32,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,6 +45,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost1"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,6 +60,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost2"
         app:layout_constraintEnd_toStartOf="@+id/avatare_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
@@ -72,6 +75,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost3"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -84,6 +88,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost6"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -98,6 +103,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost5"
         app:layout_constraintEnd_toStartOf="@+id/avatare_iv_avatar4"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,6 +118,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost4"
         app:layout_constraintStart_toStartOf="parent" />
 

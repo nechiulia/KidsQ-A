@@ -47,6 +47,7 @@
             android:layout_width="2dp"
             android:layout_height="85dp"
             android:layout_weight="1"
+            android:contentDescription="@string/creare_cont_iv_cd_baiat"
             android:background="@drawable/sboy" />
 
         <RadioButton
@@ -62,6 +63,7 @@
             android:layout_width="2dp"
             android:layout_height="86dp"
             android:layout_weight="1"
+            android:contentDescription="@string/creare_cont_iv_cd_fata"
             android:background="@drawable/sgirl" />
 
         <RadioButton

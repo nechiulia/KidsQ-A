@@ -34,56 +34,5 @@
         app:layout_constraintTop_toBottomOf="@id/ajutor_tv_titlu">
 
     </ExpandableListView>
-    <!--<TextView-->
-        <!--android:id="@+id/ajutor_tv_prima_intrebare"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginTop="8dp"-->
 
-        <!--android:linksClickable="true"-->
-        <!--android:text="@string/ajutor_tv_primaIntrebare"-->
-        <!--android:textColor="@android:color/holo_blue_dark"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_titlu" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/ajutor_tv_primul_raspuns"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:text="@string/ajutor_tv_alDoileaRaspuns"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_prima_intrebare" />-->
-    <!--<TextView-->
-        <!--android:id="@+id/ajutor_tv_aDoua_intrebare"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginTop="8dp"-->
-
-        <!--android:linksClickable="true"-->
-        <!--android:text="@string/ajutor_tv_aDouaIntrebare"-->
-        <!--android:textColor="@android:color/holo_blue_dark"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_primul_raspuns" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/ajutor_tv_alDoilea_raspuns"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginLeft="16dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:text="@string/ajutor_tv_alDoilea_raspuns"-->
-        <!--android:visibility="invisible"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/ajutor_tv_aDoua_intrebare" />-->
 </android.support.constraint.ConstraintLayout>
