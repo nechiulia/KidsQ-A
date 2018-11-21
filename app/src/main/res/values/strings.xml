@@ -39,7 +39,7 @@
     <string name="invatam_btn_litere_text">Litere</string>
     <string name="invatam_btn_cifre_text">Cifre</string>
     <string name="jucam_btn_scoala_text">Școala</string>
-    <string name="jucam_btn_logica_text">Logică</string>
+    <string name="jucam_btn_matematica_text">Matematică</string>
     <string name="jucam_btn_mediul_text">Mediul înconjurător</string>
     <string name="invatam_categ_tv_descriere">Descriere imagine pentru învățare-preluare din baza de date</string>
     <string name="invatam_categ_imgBtn_descriere">Imagine pentru informare</string>
@@ -189,4 +189,6 @@
     <string name="sarcini_luna">Luna=</string>
     <string name="sarcini_zi">Zi=</string>
     <string name="setari_email_parola_eroare">Email-ul si parola introduse nu corespund!</string>
+    <string name="jucam_parsare_eroare">Parsarea intrebarilor nu a functionat</string>
+    <string name="jucam_intrebari_matematica">matematică</string>
 </resources>

@@ -9,10 +9,10 @@
 
     <Button
         android:layout_marginTop="100dp"
-        android:id="@+id/jucam_btn_logica"
+        android:id="@+id/jucam_btn_matematica"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/jucam_btn_logica_text" />
+        android:text="@string/jucam_btn_matematica_text" />
     <Button
         android:id="@+id/jucam_btn_mediul"
         android:layout_width="match_parent"
