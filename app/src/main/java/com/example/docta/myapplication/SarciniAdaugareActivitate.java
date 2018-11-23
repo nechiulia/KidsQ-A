@@ -36,7 +36,7 @@ public class SarciniAdaugareActivitate extends AppCompatActivity {
         cv_data.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 date = cv_data.getDate();
-                Toast.makeText(view.getContext(), getString(R.string.sarcini_an) + year + getString(R.string.sarcini_luna) + (month+1) + getString(R.string.sarcini_zi) + dayOfMonth, Toast.LENGTH_LONG).show();
+               // Toast.makeText(view.getContext(), "An=" + year + " Luna=" + (month+1) + " Zi=" + dayOfMonth, Toast.LENGTH_LONG).show();
                 datafinal=dayOfMonth+"/"+(month+1)+"/"+year;
             }
         });
@@ -54,6 +54,8 @@ public class SarciniAdaugareActivitate extends AppCompatActivity {
                 }
             }
         });
+
+
 
 
     }

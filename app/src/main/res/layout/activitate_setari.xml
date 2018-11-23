@@ -16,8 +16,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         design:menu="@menu/menu_bottomnavigation"
+        >
 
-        ></android.support.design.widget.BottomNavigationView>
+    </android.support.design.widget.BottomNavigationView>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/setari_email_input"

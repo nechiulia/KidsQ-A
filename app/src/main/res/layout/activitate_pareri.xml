@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/pareri_tv_parere"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.117"
@@ -65,8 +65,8 @@
             android:id="@+id/pareri_tv_medie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ceva"
-            android:textSize="16dp"/>
+            android:text="@string/pareri_tv_medie"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/pareri_btn_salveaza"

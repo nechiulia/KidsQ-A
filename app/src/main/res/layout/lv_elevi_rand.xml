@@ -8,19 +8,19 @@
     <TextView
         android:id="@+id/lv_elevi_rand_nume"
         android:layout_width="0dp"
-        android:text="Nume"
+        android:text="@string/lv_elevi__nume"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/lv_elevi_rand_varsta"
         android:layout_width="0dp"
-        android:text="Varsta"
+        android:text="@string/lv_elevi_varsta"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/lv_elevi_rand_gen"
         android:layout_width="0dp"
-        android:text="Gen"
+        android:text="@string/lv_elevi_gen"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,10 +9,10 @@
 
     <Button
         android:layout_marginTop="100dp"
-        android:id="@+id/jucam_btn_logica"
+        android:id="@+id/jucam_btn_matematica"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/jucam_btn_logica_text" />
+        android:text="@string/jucam_btn_matematica_text" />
     <Button
         android:id="@+id/jucam_btn_mediul"
         android:layout_width="match_parent"

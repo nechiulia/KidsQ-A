@@ -13,10 +13,10 @@
         android:id="@+id/clasament_tv_clasament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Clasament Elevi"
+        android:text="@string/clasament_elev_tv_titlu"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="35dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:gravity="center"/>
 
     <ListView

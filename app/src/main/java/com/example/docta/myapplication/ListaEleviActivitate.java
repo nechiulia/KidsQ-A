@@ -78,8 +78,8 @@ public class ListaEleviActivitate extends AppCompatActivity {
             Elev elev = data.getParcelableExtra(Constante.ADAUGARE_ELEV_KEY);
             if(elev!=null){
                 elevi.add(elev);
-                ArrayAdapter<Elev> adapter = (ArrayAdapter<Elev>) lvElevi.getAdapter();
-                //EleviAdaptor adapter = (EleviAdaptor)lvElevi.getAdapter();
+              //  ArrayAdapter<Elev> adapter = (ArrayAdapter<Elev>) lvElevi.getAdapter();
+                EleviAdaptor adapter = (EleviAdaptor)lvElevi.getAdapter();
                 adapter.notifyDataSetChanged();
             }
 
@@ -97,8 +97,8 @@ public class ListaEleviActivitate extends AppCompatActivity {
         btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
         lvElevi= findViewById(R.id.listaElevi_lv_listaElevi);
 
-        //EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(), R.layout.lv_elevi_rand, elevi, getLayoutInflater());
-        ArrayAdapter<Elev> adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, elevi);
+        EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(), R.layout.lv_elevi_rand, elevi, getLayoutInflater());
+        //ArrayAdapter<Elev> adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, elevi);
         lvElevi.setAdapter(adapter);
     }
 }
