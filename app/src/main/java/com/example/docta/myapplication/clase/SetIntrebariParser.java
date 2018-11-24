@@ -21,6 +21,7 @@ public class SetIntrebariParser implements Serializable {
         return new SetIntrebari (usor,mediu,greu);
 
     }
+
     private static OptiuniIntrebare getOptiuniFromJsonObject(JSONObject object)throws JSONException{
         if(object==null){
             return  null;

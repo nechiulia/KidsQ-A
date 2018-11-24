@@ -16,6 +16,7 @@ import com.example.docta.myapplication.clase.Intrebare;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SaNeJucamActivitate extends AppCompatActivity {
@@ -74,7 +75,8 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 String result="";
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                List<Intrebare> intrebariUsoare= setIntrebari.getUsor();
+                List<Intrebare> intrebariUsoare ;
+                intrebariUsoare = setIntrebari.getUsor();
                 for(int i=0;i< intrebariUsoare.size();i++)
                 if(intrebariUsoare.get(i).getOptiuni().getCategorie().equals(getString(R.string.jucam_intrebari_matematica)))
                     result+=intrebariUsoare.get(i).toString();

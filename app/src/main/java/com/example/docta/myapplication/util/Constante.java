@@ -13,9 +13,14 @@ public interface Constante {
     String ADAUGA_SAA_KEY="adaugaTask";
     String PAROLA_PROF_PREF="tineMinteParola";
     String PAROLA_PREF="astaEParolaVeche";
-    String  EMAIL_PREF="acestaaEEmailul";
+    String EMAIL_PREF="acestaaEEmailul";
 
+    String SETARI_ELEV_PREF = "setariPref";
+    String DIFICULTATE_PREF = "dificultatePref";
 
+    String USOR_DIFICULTATE_TEST ="Usor";
+    String MEDIU_DIFICULTATE_TEST ="Mediu";
+    String GREU_DIFICULTATE_TEST ="Greu";
 
 
 

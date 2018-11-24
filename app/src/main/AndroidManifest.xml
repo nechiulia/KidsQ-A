@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PrincipalaActivitate">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN">
+                </action>
+                <category android:name="android.intent.category.LAUNCHER">
+                </category>
+            </intent-filter>
+        </activity>
         <activity android:name=".AutentificareProfesorActivitate" />
         <activity android:name=".CumparaAvatareActivitate" />
         <activity android:name=".ClasamentElevActivitate" />
@@ -31,9 +39,7 @@
         <activity android:name=".AvatareleMeleActivitate" />
         <activity android:name=".SarciniActivitate" />
         <activity android:name=".SarciniAdaugareActivitate" />
-        <activity android:name=".PrincipalaActivitate" />
 
-        <!--  <activity android:name=".util.IncarcareActivitate"></activity> -->
     </application>
 
 </manifest>
