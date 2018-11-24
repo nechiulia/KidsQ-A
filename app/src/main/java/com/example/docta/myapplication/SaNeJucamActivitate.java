@@ -22,7 +22,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
     private Button btnMatematica;
     private Button btnMediu;
     private Button btnScoala;
-    private static final String URL = "https://api.myjson.com/bins/1avdxy";
+   // private static final String URL = "https://api.myjson.com/bins/1avdxy";
     private SetIntrebari setIntrebari;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_sa_ne_jucam);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
+       /* @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
             @Override
             protected void onPostExecute(String s) {
                 try {
@@ -42,7 +42,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
 
             }
         };
-        manager.execute(URL);
+        manager.execute(URL);*/
         initComponents();
     }
     private void initComponents(){
@@ -74,12 +74,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 String result="";
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                List<Intrebare> intrebariUsoare= setIntrebari.getUsor();
+                /*List<Intrebare> intrebariUsoare= setIntrebari.getUsor();
                 for(int i=0;i< intrebariUsoare.size();i++)
                 if(intrebariUsoare.get(i).getOptiuni().getCategorie().equals(getString(R.string.jucam_intrebari_matematica)))
                     result+=intrebariUsoare.get(i).toString();
                 Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-
+*/
                 startActivity(intent);
             }
 

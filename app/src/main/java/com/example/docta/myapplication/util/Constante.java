@@ -8,7 +8,8 @@ public interface Constante {
     String UTILIZATOR_PREF="utilizator";
     String NUME_KEY="numeAvatar";
     String PAROLA_KEY ="PAROLA_KEY";
-
+    String PUNCTAJ_KEY="PUNCTAJ";
+    String NR_INTREBARI_CORECTE="Intrebari corecte";
     int ADAUGARE_SAA_REQUEST_CODE=102;
     String ADAUGA_SAA_KEY="adaugaTask";
     String PAROLA_PROF_PREF="tineMinteParola";
