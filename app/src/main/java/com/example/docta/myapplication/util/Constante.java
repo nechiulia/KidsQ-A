@@ -22,6 +22,7 @@ public interface Constante {
     String MEDIU_DIFICULTATE_TEST ="Mediu";
     String GREU_DIFICULTATE_TEST ="Greu";
 
-
+    String PUNCTAJ_KEY ="PUNCTAJ_KEY";
+    String NR_INTREBARI_CORECTE = "NR_Intrebari";
 
 }

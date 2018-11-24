@@ -21,17 +21,11 @@ import com.example.docta.myapplication.clase.SetIntrebari;
 import com.example.docta.myapplication.clase.SetIntrebariParser;
 import com.example.docta.myapplication.util.Constante;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import org.json.JSONException;
+
+
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 public class IntrebariActivitate extends AppCompatActivity {
     private TextView tvNrIntrebare;
@@ -45,6 +39,9 @@ public class IntrebariActivitate extends AppCompatActivity {
     private ImageView imgV_imagine;
     private TextView tvIntrebare;
     private static final String URL = "https://api.myjson.com/bins/1avdxy";
+
+    private int punctaj=0;
+    private int nrIntrebariCorecte=0;
 
     private SetIntrebari set;
     private List<Intrebare> listaIntrebariUsoare;
@@ -73,19 +70,39 @@ public class IntrebariActivitate extends AppCompatActivity {
                 if (isValid()) {
                     String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
 
+                    RadioButton rbCorect;
+                    for(int i=0;i<3;i++){
+                        if(listaIntrebariUsoare.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
+                            rbCorect=(RadioButton)rg_raspunsuri.getChildAt(i);
+                            if(rbCorect.getId()==rg_raspunsuri.getCheckedRadioButtonId()){
+                                Toast.makeText(getApplicationContext(),"Ai raspuns corect!", Toast.LENGTH_LONG).show();
+                                punctaj+=listaIntrebariUsoare.get(nrCurent-1).getOptiuni().getPunctaj();
+                                nrIntrebariCorecte++;
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"Ai raspuns gresit!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+
                     nrCurent++;
-                    if(nrCurent==11){
+                    if(nrCurent==2){
                         Intent intent= new Intent(getApplicationContext(), RezultatActivitate.class);
+                        intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
+                        intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
                         startActivity(intent);
-                        finish();
                     }
                     else {
-                       
+                        tvIntrebare.setText(listaIntrebariUsoare.get(nrCurent-1).getTextIntrebare());
+                        rb_raspuns1.setText(listaIntrebariUsoare.get(nrCurent-1).getRaspunsuri().get(0).getTextRaspuns());
+                        rb_raspuns2.setText(listaIntrebariUsoare.get(nrCurent-1).getRaspunsuri().get(1).getTextRaspuns());
+                        rb_raspuns3.setText(listaIntrebariUsoare.get(nrCurent-1).getRaspunsuri().get(2).getTextRaspuns());
                         tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
                         rg_raspunsuri.clearCheck();
                     }
+
+                    }
                 }
-            }
         };
 
     }
@@ -123,6 +140,9 @@ public class IntrebariActivitate extends AppCompatActivity {
                 try {
 
                     set = SetIntrebariParser.fromJson(s);
+
+        tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
+
 
                     String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
                     if(dificultate.compareTo(Constante.USOR_DIFICULTATE_TEST)==0){
