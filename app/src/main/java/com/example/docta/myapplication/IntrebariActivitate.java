@@ -80,9 +80,7 @@ public class IntrebariActivitate extends AppCompatActivity {
                         finish();
                     }
                     else {
-
-                        
-
+                       
                         tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
                         rg_raspunsuri.clearCheck();
                     }
