@@ -29,9 +29,8 @@ public class PrincipalaActivitate extends AppCompatActivity
                 Intent intent=new Intent(getApplicationContext(),ContElevActivitate.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
                 editor.putString(Constante.UTILIZATOR_PREF, getString(R.string.principala_utilizator_elev_pref_message));
-                boolean result= editor.commit();
+                boolean result = editor.commit();
                 startActivity(intent);
-
             }
         }) ;
 

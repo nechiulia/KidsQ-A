@@ -23,7 +23,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
     private Button btnMatematica;
     private Button btnMediu;
     private Button btnScoala;
-    private static final String URL = "https://api.myjson.com/bins/1avdxy";
+    private static final String URL = "https://api.myjson.com/bins/1f0uce";
     private SetIntrebari setIntrebari;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +75,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 String result="";
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
+                intent.putExtra("SetIntrebariKey",setIntrebari);
                 List<Intrebare> intrebariUsoare ;
                 intrebariUsoare = setIntrebari.getUsor();
                 for(int i=0;i< intrebariUsoare.size();i++)
