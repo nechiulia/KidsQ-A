@@ -61,8 +61,9 @@ public class IntrebariActivitate extends AppCompatActivity {
         initializareListePeCategorie();
         initComponents();
         initializarePrimaIntrebare();
-
     }
+
+
 
     private View.OnClickListener confirmRaspuns(){
         return new View.OnClickListener(){
