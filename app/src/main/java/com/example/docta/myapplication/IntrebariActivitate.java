@@ -49,16 +49,20 @@ public class IntrebariActivitate extends AppCompatActivity {
     private List<Intrebare> listaIntrebariLitere;
     private List<Intrebare> listaIntrebariFructeSiLegume;
     private List<Intrebare> listaIntrebariViata;
-
+    private ArrayList<Intrebare> listaIntrebari;
 
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebari);
-        set = (SetIntrebari) getIntent().getSerializableExtra("SetIntrebariKey");
+        //set = (SetIntrebari) getIntent().getSerializableExtra("SetIntrebariKey");
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-        initializareListePeCategorie();
+       // listaIntrebari=new ArrayList<Intrebare>();
+      //  listaIntrebari=(ArrayList)getIntent().getParcelableArrayListExtra("Intrebari matematica key");
+       // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
+      //  initializareListePeCategorie();
+        listaIntrebari=SaNeJucamActivitate.listaIntrebariMatematica;
         initComponents();
         initializarePrimaIntrebare();
     }
@@ -71,14 +75,14 @@ public class IntrebariActivitate extends AppCompatActivity {
             public void onClick(View view){
                 if (isValid()) {
 
-                    String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
+                   // String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
                     RadioButton rbCorect;
                     for(int i=0;i<3;i++){
-                        if(listaIntrebariUsoare.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
+                        if(listaIntrebari.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
                             rbCorect=(RadioButton)rg_raspunsuri.getChildAt(i);
                             if(rbCorect.getId()== rg_raspunsuri.getCheckedRadioButtonId()){
                                 Toast.makeText(getApplicationContext(),"Ai raspuns corect!", Toast.LENGTH_LONG).show();
-                                punctaj+=listaIntrebariUsoare.get(nrCurent-1).getOptiuni().getPunctaj();
+                                punctaj+=listaIntrebari.get(nrCurent-1).getOptiuni().getPunctaj();
                                 nrIntrebariCorecte++;
                             }
                             else {
@@ -95,13 +99,13 @@ public class IntrebariActivitate extends AppCompatActivity {
 
                     }
                     else {
-                        if(Constante.USOR_DIFICULTATE_TEST.compareTo(dificultate)==0) {
-                            tvIntrebare.setText(listaIntrebariMatematica.get(nrCurent - 1).getTextIntrebare());
-                            rb_raspuns1.setText(listaIntrebariMatematica.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
-                            rb_raspuns2.setText(listaIntrebariMatematica.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
-                            rb_raspuns3.setText(listaIntrebariMatematica.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-                            loadImageFromJson(listaIntrebariMatematica.get(nrCurent-1).getOptiuni().getImagine());
-                        }else if(Constante.MEDIU_DIFICULTATE_TEST.compareTo(dificultate)==0){
+                       //if(Constante.USOR_DIFICULTATE_TEST.compareTo(dificultate)==0) {
+                            tvIntrebare.setText(listaIntrebari.get(nrCurent - 1).getTextIntrebare());
+                            rb_raspuns1.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
+                            rb_raspuns2.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
+                            rb_raspuns3.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
+                            loadImageFromJson(listaIntrebari.get(nrCurent-1).getOptiuni().getImagine());
+                       /* }else if(Constante.MEDIU_DIFICULTATE_TEST.compareTo(dificultate)==0){
                             tvIntrebare.setText(listaIntrebariMedii.get(nrCurent - 1).getTextIntrebare());
                             rb_raspuns1.setText(listaIntrebariMedii.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
                             rb_raspuns2.setText(listaIntrebariMedii.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
@@ -111,7 +115,7 @@ public class IntrebariActivitate extends AppCompatActivity {
                             rb_raspuns1.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
                             rb_raspuns2.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
                             rb_raspuns3.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-                        }
+                        }*/
                         tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
                         rg_raspunsuri.clearCheck();
                     }
@@ -211,7 +215,14 @@ public class IntrebariActivitate extends AppCompatActivity {
     }
 
     private void initializarePrimaIntrebare(){
-                    String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
+        Collections.shuffle(listaIntrebari);
+        tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
+        rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
+        rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
+        rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
+        loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
+
+                   /* String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
                     if(dificultate.compareTo(Constante.USOR_DIFICULTATE_TEST)==0){
                         Collections.shuffle(listaIntrebariMatematica);
                         tvIntrebare.setText(listaIntrebariMatematica.get(0).getTextIntrebare());
@@ -235,7 +246,7 @@ public class IntrebariActivitate extends AppCompatActivity {
                         rb_raspuns1.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(0).getTextRaspuns());
                         rb_raspuns2.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(1).getTextRaspuns());
                         rb_raspuns3.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(2).getTextRaspuns());
-                    }
+                    }*/
             }
 
     private void loadImageFromJson(String urlJson){
