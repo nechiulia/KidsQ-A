@@ -87,27 +87,25 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                     if(setIntrebari!=null){
                         listaIntrebariUsoare=setIntrebari.getUsor();
                         for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals("animale")){
-                                listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
+                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
+                                listaIntrebariAnimale.add(listaIntrebariUsoare.get(i));
                                 Toast.makeText(getApplicationContext(), listaIntrebariUsoare.get(i).toString(),Toast.LENGTH_LONG).show();
                             }
-
-
-                        }
+                      }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //   intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Nu exista intrebari corespunzatoare optiunilor!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.toast_nu_exista_intrebari), Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
                     listaIntrebariMedii=setIntrebari.getMediu();
                     for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals("animale")){
-                            listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
+                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
+                            listaIntrebariAnimale.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
@@ -117,12 +115,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                 else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
                     listaIntrebariGrele=setIntrebari.getGreu();
                     for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals("animale")){
-                            listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
+                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
+                            listaIntrebariAnimale.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        //intent.putExtra("lista intrebari key", listaIntrebariMatematica);
                         startActivity(intent);
                     }
                 }
@@ -130,8 +128,6 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             }
 
         };
-
-
     }
     private View.OnClickListener deschideTestLitere(){
 
@@ -144,9 +140,8 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                     if(setIntrebari!=null){
                         listaIntrebariUsoare=setIntrebari.getUsor();
                         for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals("litere")){
-                                listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
-                                Toast.makeText(getApplicationContext(), listaIntrebariUsoare.get(i).toString(),Toast.LENGTH_LONG).show();
+                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_LITERE)){
+                                listaIntrebariLitere.add(listaIntrebariUsoare.get(i));
                             }
 
 
@@ -156,15 +151,15 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Nu exista intrebari corespunzatoare optiunilor!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.toast_nu_exista_intrebari, Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
                     listaIntrebariMedii=setIntrebari.getMediu();
                     for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals("litere")){
-                            listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
+                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_LITERE)){
+                            listaIntrebariLitere.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
@@ -174,12 +169,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                 else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
                     listaIntrebariGrele=setIntrebari.getGreu();
                     for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals("animale")){
-                            listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
+                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_LITERE)){
+                            listaIntrebariLitere.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        //intent.putExtra("lista intrebari key", listaIntrebariLitere);
                         startActivity(intent);
                     }
                 }
@@ -201,8 +196,8 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                     if(setIntrebari!=null){
                         listaIntrebariUsoare=setIntrebari.getUsor();
                         for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals("animale")){
-                                listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
+                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_FRUCTE)){
+                                listaIntrebariFructeSiLegume.add(listaIntrebariUsoare.get(i));
                                 Toast.makeText(getApplicationContext(), listaIntrebariUsoare.get(i).toString(),Toast.LENGTH_LONG).show();
                             }
 
@@ -213,15 +208,15 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Nu exista intrebari corespunzatoare optiunilor!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.toast_nu_exista_intrebari, Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
                     listaIntrebariMedii=setIntrebari.getMediu();
                     for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals("fructe")){
-                            listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
+                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_FRUCTE)){
+                            listaIntrebariFructeSiLegume.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
@@ -231,12 +226,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                 else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
                     listaIntrebariGrele=setIntrebari.getGreu();
                     for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals("fructe")){
-                            listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
+                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_FRUCTE)){
+                            listaIntrebariFructeSiLegume.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                       // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
                         startActivity(intent);
                     }
                 }
@@ -258,8 +253,8 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                     if(setIntrebari!=null){
                         listaIntrebariUsoare=setIntrebari.getUsor();
                         for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals("animale")){
-                                listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
+                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_VIATA)){
+                                listaIntrebariViata.add(listaIntrebariUsoare.get(i));
                                 Toast.makeText(getApplicationContext(), listaIntrebariUsoare.get(i).toString(),Toast.LENGTH_LONG).show();
                             }
 
@@ -270,15 +265,15 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Nu exista intrebari corespunzatoare optiunilor!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.toast_nu_exista_intrebari, Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
                     listaIntrebariMedii=setIntrebari.getMediu();
                     for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals("viatadezicuzi")){
-                            listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
+                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_VIATA)){
+                            listaIntrebariViata.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
@@ -288,12 +283,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                 else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
                     listaIntrebariGrele=setIntrebari.getGreu();
                     for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals("viatadezicuzi")){
-                            listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
+                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_VIATA)){
+                            listaIntrebariViata.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                       // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
                         startActivity(intent);
                     }
                 }
@@ -315,7 +310,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                     if(setIntrebari!=null){
                         listaIntrebariUsoare=setIntrebari.getUsor();
                         for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals("matematică")){
+                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_MATEMATICA)){
                                 listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
                                 Toast.makeText(getApplicationContext(), listaIntrebariUsoare.get(i).toString(),Toast.LENGTH_LONG).show();
                             }
@@ -327,14 +322,14 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         startActivity(intent);
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Nu exista intrebari corespunzatoare optiunilor!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.toast_nu_exista_intrebari, Toast.LENGTH_LONG).show();
                     }
 
                 }
                 else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
                     listaIntrebariMedii=setIntrebari.getMediu();
                     for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals("matematică")){
+                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_MATEMATICA)){
                             listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
@@ -345,12 +340,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                 else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
                     listaIntrebariGrele=setIntrebari.getGreu();
                     for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals("matematică")){
+                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_MATEMATICA)){
                             listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                       // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
                         startActivity(intent);
                     }
                 }

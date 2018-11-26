@@ -24,5 +24,11 @@ public interface Constante {
 
     String PUNCTAJ_KEY ="PUNCTAJ_KEY";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
+    String CATEGORIE_MATEMATICA="matematică";
+    String CATEGORIE_ANIMALE="animale";
+    String CATEGORIE_LITERE="litere";
+    String CATEGORIE_FRUCTE="fructesilegume";
+    String CATEGORIE_VIATA="viatadezicuzi";
+
 
 }

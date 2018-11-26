@@ -26,7 +26,7 @@ import java.util.List;
 
 public class IntrebariActivitate extends AppCompatActivity {
     private TextView tvNrIntrebare;
-    private int nrCurent=1;
+    private int nrCurent;
     private RadioGroup rg_raspunsuri;
 
     private RadioButton rb_raspuns1;
@@ -63,6 +63,7 @@ public class IntrebariActivitate extends AppCompatActivity {
        // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
       //  initializareListePeCategorie();
         listaIntrebari=SaNeJucamActivitate.listaIntrebariMatematica;
+        Collections.shuffle(listaIntrebari);
         initComponents();
         initializarePrimaIntrebare();
     }
@@ -74,19 +75,17 @@ public class IntrebariActivitate extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 if (isValid()) {
-
-                   // String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
                     RadioButton rbCorect;
                     for(int i=0;i<3;i++){
                         if(listaIntrebari.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
                             rbCorect=(RadioButton)rg_raspunsuri.getChildAt(i);
                             if(rbCorect.getId()== rg_raspunsuri.getCheckedRadioButtonId()){
-                                Toast.makeText(getApplicationContext(),"Ai raspuns corect!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_corect), Toast.LENGTH_LONG).show();
                                 punctaj+=listaIntrebari.get(nrCurent-1).getOptiuni().getPunctaj();
                                 nrIntrebariCorecte++;
                             }
                             else {
-                                Toast.makeText(getApplicationContext(),"Ai raspuns gresit!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_gresit), Toast.LENGTH_LONG).show();
                             }
                         }
                     }
@@ -96,35 +95,20 @@ public class IntrebariActivitate extends AppCompatActivity {
                         intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
                         intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
                         startActivity(intent);
-
                     }
                     else {
-                       //if(Constante.USOR_DIFICULTATE_TEST.compareTo(dificultate)==0) {
                             tvIntrebare.setText(listaIntrebari.get(nrCurent - 1).getTextIntrebare());
                             rb_raspuns1.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
                             rb_raspuns2.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
                             rb_raspuns3.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
                             loadImageFromJson(listaIntrebari.get(nrCurent-1).getOptiuni().getImagine());
-                       /* }else if(Constante.MEDIU_DIFICULTATE_TEST.compareTo(dificultate)==0){
-                            tvIntrebare.setText(listaIntrebariMedii.get(nrCurent - 1).getTextIntrebare());
-                            rb_raspuns1.setText(listaIntrebariMedii.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
-                            rb_raspuns2.setText(listaIntrebariMedii.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
-                            rb_raspuns3.setText(listaIntrebariMedii.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-                        } else if(Constante.GREU_DIFICULTATE_TEST.compareTo(dificultate)==0){
-                            tvIntrebare.setText(listaIntrebariGrele.get(nrCurent - 1).getTextIntrebare());
-                            rb_raspuns1.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
-                            rb_raspuns2.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
-                            rb_raspuns3.setText(listaIntrebariGrele.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-                        }*/
                         tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
                         rg_raspunsuri.clearCheck();
                     }
                     }
                 }
         };
-
     }
-
     public boolean isValid(){
         if(rg_raspunsuri.getCheckedRadioButtonId()==-1){
             rb_raspuns3.setError(getString(R.string.intrebarea_zilei_raspuns_eroare));
@@ -136,7 +120,6 @@ public class IntrebariActivitate extends AppCompatActivity {
             return true;
         }
     }
-
     private void initComponents(){
         tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
         rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
@@ -151,10 +134,9 @@ public class IntrebariActivitate extends AppCompatActivity {
         tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
     }
 
-    private void initializareListePeCategorie() {
+   /* private void initializareListePeCategorie() {
 
                     String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF, null);
-
                     listaIntrebariMatematica = new ArrayList<>();
                     listaIntrebariAnimale = new ArrayList<>();
                     listaIntrebariLitere = new ArrayList<>();
@@ -213,9 +195,8 @@ public class IntrebariActivitate extends AppCompatActivity {
                     }
 
     }
-
+*/
     private void initializarePrimaIntrebare(){
-        Collections.shuffle(listaIntrebari);
         tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
         rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
         rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
