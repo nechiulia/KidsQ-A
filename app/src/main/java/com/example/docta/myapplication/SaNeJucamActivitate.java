@@ -72,7 +72,10 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         btnAnimale=findViewById(R.id.jucam_btn_animale);
 
         btnMatematica.setOnClickListener(deschideTestMatematica());
-
+        btnFructe.setOnClickListener(deschideTestFructe());
+        btnLitere.setOnClickListener(deschideTestLitere());
+        btnAnimale.setOnClickListener(deschideTestAnimale());
+        btnViata.setOnClickListener(deschideTestViata());
        dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
 
     }
