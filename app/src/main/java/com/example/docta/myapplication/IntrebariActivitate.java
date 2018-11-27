@@ -41,15 +41,6 @@ public class IntrebariActivitate extends AppCompatActivity {
     String testul_zilei;
 
     private SetIntrebari set;
-    private List<Intrebare> listaIntrebariUsoare;
-    private List<Intrebare> listaIntrebariMedii;
-    private List<Intrebare> listaIntrebariGrele;
-
-    private List<Intrebare> listaIntrebariMatematica;
-    private List<Intrebare> listaIntrebariAnimale;
-    private List<Intrebare> listaIntrebariLitere;
-    private List<Intrebare> listaIntrebariFructeSiLegume;
-    private List<Intrebare> listaIntrebariViata;
     private ArrayList<Intrebare> listaIntrebari = new ArrayList<>();
 
     SharedPreferences sharedPreferences;
@@ -59,8 +50,6 @@ public class IntrebariActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_intrebari);
 
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-
-        //Bundle bundle = getIntent().getExtras();
 
         listaIntrebari = (ArrayList<Intrebare>) getIntent().getSerializableExtra("lll");
 

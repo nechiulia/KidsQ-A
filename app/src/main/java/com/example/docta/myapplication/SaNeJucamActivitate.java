@@ -37,11 +37,6 @@ public class SaNeJucamActivitate extends AppCompatActivity {
     private ArrayList<Intrebare> listaIntrebariMedii;
     private ArrayList<Intrebare> listaIntrebariGrele;
 
-    public static ArrayList<Intrebare> listaIntrebariMatematica;
-    public static ArrayList<Intrebare> listaIntrebariAnimale;
-    public static ArrayList<Intrebare> listaIntrebariLitere;
-    public static ArrayList<Intrebare> listaIntrebariFructeSiLegume;
-    public static ArrayList<Intrebare> listaIntrebariViata;
     private ArrayList<Intrebare> listaIntrebariTest;
     String dificultate;
     @Override
@@ -56,8 +51,6 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-
-
         initComponents();
     }
     private void initComponents(){

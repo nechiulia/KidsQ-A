@@ -3,6 +3,8 @@ package com.example.docta.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,8 @@ import com.example.docta.myapplication.util.Constante;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
 
@@ -39,7 +43,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private static final String URL = Constante.URL_JSON_TESTE;
     private SetIntrebari setIntrebari;
     private ArrayList<Intrebare> intrebariTestulZilei;
-
+    private CircularProgressButton circularProgressButton;
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +53,26 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             String titlu = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(titlu);
         }
-        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
-            @Override
-            protected void onPostExecute(String s) {
-                try {
-                    setIntrebari=SetIntrebariParser.fromJson(s);
-                    intrebariTestulZilei = setIntrebari.getGreu();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
-                }
 
-            }
-        };
+        circularProgressButton = (CircularProgressButton) findViewById(R.id.jucam_circ_btn_incarca_server);
+
+                @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+                    @Override
+                    protected void onPostExecute(String s) {
+                        try {
+                            setIntrebari = SetIntrebariParser.fromJson(s);
+                            intrebariTestulZilei = setIntrebari.getGreu();
+                            if (this.getDone().equals("done")) {
+                                Toast.makeText(getApplicationContext(), "S-au incarcat testele!", Toast.LENGTH_LONG).show();
+                                circularProgressButton.doneLoadingAnimation(Color.parseColor("#333639"), BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                };
+        circularProgressButton.startAnimation();
         manager.execute(URL);
         initComponents();
     }
