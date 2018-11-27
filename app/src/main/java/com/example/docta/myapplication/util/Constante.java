@@ -29,7 +29,7 @@ public interface Constante {
     String CATEGORIE_LITERE="litere";
     String CATEGORIE_FRUCTE="fructe și legume";
     String CATEGORIE_VIATA="viata-de-zi-cu-zi";
-    String URL_JSON_TESTE="https://api.myjson.com/bins/w5guy";
+    String URL_JSON_TESTE="https://api.myjson.com/bins/itcwq";
 
 
 }
