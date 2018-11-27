@@ -17,6 +17,8 @@ public interface Constante {
 
     String SETARI_ELEV_PREF = "setariPref";
     String DIFICULTATE_PREF = "dificultatePref";
+    String CATEGORIE_TEST_PREF="categorieTestPref";
+    String CATEGORIE_PREF="categoriePref";
 
     String USOR_DIFICULTATE_TEST ="Usor";
     String MEDIU_DIFICULTATE_TEST ="Mediu";
@@ -24,6 +26,7 @@ public interface Constante {
 
     String PUNCTAJ_KEY ="PUNCTAJ_KEY";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
+
     String CATEGORIE_MATEMATICA="matematica";
     String CATEGORIE_ANIMALE="animale";
     String CATEGORIE_LITERE="litere";

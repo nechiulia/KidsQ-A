@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,26 +51,73 @@ public class IntrebariActivitate extends AppCompatActivity {
     private List<Intrebare> listaIntrebariFructeSiLegume;
     private List<Intrebare> listaIntrebariViata;
     private ArrayList<Intrebare> listaIntrebari;
-
-    SharedPreferences sharedPreferences;
+    private List<Intrebare> listaIntrebariDificultate;
+    private static final String URL = Constante.URL_JSON_TESTE;
+    private SetIntrebari setIntrebari;
+    String res="";
+    SharedPreferences sharedPreferencesDificultate;
+    SharedPreferences sharedPreferencesCategorie;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebari);
-        //set = (SetIntrebari) getIntent().getSerializableExtra("SetIntrebariKey");
-        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-       // listaIntrebari=new ArrayList<Intrebare>();
-      //  listaIntrebari=(ArrayList)getIntent().getParcelableArrayListExtra("Intrebari matematica key");
-       // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
-      //  initializareListePeCategorie();
+        sharedPreferencesDificultate = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
+        sharedPreferencesCategorie=getSharedPreferences(Constante.CATEGORIE_TEST_PREF,MODE_PRIVATE);
 
-        listaIntrebari=SaNeJucamActivitate.listaIntrebariTest;
-        Collections.shuffle(listaIntrebari);
+        //listaIntrebari=SaNeJucamActivitate.listaIntrebariTest;
+
+        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
+            @Override
+            protected void onPostExecute(String s) {
+                try {
+                    Log.d("mytag","EROAREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    setIntrebari=SetIntrebariParser.fromJson(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        };
+        manager.execute(URL);
+        Toast.makeText(getApplicationContext(),res,Toast.LENGTH_LONG).show();
+        initializareListaIntrebari();
         initComponents();
         initializarePrimaIntrebare();
     }
 
+    public void initializareListaIntrebari() {
+        listaIntrebari= new ArrayList<Intrebare>();
+        listaIntrebariDificultate= new ArrayList<Intrebare>();
+        String categorie= sharedPreferencesCategorie.getString(Constante.CATEGORIE_PREF,null);
+        String dificultate= sharedPreferencesDificultate.getString(Constante.DIFICULTATE_PREF,"usor");
+        Toast.makeText(getApplicationContext(), categorie.toString()+dificultate.toString(),Toast.LENGTH_LONG).show();
+        if( dificultate.equals(Constante.USOR_DIFICULTATE_TEST)){
+            if(setIntrebari!=null){
+                listaIntrebariDificultate=setIntrebari.getUsor();}
+        else {
+            Toast.makeText(getApplicationContext(),"Nu preia json ul",Toast.LENGTH_LONG).show();}
+        }
+        else if ( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
+            if(setIntrebari!=null){
+                listaIntrebariDificultate=setIntrebari.getMediu();}}
+        else if ( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
+            if(setIntrebari!=null){
+                listaIntrebariDificultate=setIntrebari.getGreu();}}
 
+
+            if(listaIntrebariDificultate!=null){
+                for(int i=0; i< listaIntrebariDificultate.size();i++){
+                    if(listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(categorie)){
+                        listaIntrebari.add(listaIntrebariDificultate.get(i));
+                    }
+                }
+                Collections.shuffle(listaIntrebari);
+            }
+            else {
+                Toast.makeText(getApplicationContext(), getString(R.string.toast_nu_exista_intrebari), Toast.LENGTH_LONG).show();
+            }
+    }
 
     private View.OnClickListener confirmRaspuns(){
         return new View.OnClickListener(){
@@ -137,12 +185,16 @@ public class IntrebariActivitate extends AppCompatActivity {
 
 
     private void initializarePrimaIntrebare(){
-        tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
-        rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
-        rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
-        rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
-        loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
-
+        if(listaIntrebari!=null) {
+            tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
+            rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
+            rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
+            rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
+            loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Eroare lista intrebari",Toast.LENGTH_LONG).show();
+        }
             }
 
     private void loadImageFromJson(String urlJson){
