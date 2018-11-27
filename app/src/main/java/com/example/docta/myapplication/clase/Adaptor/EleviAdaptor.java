@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.clase;
+package com.example.docta.myapplication.clase.Adaptor;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.docta.myapplication.R;
+import com.example.docta.myapplication.clase.Elev;
 
 import java.util.List;
 

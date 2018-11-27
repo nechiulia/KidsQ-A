@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.clase;
+package com.example.docta.myapplication.clase.Network;
 
 import android.os.AsyncTask;
 

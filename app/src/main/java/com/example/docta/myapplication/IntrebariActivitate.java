@@ -1,8 +1,10 @@
 package com.example.docta.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +14,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.TextView;
-import com.example.docta.myapplication.clase.HttpManager;
+
 import com.example.docta.myapplication.clase.Intrebare;
 import com.example.docta.myapplication.clase.SetIntrebari;
-import com.example.docta.myapplication.clase.SetIntrebariParser;
 import com.example.docta.myapplication.util.Constante;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +49,7 @@ public class IntrebariActivitate extends AppCompatActivity {
     private List<Intrebare> listaIntrebariLitere;
     private List<Intrebare> listaIntrebariFructeSiLegume;
     private List<Intrebare> listaIntrebariViata;
-    private ArrayList<Intrebare> listaIntrebari;
+    private ArrayList<Intrebare> listaIntrebari = new ArrayList<>();
 
     SharedPreferences sharedPreferences;
     @Override
@@ -58,12 +58,17 @@ public class IntrebariActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_intrebari);
         //set = (SetIntrebari) getIntent().getSerializableExtra("SetIntrebariKey");
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-       // listaIntrebari=new ArrayList<Intrebare>();
       //  listaIntrebari=(ArrayList)getIntent().getParcelableArrayListExtra("Intrebari matematica key");
        // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
       //  initializareListePeCategorie();
 
-        listaIntrebari=SaNeJucamActivitate.listaIntrebariTest;
+        //listaIntrebari = SaNeJucamActivitate.listaIntrebariTest;
+
+        //Bundle bundle = getIntent().getExtras();
+
+
+        listaIntrebari = (ArrayList<Intrebare>) getIntent().getSerializableExtra("lll");
+
         Collections.shuffle(listaIntrebari);
         initComponents();
         initializarePrimaIntrebare();
@@ -81,17 +86,25 @@ public class IntrebariActivitate extends AppCompatActivity {
                         if(listaIntrebari.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
                             rbCorect=(RadioButton)rg_raspunsuri.getChildAt(i);
                             if(rbCorect.getId()== rg_raspunsuri.getCheckedRadioButtonId()){
-                                Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_corect), Toast.LENGTH_LONG).show();
+                               Toast toastCorect = Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
+                                View view1 = toastCorect.getView();
+                                int colorGreen= ResourcesCompat.getColor(getResources(),R.color.LimeGreen,null);
+                                view1.getBackground().setColorFilter(colorGreen,PorterDuff.Mode.SRC_IN);
+                                toastCorect.show();
                                 punctaj+=listaIntrebari.get(nrCurent-1).getOptiuni().getPunctaj();
                                 nrIntrebariCorecte++;
                             }
                             else {
-                                Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_gresit), Toast.LENGTH_LONG).show();
+                                Toast toastGresit = Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
+                                View view2 = toastGresit.getView();
+                                int colorRed = ResourcesCompat.getColor(getResources(),R.color.fireBrick,null);
+                                view2.getBackground().setColorFilter(colorRed,PorterDuff.Mode.SRC_IN);
+                                toastGresit.show();
                             }
                         }
                     }
                     nrCurent++;
-                    if(nrCurent==4){
+                    if(nrCurent==6){
                         Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
                         intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
                         intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
@@ -122,6 +135,7 @@ public class IntrebariActivitate extends AppCompatActivity {
         }
     }
     private void initComponents(){
+
         tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
         rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
         rb_raspuns1 = findViewById(R.id.intrebari_rb_raspuns1);
@@ -158,7 +172,6 @@ public class IntrebariActivitate extends AppCompatActivity {
 
                     }
                 });
-
     }
 }
 

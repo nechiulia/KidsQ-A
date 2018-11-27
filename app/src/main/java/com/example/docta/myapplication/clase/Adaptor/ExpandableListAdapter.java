@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.clase;
+package com.example.docta.myapplication.clase.Adaptor;
 
 import android.content.Context;
 import android.graphics.Typeface;

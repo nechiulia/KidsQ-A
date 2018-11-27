@@ -15,9 +15,9 @@ public class SetIntrebariParser implements Serializable {
             return null;
         }
         JSONObject object= new JSONObject(json);
-        List<Intrebare> usor= getIntrebariListFromJsonArray(object.getJSONArray("usor"));
-        List<Intrebare> mediu= getIntrebariListFromJsonArray(object.getJSONArray("mediu"));
-        List<Intrebare> greu= getIntrebariListFromJsonArray(object.getJSONArray("greu"));
+        ArrayList<Intrebare> usor=  getIntrebariListFromJsonArray(object.getJSONArray("usor"));
+        ArrayList<Intrebare> mediu=  getIntrebariListFromJsonArray(object.getJSONArray("mediu"));
+        ArrayList<Intrebare> greu=  getIntrebariListFromJsonArray(object.getJSONArray("greu"));
         return new SetIntrebari (usor,mediu,greu);
 
     }
@@ -38,7 +38,7 @@ public class SetIntrebariParser implements Serializable {
         return null;
     }
         String  textIntrebare= object.getString("intrebare");
-        List<Raspuns> raspunsuri= new ArrayList<>();
+        ArrayList<Raspuns> raspunsuri= new ArrayList<>();
         JSONArray array= object.getJSONArray("raspunsuri");
         if(array!=null) {
             for (int i = 0; i < array.length(); i++) {
@@ -56,11 +56,11 @@ public class SetIntrebariParser implements Serializable {
 
         return new Intrebare(textIntrebare,optiuni,raspunsuri);
     }
-    private static List<Intrebare> getIntrebariListFromJsonArray(JSONArray array) throws JSONException {
+    private static ArrayList<Intrebare> getIntrebariListFromJsonArray(JSONArray array) throws JSONException {
         if(array==null){
             return  null;
         }
-        List<Intrebare> intrebari= new ArrayList<>();
+        ArrayList<Intrebare> intrebari= new ArrayList<>();
         for(int i=0;i<array.length();i++){
             Intrebare intrebare= getIntrebareFromJsonObject(array.getJSONObject(i));
             if(intrebare!=null){

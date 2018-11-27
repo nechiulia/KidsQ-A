@@ -12,14 +12,13 @@ import android.widget.Toast;
 
 import com.example.docta.myapplication.clase.SetIntrebari;
 import com.example.docta.myapplication.clase.SetIntrebariParser;
-import com.example.docta.myapplication.clase.HttpManager;
+import com.example.docta.myapplication.clase.Network.HttpManager;
 import com.example.docta.myapplication.clase.Intrebare;
 import com.example.docta.myapplication.util.Constante;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SaNeJucamActivitate extends AppCompatActivity {
     private Button btnMatematica;
@@ -34,16 +33,16 @@ public class SaNeJucamActivitate extends AppCompatActivity {
 
     private SetIntrebari setIntrebari;
     SharedPreferences sharedPreferences;
-    private List<Intrebare> listaIntrebariUsoare;
-    private List<Intrebare> listaIntrebariMedii;
-    private List<Intrebare> listaIntrebariGrele;
+    private ArrayList<Intrebare> listaIntrebariUsoare;
+    private ArrayList<Intrebare> listaIntrebariMedii;
+    private ArrayList<Intrebare> listaIntrebariGrele;
 
     public static ArrayList<Intrebare> listaIntrebariMatematica;
     public static ArrayList<Intrebare> listaIntrebariAnimale;
     public static ArrayList<Intrebare> listaIntrebariLitere;
     public static ArrayList<Intrebare> listaIntrebariFructeSiLegume;
     public static ArrayList<Intrebare> listaIntrebariViata;
-    public static ArrayList<Intrebare> listaIntrebariTest;
+    private ArrayList<Intrebare> listaIntrebariTest;
     String dificultate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +74,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         btnFructe=findViewById(R.id.jucam_btn_fructe_legume);
         btnViata=findViewById(R.id.jucam_btn_viata_dezicuzi);
         btnAnimale=findViewById(R.id.jucam_btn_animale);
-        listaIntrebariTest=new ArrayList<Intrebare>();
+        listaIntrebariTest=new ArrayList<>();
         listaIntrebariUsoare= new ArrayList<>();
         listaIntrebariMedii= new ArrayList<>();
         listaIntrebariGrele= new ArrayList<>();
@@ -84,7 +83,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         btnLitere.setOnClickListener(deschideTestLitere());
         btnAnimale.setOnClickListener(deschideTestAnimale());
         btnViata.setOnClickListener(deschideTestViata());
-       dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
+        dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
 
     }
     private View.OnClickListener deschideTestAnimale(){
@@ -100,8 +99,13 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                                 listaIntrebariTest.add(listaIntrebariUsoare.get(i));
                             }
                       }
-                        Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        startActivity(intent);
+                      Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
+//                       Bundle bundle  = new Bundle();
+//                       bundle.putParcelableArrayList("ListaIntrebariKey",listaIntrebariTest);
+                      // intent.putExtras(bundle);
+                        intent.putExtra("lll",listaIntrebariTest);
+                       startActivity(intent);
+                       finish();
                     }
                     else {
                         Toast.makeText(getApplicationContext(), getString(R.string.toast_nu_exista_intrebari), Toast.LENGTH_LONG).show();
@@ -116,6 +120,8 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
+
                         startActivity(intent);
                     }
                 }
@@ -126,8 +132,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                             listaIntrebariTest.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        //intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -150,7 +155,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                             }
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        //   intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                     else {
@@ -165,7 +170,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                             listaIntrebariTest.add(listaIntrebariMedii.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -176,8 +181,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                             listaIntrebariTest.add(listaIntrebariGrele.get(i));
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        //intent.putExtra("lista intrebari key", listaIntrebariLitere);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -204,6 +208,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //   intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                     else {
@@ -219,6 +224,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -231,6 +237,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
                        // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -238,7 +245,6 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             }
 
         };
-
 
     }
     private View.OnClickListener deschideTestViata(){
@@ -257,6 +263,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //   intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                     else {
@@ -272,6 +279,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -284,12 +292,12 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
                        // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
 
             }
-
         };
 
 
@@ -314,6 +322,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                      //   intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                     else {
@@ -329,6 +338,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         }
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                       //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }
@@ -341,6 +351,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                         //intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
                        // intent.putExtra("lista intrebari key", listaIntrebariMatematica);
+                        intent.putExtra("lll",listaIntrebariTest);
                         startActivity(intent);
                     }
                 }

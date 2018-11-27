@@ -6,5 +6,8 @@
     <color name="white">#FFFFFF</color>
     <color name="alb">#ffffff</color>
     <color name="tritan">#a6767c</color>
+    <color name="LimeGreen">#32CD32</color>
+    <color name="fireBrick">#B22222</color>
     <color name="lightgolden">#FFEC8B</color>
+
 </resources>

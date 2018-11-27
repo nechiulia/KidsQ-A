@@ -159,7 +159,7 @@
     <string name="setari_parolaVeche_eroare">Parola este incorecta</string>
     <string name="setari_parolaConfirm_eroare">Confirmati parola!</string>
     <string name="sarcini_infoactivitate_eroare">Introduceti o activitate</string>
-    <string name="intrebari_tv_nr_intrebari">/3</string>
+    <string name="intrebari_tv_nr_intrebari">/5</string>
     <string name="ppj_tv_bine_ai_venit_null">Bine ai venit!</string>
     <string name="ppj_utilizator_default_pref">elev</string>
     <string name="intrebarea_zilei_toast__selecteaza_raspuns">Selecteaza un raspuns!</string>
