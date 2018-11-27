@@ -62,7 +62,8 @@ public class IntrebariActivitate extends AppCompatActivity {
       //  listaIntrebari=(ArrayList)getIntent().getParcelableArrayListExtra("Intrebari matematica key");
        // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
       //  initializareListePeCategorie();
-        listaIntrebari=SaNeJucamActivitate.listaIntrebariMatematica;
+
+        listaIntrebari=SaNeJucamActivitate.listaIntrebariTest;
         Collections.shuffle(listaIntrebari);
         initComponents();
         initializarePrimaIntrebare();
@@ -134,68 +135,7 @@ public class IntrebariActivitate extends AppCompatActivity {
         tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
     }
 
-   /* private void initializareListePeCategorie() {
 
-                    String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF, null);
-                    listaIntrebariMatematica = new ArrayList<>();
-                    listaIntrebariAnimale = new ArrayList<>();
-                    listaIntrebariLitere = new ArrayList<>();
-                    listaIntrebariFructeSiLegume = new ArrayList<>();
-                    listaIntrebariViata = new ArrayList<>();
-
-                    if (Constante.USOR_DIFICULTATE_TEST.compareTo(dificultate) == 0) {
-                        listaIntrebariUsoare = set.getUsor();
-                        for (int i = 0; i < listaIntrebariUsoare.size(); i++) {
-                            if (listaIntrebariUsoare.get(i).getOptiuni().getCategorie().compareTo("matematică") == 0) {
-                                listaIntrebariMatematica.add(listaIntrebariUsoare.get(i));
-                            } else if (listaIntrebariUsoare.get(i).getOptiuni().getCategorie().compareTo("animale") == 0) {
-                                listaIntrebariAnimale.add(listaIntrebariUsoare.get(i));
-                            } else if (listaIntrebariUsoare.get(i).getOptiuni().getCategorie().compareTo("litere") == 0) {
-                                listaIntrebariLitere.add(listaIntrebariUsoare.get(i));
-                            } else if (listaIntrebariUsoare.get(i).getOptiuni().getCategorie().compareTo("fructe si legume") == 0) {
-                                listaIntrebariFructeSiLegume.add(listaIntrebariUsoare.get(i));
-                            } else if (listaIntrebariUsoare.get(i).getOptiuni().getCategorie().compareTo("viata") == 0) {
-                                listaIntrebariViata.add(listaIntrebariUsoare.get(i));
-                            }
-                        }
-                    }
-
-                    if (Constante.MEDIU_DIFICULTATE_TEST.compareTo(dificultate) == 0) {
-                        listaIntrebariMedii = set.getMediu();
-                        for (int i = 0; i < listaIntrebariMedii.size(); i++) {
-                            if (listaIntrebariMedii.get(i).getOptiuni().getCategorie().compareTo("matematică") == 0) {
-                                listaIntrebariMatematica.add(listaIntrebariMedii.get(i));
-                            } else if (listaIntrebariMedii.get(i).getOptiuni().getCategorie().compareTo("animale") == 0) {
-                                listaIntrebariAnimale.add(listaIntrebariMedii.get(i));
-                            } else if (listaIntrebariMedii.get(i).getOptiuni().getCategorie().compareTo("litere") == 0) {
-                                listaIntrebariLitere.add(listaIntrebariMedii.get(i));
-                            } else if (listaIntrebariMedii.get(i).getOptiuni().getCategorie().compareTo("fructe si legume") == 0) {
-                                listaIntrebariFructeSiLegume.add(listaIntrebariMedii.get(i));
-                            } else if (listaIntrebariMedii.get(i).getOptiuni().getCategorie().compareTo("viata") == 0) {
-                                listaIntrebariViata.add(listaIntrebariMedii.get(i));
-                            }
-                        }
-                    }
-
-                    if (Constante.GREU_DIFICULTATE_TEST.compareTo(dificultate) == 0) {
-                        listaIntrebariGrele = set.getGreu();
-                        for (int i = 0; i < listaIntrebariGrele.size(); i++) {
-                            if (listaIntrebariGrele.get(i).getOptiuni().getCategorie().compareTo("matematică") == 0) {
-                                listaIntrebariMatematica.add(listaIntrebariGrele.get(i));
-                            } else if (listaIntrebariGrele.get(i).getOptiuni().getCategorie().compareTo("animale") == 0) {
-                                listaIntrebariAnimale.add(listaIntrebariGrele.get(i));
-                            } else if (listaIntrebariGrele.get(i).getOptiuni().getCategorie().compareTo("litere") == 0) {
-                                listaIntrebariLitere.add(listaIntrebariGrele.get(i));
-                            } else if (listaIntrebariGrele.get(i).getOptiuni().getCategorie().compareTo("fructe si legume") == 0) {
-                                listaIntrebariFructeSiLegume.add(listaIntrebariGrele.get(i));
-                            } else if (listaIntrebariGrele.get(i).getOptiuni().getCategorie().compareTo("viata") == 0) {
-                                listaIntrebariViata.add(listaIntrebariGrele.get(i));
-                            }
-                        }
-                    }
-
-    }
-*/
     private void initializarePrimaIntrebare(){
         tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
         rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
@@ -203,31 +143,6 @@ public class IntrebariActivitate extends AppCompatActivity {
         rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
         loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
 
-                   /* String dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
-                    if(dificultate.compareTo(Constante.USOR_DIFICULTATE_TEST)==0){
-                        Collections.shuffle(listaIntrebariMatematica);
-                        tvIntrebare.setText(listaIntrebariMatematica.get(0).getTextIntrebare());
-                        rb_raspuns1.setText(listaIntrebariMatematica.get(0).getRaspunsuri().get(0).getTextRaspuns());
-                        rb_raspuns2.setText(listaIntrebariMatematica.get(0).getRaspunsuri().get(1).getTextRaspuns());
-                        rb_raspuns3.setText(listaIntrebariMatematica.get(0).getRaspunsuri().get(2).getTextRaspuns());
-                        loadImageFromJson(listaIntrebariMatematica.get(0).getOptiuni().getImagine());
-
-                    }
-                    else if(dificultate.compareTo(Constante.MEDIU_DIFICULTATE_TEST)==0){
-                        Collections.shuffle(listaIntrebariMedii);
-                        tvIntrebare.setText(listaIntrebariMedii.get(0).getTextIntrebare());
-                        rb_raspuns1.setText(listaIntrebariMedii.get(0).getRaspunsuri().get(0).getTextRaspuns());
-                        rb_raspuns2.setText(listaIntrebariMedii.get(0).getRaspunsuri().get(1).getTextRaspuns());
-                        rb_raspuns3.setText(listaIntrebariMedii.get(0).getRaspunsuri().get(2).getTextRaspuns());
-                    }
-                    else if(dificultate.compareTo(Constante.GREU_DIFICULTATE_TEST)==0){
-                        listaIntrebariGrele = set.getGreu();
-                        Collections.shuffle(listaIntrebariGrele);
-                        tvIntrebare.setText(listaIntrebariGrele.get(0).getTextIntrebare());
-                        rb_raspuns1.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(0).getTextRaspuns());
-                        rb_raspuns2.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(1).getTextRaspuns());
-                        rb_raspuns3.setText(listaIntrebariGrele.get(0).getRaspunsuri().get(2).getTextRaspuns());
-                    }*/
             }
 
     private void loadImageFromJson(String urlJson){

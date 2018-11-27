@@ -24,11 +24,12 @@ public interface Constante {
 
     String PUNCTAJ_KEY ="PUNCTAJ_KEY";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
-    String CATEGORIE_MATEMATICA="matematică";
+    String CATEGORIE_MATEMATICA="matematica";
     String CATEGORIE_ANIMALE="animale";
     String CATEGORIE_LITERE="litere";
-    String CATEGORIE_FRUCTE="fructesilegume";
-    String CATEGORIE_VIATA="viatadezicuzi";
+    String CATEGORIE_FRUCTE="fructe și legume";
+    String CATEGORIE_VIATA="viata-de-zi-cu-zi";
+    String URL_JSON_TESTE="https://api.myjson.com/bins/w5guy";
 
 
 }
