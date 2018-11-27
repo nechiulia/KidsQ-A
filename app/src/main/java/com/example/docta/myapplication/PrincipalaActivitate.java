@@ -22,6 +22,10 @@ public class PrincipalaActivitate extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_principala);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Principala);
+            this.setTitle(titlu);
+        }
         initComponents();
         elev_btn.setOnClickListener(new View.OnClickListener() {
             @Override

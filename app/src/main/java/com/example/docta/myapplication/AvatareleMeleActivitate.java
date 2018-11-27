@@ -16,6 +16,10 @@ public class AvatareleMeleActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_avatarele_mele);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_AvatareleMele);
+            this.setTitle(titlu);
+        }
         init();
 
 

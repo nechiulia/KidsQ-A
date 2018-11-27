@@ -35,6 +35,11 @@ public class CreareContElevActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_creare_cont_elev);
         intent=getIntent();
 
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_CreareContElev);
+            this.setTitle(titlu);
+        }
+
         btn_back=findViewById(R.id.lecc_btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,6 +32,10 @@ public class ListaEleviActivitate extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_lista_elevi);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_ListaElevi);
+            this.setTitle(titlu);
+        }
         initComponents();
 
         Menu menu = bottomNavigationView.getMenu();

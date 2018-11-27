@@ -34,6 +34,10 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebarea_zilei);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_IntrebareaZilei);
+            this.setTitle(titlu);
+        }
         initComponents();
 
         btn_rezultat.setOnClickListener(new View.OnClickListener() {

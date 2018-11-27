@@ -160,6 +160,7 @@
     <string name="setari_parolaConfirm_eroare">Confirmati parola!</string>
     <string name="sarcini_infoactivitate_eroare">Introduceti o activitate</string>
     <string name="intrebari_tv_nr_intrebari">/5</string>
+    <string name="intrebari_tv_nr_intrebariTestulZilei">/10</string>
     <string name="ppj_tv_bine_ai_venit_null">Bine ai venit!</string>
     <string name="ppj_utilizator_default_pref">elev</string>
     <string name="intrebarea_zilei_toast__selecteaza_raspuns">Selecteaza un raspuns!</string>
@@ -196,4 +197,27 @@
     <string name="toast_raspuns_corect">Ai raspuns corect!</string>
     <string name="toast_raspuns_gresit">Ai raspuns gresit!</string>
     <string name="toast_nu_exista_intrebari">Nu exista intrebari corespunzatoare optiunilor!</string>
+    <string name="Titlu_SetariCont">Setari Cont</string>
+    <string name="Titlu_Clasament">Clasament</string>
+    <string name="Titlu_PaginaPrincipalaJoc">Pagina Principala</string>
+    <string name="Titlu_IntrebareaZilei">Intrebrea zilei</string>
+    <string name="Titlu_ListaElevi">Lista Elevi</string>
+    <string name="Titlu_InvatamCategorie">Invatam</string>
+    <string name="Titlu_Autentificare">Autentificare Elev</string>
+    <string name="Titlu_CreareContElev">Creare Cont Elev</string>
+    <string name="Titlu_Avatare">Cumpara Avatare</string>
+    <string name="Titlu_SetariProfesor">Setari</string>
+    <string name="Titlu_Design">Design</string>
+    <string name="Titlu_Pareri">Pareri</string>
+    <string name="Titlu_Rezultat">Rezultatul Tau</string>
+    <string name="Titlu_AvatareleMele">Avatarele Mele</string>
+    <string name="Titlu_Ajutor">Ajutor</string>
+    <string name="Titlu_TestIntrebari">Test </string>
+    <string name="Titlu_Principala">Principala</string>
+    <string name="Titlu_SaNeJucam">Categorie Test</string>
+    <string name="Titlu_AutentificareProfesor">Autentificare Profesor</string>
+    <string name="Titlu_AdaugaActivitate">Adauga o Activitate</string>
+    <string name="Titlu_Sarcini">Sarcini</string>
+    <string name="Titlu_SaInvatam">Sa Invatam!</string>
+    <string name="Valoare_TestulZilei">Testul Zilei</string>
 </resources>

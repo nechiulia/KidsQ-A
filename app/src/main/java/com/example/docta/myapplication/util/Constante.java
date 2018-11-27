@@ -17,6 +17,8 @@ public interface Constante {
 
     String SETARI_ELEV_PREF = "setariPref";
     String DIFICULTATE_PREF = "dificultatePref";
+    String SPINNER_POZITIE ="SETARI_ELEV_POZITIE_SPINNER";
+    String TESTUL_ZILEI="TestulZilei";
 
     String USOR_DIFICULTATE_TEST ="Usor";
     String MEDIU_DIFICULTATE_TEST ="Mediu";
@@ -30,6 +32,8 @@ public interface Constante {
     String CATEGORIE_FRUCTE="fructe și legume";
     String CATEGORIE_VIATA="viata-de-zi-cu-zi";
     String URL_JSON_TESTE="https://api.myjson.com/bins/16spxe";
+
+
 
 
 }

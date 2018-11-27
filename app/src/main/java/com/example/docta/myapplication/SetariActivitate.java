@@ -35,6 +35,10 @@ public class SetariActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_setari);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_SetariProfesor);
+            this.setTitle(titlu);
+        }
         initComponent();
         Menu menu = bottomNavigationView.getMenu();
         MenuItem item = menu.getItem(2);

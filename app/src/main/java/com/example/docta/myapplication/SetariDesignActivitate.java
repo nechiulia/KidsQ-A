@@ -19,6 +19,10 @@ public class SetariDesignActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_setari_design);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Design);
+            this.setTitle(titlu);
+        }
 
         spn_fonturi=findViewById(R.id.design_spn_font);
         ArrayAdapter<CharSequence> adapter_font=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_design_spn_font_text, R.layout.support_simple_spinner_dropdown_item);

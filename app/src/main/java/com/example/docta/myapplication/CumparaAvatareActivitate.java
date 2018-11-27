@@ -13,6 +13,10 @@ public class CumparaAvatareActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_cumpara_avatare);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Avatare);
+            this.setTitle(titlu);
+        }
         initComponents();
 
         btn_back.setOnClickListener(new View.OnClickListener() {

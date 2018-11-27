@@ -26,6 +26,10 @@ public class AutentificareProfesorActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_autentificare_profesor);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_AutentificareProfesor);
+            this.setTitle(titlu);
+        }
         initComponents();
 
 

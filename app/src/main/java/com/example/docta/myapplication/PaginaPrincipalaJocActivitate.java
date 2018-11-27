@@ -1,5 +1,6 @@
 package com.example.docta.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.docta.myapplication.clase.Intrebare;
+import com.example.docta.myapplication.clase.Network.HttpManager;
+import com.example.docta.myapplication.clase.SetIntrebari;
+import com.example.docta.myapplication.clase.SetIntrebariParser;
 import com.example.docta.myapplication.util.Constante;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
 
@@ -26,11 +36,33 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private Button btnSarcini;
     private SharedPreferences sharedPreferences;
     private ImageButton imgBtnAjutor;
+    private static final String URL = Constante.URL_JSON_TESTE;
+    private SetIntrebari setIntrebari;
+    private ArrayList<Intrebare> intrebariTestulZilei;
+
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_pagina_principala_joc);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_PaginaPrincipalaJoc);
+            this.setTitle(titlu);
+        }
+        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
+            @Override
+            protected void onPostExecute(String s) {
+                try {
+                    setIntrebari=SetIntrebariParser.fromJson(s);
+                    intrebariTestulZilei = setIntrebari.getGreu();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        };
+        manager.execute(URL);
         initComponents();
     }
 
@@ -108,6 +140,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SaNeJucamActivitate.class);
+                intent.putExtra("ppp",setIntrebari);
                 startActivity(intent);
             }
         };
@@ -126,8 +159,12 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
+                intent.putExtra(Constante.TESTUL_ZILEI,getString(R.string.Valoare_TestulZilei));
+                intent.putExtra("lll",intrebariTestulZilei);
                 startActivity(intent);
+                finish();
             }
 
         };

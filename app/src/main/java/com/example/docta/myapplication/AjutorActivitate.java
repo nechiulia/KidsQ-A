@@ -26,7 +26,10 @@ public class AjutorActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_ajutor);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Ajutor);
+            this.setTitle(titlu);
+        }
         initComponents();
         CreareLista();
 

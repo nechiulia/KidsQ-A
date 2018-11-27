@@ -25,7 +25,10 @@ public class InvatamCategorieActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_invatam_categorie);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_InvatamCategorie);
+            this.setTitle(titlu);
+        }
         initComponents();
     }
 

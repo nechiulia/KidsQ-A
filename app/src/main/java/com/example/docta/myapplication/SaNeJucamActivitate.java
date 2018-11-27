@@ -48,23 +48,16 @@ public class SaNeJucamActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_sa_ne_jucam);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_SaNeJucam);
+            this.setTitle(titlu);
+        }
+        setIntrebari = (SetIntrebari) getIntent().getSerializableExtra("ppp");
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
 
-        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
-            @Override
-            protected void onPostExecute(String s) {
-                try {
-                    setIntrebari=SetIntrebariParser.fromJson(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
-                }
 
-            }
-        };
-        manager.execute(URL);
         initComponents();
     }
     private void initComponents(){

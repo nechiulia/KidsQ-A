@@ -26,6 +26,10 @@ public class SetariElevActivitate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_setari_elev);
         initComps();
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_SetariCont);
+            this.setTitle(titlu);
+        }
 
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +37,8 @@ public class SetariElevActivitate extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constante.DIFICULTATE_PREF, spn_dificultati.getSelectedItem().toString());
+                int pozitieSelectata = spn_dificultati.getSelectedItemPosition();
+                editor.putInt(Constante.SPINNER_POZITIE,pozitieSelectata);
                 editor.commit();
                 intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
                 startActivity(intent);
@@ -70,9 +76,11 @@ public class SetariElevActivitate extends AppCompatActivity {
         btn_logout=findViewById(R.id.setari_btn_logout);
 
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
+        restoreDificultate();
     }
 
-    private void restoreDificultate(){
 
+    private void restoreDificultate(){
+        spn_dificultati.setSelection(sharedPreferences.getInt(Constante.SPINNER_POZITIE,0));
     }
 }

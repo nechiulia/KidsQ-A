@@ -19,7 +19,10 @@ public class RezultatActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_rezultat);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Rezultat);
+            this.setTitle(titlu);
+        }
         initComponents();
 
         btn_back.setOnClickListener(new View.OnClickListener() {

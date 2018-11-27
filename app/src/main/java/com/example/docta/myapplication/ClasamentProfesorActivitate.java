@@ -17,7 +17,10 @@ public  class ClasamentProfesorActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_clasamentprofesor);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Clasament);
+            this.setTitle(titlu);
+        }
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         Menu menu = bottomNavigationView.getMenu();

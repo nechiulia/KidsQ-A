@@ -20,7 +20,10 @@ public class SaInvatamActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_sa_invatam);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_SaInvatam);
+            this.setTitle(titlu);
+        }
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initComponents();

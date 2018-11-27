@@ -23,7 +23,10 @@ public class PareriActivitate extends AppCompatActivity {
         setContentView(R.layout.activitate_pareri);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Pareri);
+            this.setTitle(titlu);
+        }
         initComps();
     }
 

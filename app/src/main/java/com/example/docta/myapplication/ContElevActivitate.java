@@ -22,7 +22,10 @@ public class ContElevActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_cont_elev);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Autentificare);
+            this.setTitle(titlu);
+        }
         initComponents();
 
          btn_back.setOnClickListener(new View.OnClickListener() {

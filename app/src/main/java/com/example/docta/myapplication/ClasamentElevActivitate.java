@@ -15,7 +15,12 @@ public class ClasamentElevActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_clasament_elev);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Clasament);
+            this.setTitle(titlu);
+        }
         initComponents();
+
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

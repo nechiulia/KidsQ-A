@@ -38,6 +38,7 @@ public class IntrebariActivitate extends AppCompatActivity {
 
     private double punctaj=0;
     private int nrIntrebariCorecte=0;
+    String testul_zilei;
 
     private SetIntrebari set;
     private List<Intrebare> listaIntrebariUsoare;
@@ -56,71 +57,82 @@ public class IntrebariActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_intrebari);
-        //set = (SetIntrebari) getIntent().getSerializableExtra("SetIntrebariKey");
-        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-      //  listaIntrebari=(ArrayList)getIntent().getParcelableArrayListExtra("Intrebari matematica key");
-       // listaIntrebari=(ArrayList<Intrebare>) getIntent().getSerializableExtra("lista intrebari key");
-      //  initializareListePeCategorie();
 
-        //listaIntrebari = SaNeJucamActivitate.listaIntrebariTest;
+        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
 
         //Bundle bundle = getIntent().getExtras();
-
 
         listaIntrebari = (ArrayList<Intrebare>) getIntent().getSerializableExtra("lll");
 
         Collections.shuffle(listaIntrebari);
+
         initComponents();
         initializarePrimaIntrebare();
     }
 
 
 
-    private View.OnClickListener confirmRaspuns(){
-        return new View.OnClickListener(){
+    private View.OnClickListener confirmRaspuns() {
+        return new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 if (isValid()) {
                     RadioButton rbCorect;
-                    for(int i=0;i<3;i++){
-                        if(listaIntrebari.get(nrCurent-1).getRaspunsuri().get(i).isCorect()) {
-                            rbCorect=(RadioButton)rg_raspunsuri.getChildAt(i);
-                            if(rbCorect.getId()== rg_raspunsuri.getCheckedRadioButtonId()){
-                               Toast toastCorect = Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
+                    for (int i = 0; i < 3; i++) {
+                        if (listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(i).isCorect()) {
+                            rbCorect = (RadioButton) rg_raspunsuri.getChildAt(i);
+                            if (rbCorect.getId() == rg_raspunsuri.getCheckedRadioButtonId()) {
+                                Toast toastCorect = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
                                 View view1 = toastCorect.getView();
-                                int colorGreen= ResourcesCompat.getColor(getResources(),R.color.LimeGreen,null);
-                                view1.getBackground().setColorFilter(colorGreen,PorterDuff.Mode.SRC_IN);
+                                int colorGreen = ResourcesCompat.getColor(getResources(), R.color.LimeGreen, null);
+                                view1.getBackground().setColorFilter(colorGreen, PorterDuff.Mode.SRC_IN);
                                 toastCorect.show();
-                                punctaj+=listaIntrebari.get(nrCurent-1).getOptiuni().getPunctaj();
+                                punctaj += listaIntrebari.get(nrCurent - 1).getOptiuni().getPunctaj();
                                 nrIntrebariCorecte++;
-                            }
-                            else {
-                                Toast toastGresit = Toast.makeText(getApplicationContext(),getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
+                            } else {
+                                Toast toastGresit = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
                                 View view2 = toastGresit.getView();
-                                int colorRed = ResourcesCompat.getColor(getResources(),R.color.fireBrick,null);
-                                view2.getBackground().setColorFilter(colorRed,PorterDuff.Mode.SRC_IN);
+                                int colorRed = ResourcesCompat.getColor(getResources(), R.color.fireBrick, null);
+                                view2.getBackground().setColorFilter(colorRed, PorterDuff.Mode.SRC_IN);
                                 toastGresit.show();
                             }
                         }
                     }
                     nrCurent++;
-                    if(nrCurent==6){
-                        Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
-                        intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
-                        intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
-                        startActivity(intent);
-                    }
-                    else {
+                    if (testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
+                        if (nrCurent == 10) {
+                            Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
+                            intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
+                            intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
+                            startActivity(intent);
+                        } else {
                             tvIntrebare.setText(listaIntrebari.get(nrCurent - 1).getTextIntrebare());
                             rb_raspuns1.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
                             rb_raspuns2.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
                             rb_raspuns3.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-                            loadImageFromJson(listaIntrebari.get(nrCurent-1).getOptiuni().getImagine());
-                        tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
-                        rg_raspunsuri.clearCheck();
+                            loadImageFromJson(listaIntrebari.get(nrCurent - 1).getOptiuni().getImagine());
+                            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
+                            rg_raspunsuri.clearCheck();
+                        }
+                    }else{
+                        if (nrCurent == 6) {
+                            Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
+                            intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
+                            intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
+                            startActivity(intent);
+                        } else {
+                            tvIntrebare.setText(listaIntrebari.get(nrCurent - 1).getTextIntrebare());
+                            rb_raspuns1.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
+                            rb_raspuns2.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
+                            rb_raspuns3.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
+                            loadImageFromJson(listaIntrebari.get(nrCurent - 1).getOptiuni().getImagine());
+                            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
+                            rg_raspunsuri.clearCheck();
+                        }
                     }
-                    }
+
                 }
+            }
         };
     }
     public boolean isValid(){
@@ -135,7 +147,7 @@ public class IntrebariActivitate extends AppCompatActivity {
         }
     }
     private void initComponents(){
-
+        testul_zilei  = getIntent().getStringExtra(Constante.TESTUL_ZILEI) !=null ? getIntent().getStringExtra(Constante.TESTUL_ZILEI):"Diferit";
         tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
         rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
         rb_raspuns1 = findViewById(R.id.intrebari_rb_raspuns1);
@@ -146,18 +158,35 @@ public class IntrebariActivitate extends AppCompatActivity {
         tvIntrebare = findViewById(R.id.intrebari_tv_intrebare);
         btn_confirm.setOnClickListener(confirmRaspuns());
         nrCurent=1;
-        tvNrIntrebare.setText(nrCurent+getString(R.string.intrebari_tv_nr_intrebari));
+        if(testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
+            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
+        }else{
+            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
+        }
     }
 
 
     private void initializarePrimaIntrebare(){
-        tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
-        rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
-        rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
-        rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
-        loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
+        if(testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
+            String titlu = getString(R.string.Titlu_TestIntrebari) + listaIntrebari.get(0).getOptiuni().getCategorie();
+            this.setTitle(titlu);
 
-            }
+            tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
+            rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
+            rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
+            rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
+            loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
+        }else{
+            String titlu = getString(R.string.Titlu_TestIntrebari) + listaIntrebari.get(0).getOptiuni().getCategorie();
+            this.setTitle(titlu);
+
+            tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());
+            rb_raspuns1.setText(listaIntrebari.get(0).getRaspunsuri().get(0).getTextRaspuns());
+            rb_raspuns2.setText(listaIntrebari.get(0).getRaspunsuri().get(1).getTextRaspuns());
+            rb_raspuns3.setText(listaIntrebari.get(0).getRaspunsuri().get(2).getTextRaspuns());
+            loadImageFromJson(listaIntrebari.get(0).getOptiuni().getImagine());
+        }
+    }
 
     private void loadImageFromJson(String urlJson){
         Picasso.with(getApplicationContext()).load(urlJson).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)

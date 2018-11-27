@@ -28,6 +28,10 @@ public class SarciniAdaugareActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_adaugare_sarcini);
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_AdaugaActivitate);
+            this.setTitle(titlu);
+        }
         initComps();
         intent=getIntent();
 

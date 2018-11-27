@@ -27,7 +27,10 @@ public class SarciniActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_sarcini);
-
+        if(savedInstanceState==null){
+            String titlu = getString(R.string.Titlu_Sarcini);
+            this.setTitle(titlu);
+        }
         lvSarcini=findViewById(R.id.sarcini_lv_task);
         fab=findViewById(R.id.sarcini_fab_adaugare);
 
