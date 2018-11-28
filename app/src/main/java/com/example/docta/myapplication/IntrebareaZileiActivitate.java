@@ -38,6 +38,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     private RadioGroup rg_optiuni;
     private Intrebare intrebareaZilei;
     private ImageView imgV_imagine;
+
     private double punctaj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,18 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
                 }
             }
         });
+        imgV_imagine.setOnClickListener(openShowImage());
         initializareTextConntroale();
+    }
+    private View.OnClickListener openShowImage(){
+     return new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent intent = new Intent(getApplicationContext(),ShowImageActivity.class);
+             intent.putExtra("Imagine", intrebareaZilei.getOptiuni().getImagine());
+             startActivity(intent);
+         }
+     } ;
     }
     private void initializareTextConntroale(){
         tvIntrebareaZilei.setText(intrebareaZilei.getTextIntrebare());

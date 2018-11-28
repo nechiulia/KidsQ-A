@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IncarcareActivitate"
+        <activity
+            android:name=".IncarcareActivitate"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PrincipalaActivitate"/>
+        <activity android:name=".PrincipalaActivitate" />
         <activity android:name=".AutentificareProfesorActivitate" />
         <activity android:name=".CumparaAvatareActivitate" />
         <activity android:name=".ClasamentElevActivitate" />
@@ -42,6 +43,7 @@
         <activity android:name=".AvatareleMeleActivitate" />
         <activity android:name=".SarciniActivitate" />
         <activity android:name=".SarciniAdaugareActivitate" />
+        <activity android:name=".ShowImageActivity"></activity>
     </application>
 
 </manifest>
