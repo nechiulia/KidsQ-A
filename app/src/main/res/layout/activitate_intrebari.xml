@@ -60,19 +60,22 @@
             android:id="@+id/intrebari_rb_raspuns1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intrebari_rb_raspuns1_str" />
+            android:text="@string/intrebari_rb_raspuns1_str"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/intrebari_rb_raspuns2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intrebari_rb_raspuns2_str" />
+            android:text="@string/intrebari_rb_raspuns2_str"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/intrebari_rb_raspuns3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/intrebari_rb_raspuns3_str" />
+            android:text="@string/intrebari_rb_raspuns3_str"
+            android:textSize="16sp" />
 
     </RadioGroup>
 

@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +24,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
 
@@ -69,9 +66,6 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
                             if(!isChecked) {
                                 incarcareDate();
                             }
-//                            if (this.getDone().equals("done")) {
-//                                Toast.makeText(getApplicationContext(), "S-au incarcat testele!", Toast.LENGTH_LONG).show();
-//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
