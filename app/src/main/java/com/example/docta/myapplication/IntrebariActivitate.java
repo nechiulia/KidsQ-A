@@ -157,7 +157,7 @@ public class IntrebariActivitate extends AppCompatActivity {
 
     private void initializarePrimaIntrebare(){
         if(testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
-            String titlu = getString(R.string.Titlu_TestIntrebari) + getString(R.string.Valoare_TestulZilei);
+            String titlu =  getString(R.string.Valoare_TestulZilei);
             this.setTitle(titlu);
 
             tvIntrebare.setText(listaIntrebari.get(0).getTextIntrebare());

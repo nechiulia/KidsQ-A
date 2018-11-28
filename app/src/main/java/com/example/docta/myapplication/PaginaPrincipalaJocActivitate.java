@@ -103,7 +103,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             new Thread(() -> {
                 while (progressDialog.getProgress() <= progressDialog.getMax()) {
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(30);
                         handler.sendMessage(handler.obtainMessage());
                         if (progressDialog.getProgress() == progressDialog.getMax()) {
                             progressDialog.dismiss();
