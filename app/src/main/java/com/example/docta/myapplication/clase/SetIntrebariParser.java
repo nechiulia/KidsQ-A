@@ -18,7 +18,9 @@ public class SetIntrebariParser implements Serializable {
         ArrayList<Intrebare> usor=  getIntrebariListFromJsonArray(object.getJSONArray("usor"));
         ArrayList<Intrebare> mediu=  getIntrebariListFromJsonArray(object.getJSONArray("mediu"));
         ArrayList<Intrebare> greu=  getIntrebariListFromJsonArray(object.getJSONArray("greu"));
-        return new SetIntrebari (usor,mediu,greu);
+        ArrayList<Intrebare> intrebareaZilei=  getIntrebariListFromJsonArray(object.getJSONArray("intrebarea zilei"));
+
+        return new SetIntrebari (usor,mediu,greu, intrebareaZilei);
 
     }
 

@@ -44,7 +44,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
             String titlu = getString(R.string.Titlu_SaNeJucam);
             this.setTitle(titlu);
         }
-        setIntrebari = (SetIntrebari) getIntent().getSerializableExtra("ppp");
+        setIntrebari = (SetIntrebari) getIntent().getSerializableExtra(Constante.SET_INTREBARI_KEY);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);

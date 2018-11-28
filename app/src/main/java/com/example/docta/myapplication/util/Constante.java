@@ -27,6 +27,8 @@ public interface Constante {
 
     String PUNCTAJ_KEY ="PUNCTAJ_KEY";
     String LISTA_INTREBARI_KEY="Transmitere lista";
+    String SET_INTREBARI_KEY="Set intrebari";
+    String INTREBAREA_ZILEI_KEY="Intrebarea zilei";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
     String CATEGORIE_MATEMATICA="matematica";
     String CATEGORIE_ANIMALE="animale";
@@ -34,7 +36,7 @@ public interface Constante {
     String CATEGORIE_FRUCTE="fructe si legume";
     String CATEGORIE_VIATA="viata-de-zi-cu-zi";
     String VALIDARE_DESCARCARE="validar descarca json";
-    String URL_JSON_TESTE="https://api.myjson.com/bins/1cgt5e";
+    String URL_JSON_TESTE="https://api.myjson.com/bins/9jpc2";
 
 
 }

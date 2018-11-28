@@ -11,62 +11,52 @@
         android:id="@+id/intrebarea_zilei_tv_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_tv_countdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/intrebarea_zilei_tv_timpramas"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@+id/intrebarea_zilei_tv_timpramas"
+        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_iv_original"/>
 
     <TextView
         android:id="@+id/intrebarea_zilei_tv_timpramas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_tv_str"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_iv_original"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/intrebarea_zilei_iv_original"
-        android:layout_width="281dp"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:contentDescription="@string/intrebarea_zilei_iv_poza2"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_tv_intrebare"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_tv_countdown" />
-
-    <ImageView
-        android:id="@+id/intrebarea_zilei_iv_difetente"
-        android:layout_width="281dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="@string/intrebarea_zilei_iv_poza1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_iv_original" />
+        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_tv_countdown"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/intrebarea_zilei_tv_intrebare"
@@ -74,27 +64,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_tv_intrebare_str"
+        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_rg_raspunsuri"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_iv_difetente" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/intrebarea_zilei_rg_raspunsuri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_tv_intrebare">
+        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_btn_confirm"
+        app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
             android:id="@+id/intrebarea_zilei_rb_raspuns1"
@@ -123,28 +109,24 @@
         android:layout_below="@+id/intrebarea_zilei_rg_raspunsuri"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_btn_confirm_str"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_rg_raspunsuri" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/intrebarea_zilei_btn_incepe_test"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_btn_incepe"
         app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_iv_original"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/intrebarea_zilei_tv_countdown"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
 </android.support.constraint.ConstraintLayout>

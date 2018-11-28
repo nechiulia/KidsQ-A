@@ -11,11 +11,13 @@ public class SetIntrebari implements Serializable {
     private ArrayList<Intrebare> usor;
     private ArrayList<Intrebare> mediu;
     private ArrayList<Intrebare> greu;
+    private ArrayList<Intrebare> intrebareaZilei;
 
-    public SetIntrebari(ArrayList<Intrebare> usor, ArrayList<Intrebare> mediu, ArrayList<Intrebare> greu) {
+    public SetIntrebari(ArrayList<Intrebare> usor, ArrayList<Intrebare> mediu, ArrayList<Intrebare> greu, ArrayList<Intrebare> intrebareaZilei) {
         this.usor = usor;
         this.mediu = mediu;
         this.greu = greu;
+        this.intrebareaZilei=intrebareaZilei;
     }
 
 
@@ -43,14 +45,21 @@ public class SetIntrebari implements Serializable {
         this.greu = greu;
     }
 
+    public ArrayList<Intrebare> getIntrebareaZilei() {
+        return intrebareaZilei;
+    }
+
+    public void setIntrebareaZilei(ArrayList<Intrebare> intrebareaZilei) {
+        this.intrebareaZilei = intrebareaZilei;
+    }
+
     @Override
     public String toString() {
         return "SetIntrebari{" +
                 "usor=" + usor +
                 ", mediu=" + mediu +
                 ", greu=" + greu +
+                ", intrebareaZilei=" + intrebareaZilei +
                 '}';
     }
-
-
 }

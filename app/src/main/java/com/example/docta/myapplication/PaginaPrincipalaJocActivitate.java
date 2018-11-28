@@ -24,6 +24,7 @@ import com.example.docta.myapplication.util.Constante;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
@@ -44,6 +45,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private static final String URL = Constante.URL_JSON_TESTE;
     private SetIntrebari setIntrebari;
     private ArrayList<Intrebare> intrebariTestulZilei;
+    private ArrayList<Intrebare> intrebareaZilei;
     private ProgressDialog progressDialog;
     Intent intent;
     private Boolean isChecked;
@@ -183,7 +185,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SaNeJucamActivitate.class);
-                intent.putExtra("ppp",setIntrebari);
+                intent.putExtra(Constante.SET_INTREBARI_KEY,setIntrebari);
                 startActivity(intent);
             }
         };
@@ -192,7 +194,10 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                intrebareaZilei=setIntrebari.getIntrebareaZilei();
+                Collections.shuffle(intrebareaZilei);
                 Intent intent = new Intent(getApplicationContext(), IntrebareaZileiActivitate.class);
+                intent.putExtra(Constante.INTREBAREA_ZILEI_KEY, intrebareaZilei.get(0));
                 startActivity(intent);
             }
         };
