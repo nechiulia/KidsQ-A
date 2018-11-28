@@ -41,6 +41,8 @@ public class SetariElevActivitate extends AppCompatActivity {
                 editor.putInt(Constante.SPINNER_POZITIE,pozitieSelectata);
                 editor.commit();
                 intent=new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
+                intent.putExtra("Validare",true);
+
                 startActivity(intent);
                 finish();
             }
