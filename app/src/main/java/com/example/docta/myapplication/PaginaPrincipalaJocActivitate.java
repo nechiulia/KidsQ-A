@@ -1,10 +1,13 @@
 package com.example.docta.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,38 +46,74 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private static final String URL = Constante.URL_JSON_TESTE;
     private SetIntrebari setIntrebari;
     private ArrayList<Intrebare> intrebariTestulZilei;
-    private CircularProgressButton circularProgressButton;
+    private ProgressDialog progressDialog;
     Intent intent;
+    private Boolean isChecked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_pagina_principala_joc);
+        isChecked = getIntent().getBooleanExtra("Validare",false);
         if(savedInstanceState==null){
             String titlu = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(titlu);
         }
 
-        circularProgressButton = (CircularProgressButton) findViewById(R.id.jucam_circ_btn_incarca_server);
-
                 @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+
                     @Override
                     protected void onPostExecute(String s) {
                         try {
                             setIntrebari = SetIntrebariParser.fromJson(s);
-                            intrebariTestulZilei = setIntrebari.getGreu();
-                            if (this.getDone().equals("done")) {
-                                Toast.makeText(getApplicationContext(), "S-au incarcat testele!", Toast.LENGTH_LONG).show();
-                                circularProgressButton.doneLoadingAnimation(Color.parseColor("#333639"), BitmapFactory.decodeResource(getResources(), R.drawable.ic_done_white_48dp));
+                            if(!isChecked) {
+                                incarcareDate();
                             }
+//                            if (this.getDone().equals("done")) {
+//                                Toast.makeText(getApplicationContext(), "S-au incarcat testele!", Toast.LENGTH_LONG).show();
+//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
                         }
                     }
+
                 };
-        circularProgressButton.startAnimation();
         manager.execute(URL);
         initComponents();
+    }
+
+    private void incarcareDate(){
+            progressDialog = new ProgressDialog(PaginaPrincipalaJocActivitate.this);
+            progressDialog.setMax(100);
+            progressDialog.setMessage("Se incarca testele...");
+            progressDialog.setTitle("Descarcare");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.show();
+            progressDialog.getButton(ProgressDialog.BUTTON_NEUTRAL).setVisibility(View.INVISIBLE);
+
+            @SuppressLint("StaticFieldLeak") Handler handler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    progressDialog.incrementProgressBy(1);
+                }
+            };
+
+            new Thread(() -> {
+                while (progressDialog.getProgress() <= progressDialog.getMax()) {
+                    try {
+                        Thread.sleep(50);
+                        handler.sendMessage(handler.obtainMessage());
+                        if (progressDialog.getProgress() == progressDialog.getMax()) {
+                            progressDialog.dismiss();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+
     }
 
     private void initComponents(){
@@ -170,7 +209,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intrebariTestulZilei = setIntrebari.getGreu();
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                 intent.putExtra(Constante.TESTUL_ZILEI,getString(R.string.Valoare_TestulZilei));
                 intent.putExtra("lll",intrebariTestulZilei);

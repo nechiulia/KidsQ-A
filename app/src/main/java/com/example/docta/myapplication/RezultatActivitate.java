@@ -1,6 +1,7 @@
 package com.example.docta.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class RezultatActivitate extends AppCompatActivity {
     private Button btn_back;
     private TextView tvPunctaj;
     private TextView tvNrIntrebariCorecte;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,9 @@ public class RezultatActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
+                intent.putExtra("Validare",true);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -43,5 +47,6 @@ public class RezultatActivitate extends AppCompatActivity {
         tvNrIntrebariCorecte = findViewById(R.id.rezultat_tv_raspunsuri_corecte);
         tvPunctaj.setText(String.valueOf(punctaj));
         tvNrIntrebariCorecte.setText(String.valueOf(nrIntrebariCorecte));
+
     }
 }

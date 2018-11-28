@@ -89,7 +89,7 @@ public class IntrebariActivitate extends AppCompatActivity {
                     }
                     nrCurent++;
                     if (testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
-                        if (nrCurent == 10) {
+                        if (nrCurent == 11) {
                             Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
                             intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
                             intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
