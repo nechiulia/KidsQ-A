@@ -34,7 +34,7 @@ public interface Constante {
     String CATEGORIE_FRUCTE="fructe si legume";
     String CATEGORIE_VIATA="viata-de-zi-cu-zi";
     String VALIDARE_DESCARCARE="validar descarca json";
-    String URL_JSON_TESTE="https://api.myjson.com/bins/yy18a";
+    String URL_JSON_TESTE="https://api.myjson.com/bins/1cgt5e";
 
 
 }
