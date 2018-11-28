@@ -31,7 +31,7 @@ public class RezultatActivitate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PaginaPrincipalaJocActivitate.class);
-                intent.putExtra("Validare",true);
+                intent.putExtra(Constante.VALIDARE_DESCARCARE,true);
                 startActivity(intent);
                 finish();
             }

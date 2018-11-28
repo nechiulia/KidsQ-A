@@ -26,13 +26,15 @@ public interface Constante {
     String GREU_DIFICULTATE_TEST ="Greu";
 
     String PUNCTAJ_KEY ="PUNCTAJ_KEY";
+    String LISTA_INTREBARI_KEY="Transmitere lista";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
     String CATEGORIE_MATEMATICA="matematica";
     String CATEGORIE_ANIMALE="animale";
     String CATEGORIE_LITERE="litere";
     String CATEGORIE_FRUCTE="fructe si legume";
     String CATEGORIE_VIATA="viata-de-zi-cu-zi";
-    String URL_JSON_TESTE="https://api.myjson.com/bins/v2psq";
+    String VALIDARE_DESCARCARE="validar descarca json";
+    String URL_JSON_TESTE="https://api.myjson.com/bins/yy18a";
 
 
 }

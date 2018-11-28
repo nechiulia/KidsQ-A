@@ -2,6 +2,7 @@ package com.example.docta.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -51,14 +52,12 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitate_pagina_principala_joc);
-        isChecked = getIntent().getBooleanExtra("Validare",false);
+        isChecked = getIntent().getBooleanExtra(Constante.VALIDARE_DESCARCARE,false);
         if(savedInstanceState==null){
             String titlu = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(titlu);
         }
-
                 @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
-
                     @Override
                     protected void onPostExecute(String s) {
                         try {
@@ -206,7 +205,7 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
                 intrebariTestulZilei = setIntrebari.getGreu();
                 Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
                 intent.putExtra(Constante.TESTUL_ZILEI,getString(R.string.Valoare_TestulZilei));
-                intent.putExtra("lll",intrebariTestulZilei);
+                intent.putExtra(Constante.LISTA_INTREBARI_KEY,intrebariTestulZilei);
                 startActivity(intent);
                 finish();
             }

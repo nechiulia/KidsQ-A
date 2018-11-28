@@ -19,15 +19,6 @@ import java.net.URL;
         private InputStreamReader inputStreamReader;
         private BufferedReader bufferedReader;
 
-        private String done;
-
-        public String getDone() {
-            return done;
-        }
-
-        public void setDone(String done) {
-            this.done = done;
-        }
         @Override
         protected String doInBackground(String... strings) {
 
@@ -79,7 +70,6 @@ import java.net.URL;
                     connection.disconnect();
                 }
             }
-            done="done";
             return stringBuilder.toString();
         }
 
