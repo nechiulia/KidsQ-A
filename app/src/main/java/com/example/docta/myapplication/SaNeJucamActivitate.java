@@ -1,6 +1,7 @@
 package com.example.docta.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class SaNeJucamActivitate extends AppCompatActivity {
     private ArrayList<Intrebare> listaIntrebariUsoare;
     private ArrayList<Intrebare> listaIntrebariMedii;
     private ArrayList<Intrebare> listaIntrebariGrele;
-
+    private ArrayList<Intrebare> listaIntrebariDificultate;
     private ArrayList<Intrebare> listaIntrebariTest;
     String dificultate;
     @Override
@@ -70,60 +71,48 @@ public class SaNeJucamActivitate extends AppCompatActivity {
         btnAnimale.setOnClickListener(deschideTestAnimale());
         btnViata.setOnClickListener(deschideTestViata());
         dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
+        initializareListeDificultate();
 
+    }
+    private void initializareListeDificultate(){
+        listaIntrebariDificultate=new ArrayList<>();
+        if(setIntrebari!=null){
+            if(dificultate.equals(Constante.USOR_DIFICULTATE_TEST)){
+                listaIntrebariDificultate=setIntrebari.getUsor();
+            }
+            else if(dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
+                listaIntrebariDificultate=setIntrebari.getMediu();
+            }
+            else if(dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
+                listaIntrebariDificultate=setIntrebari.getGreu();
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(), getString(R.string.jucam_toast_nu_exista_intrebari_dificultate), Toast.LENGTH_LONG).show();
+        }
     }
     private View.OnClickListener deschideTestAnimale(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( dificultate.equals(Constante.USOR_DIFICULTATE_TEST)){
-                    if(setIntrebari!=null){
-                        listaIntrebariUsoare=setIntrebari.getUsor();
-                        for(int i=0; i< listaIntrebariUsoare.size();i++){
-                            if(listaIntrebariUsoare.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
-                                listaIntrebariTest.add(listaIntrebariUsoare.get(i));
-                            }
-                      }
-                      Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-//                       Bundle bundle  = new Bundle();
-//                       bundle.putParcelableArrayList("ListaIntrebariKey",listaIntrebariTest);
-                      // intent.putExtras(bundle);
-                        intent.putExtra("lll",listaIntrebariTest);
-                       startActivity(intent);
-                       finish();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.toast_nu_exista_intrebari), Toast.LENGTH_LONG).show();
-                    }
-
-                }
-                else if( dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
-                    listaIntrebariMedii=setIntrebari.getMediu();
-                    for(int i=0; i< listaIntrebariMedii.size();i++){
-                        if(listaIntrebariMedii.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
-                            listaIntrebariTest.add(listaIntrebariMedii.get(i));
+                if(listaIntrebariDificultate.size()!=0) {
+                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
+                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)) {
+                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
                         }
-                        Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        //  intent.putParcelableArrayListExtra("Intrebari matematica key", listaIntrebariMatematica);
-                        intent.putExtra("lll",listaIntrebariTest);
-
-                        startActivity(intent);
                     }
-                }
-                else if( dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
-                    listaIntrebariGrele=setIntrebari.getGreu();
-                    for(int i=0; i< listaIntrebariGrele.size();i++){
-                        if(listaIntrebariGrele.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)){
-                            listaIntrebariTest.add(listaIntrebariGrele.get(i));
-                        }
-                        Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
-                        intent.putExtra("lll",listaIntrebariTest);
-                        startActivity(intent);
-                    }
-                }
+                    Intent intent = new Intent(getApplicationContext(), IntrebariActivitate.class);
 
-            }
+                    intent.putExtra("lll",listaIntrebariTest);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),getString(R.string.jucam_toast_nu_exista_intrebari_dificultate), Toast.LENGTH_LONG).show();
+                }
+                
+        }
 
         };
     }

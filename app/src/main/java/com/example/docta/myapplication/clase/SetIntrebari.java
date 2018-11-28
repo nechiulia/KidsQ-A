@@ -18,23 +18,6 @@ public class SetIntrebari implements Serializable {
         this.greu = greu;
     }
 
-//    protected SetIntrebari(Parcel in) {
-//        in.readList(usor,null);
-//        in.readList(mediu,null);
-//        in.readList(greu,null);
-//    }
-
-//    public static final Creator<SetIntrebari> CREATOR = new Creator<SetIntrebari>() {
-//        @Override
-//        public SetIntrebari createFromParcel(Parcel in) {
-//            return new SetIntrebari(in);
-//        }
-//
-//        @Override
-//        public SetIntrebari[] newArray(int size) {
-//            return new SetIntrebari[size];
-//        }
-//    };
 
     public ArrayList<Intrebare> getUsor() {
         return usor;
@@ -70,16 +53,4 @@ public class SetIntrebari implements Serializable {
     }
 
 
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeTypedList(usor);
-//        dest.writeTypedList(mediu);
-//        dest.writeTypedList(greu);
-//
-//    }
 }

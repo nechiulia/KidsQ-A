@@ -220,4 +220,5 @@
     <string name="Titlu_Sarcini">Sarcini</string>
     <string name="Titlu_SaInvatam">Sa Invatam!</string>
     <string name="Valoare_TestulZilei">Testul Zilei</string>
+    <string name="jucam_toast_nu_exista_intrebari_dificultate">Nu exista nicio intrebare pentru dificultatea selectata!</string>
 </resources>
