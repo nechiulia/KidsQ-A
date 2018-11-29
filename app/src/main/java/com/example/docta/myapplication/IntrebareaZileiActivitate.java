@@ -117,7 +117,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
          @Override
          public void onClick(View v) {
              Intent intent = new Intent(getApplicationContext(),ShowImageActivity.class);
-             intent.putExtra("Imagine", intrebareaZilei.getOptiuni().getImagine());
+             intent.putExtra(Constante.IMAGINE_DIFERENTE_KEY, intrebareaZilei.getOptiuni().getImagine());
              startActivity(intent);
          }
      } ;

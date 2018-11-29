@@ -29,6 +29,7 @@ public interface Constante {
     String LISTA_INTREBARI_KEY="Transmitere lista";
     String SET_INTREBARI_KEY="Set intrebari";
     String INTREBAREA_ZILEI_KEY="Intrebarea zilei";
+    String IMAGINE_DIFERENTE_KEY="Imagini diferite";
     String NR_INTREBARI_CORECTE = "NR_Intrebari";
     String CATEGORIE_MATEMATICA="matematica";
     String CATEGORIE_ANIMALE="animale";

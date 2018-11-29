@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.docta.myapplication.util.Constante;
 import com.squareup.picasso.Picasso;
 
 public class ShowImageActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class ShowImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
-        imagine= getIntent().getStringExtra("Imagine");
+        imagine= getIntent().getStringExtra(Constante.IMAGINE_DIFERENTE_KEY);
 
        ivImagine=findViewById(R.id.imageView);
        ivImagine.setOnClickListener(new View.OnClickListener() {
