@@ -40,6 +40,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
     private ImageView imgV_imagine;
 
     private double punctaj;
+    private int nrRaspunsuriCorecte;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
 
     private void initComponents(){
         punctaj=0;
+        nrRaspunsuriCorecte=0;
         btn_rezultat=findViewById(R.id.intrebarea_zilei_btn_confirm);
         countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
         btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);
@@ -90,7 +92,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
                                 view1.getBackground().setColorFilter(colorGreen, PorterDuff.Mode.SRC_IN);
                                 toastCorect.show();
                                 punctaj += intrebareaZilei.getOptiuni().getPunctaj();
-                                //nrIntrebariCorecte++;
+                                nrRaspunsuriCorecte++;
                             } else {
                                 Toast toastGresit = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
                                 View view2 = toastGresit.getView();
@@ -101,14 +103,16 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), RezultatActivitate.class);
+                    intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
+                    intent.putExtra(Constante.NR_INTREBARI_CORECTE,nrRaspunsuriCorecte);
                     startActivity(intent);
                 }
             }
         });
-        //imgV_imagine.setOnClickListener(openShowImage());
+        imgV_imagine.setOnClickListener(openShowImage());
         initializareTextConntroale();
     }
-  /*  private View.OnClickListener openShowImage(){
+    private View.OnClickListener openShowImage(){
      return new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -117,7 +121,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
              startActivity(intent);
          }
      } ;
-    }*/
+    }
     private void initializareTextConntroale(){
         tvIntrebareaZilei.setText(intrebareaZilei.getTextIntrebare());
         rbR1.setText(intrebareaZilei.getRaspunsuri().get(0).getTextRaspuns());

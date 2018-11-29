@@ -16,7 +16,7 @@ public class ShowImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
-       imagine= intent.getStringExtra("Imagine");
+        imagine= getIntent().getStringExtra("Imagine");
 
        ivImagine=findViewById(R.id.imageView);
        ivImagine.setOnClickListener(new View.OnClickListener() {
