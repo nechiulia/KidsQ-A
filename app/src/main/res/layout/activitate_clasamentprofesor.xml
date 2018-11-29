@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/fundal"
+    android:background="@color/yellow"
     tools:context=".ClasamentProfesorActivitate">
 
     <TextView

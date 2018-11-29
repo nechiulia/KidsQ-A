@@ -54,7 +54,6 @@ public class InvatamCategorieActivitate extends AppCompatActivity {
                    finish();
                } else {
                    tvNr.setText(nrCurent + getString(R.string.test_nr_poza));
-                   imagineInfo.setImageDrawable(getDrawable(R.drawable.imagine_de_informare2));
                    tvInfo.setText(getString(R.string.test_informare_next));
                }
            }

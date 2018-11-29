@@ -105,10 +105,10 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
                 }
             }
         });
-        imgV_imagine.setOnClickListener(openShowImage());
+        //imgV_imagine.setOnClickListener(openShowImage());
         initializareTextConntroale();
     }
-    private View.OnClickListener openShowImage(){
+  /*  private View.OnClickListener openShowImage(){
      return new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -117,7 +117,7 @@ public class IntrebareaZileiActivitate extends AppCompatActivity {
              startActivity(intent);
          }
      } ;
-    }
+    }*/
     private void initializareTextConntroale(){
         tvIntrebareaZilei.setText(intrebareaZilei.getTextIntrebare());
         rbR1.setText(intrebareaZilei.getRaspunsuri().get(0).getTextRaspuns());

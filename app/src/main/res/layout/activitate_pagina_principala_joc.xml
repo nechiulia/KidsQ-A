@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fundal"
+    android:background="@color/yellow"
     tools:context=".PaginaPrincipalaJocActivitate">
 
     <Button
@@ -149,7 +149,8 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/redstar" />
+        android:src="@drawable/ic_star_black_24dp"
+        />
 
     <Button
         android:id="@+id/ppj_btn_inapoi_la_profesor"
@@ -182,6 +183,6 @@
         app:layout_constraintEnd_toStartOf="@+id/ppj_imgBtn_star"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ppj_btn_inapoi_la_profesor"
-        app:srcCompat="@drawable/intrebare" />
+        android:src="@drawable/ic_help_black_24dp" />
 
 </android.support.constraint.ConstraintLayout>
