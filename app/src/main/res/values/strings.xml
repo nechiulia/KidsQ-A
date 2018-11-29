@@ -224,4 +224,6 @@
     <string name="ppj_progress_incarcare">Se incarca testele...</string>
     <string name="ppj_progress_descarcare">Descarcare</string>
     <string name="intrebari_testul_zilei_diferit">Diferit</string>
+    <string name="loading_iv_hint">Incarcare imagine</string>
+    <string name="showimage_iv_hint">Imagine</string>
 </resources>

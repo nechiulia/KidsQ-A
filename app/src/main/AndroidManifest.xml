@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".IncarcareActivitate"
+            android:name=".LoadingActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,29 +20,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PrincipalaActivitate" />
-        <activity android:name=".AutentificareProfesorActivitate" />
-        <activity android:name=".CumparaAvatareActivitate" />
-        <activity android:name=".ClasamentElevActivitate" />
-        <activity android:name=".ClasamentProfesorActivitate" />
-        <activity android:name=".ContElevActivitate" />
-        <activity android:name=".CreareContElevActivitate" />
-        <activity android:name=".IntrebareaZileiActivitate" />
-        <activity android:name=".IntrebariActivitate" />
-        <activity android:name=".InvatamCategorieActivitate" />
-        <activity android:name=".ListaEleviActivitate" />
-        <activity android:name=".PaginaPrincipalaJocActivitate" />
-        <activity android:name=".PareriActivitate" />
-        <activity android:name=".RezultatActivitate" />
-        <activity android:name=".SaInvatamActivitate" />
-        <activity android:name=".SaNeJucamActivitate" />
-        <activity android:name=".SetariActivitate" />
-        <activity android:name=".SetariDesignActivitate" />
-        <activity android:name=".SetariElevActivitate" />
-        <activity android:name=".AjutorActivitate" />
-        <activity android:name=".AvatareleMeleActivitate" />
-        <activity android:name=".SarciniActivitate" />
-        <activity android:name=".SarciniAdaugareActivitate" />
+        <activity android:name=".LoginPageActivity" />
+        <activity android:name=".LoginTeacherActivity" />
+        <activity android:name=".PurchaseAvatarsActivity" />
+        <activity android:name=".StudentRankingActivity" />
+        <activity android:name=".TeachersRankingActivity" />
+        <activity android:name=".StudentProfileActivity" />
+        <activity android:name=".LoginStudentActivity" />
+        <activity android:name=".DailyQuestionActivity" />
+        <activity android:name=".QuestionsActivity" />
+        <activity android:name=".LearningCategoryActivity" />
+        <activity android:name=".ListStudentsActivity" />
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".ResultActivity" />
+        <activity android:name=".LetsLearnActivity" />
+        <activity android:name=".LetsPlayActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SetDesignActivity" />
+        <activity android:name=".StudentSettingsActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".MyAvatarsActivity" />
+        <activity android:name=".TasksActivity" />
+        <activity android:name=".AddTaskActivity" />
         <activity android:name=".ShowImageActivity"></activity>
     </application>
 
