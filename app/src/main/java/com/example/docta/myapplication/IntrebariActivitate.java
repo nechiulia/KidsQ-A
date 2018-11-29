@@ -132,7 +132,7 @@ public class IntrebariActivitate extends AppCompatActivity {
         }
     }
     private void initComponents(){
-        testul_zilei  = getIntent().getStringExtra(Constante.TESTUL_ZILEI) !=null ? getIntent().getStringExtra(Constante.TESTUL_ZILEI):"Diferit";
+        testul_zilei  = getIntent().getStringExtra(Constante.TESTUL_ZILEI) !=null ? getIntent().getStringExtra(Constante.TESTUL_ZILEI):getString(R.string.intrebari_testul_zilei_diferit);
         tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
         rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
         rb_raspuns1 = findViewById(R.id.intrebari_rb_raspuns1);

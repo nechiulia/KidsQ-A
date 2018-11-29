@@ -81,8 +81,8 @@ public class PaginaPrincipalaJocActivitate extends AppCompatActivity {
     private void incarcareDate(){
             progressDialog = new ProgressDialog(PaginaPrincipalaJocActivitate.this);
             progressDialog.setMax(100);
-            progressDialog.setMessage("Se incarca testele...");
-            progressDialog.setTitle("Descarcare");
+            progressDialog.setMessage(getString(R.string.ppj_progress_incarcare));
+            progressDialog.setTitle(getString(R.string.ppj_progress_descarcare));
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             progressDialog.show();
             progressDialog.getButton(ProgressDialog.BUTTON_NEUTRAL).setVisibility(View.INVISIBLE);

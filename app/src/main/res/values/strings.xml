@@ -221,4 +221,7 @@
     <string name="Titlu_SaInvatam">Sa Invatam!</string>
     <string name="Valoare_TestulZilei">Testul Zilei</string>
     <string name="jucam_toast_nu_exista_intrebari_dificultate">Nu exista nicio intrebare pentru dificultatea selectata!</string>
+    <string name="ppj_progress_incarcare">Se incarca testele...</string>
+    <string name="ppj_progress_descarcare">Descarcare</string>
+    <string name="intrebari_testul_zilei_diferit">Diferit</string>
 </resources>
