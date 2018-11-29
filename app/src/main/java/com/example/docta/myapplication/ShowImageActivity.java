@@ -12,15 +12,15 @@ import com.squareup.picasso.Picasso;
 public class ShowImageActivity extends AppCompatActivity {
  Intent intent;
     String imagine;
-    ImageView ivImagine;
+    ImageView iv_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
-        imagine= getIntent().getStringExtra(Constante.IMAGINE_DIFERENTE_KEY);
+        imagine= getIntent().getStringExtra(Constante.DIFFERENT_IMAGE_KEY);
 
-       ivImagine=findViewById(R.id.imageView);
-       ivImagine.setOnClickListener(new View.OnClickListener() {
+       iv_image=findViewById(R.id.show_image_iv);
+       iv_image.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                finish();
@@ -30,7 +30,7 @@ public class ShowImageActivity extends AppCompatActivity {
     }
     private void loadImageFromJson(String urlJson){
         Picasso.with(getApplicationContext()).load(urlJson).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
-                .into(ivImagine, new com.squareup.picasso.Callback() {
+                .into(iv_image, new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
 
