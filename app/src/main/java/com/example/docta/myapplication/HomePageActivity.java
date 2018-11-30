@@ -55,7 +55,7 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
-        sharedPreferencesSet= getSharedPreferences("Set intrebari", MODE_PRIVATE);
+        sharedPreferencesSet= getSharedPreferences(Constants.SET_PREF, MODE_PRIVATE);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(title);
@@ -64,9 +64,12 @@ public class HomePageActivity extends AppCompatActivity {
                     @Override
                     protected void onPostExecute(String s) {
                         try {
-                            questionsSet = QuestionsSetParser.fromJson(s);
                             if(!isChecked) {
                                 getInfos();
+                                questionsSet = QuestionsSetParser.fromJson(s);
+                                SharedPreferences.Editor editor= sharedPreferencesSet.edit();
+                                editor.putString(Constants.SET_INTREBARI_KEY, s);
+                                editor.commit();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -128,7 +131,14 @@ public class HomePageActivity extends AppCompatActivity {
         btn_tasks =findViewById(R.id.ppj_btn_sarcini);
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
         String utilizator= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
-
+        if(questionsSet==null){
+            String s= sharedPreferencesSet.getString(Constants.SET_INTREBARI_KEY,null);
+            try {
+                questionsSet=QuestionsSetParser.fromJson(s);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         if(utilizator.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btn_back_teacher.setVisibility(View.VISIBLE);
         }
@@ -169,7 +179,7 @@ public class HomePageActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            finish();
+                onBackPressed();
         }};
    }
    private View.OnClickListener startToLearn(){

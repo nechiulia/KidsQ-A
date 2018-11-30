@@ -24,7 +24,8 @@ public interface Constants {
     String DIFFICULTY_EASY_TEST ="Usor";
     String DIFFICULTY_MEDIUM_TEST ="Mediu";
     String DIFFICULTY_HARD_TEST ="Greu";
-
+    String SET_PREF="Set intrebari";
+    String SET_INTREBARI_KEY="set intrebari key";
     String SCORE_KEY ="SCORE_KEY";
     String QUESTIONS_LIST_KEY ="Transmitere lista";
     String QUESTIONS_SET_KEY ="Set intrebari";

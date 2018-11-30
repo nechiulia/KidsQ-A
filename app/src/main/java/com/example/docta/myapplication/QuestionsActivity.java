@@ -90,6 +90,7 @@ public class QuestionsActivity extends AppCompatActivity {
                             intent.putExtra(Constants.SCORE_KEY, score);
                             intent.putExtra(Constants.NO_CORECT_ANSWERS, no_correct_answers);
                             startActivity(intent);
+                            finish();
                         } else {
                             tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
                             initControllersText(current_no);
@@ -100,6 +101,7 @@ public class QuestionsActivity extends AppCompatActivity {
                             intent.putExtra(Constants.SCORE_KEY, score);
                             intent.putExtra(Constants.NO_CORECT_ANSWERS, no_correct_answers);
                             startActivity(intent);
+                            finish();
                         } else {
                           initControllersText(current_no);
                             tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebari));

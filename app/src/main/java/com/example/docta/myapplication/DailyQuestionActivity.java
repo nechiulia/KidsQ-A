@@ -107,6 +107,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
                     intent.putExtra(Constants.SCORE_KEY, score);
                     intent.putExtra(Constants.NO_CORECT_ANSWERS, noCorectAnswers);
                     startActivity(intent);
+                    finish();
                 }
             }
         };
