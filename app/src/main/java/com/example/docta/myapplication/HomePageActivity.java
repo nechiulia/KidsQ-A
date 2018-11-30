@@ -55,7 +55,7 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
-        sharedPreferencesSet= getSharedPreferences("Set intrebari", MODE_PRIVATE);
+        sharedPreferencesSet= getSharedPreferences(getString(R.string.home_page_text_set_intrebari), MODE_PRIVATE);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(title);
