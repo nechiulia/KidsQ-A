@@ -4,7 +4,7 @@
     <string name="main_txt_elev">Elev</string>
     <string name="loginelev_btn_autentificare">Autentificare</string>
     <string name="loginelev_btn_crearecont">Creare cont</string>
-    <string name="title_activity_login_elev_autentificare">LoginElevAutentificareActivity</string>
+    <string name="title_activity_login_elev_autentificare">Login</string>
     <string name="lae_tid_navatar_hint">Nume avatar</string>
     <string name="lae_btn_cont">Continua</string>
     <string name="lecc_numeavatar_hint">Nume avatar</string>
