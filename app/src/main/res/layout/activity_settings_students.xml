@@ -71,8 +71,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/setari_tv_dificultate"
         app:layout_constraintTop_toBottomOf="@+id/setari_img_avatar"
-
-        android:background="@color/colorPrimary"/>
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/setari_btn_design"

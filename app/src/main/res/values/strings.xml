@@ -110,7 +110,7 @@
     <string name="rezultat_btn_inapoi_str">Inapoi la pagina principala</string>
     <string name="rezultat_tv_raspunsuri_corecte_str">10</string>
     <string name="rezultat_tv_puncte_str">100</string>
-    <string name="rezultat_tv_nr_raspunsuri_str">Numar answers corecte:</string>
+    <string name="rezultat_tv_nr_raspunsuri_str">Numar raspunsuri corecte:</string>
     <string name="ppj_tvBineAiVenit_text">Bine ai venit,</string>
     <string name="ppj_tv_bineAiVenit">Bine ai venit,</string>
     <string name="lea_transfer_mesaj">Eroare transfer</string>
