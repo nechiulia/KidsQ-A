@@ -48,12 +48,14 @@ public class HomePageActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     Intent intent;
     private Boolean isChecked;
+    private SharedPreferences sharedPreferencesSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
+        sharedPreferencesSet= getSharedPreferences("Set intrebari", MODE_PRIVATE);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(title);
@@ -78,6 +80,7 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void getInfos(){
+
             progressDialog = new ProgressDialog(HomePageActivity.this);
             progressDialog.setMax(100);
             progressDialog.setMessage(getString(R.string.ppj_progress_incarcare));
@@ -123,7 +126,6 @@ public class HomePageActivity extends AppCompatActivity {
         btn_back_teacher =findViewById(R.id.ppj_btn_inapoi_la_profesor);
         img_btn_help =findViewById(R.id.ppj_imgBtn_intrebare);
         btn_tasks =findViewById(R.id.ppj_btn_sarcini);
-
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
         String utilizator= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
 

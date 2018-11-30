@@ -41,7 +41,7 @@
     <string name="jucam_btn_fructe_legume_text">Fructe si legume</string>
     <string name="jucam_btn_matematica_text">Matematică</string>
     <string name="jucam_btn_animale_text">Animale</string>
-    <string name="invatam_categ_tv_descriere">Descriere image pentru învățare-preluare din baza de date</string>
+    <string name="invatam_categ_tv_descriere">Descriere imagine pentru învățare-preluare din baza de date</string>
     <string name="invatam_categ_imgBtn_descriere">Imagine pentru informare</string>
     <string name="invatam_categ_imgBtnInapoi_descriere">Inapoi</string>
     <string name="invatam_categ_imgBtnInainte_descriere">Inainte</string>
@@ -173,7 +173,7 @@
     <string name="cumpara_avatare_iv_cd_avatar">Avatar</string>
     <string name="intrebarea_zilei_iv_poza1">Poza 1</string>
     <string name="intrebarea_zilei_iv_poza2">Poza 2</string>
-    <string name="intrebari_iv_cd_intrebare">Imagine question</string>
+    <string name="intrebari_iv_cd_intrebare">Imagine intrebare</string>
     <string name="invatam_categorii_btn_inapoi">Înapoi la categorii</string>
     <string name="lista_elevi_tv_titlu">Listă elevi</string>
     <string name="ppj_btn_inapoi_la_profesor">Înapoi la profesor</string>
@@ -194,13 +194,13 @@
     <string name="jucam_intrebari_matematica">matematică</string>
     <string name="jucam_btn_viata_text">Viața de zi cu zi</string>
     <string name="jucam_btn_litere_text">Litere</string>
-    <string name="toast_raspuns_corect">Ai raspuns correct!</string>
+    <string name="toast_raspuns_corect">Ai raspuns corect!</string>
     <string name="toast_raspuns_gresit">Ai raspuns gresit!</string>
     <string name="toast_nu_exista_intrebari">Nu exista intrebari corespunzatoare optiunilor!</string>
     <string name="Titlu_SetariCont">Setari Cont</string>
     <string name="Titlu_Clasament">Clasament</string>
     <string name="Titlu_PaginaPrincipalaJoc">Pagina Principala</string>
-    <string name="Titlu_IntrebareaZilei">Intrebrea zilei</string>
+    <string name="Titlu_IntrebareaZilei">Intrebarea zilei</string>
     <string name="Titlu_ListaElevi">Lista Elevi</string>
     <string name="Titlu_InvatamCategorie">Invatam</string>
     <string name="Titlu_Autentificare">Autentificare Elev</string>
@@ -220,10 +220,10 @@
     <string name="Titlu_Sarcini">Sarcini</string>
     <string name="Titlu_SaInvatam">Sa Invatam!</string>
     <string name="Valoare_TestulZilei">Testul Zilei</string>
-    <string name="jucam_toast_nu_exista_intrebari_dificultate">Nu exista nicio question pentru dificultatea selectata!</string>
+    <string name="jucam_toast_nu_exista_intrebari_dificultate">Nu exista nicio intrebare pentru dificultatea selectata!</string>
     <string name="ppj_progress_incarcare">Se incarca testele...</string>
     <string name="ppj_progress_descarcare">Descarcare</string>
     <string name="intrebari_testul_zilei_diferit">Diferit</string>
-    <string name="loading_iv_hint">Incarcare image</string>
+    <string name="loading_iv_hint">Incarcare imagine</string>
     <string name="showimage_iv_hint">Imagine</string>
 </resources>
