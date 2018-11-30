@@ -8,47 +8,47 @@ import android.view.View;
 import android.widget.Button;
 
 public class LetsLearnActivity extends AppCompatActivity {
-    private Button btnAnimale;
-    private Button btnFructe;
-    private Button btnLegume;
-    private Button btnTransport;
-    private Button btnTimp;
-    private Button btnCulori;
-    private Button btnCifre;
-    private Button btnLitere;
+    private Button btn_animals;
+    private Button btn_fruits;
+    private Button btn_vegetables;
+    private Button btn_vehicles;
+    private Button btn_time;
+    private Button btn_colors;
+    private Button btn_numbers;
+    private Button btn_letters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lets_learn);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_SaInvatam);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_SaInvatam);
+            this.setTitle(title);
         }
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initComponents();
     }
 private  void initComponents(){
-        btnAnimale=findViewById(R.id.invatam_btn_animale);
-        btnCifre=findViewById(R.id.invatam_btn_cifre);
-        btnCulori=findViewById(R.id.invatam_btn_culori);
-        btnFructe=findViewById(R.id.invatam_btn_fructe);
-        btnLegume=findViewById(R.id.invatam_btn_legume);
-        btnLitere=findViewById(R.id.invatam_btn_litere);
-        btnTimp=findViewById(R.id.invatam_btn_timp);
-        btnTransport=findViewById(R.id.invatam_btn_transport);
+        btn_animals =findViewById(R.id.invatam_btn_animale);
+        btn_numbers =findViewById(R.id.invatam_btn_cifre);
+        btn_colors =findViewById(R.id.invatam_btn_culori);
+        btn_fruits =findViewById(R.id.invatam_btn_fructe);
+        btn_vegetables =findViewById(R.id.invatam_btn_legume);
+        btn_letters =findViewById(R.id.invatam_btn_litere);
+        btn_time =findViewById(R.id.invatam_btn_timp);
+        btn_vehicles =findViewById(R.id.invatam_btn_transport);
 
-        btnAnimale.setOnClickListener(startCateg());
-        btnCulori.setOnClickListener(startCateg());
-        btnTransport.setOnClickListener(startCateg());
-        btnTimp.setOnClickListener(startCateg());
-        btnCifre.setOnClickListener(startCateg());
-        btnFructe.setOnClickListener(startCateg());
-        btnLegume.setOnClickListener(startCateg());
-        btnLitere.setOnClickListener(startCateg());
+        btn_animals.setOnClickListener(openCategory());
+        btn_colors.setOnClickListener(openCategory());
+        btn_vehicles.setOnClickListener(openCategory());
+        btn_time.setOnClickListener(openCategory());
+        btn_numbers.setOnClickListener(openCategory());
+        btn_fruits.setOnClickListener(openCategory());
+        btn_vegetables.setOnClickListener(openCategory());
+        btn_letters.setOnClickListener(openCategory());
 }
 
-private View.OnClickListener startCateg(){
+private View.OnClickListener openCategory(){
     return new View.OnClickListener() {
         @Override
         public void onClick(View view) {

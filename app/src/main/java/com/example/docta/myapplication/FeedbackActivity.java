@@ -1,5 +1,6 @@
 package com.example.docta.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -11,12 +12,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.util.Constants;
+
 public class FeedbackActivity extends AppCompatActivity {
-    private EditText et_parere;
-    private ProgressBar pb_medie;
+    private EditText et_feedback;
+    private ProgressBar pb_mean;
     private RatingBar rb_review;
-    private Button btn_trimite;
-    private TextView tv_medie;
+    private Button btn_send;
+    private TextView tv_mean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,23 +27,23 @@ public class FeedbackActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_Pareri);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_Pareri);
+            this.setTitle(title);
         }
         initComps();
     }
 
     private void initComps(){
-        et_parere = findViewById(R.id.pareri_et_parere);
-        pb_medie = findViewById(R.id.pareri_progressB);
+        et_feedback = findViewById(R.id.pareri_et_parere);
+        pb_mean = findViewById(R.id.pareri_progressB);
         rb_review = findViewById(R.id.pareri_ratingB);
-        btn_trimite = findViewById(R.id.pareri_btn_salveaza);
-        tv_medie = findViewById(R.id.pareri_tv_medie);
-        tv_medie.setText(null);
-        btn_trimite.setOnClickListener(salveaza());
+        btn_send = findViewById(R.id.pareri_btn_salveaza);
+        tv_mean = findViewById(R.id.pareri_tv_medie);
+        tv_mean.setText(null);
+        btn_send.setOnClickListener(save());
     }
 
-    private View.OnClickListener salveaza(){
+    private View.OnClickListener save(){
         return new View.OnClickListener(){
 
             @Override
@@ -48,12 +51,15 @@ public class FeedbackActivity extends AppCompatActivity {
                 if(isValid() && rb_review.getProgress() > 0){
 
                     Toast.makeText(getApplicationContext(),R.string.parere_multimum,Toast.LENGTH_LONG).show();
-                    pb_medie.setProgress((int)rb_review.getRating());
-                    tv_medie.setText(String.valueOf(pb_medie.getProgress()));
+                    pb_mean.setProgress((int)rb_review.getRating());
+                    tv_mean.setText(String.valueOf(pb_mean.getProgress()));
+                    Intent intent= new Intent(getApplicationContext(), HomePageActivity.class);
+                    intent.putExtra(Constants.DOWNLOAD_DONE, true);
+                    startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),R.string.parere_ratingbar_eroare,Toast.LENGTH_LONG).show();
-                    pb_medie.setProgress((int)rb_review.getRating());
-                    tv_medie.setText(null);
+                    pb_mean.setProgress((int)rb_review.getRating());
+                    tv_mean.setText(null);
                 }
             }
         };

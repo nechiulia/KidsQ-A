@@ -12,16 +12,16 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.Constante;
-import com.example.docta.myapplication.clase.Elev;
+import com.example.docta.myapplication.Classes.Student;
+import com.example.docta.myapplication.util.Constants;
 
 public class LoginStudentActivity extends AppCompatActivity {
 
     private Button btn_back;
-    private Button btn_creare;
-    private Spinner spn_varsta;
-    private TextInputEditText tie_nume;
-    private RadioGroup rgGen;
+    private Button btn_create;
+    private Spinner spn_age;
+    private TextInputEditText tie_name;
+    private RadioGroup rg_gender;
     Intent intent;
     private SharedPreferences sharedPreferences;
 
@@ -32,8 +32,8 @@ public class LoginStudentActivity extends AppCompatActivity {
         intent=getIntent();
 
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_CreareContElev);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_CreareContElev);
+            this.setTitle(title);
         }
 
         btn_back=findViewById(R.id.lecc_btn_back);
@@ -45,31 +45,29 @@ public class LoginStudentActivity extends AppCompatActivity {
             }
         });
 
-        spn_varsta=findViewById(R.id.lecc_spinner_varsta);
+        spn_age =findViewById(R.id.lecc_spinner_varsta);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),R.array.lecc_spn_varsta,R.layout.support_simple_spinner_dropdown_item);
         initComponents();
     }
 
     private void initComponents() {
         btn_back = findViewById(R.id.lecc_btn_back);
-        spn_varsta = findViewById(R.id.lecc_spinner_varsta);
+        spn_age = findViewById(R.id.lecc_spinner_varsta);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.lecc_spn_varsta, R.layout.support_simple_spinner_dropdown_item);
-        spn_varsta.setAdapter(adapter);
-        btn_creare = findViewById(R.id.lecc_btn_creare);
-        tie_nume=findViewById(R.id.lecc_tid_numeavatar);
-        rgGen=findViewById(R.id.lecc_rg_fb);
+        spn_age.setAdapter(adapter);
+        btn_create = findViewById(R.id.lecc_btn_creare);
+        tie_name =findViewById(R.id.lecc_tid_numeavatar);
+        rg_gender =findViewById(R.id.lecc_rg_fb);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* intent = new Intent(getApplicationContext(), StudentProfileActivity.class);
-                startActivity(intent);*/
                onBackPressed();
             }
         });
 
 
-        btn_creare.setOnClickListener(new View.OnClickListener() {
+        btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(),StudentProfileActivity.class);
@@ -77,27 +75,27 @@ public class LoginStudentActivity extends AppCompatActivity {
             }
         });
 
-        btn_creare.setOnClickListener(new View.OnClickListener() {
+        btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                sharedPreferences=getSharedPreferences(Constante.CONT_STATUT_PREF,MODE_PRIVATE);
-                String statut= sharedPreferences.getString(Constante.UTILIZATOR_PREF, "elev");
+                sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF,MODE_PRIVATE);
+                String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                    if(isValid()){
-                        String nume = tie_nume.getText().toString();
-                        int gen = rgGen.getCheckedRadioButtonId();
-                        int varsta = Integer.parseInt(spn_varsta.getSelectedItem().toString());
+                        String name = tie_name.getText().toString();
+                        int gender = rg_gender.getCheckedRadioButtonId();
+                        int age = Integer.parseInt(spn_age.getSelectedItem().toString());
 
-                        Elev elev = new Elev(nume, varsta, gen);
-                        intent.putExtra(Constante.ADAUGARE_ELEV_KEY, elev);
+                        Student student = new Student(name, age, gender);
+                        intent.putExtra(Constants.ADD_STUDENT_KEY, student);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
                 } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     if(isValid()){
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                        intent.putExtra(Constante.NUME_KEY, tie_nume.getText().toString());
+                        intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
                     }
                 }
@@ -109,13 +107,13 @@ public class LoginStudentActivity extends AppCompatActivity {
     }
     public boolean isValid(){
 
-        if(tie_nume.getText().toString().trim().isEmpty() || tie_nume.getText().toString().contains(" ")){
-            tie_nume.setError(getString(R.string.creare_cont_elev_numeavatar_eroare));
+        if(tie_name.getText().toString().trim().isEmpty() || tie_name.getText().toString().contains(" ")){
+            tie_name.setError(getString(R.string.creare_cont_elev_numeavatar_eroare));
             return false;
-        }else if(rgGen.getCheckedRadioButtonId()==-1){
+        }else if(rg_gender.getCheckedRadioButtonId()==-1){
             Toast.makeText(getApplicationContext(),getString(R.string.creare_cont_elev_gen_eroare),Toast.LENGTH_LONG).show();
             return false;
-        }else if(spn_varsta.getSelectedItem().toString().trim().equals(getString(R.string.creare_cont_elev_varsta_alegere))){
+        }else if(spn_age.getSelectedItem().toString().trim().equals(getString(R.string.creare_cont_elev_varsta_alegere))){
             Toast.makeText(getApplicationContext(),R.string.creare_cont_elev_varsta_eroare,Toast.LENGTH_LONG).show();
             return false;
         }

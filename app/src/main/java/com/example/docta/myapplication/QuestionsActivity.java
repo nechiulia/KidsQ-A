@@ -14,32 +14,32 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.TextView;
 
-import com.example.docta.myapplication.clase.Intrebare;
-import com.example.docta.myapplication.clase.SetIntrebari;
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.Classes.Question;
+import com.example.docta.myapplication.Classes.QuestionsSet;
+import com.example.docta.myapplication.util.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class QuestionsActivity extends AppCompatActivity {
-    private TextView tvNrIntrebare;
-    private int nrCurent;
-    private RadioGroup rg_raspunsuri;
+    private TextView tv_no_question;
+    private int current_no;
+    private RadioGroup rg_answers;
 
-    private RadioButton rb_raspuns1;
-    private RadioButton rb_raspuns2;
-    private RadioButton rb_raspuns3;
+    private RadioButton rb_answer1;
+    private RadioButton rb_answer2;
+    private RadioButton rb_answer3;
     private Button btn_confirm;
-    private ImageView imgV_imagine;
-    private TextView tvIntrebare;
+    private ImageView iv_image;
+    private TextView tv_question;
 
-    private double punctaj=0;
-    private int nrIntrebariCorecte=0;
-    String testul_zilei;
+    private double score =0;
+    private int no_correct_answers =0;
+    String daily_test;
 
-    private SetIntrebari set;
-    private ArrayList<Intrebare> listaIntrebari = new ArrayList<>();
+    private QuestionsSet set;
+    private ArrayList<Question> questionsList = new ArrayList<>();
 
     SharedPreferences sharedPreferences;
     @Override
@@ -47,62 +47,62 @@ public class QuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
 
-        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
 
-        listaIntrebari = (ArrayList<Intrebare>) getIntent().getSerializableExtra(Constante.LISTA_INTREBARI_KEY);
-        Collections.shuffle(listaIntrebari);
+        questionsList = (ArrayList<Question>) getIntent().getSerializableExtra(Constants.QUESTIONS_LIST_KEY);
+        Collections.shuffle(questionsList);
         initComponents();
-        initializarePrimaIntrebare();
+        initFirstQuestion();
     }
 
 
 
-    private View.OnClickListener confirmRaspuns() {
+    private View.OnClickListener confirmAnswer() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isValid()) {
-                    int rbCorect;
+                    int rb_correct;
                     for (int i = 0; i < 3; i++) {
-                        if (listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(i).isCorect()) {
-                            rbCorect = rg_raspunsuri.getChildAt(i).getId();
-                            if (rbCorect == rg_raspunsuri.getCheckedRadioButtonId()) {
-                                Toast toastCorect = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
-                                View view1 = toastCorect.getView();
+                        if (questionsList.get(current_no - 1).getAnswers().get(i).isCorrect()) {
+                            rb_correct = rg_answers.getChildAt(i).getId();
+                            if (rb_correct == rg_answers.getCheckedRadioButtonId()) {
+                                Toast toastCorrect = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
+                                View view1 = toastCorrect.getView();
                                 int colorGreen = ResourcesCompat.getColor(getResources(), R.color.LimeGreen, null);
                                 view1.getBackground().setColorFilter(colorGreen, PorterDuff.Mode.SRC_IN);
-                                toastCorect.show();
-                                punctaj += listaIntrebari.get(nrCurent - 1).getOptiuni().getPunctaj();
-                                nrIntrebariCorecte++;
+                                toastCorrect.show();
+                                score += questionsList.get(current_no - 1).getSettings().getScore();
+                                no_correct_answers++;
                             } else {
-                                Toast toastGresit = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
-                                View view2 = toastGresit.getView();
+                                Toast toastWrong = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
+                                View view2 = toastWrong.getView();
                                 int colorRed = ResourcesCompat.getColor(getResources(), R.color.fireBrick, null);
                                 view2.getBackground().setColorFilter(colorRed, PorterDuff.Mode.SRC_IN);
-                                toastGresit.show();
+                                toastWrong.show();
                             }
                         }
                     }
-                    nrCurent++;
-                    if (testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
-                        if (nrCurent == 11) {
+                    current_no++;
+                    if (daily_test.equals(getString(R.string.Valoare_TestulZilei))) {
+                        if (current_no == 11) {
                             Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-                            intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
-                            intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
+                            intent.putExtra(Constants.SCORE_KEY, score);
+                            intent.putExtra(Constants.NO_CORECT_ANSWERS, no_correct_answers);
                             startActivity(intent);
                         } else {
-                            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
-                            initializareTextConntroale(nrCurent);
+                            tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
+                            initControllersText(current_no);
                         }
                     }else{
-                        if (nrCurent == 6) {
+                        if (current_no == 6) {
                             Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-                            intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
-                            intent.putExtra(Constante.NR_INTREBARI_CORECTE, nrIntrebariCorecte);
+                            intent.putExtra(Constants.SCORE_KEY, score);
+                            intent.putExtra(Constants.NO_CORECT_ANSWERS, no_correct_answers);
                             startActivity(intent);
                         } else {
-                          initializareTextConntroale(nrCurent);
-                            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
+                          initControllersText(current_no);
+                            tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebari));
                         }
                     }
 
@@ -110,59 +110,59 @@ public class QuestionsActivity extends AppCompatActivity {
             }
         };
     }
-    private void initializareTextConntroale(int nrCurent){
-        tvIntrebare.setText(listaIntrebari.get(nrCurent - 1).getTextIntrebare());
-        rb_raspuns1.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(0).getTextRaspuns());
-        rb_raspuns2.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(1).getTextRaspuns());
-        rb_raspuns3.setText(listaIntrebari.get(nrCurent - 1).getRaspunsuri().get(2).getTextRaspuns());
-        loadImageFromJson(listaIntrebari.get(nrCurent - 1).getOptiuni().getImagine());
-        rg_raspunsuri.clearCheck();
+    private void initControllersText(int nrCurent){
+        tv_question.setText(questionsList.get(nrCurent - 1).getQuestionText());
+        rb_answer1.setText(questionsList.get(nrCurent - 1).getAnswers().get(0).getAnswerText());
+        rb_answer2.setText(questionsList.get(nrCurent - 1).getAnswers().get(1).getAnswerText());
+        rb_answer3.setText(questionsList.get(nrCurent - 1).getAnswers().get(2).getAnswerText());
+        loadImageFromJson(questionsList.get(nrCurent - 1).getSettings().getImage());
+        rg_answers.clearCheck();
     }
     public boolean isValid(){
-        if(rg_raspunsuri.getCheckedRadioButtonId()==-1){
-            rb_raspuns3.setError(getString(R.string.intrebarea_zilei_raspuns_eroare));
+        if(rg_answers.getCheckedRadioButtonId()==-1){
+            rb_answer3.setError(getString(R.string.intrebarea_zilei_raspuns_eroare));
             Toast.makeText(getApplicationContext(),getString(R.string.intrebarea_zilei_raspuns_eroare),Toast.LENGTH_LONG).show();
             return false;
         }
         else {
-            rb_raspuns3.setError(null);
+            rb_answer3.setError(null);
             return true;
         }
     }
     private void initComponents(){
-        testul_zilei  = getIntent().getStringExtra(Constante.TESTUL_ZILEI) !=null ? getIntent().getStringExtra(Constante.TESTUL_ZILEI):getString(R.string.intrebari_testul_zilei_diferit);
-        tvNrIntrebare=findViewById(R.id.intrebari_tv_nr_intrebare);
-        rg_raspunsuri = findViewById(R.id.intrebari_rg_raspunsuri);
-        rb_raspuns1 = findViewById(R.id.intrebari_rb_raspuns1);
-        rb_raspuns2 = findViewById(R.id.intrebari_rb_raspuns2);
-        rb_raspuns3 = findViewById(R.id.intrebari_rb_raspuns3);
+        daily_test = getIntent().getStringExtra(Constants.DAILY_TEST) !=null ? getIntent().getStringExtra(Constants.DAILY_TEST):getString(R.string.intrebari_testul_zilei_diferit);
+        tv_no_question =findViewById(R.id.intrebari_tv_nr_intrebare);
+        rg_answers = findViewById(R.id.intrebari_rg_raspunsuri);
+        rb_answer1 = findViewById(R.id.intrebari_rb_raspuns1);
+        rb_answer2 = findViewById(R.id.intrebari_rb_raspuns2);
+        rb_answer3 = findViewById(R.id.intrebari_rb_raspuns3);
         btn_confirm = findViewById(R.id.intrebari_btn_confirm);
-        imgV_imagine = findViewById(R.id.intrebari_iv_imagine);
-        tvIntrebare = findViewById(R.id.intrebari_tv_intrebare);
-        btn_confirm.setOnClickListener(confirmRaspuns());
-        nrCurent=1;
-        if(testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
-            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
+        iv_image = findViewById(R.id.intrebari_iv_imagine);
+        tv_question = findViewById(R.id.intrebari_tv_intrebare);
+        btn_confirm.setOnClickListener(confirmAnswer());
+        current_no =1;
+        if(daily_test.equals(getString(R.string.Valoare_TestulZilei))) {
+            tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebariTestulZilei));
         }else{
-            tvNrIntrebare.setText(nrCurent + getString(R.string.intrebari_tv_nr_intrebari));
+            tv_no_question.setText(current_no + getString(R.string.intrebari_tv_nr_intrebari));
         }
     }
 
 
-    private void initializarePrimaIntrebare(){
-        if(testul_zilei.equals(getString(R.string.Valoare_TestulZilei))) {
-            String titlu =  getString(R.string.Valoare_TestulZilei);
-            this.setTitle(titlu);
+    private void initFirstQuestion(){
+        if(daily_test.equals(getString(R.string.Valoare_TestulZilei))) {
+            String title =  getString(R.string.Valoare_TestulZilei);
+            this.setTitle(title);
         }else{
-            String titlu = getString(R.string.Titlu_TestIntrebari) + listaIntrebari.get(0).getOptiuni().getCategorie();
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_TestIntrebari) + questionsList.get(0).getSettings().getCategory();
+            this.setTitle(title);
         }
-        initializareTextConntroale(1);
+        initControllersText(1);
     }
 
     private void loadImageFromJson(String urlJson){
         Picasso.with(getApplicationContext()).load(urlJson).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
-                .into(imgV_imagine, new com.squareup.picasso.Callback() {
+                .into(iv_image, new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
 

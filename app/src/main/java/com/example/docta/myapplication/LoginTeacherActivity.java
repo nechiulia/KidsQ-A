@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.util.Constants;
 
 public class LoginTeacherActivity extends AppCompatActivity {
 
     private TextInputEditText tie_email;
-    private TextInputEditText tie_parola;
+    private TextInputEditText tie_password;
     private Button btn_login;
     private Button btn_back;
     Intent intent;
@@ -27,8 +27,8 @@ public class LoginTeacherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_teacher);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_AutentificareProfesor);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_AutentificareProfesor);
+            this.setTitle(title);
         }
         initComponents();
 
@@ -39,8 +39,8 @@ public class LoginTeacherActivity extends AppCompatActivity {
                 if(isValid()) {
                     intent = new Intent(getApplicationContext(), ListStudentsActivity.class);
                     SharedPreferences.Editor editor= sharedPreferences.edit();
-                    editor.putString(Constante.PAROLA_PREF, tie_parola.getText().toString());
-                    editor.putString(Constante.EMAIL_PREF, tie_email.getText().toString());
+                    editor.putString(Constants.PASSWORD_PREF, tie_password.getText().toString());
+                    editor.putString(Constants.EMAIL_PREF, tie_email.getText().toString());
                     boolean result= editor.commit();
                     startActivity(intent);
                 }
@@ -56,10 +56,10 @@ public class LoginTeacherActivity extends AppCompatActivity {
     }
     private void initComponents(){
         tie_email = findViewById(R.id.loginprof_tid_email);
-        tie_parola = findViewById(R.id.loginprof_tid_parola);
+        tie_password = findViewById(R.id.loginprof_tid_parola);
         btn_login=findViewById(R.id.loginprof_btn_login);
         btn_back=findViewById(R.id.loginprof_btn_back);
-        sharedPreferences=getSharedPreferences(Constante.PAROLA_PROF_PREF, MODE_PRIVATE);
+        sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
 
     }
 
@@ -68,8 +68,8 @@ public class LoginTeacherActivity extends AppCompatActivity {
             tie_email.setError(getText(R.string.autentificare_profesor_email_eroare));
             Toast.makeText(getApplicationContext(),R.string.autentificare_profesor_email_eroare,Toast.LENGTH_LONG).show();
             return false;
-        }else if(tie_parola.getText() == null || tie_parola.getText().toString().trim().isEmpty() || tie_parola.getText().toString().contains(" ")){
-            tie_parola.setError(getText(R.string.autentificare_profesor_parola_eroare));
+        }else if(tie_password.getText() == null || tie_password.getText().toString().trim().isEmpty() || tie_password.getText().toString().contains(" ")){
+            tie_password.setError(getText(R.string.autentificare_profesor_parola_eroare));
             Toast.makeText(getApplicationContext(),R.string.autentificare_profesor_parola_eroare,Toast.LENGTH_LONG).show();
             return false;
         }

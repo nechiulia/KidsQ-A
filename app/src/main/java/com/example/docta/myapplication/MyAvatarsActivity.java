@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MyAvatarsActivity extends AppCompatActivity {
 
-    private Button btn_cumpara;
+    private Button btn_buy;
     private Button btn_back;
     Intent intent;
 
@@ -17,8 +17,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_avatars);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_AvatareleMele);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_AvatareleMele);
+            this.setTitle(title);
         }
         init();
 
@@ -26,10 +26,10 @@ public class MyAvatarsActivity extends AppCompatActivity {
 
     }
     private void init(){
-        btn_cumpara=findViewById(R.id.avatare_disponibile_btn_cumpara);
+        btn_buy =findViewById(R.id.avatare_disponibile_btn_cumpara);
         btn_back=findViewById(R.id.avatare_disponibile_btn_inapoi);
 
-        btn_cumpara.setOnClickListener(new View.OnClickListener() {
+        btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);

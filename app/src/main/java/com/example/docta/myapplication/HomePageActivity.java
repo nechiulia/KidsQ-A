@@ -14,11 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.Intrebare;
-import com.example.docta.myapplication.clase.Network.HttpManager;
-import com.example.docta.myapplication.clase.SetIntrebari;
-import com.example.docta.myapplication.clase.SetIntrebariParser;
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.Classes.Question;
+import com.example.docta.myapplication.Classes.Network.HttpManager;
+import com.example.docta.myapplication.Classes.QuestionsSet;
+import com.example.docta.myapplication.Classes.QuestionsSetParser;
+import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONException;
 
@@ -28,23 +28,23 @@ import java.util.Collections;
 
 public class HomePageActivity extends AppCompatActivity {
 
-    private Button btnJucam;
-    private Button btnInvatam;
-    private Button btnClasament;
-    private Button btnSetari;
-    private Button btnAvatareleMele;
-    private Button btnTestulZilei;
-    private Button btnIntrebareaZilei;
-    private ImageButton imgBtnParere;
-    private TextView tvNumeAvatar;
-    private Button btnInapoiProfesor;
-    private Button btnSarcini;
+    private Button btn_play;
+    private Button btn_learn;
+    private Button btn_ranking;
+    private Button btn_settings;
+    private Button btn_my_avatars;
+    private Button btn_daily_test;
+    private Button btn_daily_question;
+    private ImageButton img_btn_feedback;
+    private TextView tv_avatar_name;
+    private Button btn_back_teacher;
+    private Button btn_tasks;
     private SharedPreferences sharedPreferences;
-    private ImageButton imgBtnAjutor;
-    private static final String URL = Constante.URL_JSON_TESTE;
-    private SetIntrebari setIntrebari;
-    private ArrayList<Intrebare> intrebariTestulZilei;
-    private ArrayList<Intrebare> intrebareaZilei;
+    private ImageButton img_btn_help;
+    private static final String URL = Constants.URL_JSON_TESTS;
+    private QuestionsSet questionsSet;
+    private ArrayList<Question> dailyTestQuestions;
+    private ArrayList<Question> dailyQuestion;
     private ProgressDialog progressDialog;
     Intent intent;
     private Boolean isChecked;
@@ -53,18 +53,18 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        isChecked = getIntent().getBooleanExtra(Constante.VALIDARE_DESCARCARE,false);
+        isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_PaginaPrincipalaJoc);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_PaginaPrincipalaJoc);
+            this.setTitle(title);
         }
                 @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
                     @Override
                     protected void onPostExecute(String s) {
                         try {
-                            setIntrebari = SetIntrebariParser.fromJson(s);
+                            questionsSet = QuestionsSetParser.fromJson(s);
                             if(!isChecked) {
-                                incarcareDate();
+                                getInfos();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -77,7 +77,7 @@ public class HomePageActivity extends AppCompatActivity {
         initComponents();
     }
 
-    private void incarcareDate(){
+    private void getInfos(){
             progressDialog = new ProgressDialog(HomePageActivity.this);
             progressDialog.setMax(100);
             progressDialog.setMessage(getString(R.string.ppj_progress_incarcare));
@@ -111,49 +111,49 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        btnJucam=findViewById(R.id.ppj_btn_jucam);
-        btnInvatam=findViewById(R.id.ppj_btn_invatam);
-        btnAvatareleMele=findViewById(R.id.ppj_btn_avatareleMele);
-        btnClasament=findViewById(R.id.ppj_btn_clasament);
-        btnIntrebareaZilei=findViewById(R.id.ppj_btn_intrebareaZilei);
-        btnTestulZilei=findViewById(R.id.ppj_btn_testulZilei);
-        btnSetari=findViewById(R.id.ppj_btn_setari);
-        imgBtnParere=findViewById(R.id.ppj_imgBtn_star);
-        tvNumeAvatar=findViewById(R.id.ppj_tv_bunVenit);
-        btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
-        imgBtnAjutor=findViewById(R.id.ppj_imgBtn_intrebare);
-        btnSarcini=findViewById(R.id.ppj_btn_sarcini);
+        btn_play =findViewById(R.id.ppj_btn_jucam);
+        btn_learn =findViewById(R.id.ppj_btn_invatam);
+        btn_my_avatars =findViewById(R.id.ppj_btn_avatareleMele);
+        btn_ranking =findViewById(R.id.ppj_btn_clasament);
+        btn_daily_question =findViewById(R.id.ppj_btn_intrebareaZilei);
+        btn_daily_test =findViewById(R.id.ppj_btn_testulZilei);
+        btn_settings =findViewById(R.id.ppj_btn_setari);
+        img_btn_feedback =findViewById(R.id.ppj_imgBtn_star);
+        tv_avatar_name =findViewById(R.id.ppj_tv_bunVenit);
+        btn_back_teacher =findViewById(R.id.ppj_btn_inapoi_la_profesor);
+        img_btn_help =findViewById(R.id.ppj_imgBtn_intrebare);
+        btn_tasks =findViewById(R.id.ppj_btn_sarcini);
 
-        sharedPreferences= getSharedPreferences(Constante.CONT_STATUT_PREF, MODE_PRIVATE);
-        String utilizator= sharedPreferences.getString(Constante.UTILIZATOR_PREF, getString(R.string.ppj_utilizator_default_pref));
+        sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
+        String utilizator= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
 
         if(utilizator.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
-            btnInapoiProfesor.setVisibility(View.VISIBLE);
+            btn_back_teacher.setVisibility(View.VISIBLE);
         }
         else {
-            btnInapoiProfesor.setVisibility(View.INVISIBLE);
+            btn_back_teacher.setVisibility(View.INVISIBLE);
         }
-        String nume= getIntent().getStringExtra(Constante.NUME_KEY);
+        String nume= getIntent().getStringExtra(Constants.NAME_KEY);
         if (nume==null){
-            tvNumeAvatar.setText(getString(R.string.ppj_tv_bine_ai_venit_null));
+            tv_avatar_name.setText(getString(R.string.ppj_tv_bine_ai_venit_null));
         }
         else {
-        tvNumeAvatar.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
+        tv_avatar_name.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         }
-        btnInvatam.setOnClickListener(startSaInvatam());
-        btnJucam.setOnClickListener(startSaNeJucam());
-        btnIntrebareaZilei.setOnClickListener(deschideIntrebareaZilei());
-        btnTestulZilei.setOnClickListener(deschideTest());
-        btnAvatareleMele.setOnClickListener(deschideAvatare());
-        btnClasament.setOnClickListener(deschideClasament());
-        btnSetari.setOnClickListener(deschideSetari());
-        imgBtnParere.setOnClickListener(deschidePareri());
-        btnInapoiProfesor.setOnClickListener(inapoiLaProfesor());
-        imgBtnAjutor.setOnClickListener(deschideAjutor());
-        btnSarcini.setOnClickListener(startSarcini());
+        btn_learn.setOnClickListener(startToLearn());
+        btn_play.setOnClickListener(startToPlay());
+        btn_daily_question.setOnClickListener(openDailyQuestion());
+        btn_daily_test.setOnClickListener(openDailyTest());
+        btn_my_avatars.setOnClickListener(openAvatars());
+        btn_ranking.setOnClickListener(openRanking());
+        btn_settings.setOnClickListener(openSettings());
+        img_btn_feedback.setOnClickListener(openFeedback());
+        btn_back_teacher.setOnClickListener(backToTeacher());
+        img_btn_help.setOnClickListener(openHelp());
+        btn_tasks.setOnClickListener(openTasks());
    }
 
-   private View.OnClickListener startSarcini()
+   private View.OnClickListener openTasks()
    {
        return new View.OnClickListener() {
            @Override
@@ -163,14 +163,14 @@ public class HomePageActivity extends AppCompatActivity {
            }
        };
    }
-   private View.OnClickListener inapoiLaProfesor(){
+   private View.OnClickListener backToTeacher(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             finish();
         }};
    }
-   private View.OnClickListener startSaInvatam(){
+   private View.OnClickListener startToLearn(){
        return new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -179,37 +179,37 @@ public class HomePageActivity extends AppCompatActivity {
            }
        };
     }
-    private View.OnClickListener startSaNeJucam(){
+    private View.OnClickListener startToPlay(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LetsPlayActivity.class);
-                intent.putExtra(Constante.SET_INTREBARI_KEY,setIntrebari);
+                intent.putExtra(Constants.QUESTIONS_SET_KEY, questionsSet);
                 startActivity(intent);
             }
         };
     }
-    private View.OnClickListener deschideIntrebareaZilei(){
+    private View.OnClickListener openDailyQuestion(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intrebareaZilei=setIntrebari.getIntrebareaZilei();
-                Collections.shuffle(intrebareaZilei);
+                dailyQuestion = questionsSet.getDailyQuestion();
+                Collections.shuffle(dailyQuestion);
                 Intent intent = new Intent(getApplicationContext(), DailyQuestionActivity.class);
-                intent.putExtra(Constante.INTREBAREA_ZILEI_KEY, intrebareaZilei.get(0));
+                intent.putExtra(Constants.DAILY_QUESTION_KEY, dailyQuestion.get(0));
                 startActivity(intent);
             }
         };
     }
-    private View.OnClickListener deschideTest(){
+    private View.OnClickListener openDailyTest(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intrebariTestulZilei = setIntrebari.getGreu();
+                dailyTestQuestions = questionsSet.getHard();
                 Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                intent.putExtra(Constante.TESTUL_ZILEI,getString(R.string.Valoare_TestulZilei));
-                intent.putExtra(Constante.LISTA_INTREBARI_KEY,intrebariTestulZilei);
+                intent.putExtra(Constants.DAILY_TEST,getString(R.string.Valoare_TestulZilei));
+                intent.putExtra(Constants.QUESTIONS_LIST_KEY, dailyTestQuestions);
                 startActivity(intent);
                 finish();
             }
@@ -217,7 +217,7 @@ public class HomePageActivity extends AppCompatActivity {
         };
 
     }
-    private View.OnClickListener deschideAvatare(){
+    private View.OnClickListener openAvatars(){
 
         return new View.OnClickListener() {
             @Override
@@ -229,19 +229,19 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener deschideClasament(){
+    private View.OnClickListener openRanking(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), StudentRankingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RankingActivity.class);
                 startActivity(intent);
             }
         };
 
     }
 
-    private View.OnClickListener deschideSetari(){
+    private View.OnClickListener openSettings(){
 
         return new View.OnClickListener() {
             @Override
@@ -254,7 +254,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener deschidePareri(){
+    private View.OnClickListener openFeedback(){
 
         return new View.OnClickListener() {
             @Override
@@ -266,7 +266,7 @@ public class HomePageActivity extends AppCompatActivity {
         };
 
     }
-    private View.OnClickListener deschideAjutor(){
+    private View.OnClickListener openHelp(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {

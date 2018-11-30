@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.clase.Adaptor;
+package com.example.docta.myapplication.Classes.Adaptor;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -13,19 +13,19 @@ import java.util.List;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
-    private List<String> listaIntrebari;
-    private HashMap<String, List<String>> listaRaspunsuri;
+    private List<String> questionsList;
+    private HashMap<String, List<String>> answersList;
 
-    public ExpandableListAdapter(Context context, List<String> listaIntrebari,
-                                 HashMap<String, List<String>> listaRaspunsuri) {
+    public ExpandableListAdapter(Context context, List<String> questionsList,
+                                 HashMap<String, List<String>> answersList) {
         this._context = context;
-        this.listaIntrebari = listaIntrebari;
-        this.listaRaspunsuri = listaRaspunsuri;
+        this.questionsList = questionsList;
+        this.answersList = answersList;
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
-        return this.listaRaspunsuri.get(this.listaIntrebari.get(groupPosition))
+        return this.answersList.get(this.questionsList.get(groupPosition))
                 .get(childPosititon);
     }
 
@@ -36,18 +36,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.listaRaspunsuri.get(this.listaIntrebari.get(groupPosition))
+        return this.answersList.get(this.questionsList.get(groupPosition))
                 .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return this.listaIntrebari.get(groupPosition);
+        return this.questionsList.get(groupPosition);
     }
 
     @Override
     public int getGroupCount() {
-        return this.listaIntrebari.size();
+        return this.questionsList.size();
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String raspuns = (String) getChild(groupPosition, childPosition);
+        final String answer = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this._context
@@ -67,27 +67,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.ex_list_item, null);
         }
 
-        TextView tvRaspuns = convertView
+        TextView tvAnswer = convertView
                 .findViewById(R.id.tv_ex_list_item);
 
-        tvRaspuns.setText(raspuns);
+        tvAnswer.setText(answer);
         return convertView;
     }
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String titlu = (String) getGroup(groupPosition);
+        String title = (String) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.ex_list_group, null);
         }
 
-        TextView tvTitlu = convertView
+        TextView tvTitle = convertView
                 .findViewById(R.id.tv_ex_list_group);
-        tvTitlu.setTypeface(null, Typeface.BOLD);
-        tvTitlu.setText(titlu);
+        tvTitle.setTypeface(null, Typeface.BOLD);
+        tvTitle.setText(title);
 
         return convertView;
     }

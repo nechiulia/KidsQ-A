@@ -23,8 +23,7 @@
         <activity android:name=".LoginPageActivity" />
         <activity android:name=".LoginTeacherActivity" />
         <activity android:name=".PurchaseAvatarsActivity" />
-        <activity android:name=".StudentRankingActivity" />
-        <activity android:name=".TeachersRankingActivity" />
+        <activity android:name=".RankingActivity" />
         <activity android:name=".StudentProfileActivity" />
         <activity android:name=".LoginStudentActivity" />
         <activity android:name=".DailyQuestionActivity" />

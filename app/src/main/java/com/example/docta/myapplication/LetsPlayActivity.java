@@ -9,88 +9,88 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.SetIntrebari;
-import com.example.docta.myapplication.clase.Intrebare;
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.Classes.QuestionsSet;
+import com.example.docta.myapplication.Classes.Question;
+import com.example.docta.myapplication.util.Constants;
 
 import java.util.ArrayList;
 
 public class LetsPlayActivity extends AppCompatActivity {
-    private Button btnMatematica;
-    private Button btnViata;
-    private Button btnAnimale;
-    private Button btnLitere;
-    private Button btnFructe;
-    private static final String URL = Constante.URL_JSON_TESTE;
+    private Button btn_math;
+    private Button btn_life;
+    private Button btn_animals;
+    private Button btn_letters;
+    private Button btn_fruits;
+    private static final String URL = Constants.URL_JSON_TESTS;
 
 
-    private SetIntrebari setIntrebari;
+    private QuestionsSet questionsSet;
     SharedPreferences sharedPreferences;
 
-    private ArrayList<Intrebare> listaIntrebariDificultate;
-    private ArrayList<Intrebare> listaIntrebariTest;
-    String dificultate;
+    private ArrayList<Question> difficultyQuestionsList;
+    private ArrayList<Question> testQuestionsList;
+    String difficulty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lets_play);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_SaNeJucam);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_SaNeJucam);
+            this.setTitle(title);
         }
-        setIntrebari = (SetIntrebari) getIntent().getSerializableExtra(Constante.SET_INTREBARI_KEY);
+        questionsSet = (QuestionsSet) getIntent().getSerializableExtra(Constants.QUESTIONS_SET_KEY);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
         initComponents();
     }
     private void initComponents(){
 
-        btnMatematica= findViewById(R.id.jucam_btn_matematica);
-        btnLitere=findViewById(R.id.jucam_btn_litere);
-        btnFructe=findViewById(R.id.jucam_btn_fructe_legume);
-        btnViata=findViewById(R.id.jucam_btn_viata_dezicuzi);
-        btnAnimale=findViewById(R.id.jucam_btn_animale);
-        listaIntrebariTest=new ArrayList<>();
+        btn_math = findViewById(R.id.jucam_btn_matematica);
+        btn_letters =findViewById(R.id.jucam_btn_litere);
+        btn_fruits =findViewById(R.id.jucam_btn_fructe_legume);
+        btn_life =findViewById(R.id.jucam_btn_viata_dezicuzi);
+        btn_animals =findViewById(R.id.jucam_btn_animale);
+        testQuestionsList =new ArrayList<>();
 
-        btnMatematica.setOnClickListener(deschideTestMatematica());
-        btnFructe.setOnClickListener(deschideTestFructe());
-        btnLitere.setOnClickListener(deschideTestLitere());
-        btnAnimale.setOnClickListener(deschideTestAnimale());
-        btnViata.setOnClickListener(deschideTestViata());
-        dificultate = sharedPreferences.getString(Constante.DIFICULTATE_PREF,null);
-        initializareListeDificultate();
+        btn_math.setOnClickListener(openMathTests());
+        btn_fruits.setOnClickListener(openFruitsTest());
+        btn_letters.setOnClickListener(openLettersTest());
+        btn_animals.setOnClickListener(openAnimalsTest());
+        btn_life.setOnClickListener(openLifeTests());
+        difficulty = sharedPreferences.getString(Constants.DIFFICULTY_PREF,Constants.DIFFICULTY_EASY_TEST);
+        initDificultyList();
     }
-    private void initializareListeDificultate(){
-        listaIntrebariDificultate=new ArrayList<>();
-        if(setIntrebari!=null){
-            if(dificultate.equals(Constante.USOR_DIFICULTATE_TEST)){
-                listaIntrebariDificultate=setIntrebari.getUsor();
+    private void initDificultyList(){
+        difficultyQuestionsList =new ArrayList<>();
+        if(questionsSet !=null){
+            if(difficulty.equals(Constants.DIFFICULTY_EASY_TEST)){
+                difficultyQuestionsList = questionsSet.getEasy();
             }
-            else if(dificultate.equals(Constante.MEDIU_DIFICULTATE_TEST)){
-                listaIntrebariDificultate=setIntrebari.getMediu();
+            else if(difficulty.equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                difficultyQuestionsList = questionsSet.getMedium();
             }
-            else if(dificultate.equals(Constante.GREU_DIFICULTATE_TEST)){
-                listaIntrebariDificultate=setIntrebari.getGreu();
+            else if(difficulty.equals(Constants.DIFFICULTY_HARD_TEST)){
+                difficultyQuestionsList = questionsSet.getHard();
             }
         }
         else {
             Toast.makeText(getApplicationContext(), getString(R.string.jucam_toast_nu_exista_intrebari_dificultate), Toast.LENGTH_LONG).show();
         }
     }
-    private View.OnClickListener deschideTestAnimale(){
+    private View.OnClickListener openAnimalsTest(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listaIntrebariDificultate.size()!=0) {
-                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
-                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_ANIMALE)) {
-                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
+                if(difficultyQuestionsList.size()!=0) {
+                    for (int i = 0; i < difficultyQuestionsList.size(); i++) {
+                        if (difficultyQuestionsList.get(i).getSettings().getCategory().equals(Constants.CATEGORY_ANIMALS)) {
+                            testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                    intent.putExtra(Constante.LISTA_INTREBARI_KEY,listaIntrebariTest);
+                    intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
                     finish();
                 }
@@ -102,19 +102,19 @@ public class LetsPlayActivity extends AppCompatActivity {
 
         };
     }
-    private View.OnClickListener deschideTestLitere(){
+    private View.OnClickListener openLettersTest(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listaIntrebariDificultate.size()!=0) {
-                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
-                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_LITERE)) {
-                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
+                if(difficultyQuestionsList.size()!=0) {
+                    for (int i = 0; i < difficultyQuestionsList.size(); i++) {
+                        if (difficultyQuestionsList.get(i).getSettings().getCategory().equals(Constants.CATEGORY_LETTERS)) {
+                            testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                    intent.putExtra(Constante.LISTA_INTREBARI_KEY,listaIntrebariTest);
+                    intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
                     finish();
                 }
@@ -125,19 +125,19 @@ public class LetsPlayActivity extends AppCompatActivity {
         };
 
     }
-    private View.OnClickListener deschideTestFructe(){
+    private View.OnClickListener openFruitsTest(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listaIntrebariDificultate.size()!=0) {
-                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
-                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_FRUCTE)) {
-                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
+                if(difficultyQuestionsList.size()!=0) {
+                    for (int i = 0; i < difficultyQuestionsList.size(); i++) {
+                        if (difficultyQuestionsList.get(i).getSettings().getCategory().equals(Constants.CATEGORY_FRUITS)) {
+                            testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                    intent.putExtra(Constante.LISTA_INTREBARI_KEY,listaIntrebariTest);
+                    intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
                     finish();
                 }
@@ -147,19 +147,19 @@ public class LetsPlayActivity extends AppCompatActivity {
             }
         };
     }
-    private View.OnClickListener deschideTestViata(){
+    private View.OnClickListener openLifeTests(){
 
         return new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(listaIntrebariDificultate.size()!=0) {
-                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
-                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_VIATA)) {
-                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
+                if(difficultyQuestionsList.size()!=0) {
+                    for (int i = 0; i < difficultyQuestionsList.size(); i++) {
+                        if (difficultyQuestionsList.get(i).getSettings().getCategory().equals(Constants.CATEGORY_LIFE)) {
+                            testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                    intent.putExtra(Constante.LISTA_INTREBARI_KEY,listaIntrebariTest);
+                    intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
                     finish();
                 }
@@ -169,19 +169,19 @@ public class LetsPlayActivity extends AppCompatActivity {
             }
         };
     }
-    private View.OnClickListener deschideTestMatematica(){
+    private View.OnClickListener openMathTests(){
 
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listaIntrebariDificultate.size()!=0) {
-                    for (int i = 0; i < listaIntrebariDificultate.size(); i++) {
-                        if (listaIntrebariDificultate.get(i).getOptiuni().getCategorie().equals(Constante.CATEGORIE_MATEMATICA)) {
-                            listaIntrebariTest.add(listaIntrebariDificultate.get(i));
+                if(difficultyQuestionsList.size()!=0) {
+                    for (int i = 0; i < difficultyQuestionsList.size(); i++) {
+                        if (difficultyQuestionsList.get(i).getSettings().getCategory().equals(Constants.CATEGORY_MATH)) {
+                            testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
-                    intent.putExtra(Constante.LISTA_INTREBARI_KEY,listaIntrebariTest);
+                    intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
                     finish();
                 }

@@ -7,24 +7,36 @@
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".TeachersRankingActivity">
+    tools:context=".RankingActivity">
 
     <TextView
         android:id="@+id/clasament_tv_clasament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
         android:text="@string/clasament_elev_tv_titlu"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="35dp"
         android:textSize="16sp"
-        android:gravity="center"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/clasament_lv_eleviClasament"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/clasament_tv_clasament">
-    </ListView>
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clasament_tv_clasament"></ListView>
 
 
     <android.support.design.widget.BottomNavigationView

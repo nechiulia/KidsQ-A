@@ -13,11 +13,11 @@ import android.widget.Toast;
 
 public class LearningCategoryActivity extends AppCompatActivity {
     private ImageButton imgBtnNext;
-    private TextView tvNr;
-    private ImageView imagineInfo;
-    private TextView tvInfo;
-    private Button btnInapoi;
-    private static int nrCurent;
+    private TextView tv_no_question;
+    private ImageView iv_info;
+    private TextView tv_info;
+    private Button btn_back;
+    private static int current_no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,21 +25,21 @@ public class LearningCategoryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_InvatamCategorie);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_InvatamCategorie);
+            this.setTitle(title);
         }
         initComponents();
     }
 
    private void initComponents(){
        imgBtnNext=findViewById(R.id.invatam_categ_imgBtn_inainte);
-       tvNr=findViewById(R.id.invatam_categ_tv_nr_curent);
-       tvInfo=findViewById(R.id.invatam_categ_tv_informatie);
-       imagineInfo=findViewById(R.id.invatam_categ_imgBtn);
-       btnInapoi=findViewById(R.id.invatam_categ_btn_inapoi);
-       nrCurent=1;
+       tv_no_question =findViewById(R.id.invatam_categ_tv_nr_curent);
+       tv_info =findViewById(R.id.invatam_categ_tv_informatie);
+       iv_info =findViewById(R.id.invatam_categ_imgBtn);
+       btn_back =findViewById(R.id.invatam_categ_btn_inapoi);
+       current_no =1;
        imgBtnNext.setOnClickListener(nextEvent());
-       btnInapoi.setOnClickListener(backEvent());
+       btn_back.setOnClickListener(backEvent());
    }
 
     @TargetApi(21)
@@ -47,13 +47,13 @@ public class LearningCategoryActivity extends AppCompatActivity {
        return new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               nrCurent++;
-               if (nrCurent == 11) {
+               current_no++;
+               if (current_no == 11) {
                    Toast.makeText(getApplicationContext(), getString(R.string.invatam_categorie_toast_felicitari), Toast.LENGTH_LONG).show();
                    finish();
                } else {
-                   tvNr.setText(nrCurent + getString(R.string.test_nr_poza));
-                   tvInfo.setText(getString(R.string.test_informare_next));
+                   tv_no_question.setText(current_no + getString(R.string.test_nr_poza));
+                   tv_info.setText(getString(R.string.test_informare_next));
                }
            }
        };

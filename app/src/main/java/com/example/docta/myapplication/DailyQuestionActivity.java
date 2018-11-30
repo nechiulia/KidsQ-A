@@ -14,35 +14,35 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.Intrebare;
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.Classes.Question;
+import com.example.docta.myapplication.util.Constants;
 import com.squareup.picasso.Picasso;
 
 public class DailyQuestionActivity extends AppCompatActivity {
 
-    private Button btn_rezultat;
+    private Button btn_result;
     private TextView countdown_text;
     private Button btn_countdown;
-    private TextView tvIntrebareaZilei;
+    private TextView tv_daily_question;
     private CountDownTimer countDownTimer;
     private long timeLeftInMiliseconds=600000; //10 min
     private boolean timerunning;
-    private RadioButton rbR1;
-    private RadioButton rbR2;
-    private RadioButton rbR3;
-    private RadioGroup rg_optiuni;
-    private Intrebare intrebareaZilei;
-    private ImageView imgV_imagine;
+    private RadioButton rb_answer1;
+    private RadioButton rb_answer2;
+    private RadioButton rb_answer3;
+    private RadioGroup rg_options;
+    private Question dailyQuestion;
+    private ImageView iv_image;
 
-    private double punctaj;
-    private int nrRaspunsuriCorecte;
+    private double score;
+    private int noCorectAnswers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_question);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_IntrebareaZilei);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_IntrebareaZilei);
+            this.setTitle(title);
         }
         initComponents();
 
@@ -50,84 +50,88 @@ public class DailyQuestionActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        punctaj=0;
-        nrRaspunsuriCorecte=0;
-        btn_rezultat=findViewById(R.id.intrebarea_zilei_btn_confirm);
+        score =0;
+        noCorectAnswers =0;
+        btn_result =findViewById(R.id.intrebarea_zilei_btn_confirm);
         countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
         btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);
-        btn_rezultat.setVisibility(View.INVISIBLE);
-        rg_optiuni = findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
-        rbR1 = findViewById(R.id.intrebarea_zilei_rb_raspuns1);
-        rbR2 = findViewById(R.id.intrebarea_zilei_rb_raspuns2);
-        rbR3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
-        tvIntrebareaZilei=findViewById(R.id.intrebarea_zilei_tv_intrebare);
-        imgV_imagine=findViewById(R.id.intrebarea_zilei_iv_original);
-        intrebareaZilei= (Intrebare)getIntent().getSerializableExtra(Constante.INTREBAREA_ZILEI_KEY);
+        btn_result.setVisibility(View.INVISIBLE);
+        rg_options = findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
+        rb_answer1 = findViewById(R.id.intrebarea_zilei_rb_raspuns1);
+        rb_answer2 = findViewById(R.id.intrebarea_zilei_rb_raspuns2);
+        rb_answer3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
+        tv_daily_question =findViewById(R.id.intrebarea_zilei_tv_intrebare);
+        iv_image =findViewById(R.id.intrebarea_zilei_iv_original);
+        dailyQuestion = (Question)getIntent().getSerializableExtra(Constants.DAILY_QUESTION_KEY);
+
+        btn_result.setOnClickListener(clickResult());
+        iv_image.setOnClickListener(openShowImage());
         btn_countdown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               btn_rezultat.setVisibility(View.VISIBLE);
+                btn_result.setVisibility(View.VISIBLE);
                 startStop();
             }
         });
         btn_countdown.performClick();
-        btn_rezultat.setOnClickListener(new View.OnClickListener() {
+        initControllersText();
+    }
+    private View.OnClickListener clickResult(){
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (isValid()) {
-                    int rbCorect;
+                    int rb_correct;
                     for (int i = 0; i < 3; i++) {
-                        if (intrebareaZilei.getRaspunsuri().get(i).isCorect()) {
-                            rbCorect = rg_optiuni.getChildAt(i).getId();
-                            if (rbCorect == rg_optiuni.getCheckedRadioButtonId()) {
-                                Toast toastCorect = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
-                                View view1 = toastCorect.getView();
+                        if (dailyQuestion.getAnswers().get(i).isCorrect()) {
+                            rb_correct = rg_options.getChildAt(i).getId();
+                            if (rb_correct == rg_options.getCheckedRadioButtonId()) {
+                                Toast toastCorrect = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_corect), Toast.LENGTH_SHORT);
+                                View view1 = toastCorrect.getView();
                                 int colorGreen = ResourcesCompat.getColor(getResources(), R.color.LimeGreen, null);
                                 view1.getBackground().setColorFilter(colorGreen, PorterDuff.Mode.SRC_IN);
-                                toastCorect.show();
-                                punctaj += intrebareaZilei.getOptiuni().getPunctaj();
-                                nrRaspunsuriCorecte++;
+                                toastCorrect.show();
+                                score += dailyQuestion.getSettings().getScore();
+                                noCorectAnswers++;
                             } else {
-                                Toast toastGresit = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
-                                View view2 = toastGresit.getView();
+                                Toast toastWrong = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
+                                View view2 = toastWrong.getView();
                                 int colorRed = ResourcesCompat.getColor(getResources(), R.color.fireBrick, null);
                                 view2.getBackground().setColorFilter(colorRed, PorterDuff.Mode.SRC_IN);
-                                toastGresit.show();
+                                toastWrong.show();
                             }
                         }
                     }
                     Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
-                    intent.putExtra(Constante.PUNCTAJ_KEY, punctaj);
-                    intent.putExtra(Constante.NR_INTREBARI_CORECTE,nrRaspunsuriCorecte);
+                    intent.putExtra(Constants.SCORE_KEY, score);
+                    intent.putExtra(Constants.NO_CORECT_ANSWERS, noCorectAnswers);
                     startActivity(intent);
                 }
             }
-        });
-        imgV_imagine.setOnClickListener(openShowImage());
-        initializareTextConntroale();
+        };
     }
     private View.OnClickListener openShowImage(){
      return new View.OnClickListener() {
          @Override
          public void onClick(View v) {
              Intent intent = new Intent(getApplicationContext(),ShowImageActivity.class);
-             intent.putExtra(Constante.DIFFERENT_IMAGE_KEY, intrebareaZilei.getOptiuni().getImagine());
+             intent.putExtra(Constants.DIFFERENT_IMAGE_KEY, dailyQuestion.getSettings().getImage());
              startActivity(intent);
          }
      } ;
     }
-    private void initializareTextConntroale(){
-        tvIntrebareaZilei.setText(intrebareaZilei.getTextIntrebare());
-        rbR1.setText(intrebareaZilei.getRaspunsuri().get(0).getTextRaspuns());
-        rbR2.setText(intrebareaZilei.getRaspunsuri().get(1).getTextRaspuns());
-        rbR3.setText(intrebareaZilei.getRaspunsuri().get(2).getTextRaspuns());
-        loadImageFromJson(intrebareaZilei.getOptiuni().getImagine());
-        rg_optiuni.clearCheck();
+    private void initControllersText(){
+        tv_daily_question.setText(dailyQuestion.getQuestionText());
+        rb_answer1.setText(dailyQuestion.getAnswers().get(0).getAnswerText());
+        rb_answer2.setText(dailyQuestion.getAnswers().get(1).getAnswerText());
+        rb_answer3.setText(dailyQuestion.getAnswers().get(2).getAnswerText());
+        loadImageFromJson(dailyQuestion.getSettings().getImage());
+        rg_options.clearCheck();
     }
     private void loadImageFromJson(String urlJson){
         Picasso.with(getApplicationContext()).load(urlJson).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
-                .into(imgV_imagine, new com.squareup.picasso.Callback() {
+                .into(iv_image, new com.squareup.picasso.Callback() {
                     @Override
                     public void onSuccess() {
 
@@ -149,8 +153,8 @@ public class DailyQuestionActivity extends AppCompatActivity {
     }
 
     public boolean isValid(){
-        if(rg_optiuni.getCheckedRadioButtonId()==-1){
-            rbR3.setError(getString(R.string.intrebarea_zilei_raspuns_eroare));
+        if(rg_options.getCheckedRadioButtonId()==-1){
+            rb_answer3.setError(getString(R.string.intrebarea_zilei_raspuns_eroare));
             Toast.makeText(getApplicationContext(),getString(R.string.intrebarea_zilei_raspuns_eroare),Toast.LENGTH_LONG).show();
             return false;
         }

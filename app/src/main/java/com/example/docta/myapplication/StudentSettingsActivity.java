@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.util.Constants;
 
 public class StudentSettingsActivity extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
     private Button btn_design;
     private Button btn_logout;
     Intent intent;
-    private Spinner spn_dificultati;
+    private Spinner spn_difficulty;
 
     SharedPreferences sharedPreferences;
 
@@ -27,8 +27,8 @@ public class StudentSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings_students);
         initComps();
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_SetariCont);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_SetariCont);
+            this.setTitle(title);
         }
 
 
@@ -36,13 +36,12 @@ public class StudentSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constante.DIFICULTATE_PREF, spn_dificultati.getSelectedItem().toString());
-                int pozitieSelectata = spn_dificultati.getSelectedItemPosition();
-                editor.putInt(Constante.SPINNER_POZITIE,pozitieSelectata);
+                editor.putString(Constants.DIFFICULTY_PREF, spn_difficulty.getSelectedItem().toString());
+                int selectedPosition = spn_difficulty.getSelectedItemPosition();
+                editor.putInt(Constants.SPINNER_POSITION, selectedPosition);
                 editor.commit();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
-                intent.putExtra(Constante.VALIDARE_DESCARCARE,true);
-
+                intent.putExtra(Constants.DOWNLOAD_DONE,true);
                 startActivity(intent);
                 finish();
             }
@@ -69,20 +68,20 @@ public class StudentSettingsActivity extends AppCompatActivity {
     }
 
     private void initComps(){
-        spn_dificultati=findViewById(R.id.setari_spn_dificultate);
+        spn_difficulty =findViewById(R.id.setari_spn_dificultate);
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_spn_dificultati, R.layout.support_simple_spinner_dropdown_item);
-        spn_dificultati.setAdapter(adapter);
+        spn_difficulty.setAdapter(adapter);
 
         btn_back=findViewById(R.id.setari_btn_back);
         btn_design=findViewById(R.id.setari_btn_design);
         btn_logout=findViewById(R.id.setari_btn_logout);
 
-        sharedPreferences = getSharedPreferences(Constante.SETARI_ELEV_PREF,MODE_PRIVATE);
-        restoreDificultate();
+        sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
+        restoreDifficulty();
     }
 
 
-    private void restoreDificultate(){
-        spn_dificultati.setSelection(sharedPreferences.getInt(Constante.SPINNER_POZITIE,0));
+    private void restoreDifficulty(){
+        spn_difficulty.setSelection(sharedPreferences.getInt(Constants.SPINNER_POSITION,0));
     }
 }

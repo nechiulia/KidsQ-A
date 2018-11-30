@@ -8,17 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 
-import com.example.docta.myapplication.clase.Sarcini;
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.Classes.Tasks;
+import com.example.docta.myapplication.util.Constants;
 
 public class AddTaskActivity extends AppCompatActivity {
 
     Intent intent;
-    private Button btn_adaugare;
-    private CalendarView cv_data;
+    private Button btn_add;
+    private CalendarView cv_date;
     private TextInputEditText tid_info;
     private Long date;
-    private String datafinal;
+    private String finalDate;
 
 
 
@@ -27,30 +27,29 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_AdaugaActivitate);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_AdaugaActivitate);
+            this.setTitle(title);
         }
         initComps();
         intent=getIntent();
 
 
 
-        cv_data.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+        cv_date.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                date = cv_data.getDate();
-               // Toast.makeText(view.getContext(), "An=" + year + " Luna=" + (month+1) + " Zi=" + dayOfMonth, Toast.LENGTH_LONG).show();
-                datafinal=dayOfMonth+"/"+(month+1)+"/"+year;
+                date = cv_date.getDate();
+                finalDate =dayOfMonth+"/"+(month+1)+"/"+year;
             }
         });
 
-        btn_adaugare.setOnClickListener(new View.OnClickListener() {
+        btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isValid()) {
                     String info = tid_info.getText().toString();
-                    Sarcini sarcini = new Sarcini(datafinal, info);
+                    Tasks tasks = new Tasks(finalDate, info);
 
-                    intent.putExtra(Constante.ADAUGA_SAA_KEY, sarcini);
+                    intent.putExtra(Constants.ADD_TASK_KEY, tasks);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -62,8 +61,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
     private void initComps(){
-        btn_adaugare=findViewById(R.id.as_btn_adaugare);
-        cv_data=findViewById(R.id.as_cv_data);
+        btn_add =findViewById(R.id.as_btn_adaugare);
+        cv_date =findViewById(R.id.as_cv_data);
         tid_info=findViewById(R.id.as_tid_info);
     }
 

@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.util.Constants;
 
 public class ResultActivity extends AppCompatActivity {
 
     private Button btn_back;
-    private TextView tvPunctaj;
-    private TextView tvNrIntrebariCorecte;
+    private TextView tv_score;
+    private TextView tv_no_correct_answers;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -22,8 +22,8 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_Rezultat);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_Rezultat);
+            this.setTitle(title);
         }
         initComponents();
 
@@ -31,7 +31,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                intent.putExtra(Constante.VALIDARE_DESCARCARE,true);
+                intent.putExtra(Constants.DOWNLOAD_DONE,true);
                 startActivity(intent);
                 finish();
             }
@@ -39,14 +39,12 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        double punctaj = getIntent().getDoubleExtra(Constante.PUNCTAJ_KEY, 0);
-        int nrIntrebariCorecte = getIntent().getIntExtra(Constante.NR_INTREBARI_CORECTE, 0);
-
+        double score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
+        int no_correct_answers = getIntent().getIntExtra(Constants.NO_CORECT_ANSWERS, 0);
         btn_back = findViewById(R.id.rezultat_btn_inapoi);
-        tvPunctaj = findViewById(R.id.rezultat_tv_puncte);
-        tvNrIntrebariCorecte = findViewById(R.id.rezultat_tv_raspunsuri_corecte);
-        tvPunctaj.setText(String.valueOf(punctaj));
-        tvNrIntrebariCorecte.setText(String.valueOf(nrIntrebariCorecte));
-
+        tv_score = findViewById(R.id.rezultat_tv_puncte);
+        tv_no_correct_answers = findViewById(R.id.rezultat_tv_raspunsuri_corecte);
+        tv_score.setText(String.valueOf(score));
+        tv_no_correct_answers.setText(String.valueOf(no_correct_answers));
     }
 }

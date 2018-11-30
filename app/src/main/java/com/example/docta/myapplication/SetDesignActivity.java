@@ -11,8 +11,8 @@ import android.widget.Spinner;
 public class SetDesignActivity extends AppCompatActivity {
 
     private Button btn_back;
-    private Spinner spn_fonturi;
-    private Spinner spn_dimensiuni;
+    private Spinner spn_font;
+    private Spinner spn_size;
     Intent intent;
 
     @Override
@@ -20,17 +20,17 @@ public class SetDesignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_design);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_Design);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_Design);
+            this.setTitle(title);
         }
 
-        spn_fonturi=findViewById(R.id.design_spn_font);
+        spn_font =findViewById(R.id.design_spn_font);
         ArrayAdapter<CharSequence> adapter_font=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_design_spn_font_text, R.layout.support_simple_spinner_dropdown_item);
-        spn_fonturi.setAdapter(adapter_font);
+        spn_font.setAdapter(adapter_font);
 
-        spn_dimensiuni=findViewById(R.id.design_spn_textsize);
-        ArrayAdapter<CharSequence> adapter_dimensiuni=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_design_spn_dimensiuni_text, R.layout.support_simple_spinner_dropdown_item);
-        spn_dimensiuni.setAdapter(adapter_dimensiuni);
+        spn_size =findViewById(R.id.design_spn_textsize);
+        ArrayAdapter<CharSequence> adapter_size =ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_design_spn_dimensiuni_text, R.layout.support_simple_spinner_dropdown_item);
+        spn_size.setAdapter(adapter_size);
 
         btn_back=findViewById(R.id.design_btn_back);
 

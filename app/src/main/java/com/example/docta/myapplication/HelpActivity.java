@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.clase.Adaptor.ExpandableListAdapter;
+import com.example.docta.myapplication.Classes.Adaptor.ExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +18,8 @@ public class HelpActivity extends AppCompatActivity {
 
     private ExpandableListView listaExp;
     private ExpandableListAdapter listAdapter;
-    private List<String> listaIntrebari;
-    private HashMap<String,List<String>> listaRaspunsuri;
+    private List<String> questionsList;
+    private HashMap<String,List<String>> answersList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +27,13 @@ public class HelpActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_Ajutor);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_Ajutor);
+            this.setTitle(title);
         }
         initComponents();
         CreareLista();
 
-        listAdapter = new ExpandableListAdapter(this, listaIntrebari, listaRaspunsuri);
+        listAdapter = new ExpandableListAdapter(this, questionsList, answersList);
 
         listaExp.setAdapter(listAdapter);
 
@@ -43,12 +43,11 @@ public class HelpActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        listaIntrebari.get(groupPosition)
+                Toast.makeText(getApplicationContext(),
+                        questionsList.get(groupPosition)
                                 + " : "
-                                + listaRaspunsuri.get(
-                                listaIntrebari.get(groupPosition)).get(
+                                + answersList.get(
+                                questionsList.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
                         .cancel();
                 return false;
@@ -60,7 +59,7 @@ public class HelpActivity extends AppCompatActivity {
             @Override
             public void onGroupExpand(int groupPosition) {
                 Toast.makeText(getApplicationContext(),
-                        listaIntrebari.get(groupPosition),
+                        questionsList.get(groupPosition),
                         Toast.LENGTH_SHORT).cancel();
             }
         });
@@ -72,21 +71,21 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void CreareLista(){
-        listaIntrebari = new ArrayList<String>();
-        listaRaspunsuri = new HashMap<String, List<String>>();
+        questionsList = new ArrayList<String>();
+        answersList = new HashMap<String, List<String>>();
 
-        listaIntrebari.add(getString(R.string.ajutor_tv_primaIntrebare));
-        listaIntrebari.add(getString(R.string.ajutor_tv_aDouaIntrebare));
+        questionsList.add(getString(R.string.ajutor_tv_primaIntrebare));
+        questionsList.add(getString(R.string.ajutor_tv_aDouaIntrebare));
 
-        List<String> raspuns1 = new ArrayList<String>();
-        raspuns1.add(getString(R.string.ajutor_tv_alDoileaRaspuns));
+        List<String> answer1 = new ArrayList<String>();
+        answer1.add(getString(R.string.ajutor_tv_alDoileaRaspuns));
 
-        List<String> raspuns2 = new ArrayList<String>();
-        raspuns2.add(getString(R.string.ajutor_tv_alDoilea_raspuns));
+        List<String> answer2 = new ArrayList<String>();
+        answer2.add(getString(R.string.ajutor_tv_alDoilea_raspuns));
 
 
-        listaRaspunsuri.put(listaIntrebari.get(0),raspuns1);
-        listaRaspunsuri.put(listaIntrebari.get(1),raspuns2);
+        answersList.put(questionsList.get(0), answer1);
+        answersList.put(questionsList.get(1), answer2);
 
     }
     @Override

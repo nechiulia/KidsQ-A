@@ -14,8 +14,8 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_avatars);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_Avatare);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_Avatare);
+            this.setTitle(title);
         }
         initComponents();
 

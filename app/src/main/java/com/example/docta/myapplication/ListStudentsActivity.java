@@ -13,28 +13,28 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.Constante;
-import com.example.docta.myapplication.clase.Elev;
-import com.example.docta.myapplication.clase.Adaptor.EleviAdaptor;
+import com.example.docta.myapplication.Classes.Student;
+import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.Adaptor.StudentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListStudentsActivity extends AppCompatActivity {
 
-    private Button btn_adauga_elev;
-     List<Elev> elevi= new ArrayList<Elev>();
-    private ListView lvElevi;
+    private Button btn_add_student;
+     List<Student> students = new ArrayList<Student>();
+    private ListView lv_students;
     BottomNavigationView bottomNavigationView;
-    private Button btnInapoiProfesor;
+    private Button btn_back_to_teacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_students);
         if(savedInstanceState==null){
-            String titlu = getString(R.string.Titlu_ListaElevi);
-            this.setTitle(titlu);
+            String title = getString(R.string.Titlu_ListaElevi);
+            this.setTitle(title);
         }
         initComponents();
 
@@ -51,7 +51,7 @@ public class ListStudentsActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.menu_clasament:
-                        intent = new Intent(getApplicationContext(),TeachersRankingActivity.class);
+                        intent = new Intent(getApplicationContext(),RankingActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.menu_profil:
@@ -62,11 +62,11 @@ public class ListStudentsActivity extends AppCompatActivity {
             }
         });
 
-        btn_adauga_elev.setOnClickListener(new View.OnClickListener() {
+        btn_add_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), LoginStudentActivity.class);
-                startActivityForResult(intent, Constante.ADAUGARE_ELEV_REQUEST_CODE);
+                startActivityForResult(intent, Constants.ADD_STUDENT_REQUEST_CODE);
             }
         });
     }
@@ -75,33 +75,29 @@ public class ListStudentsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Constante.ADAUGARE_ELEV_REQUEST_CODE
+        if (requestCode == Constants.ADD_STUDENT_REQUEST_CODE
                 && resultCode == RESULT_OK && data != null ) {
 
-            Elev elev = data.getParcelableExtra(Constante.ADAUGARE_ELEV_KEY);
-            if(elev!=null){
-                elevi.add(elev);
-              //  ArrayAdapter<Elev> adapter = (ArrayAdapter<Elev>) lvElevi.getAdapter();
-                EleviAdaptor adapter = (EleviAdaptor)lvElevi.getAdapter();
+            Student student = data.getParcelableExtra(Constants.ADD_STUDENT_KEY);
+            if(student !=null){
+                students.add(student);
+                StudentAdapter adapter = (StudentAdapter) lv_students.getAdapter();
                 adapter.notifyDataSetChanged();
             }
 
         } else {
-            Toast.makeText(getApplicationContext(),
-                    getString(R.string.lea_transfer_mesaj),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.lea_transfer_mesaj), Toast.LENGTH_LONG).show();
         }
 
     }
 
     private void initComponents()
     { bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        btn_adauga_elev=findViewById(R.id.listaElevi_btn_adaugaElev);
-        btnInapoiProfesor=findViewById(R.id.ppj_btn_inapoi_la_profesor);
-        lvElevi= findViewById(R.id.listaElevi_lv_listaElevi);
+        btn_add_student =findViewById(R.id.listaElevi_btn_adaugaElev);
+        btn_back_to_teacher =findViewById(R.id.ppj_btn_inapoi_la_profesor);
+        lv_students = findViewById(R.id.listaElevi_lv_listaElevi);
 
-        EleviAdaptor adapter = new EleviAdaptor(getApplicationContext(), R.layout.lv_students_row, elevi, getLayoutInflater());
-        //ArrayAdapter<Elev> adapter = new ArrayAdapter<>(getApplication(), android.R.layout.simple_list_item_1, elevi);
-        lvElevi.setAdapter(adapter);
+        StudentAdapter adapter = new StudentAdapter(getApplicationContext(), R.layout.lv_students_row, students, getLayoutInflater());
+        lv_students.setAdapter(adapter);
     }
 }

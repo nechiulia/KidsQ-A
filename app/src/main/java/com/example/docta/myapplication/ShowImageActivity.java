@@ -6,18 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.docta.myapplication.util.Constante;
+import com.example.docta.myapplication.util.Constants;
 import com.squareup.picasso.Picasso;
 
 public class ShowImageActivity extends AppCompatActivity {
- Intent intent;
-    String imagine;
+    String image;
     ImageView iv_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_image);
-        imagine= getIntent().getStringExtra(Constante.DIFFERENT_IMAGE_KEY);
+        image = getIntent().getStringExtra(Constants.DIFFERENT_IMAGE_KEY);
 
        iv_image=findViewById(R.id.show_image_iv);
        iv_image.setOnClickListener(new View.OnClickListener() {
@@ -26,7 +25,7 @@ public class ShowImageActivity extends AppCompatActivity {
                finish();
            }
        });
-        loadImageFromJson(imagine);
+        loadImageFromJson(image);
     }
     private void loadImageFromJson(String urlJson){
         Picasso.with(getApplicationContext()).load(urlJson).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher)
