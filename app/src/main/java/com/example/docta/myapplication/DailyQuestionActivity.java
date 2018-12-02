@@ -50,8 +50,8 @@ public class DailyQuestionActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        score =0;
-        noCorectAnswers =0;
+        score = 0;
+        noCorectAnswers = 0;
         btn_result =findViewById(R.id.intrebarea_zilei_btn_confirm);
         countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
         btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);

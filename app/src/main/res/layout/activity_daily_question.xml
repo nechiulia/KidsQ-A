@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".DailyQuestionActivity">
+    tools:context=".DailyQuestionActivity"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/intrebarea_zilei_tv_countdown"
@@ -114,6 +115,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_btn_confirm_str"
+        android:background="@drawable/rounded_button_general"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

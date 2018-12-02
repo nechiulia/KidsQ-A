@@ -15,7 +15,6 @@ import java.util.List;
 
 public class HelpActivity extends AppCompatActivity {
 
-
     private ExpandableListView listaExp;
     private ExpandableListAdapter listAdapter;
     private List<String> questionsList;
@@ -97,5 +96,4 @@ public class HelpActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

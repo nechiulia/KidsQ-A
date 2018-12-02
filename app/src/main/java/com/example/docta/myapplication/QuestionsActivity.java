@@ -3,6 +3,7 @@ package com.example.docta.myapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.os.Handler;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,8 +82,18 @@ public class QuestionsActivity extends AppCompatActivity {
                                 view2.getBackground().setColorFilter(colorRed, PorterDuff.Mode.SRC_IN);
                                 toastWrong.show();
                             }
+
                         }
                     }
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    }, 2000);
+
                     current_no++;
                     if (daily_test.equals(getString(R.string.Valoare_TestulZilei))) {
                         if (current_no == 11) {

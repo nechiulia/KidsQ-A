@@ -7,7 +7,8 @@
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".RankingActivity">
+    tools:context=".RankingActivity"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/clasament_tv_clasament"

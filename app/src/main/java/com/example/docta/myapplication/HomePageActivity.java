@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -55,7 +56,7 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
-        sharedPreferencesSet= getSharedPreferences("Set intrebari", MODE_PRIVATE);
+        sharedPreferencesSet = getSharedPreferences(getString(R.string.home_page_text_set_intrebari), MODE_PRIVATE);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_PaginaPrincipalaJoc);
             this.setTitle(title);
@@ -80,13 +81,14 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void getInfos(){
-
+          //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             progressDialog = new ProgressDialog(HomePageActivity.this);
             progressDialog.setMax(100);
             progressDialog.setMessage(getString(R.string.ppj_progress_incarcare));
             progressDialog.setTitle(getString(R.string.ppj_progress_descarcare));
             progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             progressDialog.show();
+            progressDialog.setCancelable(false);
             progressDialog.getButton(ProgressDialog.BUTTON_NEUTRAL).setVisibility(View.INVISIBLE);
 
             @SuppressLint("StaticFieldLeak") Handler handler = new Handler() {
@@ -111,6 +113,7 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }).start();
 
+            //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     private void initComponents(){
