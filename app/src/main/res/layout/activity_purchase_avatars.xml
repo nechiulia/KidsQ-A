@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".PurchaseAvatarsActivity">
+    tools:context=".PurchaseAvatarsActivity"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/cumpara_avatare_tv_cumpara"

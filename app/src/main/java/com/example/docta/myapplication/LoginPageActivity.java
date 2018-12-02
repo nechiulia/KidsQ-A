@@ -56,6 +56,5 @@ public class LoginPageActivity extends AppCompatActivity
         btn_student =findViewById(R.id.main_btn_elev);
         btn_teacher =findViewById(R.id.main_btn_prof);
         sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-
     }
 }

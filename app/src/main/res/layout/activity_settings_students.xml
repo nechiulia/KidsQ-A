@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".StudentSettingsActivity">
+    tools:context=".StudentSettingsActivity"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/setari_tv_setarilemele"
@@ -82,6 +83,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/setari_btn_design"
+        android:background="@drawable/rounded_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -98,6 +100,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/setari_btn_logout"
+        android:background="@drawable/rounded_button2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.397"

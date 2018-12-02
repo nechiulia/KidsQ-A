@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".QuestionsActivity">
+    tools:context=".QuestionsActivity"
+    tools:ignore="MissingDefaultResource">
 
     <ImageView
         android:id="@+id/intrebari_iv_imagine"
@@ -90,6 +91,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
+        android:background="@drawable/rounded_button_general"
         android:text="@string/intrebari_btn_confirm_str"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

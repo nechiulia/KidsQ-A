@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:background="@color/yellow"
     tools:context=".ResultActivity"
-    android:weightSum="100">
+    android:weightSum="100"
+    tools:ignore="MissingDefaultResource">
 
 <LinearLayout
     android:orientation="vertical"
@@ -102,7 +103,9 @@
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/rezultat_btn_inapoi_str" />
+        android:text="@string/rezultat_btn_inapoi_str"
+        android:background="@drawable/rounded_button_general"
+        />
 
 </LinearLayout>
 </LinearLayout>

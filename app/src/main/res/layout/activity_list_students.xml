@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/yellow"
     xmlns:design="http://schemas.android.com/apk/res-auto"
-    tools:context=".ListStudentsActivity">
+    tools:context=".ListStudentsActivity"
+    tools:ignore="MissingDefaultResource">
 
 
     <android.support.design.widget.BottomNavigationView

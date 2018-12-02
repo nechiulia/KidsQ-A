@@ -5,7 +5,8 @@
     android:background="@color/yellow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTaskActivity">
+    tools:context=".AddTaskActivity"
+    tools:ignore="MissingDefaultResource">
 
     <CalendarView
         android:id="@+id/as_cv_data"
@@ -51,6 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/as_btn_adauga"
+        android:background="@drawable/rounded_button_general"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/as_til_info" />

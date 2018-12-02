@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".MyAvatarsActivity">
+    tools:context=".MyAvatarsActivity"
+    tools:ignore="MissingDefaultResource">
 
     <TextView
         android:id="@+id/avatare_disponibile_tv_cumpara"
@@ -170,6 +171,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
         android:text="@string/avatare_disponibile_btn_cumpara_avatare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.975"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sarcini_lv_task"
+        app:layout_constraintTop_toBottomOf="@id/sarcini_lv_task"
         app:layout_constraintVertical_bias="0.692"
         app:srcCompat="@android:drawable/ic_menu_add"
         android:focusable="true" />
