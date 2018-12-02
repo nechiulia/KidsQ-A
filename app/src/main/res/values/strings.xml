@@ -212,7 +212,7 @@
     <string name="Titlu_Rezultat">Rezultatul Tau</string>
     <string name="Titlu_AvatareleMele">Avatarele Mele</string>
     <string name="Titlu_Ajutor">Ajutor</string>
-    <string name="Titlu_TestIntrebari">Test </string>
+    <string name="Titlu_TestIntrebari">Test \u0020 </string>
     <string name="Titlu_Principala">Principala</string>
     <string name="Titlu_SaNeJucam">Categorie Test</string>
     <string name="Titlu_AutentificareProfesor">Autentificare Profesor</string>
