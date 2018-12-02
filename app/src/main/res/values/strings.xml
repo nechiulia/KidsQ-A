@@ -195,7 +195,7 @@
     <string name="jucam_btn_viata_text">Viața de zi cu zi</string>
     <string name="jucam_btn_litere_text">Litere</string>
     <string name="toast_raspuns_corect">Ai raspuns corect!</string>
-    <string name="toast_raspuns_gresit">Ai raspuns gresit!</string>
+    <string name="toast_raspuns_gresit">Ai raspuns gresit! Raspuns corect: </string>
     <string name="toast_nu_exista_intrebari">Nu exista intrebari corespunzatoare optiunilor!</string>
     <string name="Titlu_SetariCont">Setari Cont</string>
     <string name="Titlu_Clasament">Clasament</string>

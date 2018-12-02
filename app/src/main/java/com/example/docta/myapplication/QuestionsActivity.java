@@ -75,7 +75,7 @@ public class QuestionsActivity extends AppCompatActivity {
                                 score += questionsList.get(current_no - 1).getSettings().getScore();
                                 no_correct_answers++;
                             } else {
-                                Toast toastWrong = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit), Toast.LENGTH_SHORT);
+                                Toast toastWrong = Toast.makeText(getApplicationContext(), getString(R.string.toast_raspuns_gresit) + questionsList.get(current_no-1).getAnswers().get(i).getAnswerText().toString(), Toast.LENGTH_SHORT);
                                 View view2 = toastWrong.getView();
                                 int colorRed = ResourcesCompat.getColor(getResources(), R.color.fireBrick, null);
                                 view2.getBackground().setColorFilter(colorRed, PorterDuff.Mode.SRC_IN);
