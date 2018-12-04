@@ -1,0 +1,55 @@
+package com.example.docta.myapplication.Classes.Database;
+
+public interface DatabaseConstants {
+
+    String DATABASE_NAME="dosbrains.db";
+    int DATABASE_VERSION=1;
+
+
+    /////////STUDENT
+
+    String STUDENT_TABLE_NAME="Student";
+
+    String STUDENT_COLUMN_USERNAME="username";
+    String STUDENT_COLUMN_CURRENT_AVATAR="currentAvatar";
+    String STUDENT_COLUMN_GENDER="gender";
+    String STUDENT_COLUMN_AGE="age";
+    String STUDENT_COLUMN_POINTS="points";
+    String STUDENT_COLUMN_PROFESSOR_EMAIL="professorEmail";
+
+    String CREATE_TABLE_STUDENT=
+            "CREATE TABLE "+STUDENT_TABLE_NAME+
+            " ( "+STUDENT_COLUMN_USERNAME+ " TEXT PRIMARY KEY, "+
+            STUDENT_COLUMN_CURRENT_AVATAR+ " TEXT, "+
+            STUDENT_COLUMN_GENDER+ " TEXT, "+
+            STUDENT_COLUMN_AGE+ " INTEGER, "+
+            STUDENT_COLUMN_POINTS+ " REAL, "+
+            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT);";
+
+    String DROP_TABLE_STUDENT="DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
+
+
+    ////////////////TESTRESULTS
+
+    String TESTRESULTS_TABLE_NAME="Test Results";
+
+    String TESTRESULTS_COLUMN_ID="id_test";
+    String TESTRESULTS_COLUMN_DIFICULTY="dificulty";
+    String TESTRESULTS_COLUMN_CATEGORY="category";
+    String TESTRESULTS_COLUMN_USERNAMESTUD="username";
+    String TESTRESULTS_COLUMN_CORRECTANSWERS="correct_answers";
+    String TESTRESULTS_COLUMN_MARK="mark";
+
+    String CREATE_TABLE_TESTRESULTS= "CREATE TABLE " + TESTRESULTS_TABLE_NAME
+            + " ( " + TESTRESULTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TESTRESULTS_COLUMN_DIFICULTY + " TEXT, " +
+            TESTRESULTS_COLUMN_CATEGORY + " TEXT, " +
+            TESTRESULTS_COLUMN_CORRECTANSWERS + " INTEGER, " +
+            TESTRESULTS_COLUMN_MARK + " REAL, "+
+            TESTRESULTS_COLUMN_USERNAMESTUD + " TEXT, "+
+            " FOREIGN KEY ( "+TESTRESULTS_COLUMN_USERNAMESTUD+
+            ") REFERENCES "+STUDENT_TABLE_NAME+" ( "+STUDENT_COLUMN_USERNAME+" ));";
+
+    String DROP_TABLE_TESTRESULTS ="DROP TABLE IF EXISTS " + TESTRESULTS_TABLE_NAME +";";
+
+}
