@@ -79,11 +79,11 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        btn_save =findViewById(R.id.setari_salveaza_btn);
-        tie_email = findViewById(R.id.setari_email_edit);
-        tie_old_pass = findViewById(R.id.setari_parolaV_edit);
-        tie_new_pass = findViewById(R.id.setari_parolaN_edit);
-        tie_confirm_pass = findViewById(R.id.setari_parolaC_edit);
+        btn_save =findViewById(R.id.settings_btn_save);
+        tie_email = findViewById(R.id.settings_tid_email);
+        tie_old_pass = findViewById(R.id.settings_tid_passwordO);
+        tie_new_pass = findViewById(R.id.settings_tid_passwordN);
+        tie_confirm_pass = findViewById(R.id.settings_tid_passwordC);
         sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
     }
 

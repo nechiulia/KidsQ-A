@@ -11,7 +11,7 @@
     tools:ignore="MissingDefaultResource">
 
     <TextView
-        android:id="@+id/clasament_tv_clasament"
+        android:id="@+id/ranking_tv_ranking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/clasament_lv_eleviClasament"
+        android:id="@+id/ranking_lv_studentsranking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,7 +37,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/clasament_tv_clasament"></ListView>
+        app:layout_constraintTop_toBottomOf="@id/ranking_tv_ranking">
+
+    </ListView>
 
 
     <android.support.design.widget.BottomNavigationView

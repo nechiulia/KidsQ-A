@@ -34,11 +34,11 @@ public class FeedbackActivity extends AppCompatActivity {
     }
 
     private void initComps(){
-        et_feedback = findViewById(R.id.pareri_et_parere);
-        pb_mean = findViewById(R.id.pareri_progressB);
-        rb_review = findViewById(R.id.pareri_ratingB);
-        btn_send = findViewById(R.id.pareri_btn_salveaza);
-        tv_mean = findViewById(R.id.pareri_tv_medie);
+        et_feedback = findViewById(R.id.feedback_et_opinion);
+        pb_mean = findViewById(R.id.feedback_progressB);
+        rb_review = findViewById(R.id.feedback_ratingB);
+        btn_send = findViewById(R.id.feedback_btn_save);
+        tv_mean = findViewById(R.id.feedback_tv_average);
         tv_mean.setText(null);
         btn_send.setOnClickListener(save());
     }
@@ -53,6 +53,7 @@ public class FeedbackActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),R.string.parere_multimum,Toast.LENGTH_LONG).show();
                     pb_mean.setProgress((int)rb_review.getRating());
                     tv_mean.setText(String.valueOf(pb_mean.getProgress()));
+                    if(et_feedback.getText()==null)et_feedback.setText(R.string.feedback_et_opinion_hint);
                     Intent intent= new Intent(getApplicationContext(), HomePageActivity.class);
                     intent.putExtra(Constants.DOWNLOAD_DONE, true);
                     startActivity(intent);
@@ -60,6 +61,7 @@ public class FeedbackActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),R.string.parere_ratingbar_eroare,Toast.LENGTH_LONG).show();
                     pb_mean.setProgress((int)rb_review.getRating());
                     tv_mean.setText(null);
+
                 }
             }
         };

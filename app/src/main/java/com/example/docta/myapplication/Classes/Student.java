@@ -58,10 +58,10 @@ private int gender;
         String result="";
         result+= avatarName + "         "+
               +age +" ani     " ;
-        if(gender == R.id.lecc_rb_baietel ){
+        if(gender == R.id.signup_rb_boy){
             result+="   Băiat";
         }
-        else if (gender ==R.id.lecc_rb_fetita) result+="    Fată";
+        else if (gender ==R.id.signup_rb_girl) result+="    Fată";
 
         return  result;
     }

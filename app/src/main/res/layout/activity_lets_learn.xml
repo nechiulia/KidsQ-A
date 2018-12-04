@@ -10,7 +10,7 @@
     tools:ignore="MissingDefaultResource">
 
     <Button
-        android:id="@+id/invatam_btn_animale"
+        android:id="@+id/letslearn_btn_animals"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -19,7 +19,7 @@
         android:background="@drawable/rounded_button"
         />
     <Button
-        android:id="@+id/invatam_btn_fructe"
+        android:id="@+id/letslearn_btn_fruits"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -28,14 +28,14 @@
 
         />
     <Button
-        android:id="@+id/invatam_btn_legume"
+        android:id="@+id/letslearn_btn_vegetables"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_button"
         android:text="@string/invatam_btn_legume_text"/>
     <Button
-        android:id="@+id/invatam_btn_transport"
+        android:id="@+id/letslearn_btn_transport"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -43,14 +43,14 @@
         android:text="@string/invatam_btn_transport_text"/>
 
     <Button
-        android:id="@+id/invatam_btn_timp"
+        android:id="@+id/letslearn_btn_time"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_button"
         android:text="@string/invatam_btn_timp_text"/>
     <Button
-        android:id="@+id/invatam_btn_culori"
+        android:id="@+id/letslearn_btn_colors"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -58,7 +58,7 @@
 
         android:text="@string/invatam_btn_culori_text"/>
     <Button
-        android:id="@+id/invatam_btn_litere"
+        android:id="@+id/letslearn_btn_letters"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -66,7 +66,7 @@
 
         android:text="@string/invatam_btn_litere_text"/>
     <Button
-        android:id="@+id/invatam_btn_cifre"
+        android:id="@+id/letslearn_btn_digits"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

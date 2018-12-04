@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <ImageView
-        android:id="@+id/show_image_iv"
+        android:id="@+id/show_iv_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"

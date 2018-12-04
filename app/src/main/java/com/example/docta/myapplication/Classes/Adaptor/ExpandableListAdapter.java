@@ -68,7 +68,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView tvAnswer = convertView
-                .findViewById(R.id.tv_ex_list_item);
+                .findViewById(R.id.listitem_tv_ex);
 
         tvAnswer.setText(answer);
         return convertView;
@@ -85,7 +85,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView tvTitle = convertView
-                .findViewById(R.id.tv_ex_list_group);
+                .findViewById(R.id.listgroup_tv_ex);
         tvTitle.setTypeface(null, Typeface.BOLD);
         tvTitle.setText(title);
 

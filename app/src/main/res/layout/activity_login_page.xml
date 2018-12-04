@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <Button
-        android:id="@+id/main_btn_prof"
+        android:id="@+id/loginpage_btn_prof"
         android:layout_width="134dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.622" />
 
     <Button
-        android:id="@+id/main_btn_elev"
+        android:id="@+id/loginpage_btn_student"
         android:layout_width="141dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"

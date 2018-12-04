@@ -55,10 +55,10 @@ public class LoginTeacherActivity extends AppCompatActivity {
         });
     }
     private void initComponents(){
-        tie_email = findViewById(R.id.loginprof_tid_email);
-        tie_password = findViewById(R.id.loginprof_tid_parola);
-        btn_login=findViewById(R.id.loginprof_btn_login);
-        btn_back=findViewById(R.id.loginprof_btn_back);
+        tie_email = findViewById(R.id.loginteacher_tid_email);
+        tie_password = findViewById(R.id.loginteacher_tid_password);
+        btn_login=findViewById(R.id.loginteacher_btn_login);
+        btn_back=findViewById(R.id.logintacher_btn_back);
         sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
 
     }

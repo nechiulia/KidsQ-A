@@ -68,13 +68,13 @@ public class StudentSettingsActivity extends AppCompatActivity {
     }
 
     private void initComps(){
-        spn_difficulty =findViewById(R.id.setari_spn_dificultate);
+        spn_difficulty =findViewById(R.id.settings_spn_difficulty);
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_spn_dificultati, R.layout.support_simple_spinner_dropdown_item);
         spn_difficulty.setAdapter(adapter);
 
-        btn_back=findViewById(R.id.setari_btn_back);
-        btn_design=findViewById(R.id.setari_btn_design);
-        btn_logout=findViewById(R.id.setari_btn_logout);
+        btn_back=findViewById(R.id.settings_btn_back);
+        btn_design=findViewById(R.id.settings_btn_design);
+        btn_logout=findViewById(R.id.settings_btn_logout);
 
         sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
         restoreDifficulty();

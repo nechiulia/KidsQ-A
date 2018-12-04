@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <TextView
-        android:id="@+id/cumpara_avatare_tv_cumpara"
+        android:id="@+id/purchase_tv_buy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,13 +19,13 @@
         android:layout_marginBottom="8dp"
         android:text="@string/cumpara_avatare_tv_cumpara_avatar"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_iv_avatar2"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatare_iv_avatarulmeu" />
+        app:layout_constraintTop_toBottomOf="@+id/purchase_iv_myavatar" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatarulmeu"
+        android:id="@+id/purchase_iv_myavatar"
         android:layout_width="102dp"
         android:layout_height="89dp"
         android:layout_alignParentTop="true"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar1"
+        android:id="@+id/purchase_iv_avatar1"
         android:layout_width="106dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -47,11 +47,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost1"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar2"
+        android:id="@+id/purchase_iv_avatar2"
         android:layout_width="106dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -62,13 +62,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost2"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_iv_avatar3"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost2"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toEndOf="@+id/avatare_iv_avatar1" />
+        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar1" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar3"
+        android:id="@+id/purchase_iv_avatar3"
         android:layout_width="106dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -77,11 +77,11 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost3"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost3"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar4"
+        android:id="@+id/purchase_iv_avatar4"
         android:layout_width="106dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -90,11 +90,11 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost6"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost6"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar5"
+        android:id="@+id/purchase_iv_avatar5"
         android:layout_width="104dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -105,13 +105,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost5"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_iv_avatar4"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost5"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar4"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/avatare_iv_avatar6" />
+        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar6" />
 
     <ImageView
-        android:id="@+id/avatare_iv_avatar6"
+        android:id="@+id/purchase_iv_avatar6"
         android:layout_width="106dp"
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
@@ -120,11 +120,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="24dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_tv_cost4"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/avatare_tv_avatarulmeu"
+        android:id="@+id/purchase_tv_myavatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -135,11 +135,11 @@
         android:text="@string/avatare_tv_avatarulmeu_str"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toEndOf="@+id/avatare_iv_avatarulmeu"
+        app:layout_constraintStart_toEndOf="@+id/purchase_iv_myavatar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/avatare_tv_cost1"
+        android:id="@+id/purchase_tv_cost1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -148,36 +148,36 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="20dp"
         android:text="@string/avatare_tv_cost1_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_iv_avatar6"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_tv_cost2"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar6"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost2"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
-        android:id="@+id/avatare_tv_cost2"
+        android:id="@+id/purchase_tv_cost2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:layout_marginBottom="20dp"
         android:text="@string/avatare_tv_cost2_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_iv_avatar5"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_tv_cost3" />
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar5"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost3" />
 
     <TextView
-        android:id="@+id/avatare_tv_cost3"
+        android:id="@+id/purchase_tv_cost3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:layout_marginBottom="20dp"
         android:text="@string/avatare_tv_cost3_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_iv_avatar4"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar4"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/avatare_tv_cost4"
+        android:id="@+id/purchase_tv_cost4"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_marginStart="8dp"
@@ -186,31 +186,31 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="28dp"
         android:text="@string/avatare_tv_cost4_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_btn_inapoi"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_tv_cost5"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_btn_back"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost5"
         app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/avatare_tv_cost5"
+        android:id="@+id/purchase_tv_cost5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:layout_marginBottom="28dp"
         android:text="@string/avatare_tv_cost5_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_btn_inapoi"
-        app:layout_constraintEnd_toStartOf="@+id/avatare_tv_cost6" />
+        app:layout_constraintBottom_toTopOf="@+id/purchase_btn_back"
+        app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost6" />
 
     <TextView
-        android:id="@+id/avatare_tv_cost6"
+        android:id="@+id/purchase_tv_cost6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
         android:layout_marginBottom="28dp"
         android:text="@string/avatare_tv_cost6_str"
-        app:layout_constraintBottom_toTopOf="@+id/avatare_btn_inapoi"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_btn_back"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- <Button
@@ -230,7 +230,7 @@
     -->
 
     <Button
-        android:id="@+id/avatare_btn_inapoi"
+        android:id="@+id/purchase_btn_back"
         android:layout_width="59dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"

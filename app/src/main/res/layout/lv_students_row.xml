@@ -7,19 +7,19 @@
     android:weightSum="3">
 
     <TextView
-        android:id="@+id/lv_elevi_rand_nume"
+        android:id="@+id/studentsrow_lv_name"
         android:layout_width="0dp"
         android:text="@string/lv_elevi__nume"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <TextView
-        android:id="@+id/lv_elevi_rand_varsta"
+        android:id="@+id/studentsrow_lv_age"
         android:layout_width="0dp"
         android:text="@string/lv_elevi_varsta"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <TextView
-        android:id="@+id/lv_elevi_rand_gen"
+        android:id="@+id/studentsrow_lv_sex"
         android:layout_width="0dp"
         android:text="@string/lv_elevi_gen"
         android:layout_height="wrap_content"

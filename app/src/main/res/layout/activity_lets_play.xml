@@ -10,34 +10,34 @@
 
     <Button
         android:layout_marginTop="100dp"
-        android:id="@+id/jucam_btn_matematica"
+        android:id="@+id/letsplay_btn_math"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/rounded_button"
         android:text="@string/jucam_btn_matematica_text" />
     <Button
-        android:id="@+id/jucam_btn_animale"
+        android:id="@+id/letsplay_btn_animals"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/jucam_btn_animale_text"
         android:background="@drawable/rounded_button"
         />
     <Button
-        android:id="@+id/jucam_btn_fructe_legume"
+        android:id="@+id/letsplay_btn_fruitsandvegetables"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/jucam_btn_fructe_legume_text"
         android:background="@drawable/rounded_button"
         />
     <Button
-        android:id="@+id/jucam_btn_viata_dezicuzi"
+        android:id="@+id/letsplay_btn_everydaylife"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/jucam_btn_viata_text"
         android:background="@drawable/rounded_button"
         />
     <Button
-        android:id="@+id/jucam_btn_litere"
+        android:id="@+id/letsplay_btn_letters"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="@string/jucam_btn_litere_text"

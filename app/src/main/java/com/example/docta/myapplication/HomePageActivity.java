@@ -9,7 +9,6 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -117,18 +116,18 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        btn_play =findViewById(R.id.ppj_btn_jucam);
-        btn_learn =findViewById(R.id.ppj_btn_invatam);
-        btn_my_avatars =findViewById(R.id.ppj_btn_avatareleMele);
-        btn_ranking =findViewById(R.id.ppj_btn_clasament);
-        btn_daily_question =findViewById(R.id.ppj_btn_intrebareaZilei);
-        btn_daily_test =findViewById(R.id.ppj_btn_testulZilei);
-        btn_settings =findViewById(R.id.ppj_btn_setari);
-        img_btn_feedback =findViewById(R.id.ppj_imgBtn_star);
-        tv_avatar_name =findViewById(R.id.ppj_tv_bunVenit);
-        btn_back_teacher =findViewById(R.id.ppj_btn_inapoi_la_profesor);
-        img_btn_help =findViewById(R.id.ppj_imgBtn_intrebare);
-        btn_tasks =findViewById(R.id.ppj_btn_sarcini);
+        btn_play =findViewById(R.id.home_btn_play);
+        btn_learn =findViewById(R.id.home_btn_learn);
+        btn_my_avatars =findViewById(R.id.home_btn_myavatars);
+        btn_ranking =findViewById(R.id.home_btn_ranking);
+        btn_daily_question =findViewById(R.id.home_btn_dailyquestion);
+        btn_daily_test =findViewById(R.id.home_btn_dailytest);
+        btn_settings =findViewById(R.id.home_btn_settings);
+        img_btn_feedback =findViewById(R.id.home_imgBtn_star);
+        tv_avatar_name =findViewById(R.id.home_tv_welcome);
+        btn_back_teacher =findViewById(R.id.home_btn_backtoteacher);
+        img_btn_help =findViewById(R.id.home_imgBtn_question);
+        btn_tasks =findViewById(R.id.home_btn_tasks);
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
         String utilizator= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
 

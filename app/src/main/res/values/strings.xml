@@ -227,4 +227,5 @@
     <string name="loading_iv_hint">Incarcare imagine</string>
     <string name="showimage_iv_hint">Imagine</string>
     <string name="home_page_text_set_intrebari">Set intrebari</string>
+    <string name="feedback_et_opinion_hint">OK</string>
 </resources>

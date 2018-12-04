@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <ListView
-        android:id="@+id/sarcini_lv_task"
+        android:id="@+id/tasks_lv_task"
         android:layout_width="match_parent"
         android:layout_height="393dp"
         android:layout_marginStart="8dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/sarcini_fab_adaugare"
+        android:id="@+id/tasks_fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.975"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sarcini_lv_task"
+        app:layout_constraintTop_toBottomOf="@id/tasks_lv_task"
         app:layout_constraintVertical_bias="0.692"
         app:srcCompat="@android:drawable/ic_menu_add"
         android:focusable="true" />

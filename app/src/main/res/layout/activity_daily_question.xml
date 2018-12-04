@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <TextView
-        android:id="@+id/intrebarea_zilei_tv_countdown"
+        android:id="@+id/dailyquestion_tv_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -20,11 +20,11 @@
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_tv_countdown"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@+id/intrebarea_zilei_tv_timpramas"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_iv_original"/>
+        app:layout_constraintLeft_toRightOf="@+id/dailyquestion_tv_remainingtime"
+        app:layout_constraintBottom_toTopOf="@+id/dailyquestion_iv_original"/>
 
     <TextView
-        android:id="@+id/intrebarea_zilei_tv_timpramas"
+        android:id="@+id/dailyquestion_tv_remainingtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -40,7 +40,7 @@
 
 
     <ImageView
-        android:id="@+id/intrebarea_zilei_iv_original"
+        android:id="@+id/dailyquestion_iv_original"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -53,15 +53,15 @@
         android:layout_marginRight="8dp"
         android:contentDescription="@string/intrebarea_zilei_iv_poza2"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_tv_intrebare"
+        app:layout_constraintBottom_toTopOf="@+id/dailyquestion_tv_question"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebarea_zilei_tv_countdown"
+        app:layout_constraintTop_toBottomOf="@+id/dailyquestion_tv_countdown"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/intrebarea_zilei_tv_intrebare"
+        android:id="@+id/dailyquestion_tv_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -70,34 +70,34 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_tv_intrebare_str"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_rg_raspunsuri"
+        app:layout_constraintBottom_toTopOf="@+id/dailyquestion_rg_answears"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
-        android:id="@+id/intrebarea_zilei_rg_raspunsuri"
+        android:id="@+id/dailyquestion_rg_answears"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_btn_confirm"
+        app:layout_constraintBottom_toTopOf="@+id/dailyquestion_btn_confirm"
         app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
-            android:id="@+id/intrebarea_zilei_rb_raspuns1"
+            android:id="@+id/dailyquestion_rb_answear1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebarea_zilei_rb_raspuns1_str" />
 
         <RadioButton
-            android:id="@+id/intrebarea_zilei_rb_raspuns2"
+            android:id="@+id/dailyquestion_rb_answear2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebarea_zilei_rb_raspuns2_str" />
 
         <RadioButton
-            android:id="@+id/intrebarea_zilei_rb_raspuns3"
+            android:id="@+id/dailyquestion_rb_answear3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebarea_zilei_rb_raspuns3_str" />
@@ -105,10 +105,10 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/intrebarea_zilei_btn_confirm"
+        android:id="@+id/dailyquestion_btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/intrebarea_zilei_rg_raspunsuri"
+        android:layout_below="@+id/dailyquestion_rg_answears"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -121,14 +121,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/intrebarea_zilei_btn_incepe_test"
+        android:id="@+id/dailyquestion_btn_starttest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/intrebarea_zilei_btn_incepe"
-        app:layout_constraintBottom_toTopOf="@+id/intrebarea_zilei_iv_original"
+        app:layout_constraintBottom_toTopOf="@+id/dailyquestion_iv_original"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.095" />

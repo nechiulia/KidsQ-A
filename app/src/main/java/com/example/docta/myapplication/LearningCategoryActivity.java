@@ -32,11 +32,11 @@ public class LearningCategoryActivity extends AppCompatActivity {
     }
 
    private void initComponents(){
-       imgBtnNext=findViewById(R.id.invatam_categ_imgBtn_inainte);
-       tv_no_question =findViewById(R.id.invatam_categ_tv_nr_curent);
-       tv_info =findViewById(R.id.invatam_categ_tv_informatie);
-       iv_info =findViewById(R.id.invatam_categ_imgBtn);
-       btn_back =findViewById(R.id.invatam_categ_btn_inapoi);
+       imgBtnNext=findViewById(R.id.learningcategory_imgBtn_next);
+       tv_no_question =findViewById(R.id.learningcategory_tv_currentnumber);
+       tv_info =findViewById(R.id.learningcategory_tv_info);
+       iv_info =findViewById(R.id.learningcategory_imgBtn_image);
+       btn_back =findViewById(R.id.learningcategory_btn_back);
        current_no =1;
        imgBtnNext.setOnClickListener(nextEvent());
        btn_back.setOnClickListener(backEvent());

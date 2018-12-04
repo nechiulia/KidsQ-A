@@ -29,7 +29,7 @@ public class LoginPageActivity extends AppCompatActivity
         btn_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),StudentProfileActivity.class);
+                Intent intent=new Intent(getApplicationContext(),LoginStudentActivity.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
                 editor.putString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 boolean result = editor.commit();
@@ -53,8 +53,8 @@ public class LoginPageActivity extends AppCompatActivity
 
     }
     private void initComponents(){
-        btn_student =findViewById(R.id.main_btn_elev);
-        btn_teacher =findViewById(R.id.main_btn_prof);
+        btn_student =findViewById(R.id.loginpage_btn_student);
+        btn_teacher =findViewById(R.id.loginpage_btn_prof);
         sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
     }
 }

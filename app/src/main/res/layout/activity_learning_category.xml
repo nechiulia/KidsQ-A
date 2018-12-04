@@ -17,13 +17,13 @@
     android:layout_height="0dp"
     android:layout_weight="85">
     <TextView
-        android:id="@+id/invatam_categ_tv_nr_curent"
+        android:id="@+id/learningcategory_tv_currentnumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/invatam_categ_tv_nr_text" />
 
     <ImageView
-        android:id="@+id/invatam_categ_imgBtn"
+        android:id="@+id/learningcategory_imgBtn_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/invatam_categ_imgBtn_descriere"
@@ -34,7 +34,7 @@
         android:layout_height="50dp" />
 
     <TextView
-        android:id="@+id/invatam_categ_tv_informatie"
+        android:id="@+id/learningcategory_tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/invatam_categ_tv_descriere" />
@@ -50,7 +50,7 @@
         android:layout_weight="15">
 
         <Button
-            android:id="@+id/invatam_categ_btn_inapoi"
+            android:id="@+id/learningcategory_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -63,7 +63,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/invatam_categ_imgBtn_inainte"
+            android:id="@+id/learningcategory_imgBtn_next"
             android:layout_width="68dp"
             android:layout_height="59dp"
             android:layout_marginEnd="16dp"

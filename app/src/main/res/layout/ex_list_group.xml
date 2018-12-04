@@ -7,7 +7,7 @@
     android:background="@color/tritan">
 
     <TextView
-        android:id="@+id/tv_ex_list_group"
+        android:id="@+id/listgroup_tv_ex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"

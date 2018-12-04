@@ -19,7 +19,7 @@
         android:layout_height="70dp"/>
 
     <TextView
-        android:id="@+id/rezultat_tv_felicitari"
+        android:id="@+id/result_tv_congratulations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rezultat_tv_felicitari_str"
@@ -36,7 +36,7 @@
     android:weightSum="2">
 
     <TextView
-        android:id="@+id/rezultat_tv_punctaj"
+        android:id="@+id/result_tv_scores"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -45,7 +45,7 @@
         android:layout_marginLeft="10dp"
         />
     <TextView
-        android:id="@+id/rezultat_tv_puncte"
+        android:id="@+id/result_tv_points"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -61,7 +61,7 @@
        android:orientation="horizontal"
        android:weightSum="2">
        <TextView
-           android:id="@+id/rezultat_tv_nr_raspunsuri"
+           android:id="@+id/result_tv_nranswears"
            android:layout_width="0dp"
            android:layout_height="wrap_content"
            android:text="@string/rezultat_tv_nr_raspunsuri_str"
@@ -69,7 +69,7 @@
            android:layout_marginStart="10dp"
            android:layout_weight="1"/>
        <TextView
-           android:id="@+id/rezultat_tv_raspunsuri_corecte"
+           android:id="@+id/result_tv_correctanswear"
            android:layout_width="0dp"
            android:layout_height="wrap_content"
            android:text="@string/rezultat_tv_raspunsuri_corecte_str"
@@ -83,7 +83,7 @@
         android:layout_height="50dp" />
 
     <ImageView
-        android:id="@+id/rezultat_iv_cadou"
+        android:id="@+id/result_iv_gift"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
@@ -98,7 +98,7 @@
         android:layout_height="0dp"
         android:layout_weight="15">
     <Button
-        android:id="@+id/rezultat_btn_inapoi"
+        android:id="@+id/result_btn_back"
 
         android:layout_width="176dp"
         android:layout_height="wrap_content"

@@ -52,16 +52,16 @@ public class DailyQuestionActivity extends AppCompatActivity {
     private void initComponents(){
         score = 0;
         noCorectAnswers = 0;
-        btn_result =findViewById(R.id.intrebarea_zilei_btn_confirm);
-        countdown_text=findViewById(R.id.intrebarea_zilei_tv_countdown);
-        btn_countdown=findViewById(R.id.intrebarea_zilei_btn_incepe_test);
+        btn_result =findViewById(R.id.dailyquestion_btn_confirm);
+        countdown_text=findViewById(R.id.dailyquestion_tv_countdown);
+        btn_countdown=findViewById(R.id.dailyquestion_btn_starttest);
         btn_result.setVisibility(View.INVISIBLE);
-        rg_options = findViewById(R.id.intrebarea_zilei_rg_raspunsuri);
-        rb_answer1 = findViewById(R.id.intrebarea_zilei_rb_raspuns1);
-        rb_answer2 = findViewById(R.id.intrebarea_zilei_rb_raspuns2);
-        rb_answer3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
-        tv_daily_question =findViewById(R.id.intrebarea_zilei_tv_intrebare);
-        iv_image =findViewById(R.id.intrebarea_zilei_iv_original);
+        rg_options = findViewById(R.id.dailyquestion_rg_answears);
+        rb_answer1 = findViewById(R.id.dailyquestion_rb_answear1);
+        rb_answer2 = findViewById(R.id.dailyquestion_rb_answear2);
+        rb_answer3 = findViewById(R.id.dailyquestion_rb_answear3);
+        tv_daily_question =findViewById(R.id.dailyquestion_tv_question);
+        iv_image =findViewById(R.id.dailyquestion_iv_original);
         dailyQuestion = (Question)getIntent().getSerializableExtra(Constants.DAILY_QUESTION_KEY);
 
         btn_result.setOnClickListener(clickResult());
@@ -172,9 +172,9 @@ public class DailyQuestionActivity extends AppCompatActivity {
 
             @Override
             public void onFinish()
-            {   rb_answer1 = findViewById(R.id.intrebarea_zilei_rb_raspuns1);
-                rb_answer2 = findViewById(R.id.intrebarea_zilei_rb_raspuns2);
-                rb_answer3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
+            {   rb_answer1 = findViewById(R.id.dailyquestion_rb_answear1);
+                rb_answer2 = findViewById(R.id.dailyquestion_rb_answear2);
+                rb_answer3 = findViewById(R.id.dailyquestion_rb_answear3);
                 if( !rb_answer1.isChecked()&& !rb_answer2.isChecked() && !rb_answer3.isChecked()){
                     score=0;
                     noCorectAnswers=0;

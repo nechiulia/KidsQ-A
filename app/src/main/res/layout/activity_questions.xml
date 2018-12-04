@@ -9,10 +9,10 @@
     tools:ignore="MissingDefaultResource">
 
     <ImageView
-        android:id="@+id/intrebari_iv_imagine"
+        android:id="@+id/questions_iv_image"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_above="@+id/intrebari_tv_intrebare"
+        android:layout_above="@+id/questions_tv_question"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="32dp"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/intrebari_tv_intrebare"
+        android:id="@+id/questions_tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -42,10 +42,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/intrebari_iv_imagine" />
+        app:layout_constraintTop_toBottomOf="@id/questions_iv_image" />
 
     <RadioGroup
-        android:id="@+id/intrebari_rg_raspunsuri"
+        android:id="@+id/question_rg_answears"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -55,24 +55,24 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/intrebari_tv_intrebare">
+        app:layout_constraintTop_toBottomOf="@id/questions_tv_question">
 
         <RadioButton
-            android:id="@+id/intrebari_rb_raspuns1"
+            android:id="@+id/questions_rb_answear1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebari_rb_raspuns1_str"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/intrebari_rb_raspuns2"
+            android:id="@+id/questions_rb_answear2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebari_rb_raspuns2_str"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/intrebari_rb_raspuns3"
+            android:id="@+id/questions_rb_answear3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intrebari_rb_raspuns3_str"
@@ -81,7 +81,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/intrebari_btn_confirm"
+        android:id="@+id/questions_btn_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -96,11 +96,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intrebari_rg_raspunsuri" />
+        app:layout_constraintTop_toBottomOf="@+id/question_rg_answears" />
 
 
     <TextView
-        android:id="@+id/intrebari_tv_nr_intrebare"
+        android:id="@+id/questions_tv_nrquestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

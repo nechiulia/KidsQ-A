@@ -26,8 +26,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
 
     }
     private void init(){
-        btn_buy =findViewById(R.id.avatare_disponibile_btn_cumpara);
-        btn_back=findViewById(R.id.avatare_disponibile_btn_inapoi);
+        btn_buy =findViewById(R.id.myavatars_btn_buy);
+        btn_back=findViewById(R.id.myavatars_btn_back);
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override

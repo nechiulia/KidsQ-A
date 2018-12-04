@@ -13,7 +13,7 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-        loading_iv_tranz = findViewById(R.id.incarcare_imagineSplash);
+        loading_iv_tranz = findViewById(R.id.loading_imgSplash);
 
         Animation tranz = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.tranzitie_poza);
         loading_iv_tranz.startAnimation(tranz);

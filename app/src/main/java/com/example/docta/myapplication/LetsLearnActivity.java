@@ -29,14 +29,14 @@ public class LetsLearnActivity extends AppCompatActivity {
         initComponents();
     }
 private  void initComponents(){
-        btn_animals =findViewById(R.id.invatam_btn_animale);
-        btn_numbers =findViewById(R.id.invatam_btn_cifre);
-        btn_colors =findViewById(R.id.invatam_btn_culori);
-        btn_fruits =findViewById(R.id.invatam_btn_fructe);
-        btn_vegetables =findViewById(R.id.invatam_btn_legume);
-        btn_letters =findViewById(R.id.invatam_btn_litere);
-        btn_time =findViewById(R.id.invatam_btn_timp);
-        btn_vehicles =findViewById(R.id.invatam_btn_transport);
+        btn_animals =findViewById(R.id.letslearn_btn_animals);
+        btn_numbers =findViewById(R.id.letslearn_btn_digits);
+        btn_colors =findViewById(R.id.letslearn_btn_colors);
+        btn_fruits =findViewById(R.id.letslearn_btn_fruits);
+        btn_vegetables =findViewById(R.id.letslearn_btn_vegetables);
+        btn_letters =findViewById(R.id.letslearn_btn_letters);
+        btn_time =findViewById(R.id.letslearn_btn_time);
+        btn_vehicles =findViewById(R.id.letslearn_btn_transport);
 
         btn_animals.setOnClickListener(openCategory());
         btn_colors.setOnClickListener(openCategory());

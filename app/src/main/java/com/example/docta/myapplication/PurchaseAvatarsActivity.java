@@ -28,6 +28,6 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
     }
 
     private void initComponents(){
-        btn_back=findViewById(R.id.avatare_btn_inapoi);
+        btn_back=findViewById(R.id.purchase_btn_back);
     }
 }

@@ -65,7 +65,7 @@ public class HelpActivity extends AppCompatActivity {
 
     }
     private void initComponents(){
-        listaExp = findViewById(R.id.ajutor_elv_listaintrebari);
+        listaExp = findViewById(R.id.help_elv_questionlist);
 
     }
 

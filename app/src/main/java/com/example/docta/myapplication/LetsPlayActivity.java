@@ -46,11 +46,11 @@ public class LetsPlayActivity extends AppCompatActivity {
     }
     private void initComponents(){
 
-        btn_math = findViewById(R.id.jucam_btn_matematica);
-        btn_letters =findViewById(R.id.jucam_btn_litere);
-        btn_fruits =findViewById(R.id.jucam_btn_fructe_legume);
-        btn_life =findViewById(R.id.jucam_btn_viata_dezicuzi);
-        btn_animals =findViewById(R.id.jucam_btn_animale);
+        btn_math = findViewById(R.id.letsplay_btn_math);
+        btn_letters =findViewById(R.id.letsplay_btn_letters);
+        btn_fruits =findViewById(R.id.letsplay_btn_fruitsandvegetables);
+        btn_life =findViewById(R.id.letsplay_btn_everydaylife);
+        btn_animals =findViewById(R.id.letsplay_btn_animals);
         testQuestionsList =new ArrayList<>();
 
         btn_math.setOnClickListener(openMathTests());

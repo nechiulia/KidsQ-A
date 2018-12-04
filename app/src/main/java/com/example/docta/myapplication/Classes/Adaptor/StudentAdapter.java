@@ -39,15 +39,15 @@ public class StudentAdapter extends ArrayAdapter<Student> {
                         @NonNull ViewGroup parent) {
         View row = inflater.inflate(resource, parent, false);
 
-        TextView tvName = row.findViewById(R.id.lv_elevi_rand_nume);
-        TextView tvGender = row.findViewById(R.id.lv_elevi_rand_gen);
-        TextView tvAge = row.findViewById(R.id.lv_elevi_rand_varsta);
+        TextView tvName = row.findViewById(R.id.studentsrow_lv_name);
+        TextView tvGender = row.findViewById(R.id.studentsrow_lv_sex);
+        TextView tvAge = row.findViewById(R.id.studentsrow_lv_age);
 
         Student student = students.get(position);
 
         tvName.setText(student.getAvatarName());
         tvAge.setText(String.valueOf(student.getAge()));
-        tvGender.setText(student.getGender()==R.id.lecc_rb_baietel? "Băiat":"Fată");
+        tvGender.setText(student.getGender()==R.id.signup_rb_boy ? "Băiat":"Fată");
 
         return row;
     }

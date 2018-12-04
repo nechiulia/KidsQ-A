@@ -142,14 +142,14 @@ public class QuestionsActivity extends AppCompatActivity {
     }
     private void initComponents(){
         daily_test = getIntent().getStringExtra(Constants.DAILY_TEST) !=null ? getIntent().getStringExtra(Constants.DAILY_TEST):getString(R.string.intrebari_testul_zilei_diferit);
-        tv_no_question =findViewById(R.id.intrebari_tv_nr_intrebare);
-        rg_answers = findViewById(R.id.intrebari_rg_raspunsuri);
-        rb_answer1 = findViewById(R.id.intrebari_rb_raspuns1);
-        rb_answer2 = findViewById(R.id.intrebari_rb_raspuns2);
-        rb_answer3 = findViewById(R.id.intrebari_rb_raspuns3);
-        btn_confirm = findViewById(R.id.intrebari_btn_confirm);
-        iv_image = findViewById(R.id.intrebari_iv_imagine);
-        tv_question = findViewById(R.id.intrebari_tv_intrebare);
+        tv_no_question =findViewById(R.id.questions_tv_nrquestion);
+        rg_answers = findViewById(R.id.question_rg_answears);
+        rb_answer1 = findViewById(R.id.questions_rb_answear1);
+        rb_answer2 = findViewById(R.id.questions_rb_answear2);
+        rb_answer3 = findViewById(R.id.questions_rb_answear3);
+        btn_confirm = findViewById(R.id.questions_btn_confirm);
+        iv_image = findViewById(R.id.questions_iv_image);
+        tv_question = findViewById(R.id.questions_tv_question);
         btn_confirm.setOnClickListener(confirmAnswer());
         current_no =1;
         if(daily_test.equals(getString(R.string.Valoare_TestulZilei))) {

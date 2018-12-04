@@ -65,7 +65,7 @@ public class ListStudentsActivity extends AppCompatActivity {
         btn_add_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(), LoginStudentActivity.class);
+                Intent intent=new Intent(getApplicationContext(), SignUpStudentActivity.class);
                 startActivityForResult(intent, Constants.ADD_STUDENT_REQUEST_CODE);
             }
         });
@@ -93,9 +93,9 @@ public class ListStudentsActivity extends AppCompatActivity {
 
     private void initComponents()
     { bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        btn_add_student =findViewById(R.id.listaElevi_btn_adaugaElev);
-        btn_back_to_teacher =findViewById(R.id.ppj_btn_inapoi_la_profesor);
-        lv_students = findViewById(R.id.listaElevi_lv_listaElevi);
+        btn_add_student =findViewById(R.id.liststudents_btn_addstudent);
+        btn_back_to_teacher =findViewById(R.id.home_btn_backtoteacher);
+        lv_students = findViewById(R.id.liststudents_lv_liststudents);
 
         StudentAdapter adapter = new StudentAdapter(getApplicationContext(), R.layout.lv_students_row, students, getLayoutInflater());
         lv_students.setAdapter(adapter);

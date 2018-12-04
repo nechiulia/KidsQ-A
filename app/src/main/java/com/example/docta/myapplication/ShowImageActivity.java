@@ -17,7 +17,7 @@ public class ShowImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_image);
         image = getIntent().getStringExtra(Constants.DIFFERENT_IMAGE_KEY);
 
-       iv_image=findViewById(R.id.show_image_iv);
+       iv_image=findViewById(R.id.show_iv_image);
        iv_image.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

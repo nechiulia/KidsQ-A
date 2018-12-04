@@ -9,7 +9,7 @@
     tools:ignore="MissingDefaultResource">
 
     <TextView
-        android:id="@+id/pareri_tv_parere"
+        android:id="@+id/feedback_tv_opinion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,30 +28,31 @@
         app:layout_constraintVertical_bias="0.012" />
 
     <EditText
-        android:id="@+id/pareri_et_parere"
+        android:id="@+id/feedback_et_opinion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        app:layout_constraintTop_toBottomOf="@id/pareri_tv_parere"
+        app:layout_constraintTop_toBottomOf="@id/feedback_tv_opinion"
+        android:autofillHints="@string/feedback_et_opinion_hint"
         android:inputType="text"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pareri_et_parere"
+        app:layout_constraintTop_toBottomOf="@id/feedback_et_opinion"
         android:gravity="center"
         android:layout_marginTop="50dp">
 
         <RatingBar
-            android:id="@+id/pareri_ratingB"
+            android:id="@+id/feedback_ratingB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
         <ProgressBar
-            android:id="@+id/pareri_progressB"
+            android:id="@+id/feedback_progressB"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -63,14 +64,14 @@
             style="?android:attr/progressBarStyleHorizontal"
             />
         <TextView
-            android:id="@+id/pareri_tv_medie"
+            android:id="@+id/feedback_tv_average"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pareri_tv_medie"
             android:textSize="16sp"/>
 
         <Button
-            android:id="@+id/pareri_btn_salveaza"
+            android:id="@+id/feedback_btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

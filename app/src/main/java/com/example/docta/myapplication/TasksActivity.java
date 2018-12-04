@@ -29,8 +29,8 @@ public class TasksActivity extends AppCompatActivity {
             String title = getString(R.string.Titlu_Sarcini);
             this.setTitle(title);
         }
-        lv_tasks =findViewById(R.id.sarcini_lv_task);
-        fab=findViewById(R.id.sarcini_fab_adaugare);
+        lv_tasks =findViewById(R.id.tasks_lv_task);
+        fab=findViewById(R.id.tasks_fab_add);
 
         ArrayAdapter<Tasks> adapter=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1, tasks);
         lv_tasks.setAdapter(adapter);

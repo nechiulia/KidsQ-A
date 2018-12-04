@@ -41,9 +41,9 @@ public class ResultActivity extends AppCompatActivity {
     private void initComponents() {
         double score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
         int no_correct_answers = getIntent().getIntExtra(Constants.NO_CORECT_ANSWERS, 0);
-        btn_back = findViewById(R.id.rezultat_btn_inapoi);
-        tv_score = findViewById(R.id.rezultat_tv_puncte);
-        tv_no_correct_answers = findViewById(R.id.rezultat_tv_raspunsuri_corecte);
+        btn_back = findViewById(R.id.result_btn_back);
+        tv_score = findViewById(R.id.result_tv_points);
+        tv_no_correct_answers = findViewById(R.id.result_tv_correctanswear);
         tv_score.setText(String.valueOf(score));
         tv_no_correct_answers.setText(String.valueOf(no_correct_answers));
     }

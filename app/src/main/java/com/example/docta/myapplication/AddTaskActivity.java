@@ -61,9 +61,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
     private void initComps(){
-        btn_add =findViewById(R.id.as_btn_adaugare);
-        cv_date =findViewById(R.id.as_cv_data);
-        tid_info=findViewById(R.id.as_tid_info);
+        btn_add =findViewById(R.id.addtask_btn_add);
+        cv_date =findViewById(R.id.addtask_cv_date);
+        tid_info=findViewById(R.id.addtask_tid_info);
     }
 
     private boolean isValid(){

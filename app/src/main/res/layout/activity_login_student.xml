@@ -5,11 +5,11 @@
     android:background="@color/yellow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentProfileActivity"
+    tools:context=".LoginStudentActivity"
     tools:ignore="MissingDefaultResource">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/autentificare_elev_til_numeavatar"
+        android:id="@+id/loginstundent_til_avatarname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.265">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/autentificare_elev_tid_numeavatar"
+            android:id="@+id/loginstundent_tid_avatarname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/lae_tid_navatar_hint"
@@ -34,7 +34,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/loginelev_btn_back"
+        android:id="@+id/loginstundent_btn_back"
         android:layout_width="59dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/loginelev_btn_autentificare"
+        android:id="@+id/loginstundent_btn_autentification"
         android:layout_width="159dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.468" />
 
     <Button
-        android:id="@+id/loginelev_btn_crearecont"
+        android:id="@+id/loginstundent_btn_create"
         android:layout_width="161dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
