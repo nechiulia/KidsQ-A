@@ -172,7 +172,12 @@ public class DailyQuestionActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                score=0;
+                noCorectAnswers=0;
+                Intent intent= new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putExtra(Constants.SCORE_KEY, score);
+                intent.putExtra(Constants.NO_CORECT_ANSWERS, noCorectAnswers);
+                startActivity(intent);
             }
         }.start();
         timerunning=true;
