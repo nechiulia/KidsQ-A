@@ -5,9 +5,21 @@ public interface DatabaseConstants {
     String DATABASE_NAME="dosbrains.db";
     int DATABASE_VERSION=1;
 
+    ////////////////TEACHER
+    String TEACHER_TABLE_NAME = "Teacher";
+
+    String TEACHER_COLUMN_EMAIL ="email_profesor";
+    String TEACHER_COLUMN_PASSWORD = "password";
+
+    String CREATE_TABLE_TEACHER = "CREATE TABLE " + TEACHER_TABLE_NAME
+            + " ( " + TEACHER_COLUMN_EMAIL + " TEXT PRIMARY KEY, "+
+            TEACHER_COLUMN_PASSWORD + " TEXT );";
+
+    String DROP_TABLE_TEACHER = "DROP TABLE IF EXISTS " + TEACHER_TABLE_NAME +";";
+
+
 
     /////////STUDENT
-
     String STUDENT_TABLE_NAME="Student";
 
     String STUDENT_COLUMN_USERNAME="username";
@@ -24,13 +36,14 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_GENDER+ " TEXT, "+
             STUDENT_COLUMN_AGE+ " INTEGER, "+
             STUDENT_COLUMN_POINTS+ " REAL, "+
-            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT);";
+            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT, " +
+            " FOREIGN KEY ( " + STUDENT_COLUMN_PROFESSOR_EMAIL +
+            " ) REFERANCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
 
-    String DROP_TABLE_STUDENT="DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
+    String DROP_TABLE_STUDENT = "DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
 
 
     ////////////////TESTRESULTS
-
     String TESTRESULTS_TABLE_NAME="Test Results";
 
     String TESTRESULTS_COLUMN_ID="id_test";
@@ -51,5 +64,9 @@ public interface DatabaseConstants {
             ") REFERENCES "+STUDENT_TABLE_NAME+" ( "+STUDENT_COLUMN_USERNAME+" ));";
 
     String DROP_TABLE_TESTRESULTS ="DROP TABLE IF EXISTS " + TESTRESULTS_TABLE_NAME +";";
+
+
+
+
 
 }
