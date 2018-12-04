@@ -25,7 +25,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
     private Button btn_countdown;
     private TextView tv_daily_question;
     private CountDownTimer countDownTimer;
-    private long timeLeftInMiliseconds=600000; //10 min
+    private long timeLeftInMiliseconds=15000; //10 min
     private boolean timerunning;
     private RadioButton rb_answer1;
     private RadioButton rb_answer2;
@@ -171,13 +171,22 @@ public class DailyQuestionActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFinish() {
-                score=0;
-                noCorectAnswers=0;
-                Intent intent= new Intent(getApplicationContext(), ResultActivity.class);
-                intent.putExtra(Constants.SCORE_KEY, score);
-                intent.putExtra(Constants.NO_CORECT_ANSWERS, noCorectAnswers);
-                startActivity(intent);
+            public void onFinish()
+            {   rb_answer1 = findViewById(R.id.intrebarea_zilei_rb_raspuns1);
+                rb_answer2 = findViewById(R.id.intrebarea_zilei_rb_raspuns2);
+                rb_answer3 = findViewById(R.id.intrebarea_zilei_rb_raspuns3);
+                if( !rb_answer1.isChecked()&& !rb_answer2.isChecked() && !rb_answer3.isChecked()){
+                    score=0;
+                    noCorectAnswers=0;
+                    Intent intent= new Intent(getApplicationContext(), ResultActivity.class);
+                    intent.putExtra(Constants.SCORE_KEY, score);
+                    intent.putExtra(Constants.NO_CORECT_ANSWERS, noCorectAnswers);
+                    startActivity(intent);
+                }
+                else {
+                    btn_result.performClick();
+                }
+
             }
         }.start();
         timerunning=true;
