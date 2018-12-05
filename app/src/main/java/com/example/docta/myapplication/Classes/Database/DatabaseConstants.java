@@ -26,7 +26,7 @@ public interface DatabaseConstants {
     String STUDENT_COLUMN_CURRENT_AVATAR="currentAvatar";
     String STUDENT_COLUMN_GENDER="gender";
     String STUDENT_COLUMN_AGE="age";
-    String STUDENT_COLUMN_SCORE="points";
+    String STUDENT_COLUMN_SCORE="score";
     String STUDENT_COLUMN_PROFESSOR_EMAIL="professorEmail";
 
     String CREATE_TABLE_STUDENT=
