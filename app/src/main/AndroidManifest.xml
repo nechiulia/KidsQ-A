@@ -3,7 +3,8 @@
     package="com.example.docta.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,29 +21,52 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPageActivity" />
-        <activity android:name=".LoginTeacherActivity" />
-        <activity android:name=".PurchaseAvatarsActivity" />
-        <activity android:name=".RankingActivity" />
-        <activity android:name=".LoginStudentActivity" />
-        <activity android:name=".SignUpStudentActivity" />
-        <activity android:name=".DailyQuestionActivity" />
-        <activity android:name=".QuestionsActivity" />
-        <activity android:name=".LearningCategoryActivity" />
-        <activity android:name=".ListStudentsActivity" />
-        <activity android:name=".HomePageActivity" />
-        <activity android:name=".FeedbackActivity" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".LetsLearnActivity" />
-        <activity android:name=".LetsPlayActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".SetDesignActivity" />
-        <activity android:name=".StudentSettingsActivity" />
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".MyAvatarsActivity" />
-        <activity android:name=".TasksActivity" />
-        <activity android:name=".AddTaskActivity" />
-        <activity android:name=".ShowImageActivity"></activity>
+        <activity android:name=".LoginPageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginTeacherActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PurchaseAvatarsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RankingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginStudentActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SignUpStudentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DailyQuestionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".QuestionsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LearningCategoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ListStudentsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomePageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FeedbackActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ResultActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LetsLearnActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LetsPlayActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SetDesignActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".StudentSettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HelpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MyAvatarsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TasksActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddTaskActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ShowImageActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

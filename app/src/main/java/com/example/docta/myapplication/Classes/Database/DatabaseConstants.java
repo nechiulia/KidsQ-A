@@ -13,7 +13,7 @@ public interface DatabaseConstants {
 
     String CREATE_TABLE_TEACHER = "CREATE TABLE " + TEACHER_TABLE_NAME
             + " ( " + TEACHER_COLUMN_EMAIL + " TEXT PRIMARY KEY, "+
-            TEACHER_COLUMN_PASSWORD + " TEXT );";
+                      TEACHER_COLUMN_PASSWORD + " TEXT );";
 
     String DROP_TABLE_TEACHER = "DROP TABLE IF EXISTS " + TEACHER_TABLE_NAME +";";
 
@@ -38,7 +38,7 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_POINTS+ " REAL, "+
             STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT, " +
             " FOREIGN KEY ( " + STUDENT_COLUMN_PROFESSOR_EMAIL +
-            " ) REFERANCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
+            " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
 
     String DROP_TABLE_STUDENT = "DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
 
@@ -46,7 +46,7 @@ public interface DatabaseConstants {
     ////////////////TESTRESULTS
     String TESTRESULTS_TABLE_NAME="Test Results";
 
-    String TESTRESULTS_COLUMN_ID="id_test";
+    String TESTRESULTS_COLUMN_ID_TEST="id_test";
     String TESTRESULTS_COLUMN_DIFICULTY="dificulty";
     String TESTRESULTS_COLUMN_CATEGORY="category";
     String TESTRESULTS_COLUMN_USERNAMESTUD="username";
@@ -54,7 +54,7 @@ public interface DatabaseConstants {
     String TESTRESULTS_COLUMN_MARK="mark";
 
     String CREATE_TABLE_TESTRESULTS= "CREATE TABLE " + TESTRESULTS_TABLE_NAME
-            + " ( " + TESTRESULTS_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            + " ( " + TESTRESULTS_COLUMN_ID_TEST + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             TESTRESULTS_COLUMN_DIFICULTY + " TEXT, " +
             TESTRESULTS_COLUMN_CATEGORY + " TEXT, " +
             TESTRESULTS_COLUMN_CORRECTANSWERS + " INTEGER, " +
