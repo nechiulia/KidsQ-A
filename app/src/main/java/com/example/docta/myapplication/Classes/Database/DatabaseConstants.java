@@ -66,7 +66,7 @@ public interface DatabaseConstants {
     String DROP_TABLE_TESTRESULTS ="DROP TABLE IF EXISTS " + TESTRESULTS_TABLE_NAME +";";
 
 
-    //TASKS
+    ////////////TASKS
 
     String TASKS_TABLE_NAME="Tasks";
 
