@@ -1,6 +1,7 @@
 package com.example.docta.myapplication;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +25,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -90,7 +90,7 @@ public class HomePageActivity extends AppCompatActivity {
             progressDialog.setCancelable(false);
             progressDialog.getButton(ProgressDialog.BUTTON_NEUTRAL).setVisibility(View.INVISIBLE);
 
-            @SuppressLint("StaticFieldLeak") Handler handler = new Handler() {
+        @SuppressLint("StaticFieldLeak") Handler handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
                     super.handleMessage(msg);
