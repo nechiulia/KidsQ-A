@@ -32,7 +32,7 @@ public interface DatabaseConstants {
     String CREATE_TABLE_STUDENT=
             "CREATE TABLE "+STUDENT_TABLE_NAME+
             " ( "+STUDENT_COLUMN_USERNAME+ " TEXT PRIMARY KEY, "+
-            STUDENT_COLUMN_CURRENT_AVATAR+ " TEXT, "+
+            STUDENT_COLUMN_CURRENT_AVATAR+ " BLOB, "+
             STUDENT_COLUMN_GENDER+ " TEXT, "+
             STUDENT_COLUMN_AGE+ " INTEGER, "+
             STUDENT_COLUMN_SCORE+ " REAL, "+

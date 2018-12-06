@@ -228,4 +228,7 @@
     <string name="showimage_iv_hint">Imagine</string>
     <string name="home_page_text_set_intrebari">Set intrebari</string>
     <string name="feedback_et_opinion_hint">OK</string>
+    <string name="Student_Adapter_boy">Băiat</string>
+    <string name="Student_Adapter_girl">Fată</string>
+    <string name="Student_Adapter_Ages">Ani</string>
 </resources>

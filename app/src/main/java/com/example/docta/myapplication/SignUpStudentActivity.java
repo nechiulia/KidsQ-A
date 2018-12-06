@@ -2,18 +2,24 @@ package com.example.docta.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Student;
 import com.example.docta.myapplication.util.Constants;
+
+import java.io.ByteArrayOutputStream;
 
 public class SignUpStudentActivity extends AppCompatActivity {
 
@@ -22,6 +28,8 @@ public class SignUpStudentActivity extends AppCompatActivity {
     private Spinner spn_age;
     private TextInputEditText tie_name;
     private RadioGroup rg_gender;
+    private ImageView img_boy;
+    private ImageView img_girl;
     Intent intent;
     private SharedPreferences sharedPreferences;
 
@@ -58,6 +66,8 @@ public class SignUpStudentActivity extends AppCompatActivity {
         btn_create = findViewById(R.id.signup_btn_create);
         tie_name =findViewById(R.id.signup_tid_avatarname);
         rg_gender =findViewById(R.id.signup_rg_sex);
+        img_boy = findViewById(R.id.signup_img_boy);
+        img_girl = findViewById(R.id.signup_img_girl);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +96,20 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         String name = tie_name.getText().toString();
                         int gender = rg_gender.getCheckedRadioButtonId();
                         int age = Integer.parseInt(spn_age.getSelectedItem().toString());
+                        byte[] avatar;
+                       if(gender == R.id.signup_rb_boy ){
+                           Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sboy);
+                           ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                           bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+                           avatar = stream.toByteArray();
+                        }else{
+                           Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sgirl);
+                           ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                           bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+                           avatar = stream.toByteArray();
+                       }
 
-                        Student student = new Student(name, age, gender);
+                        Student student = new Student(name,avatar, age, gender);
                         intent.putExtra(Constants.ADD_STUDENT_KEY, student);
                         setResult(RESULT_OK, intent);
                         finish();
@@ -105,6 +127,13 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
 
     }
+
+//    public static void convertBitmapToByte(){
+//        Bitmap bmp = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.sboy);
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//        bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+//        byte[] avatar = stream.toByteArray();
+//    }
     public boolean isValid(){
 
         if(tie_name.getText().toString().trim().isEmpty() || tie_name.getText().toString().contains(" ")){

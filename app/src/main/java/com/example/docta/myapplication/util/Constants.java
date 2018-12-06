@@ -39,5 +39,6 @@ public interface Constants {
     String DOWNLOAD_DONE ="validar descarca json";
     String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
 
+    String EMPTY_CHAR = " ";
 
 }

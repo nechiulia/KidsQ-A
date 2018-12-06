@@ -4,25 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="3">
+    android:weightSum="3.5">
+
+    <ImageView
+        android:id="@+id/studentsrow_img_avatar"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_weight="0.5"/>
 
     <TextView
         android:id="@+id/studentsrow_lv_name"
         android:layout_width="0dp"
         android:text="@string/lv_elevi__nume"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:textSize="17dp"/>
+
     <TextView
         android:id="@+id/studentsrow_lv_age"
         android:layout_width="0dp"
         android:text="@string/lv_elevi_varsta"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:textSize="17dp"/>
     <TextView
         android:id="@+id/studentsrow_lv_sex"
         android:layout_width="0dp"
         android:text="@string/lv_elevi_gen"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:textSize="17dp"/>
 
 </LinearLayout>
