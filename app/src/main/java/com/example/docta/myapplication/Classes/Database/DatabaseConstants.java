@@ -8,7 +8,7 @@ public interface DatabaseConstants {
     ////////////////TEACHER
     String TEACHER_TABLE_NAME = "Teacher";
 
-    String TEACHER_COLUMN_EMAIL ="email_profesor";
+    String TEACHER_COLUMN_EMAIL ="email_teacher";
     String TEACHER_COLUMN_PASSWORD = "password";
 
     String CREATE_TABLE_TEACHER = "CREATE TABLE " + TEACHER_TABLE_NAME
@@ -47,7 +47,7 @@ public interface DatabaseConstants {
     String TESTRESULTS_TABLE_NAME="Test Results";
 
     String TESTRESULTS_COLUMN_ID_TEST="id_test";
-    String TESTRESULTS_COLUMN_DIFICULTY="dificulty";
+    String TESTRESULTS_COLUMN_DIFFICULTY="difficulty";
     String TESTRESULTS_COLUMN_CATEGORY="category";
     String TESTRESULTS_COLUMN_USERNAMESTUD="username";
     String TESTRESULTS_COLUMN_CORRECTANSWERS="correct_answers";
@@ -55,7 +55,7 @@ public interface DatabaseConstants {
 
     String CREATE_TABLE_TESTRESULTS= "CREATE TABLE " + TESTRESULTS_TABLE_NAME
             + " ( " + TESTRESULTS_COLUMN_ID_TEST + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TESTRESULTS_COLUMN_DIFICULTY + " TEXT, " +
+            TESTRESULTS_COLUMN_DIFFICULTY + " TEXT, " +
             TESTRESULTS_COLUMN_CATEGORY + " TEXT, " +
             TESTRESULTS_COLUMN_CORRECTANSWERS + " INTEGER, " +
             TESTRESULTS_COLUMN_SCORE + " REAL, "+
@@ -64,6 +64,24 @@ public interface DatabaseConstants {
             ") REFERENCES "+STUDENT_TABLE_NAME+" ( "+STUDENT_COLUMN_USERNAME+" ));";
 
     String DROP_TABLE_TESTRESULTS ="DROP TABLE IF EXISTS " + TESTRESULTS_TABLE_NAME +";";
+
+
+    //TASKS
+
+    String TASKS_TABLE_NAME="Tasks";
+
+    String TASKS_COLUMN_ID_TASK="id_task";
+    String TASKS_COLUMN_DATE="date_task";
+    String TASKS_COLUMN_INFO="info_task";
+    String TASKS_COLUMN_ID_STUDENT="username";
+
+    String CREATE_TABLE_TASKS=" CREATE TABLE "+TASKS_TABLE_NAME+" ( "+
+            TASKS_COLUMN_ID_TASK+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+            TASKS_COLUMN_DATE+" TEXT, "+
+            TASKS_COLUMN_INFO+" TEXT, "+
+            TASKS_COLUMN_ID_STUDENT+" TEXT );";
+
+    String DROP_TABLE_TASKS=" DROP TABLE IF EXISTS "+TASKS_TABLE_NAME+" ; ";
 
 
 
