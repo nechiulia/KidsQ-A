@@ -25,7 +25,7 @@ public class DailyQuestionActivity extends AppCompatActivity {
     private Button btn_countdown;
     private TextView tv_daily_question;
     private CountDownTimer countDownTimer;
-    private long timeLeftInMiliseconds=15000; //10 min
+    private long timeLeftInMiliseconds=600000; //10 min
     private boolean timerunning;
     private RadioButton rb_answer1;
     private RadioButton rb_answer2;
