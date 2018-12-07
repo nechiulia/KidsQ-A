@@ -38,6 +38,7 @@ public interface Constants {
     String CATEGORY_LIFE ="viata-de-zi-cu-zi";
     String DOWNLOAD_DONE ="validar descarca json";
     String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
+    String URL_JSON_ACCOUNTS = "https://api.myjson.com/bins/b98ou";
 
     String EMPTY_CHAR = " ";
 

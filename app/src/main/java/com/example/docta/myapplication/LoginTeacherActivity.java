@@ -1,7 +1,9 @@
 package com.example.docta.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.TeacherDAO;
+import com.example.docta.myapplication.Classes.Network.HttpManager;
+import com.example.docta.myapplication.Classes.Teacher;
+import com.example.docta.myapplication.Classes.TeacherParser;
+import com.example.docta.myapplication.Classes.TeacherSet;
 import com.example.docta.myapplication.util.Constants;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class LoginTeacherActivity extends AppCompatActivity {
 
@@ -21,6 +32,10 @@ public class LoginTeacherActivity extends AppCompatActivity {
     private Button btn_back;
     Intent intent;
     private SharedPreferences sharedPreferences;
+    private TeacherSet setTeachers;
+    private ArrayList<Teacher> TeacherAccounts;
+    private TeacherDAO teacherDAO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +46,43 @@ public class LoginTeacherActivity extends AppCompatActivity {
             this.setTitle(title);
         }
         initComponents();
-
+        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
+            @Override
+            protected void onPostExecute(String s) {
+                try {
+                    setTeachers = TeacherParser.fromJson(s);
+                    TeacherAccounts = setTeachers.getTeacherList();
+                    teacherDAO.open();
+                    teacherDAO.insertTeacherAccountsInDatabase(TeacherAccounts);
+                    teacherDAO.close();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+               // Toast.makeText(getApplicationContext(),setTeachers.toString(),Toast.LENGTH_LONG).show();
+            }
+        };
+        manager.execute(Constants.URL_JSON_ACCOUNTS);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if(isValid()) {
-                    intent = new Intent(getApplicationContext(), ListStudentsActivity.class);
-                    SharedPreferences.Editor editor= sharedPreferences.edit();
-                    editor.putString(Constants.PASSWORD_PREF, tie_password.getText().toString());
-                    editor.putString(Constants.EMAIL_PREF, tie_email.getText().toString());
-                    boolean result= editor.commit();
-                    startActivity(intent);
+                    String email = tie_email.getText().toString();
+                    String password = tie_password.getText().toString();
+                    teacherDAO.open();
+                    if(teacherDAO.LoginTeacherFromDatabase(email,password)) {
+                        intent = new Intent(getApplicationContext(), ListStudentsActivity.class);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(Constants.PASSWORD_PREF, tie_password.getText().toString());
+                        editor.putString(Constants.EMAIL_PREF, tie_email.getText().toString());
+                        boolean result = editor.commit();
+                        teacherDAO.close();
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Ati gresit parola sau email-ul",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -60,6 +100,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
         btn_login=findViewById(R.id.loginteacher_btn_login);
         btn_back=findViewById(R.id.logintacher_btn_back);
         sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
+        teacherDAO = new TeacherDAO(getApplicationContext());
 
     }
 

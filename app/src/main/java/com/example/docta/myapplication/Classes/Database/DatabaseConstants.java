@@ -17,7 +17,8 @@ public interface DatabaseConstants {
 
     String DROP_TABLE_TEACHER = "DROP TABLE IF EXISTS " + TEACHER_TABLE_NAME +";";
 
-
+    String INSERT_TEACHER ="insert into "+ TEACHER_TABLE_NAME + " (" + TEACHER_COLUMN_EMAIL+", " + TEACHER_COLUMN_PASSWORD + ") values(?,?)";
+    String QUERRY_FOR_LOGIN = "SELECT * FROM "+ TEACHER_TABLE_NAME+ " WHERE " + TEACHER_COLUMN_EMAIL + "=? AND "+ TEACHER_COLUMN_PASSWORD + "=?";
 
     /////////STUDENT
     String STUDENT_TABLE_NAME="Student";
@@ -44,7 +45,7 @@ public interface DatabaseConstants {
 
 
     ////////////////TESTRESULTS
-    String TESTRESULTS_TABLE_NAME="Test Results";
+    String TESTRESULTS_TABLE_NAME="TestResults";
 
     String TESTRESULTS_COLUMN_ID_TEST="id_test";
     String TESTRESULTS_COLUMN_DIFFICULTY="difficulty";
