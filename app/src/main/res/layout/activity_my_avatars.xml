@@ -43,12 +43,10 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
         android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_iv_avatar6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
 
@@ -60,17 +58,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="32dp"
         android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_iv_avatar5"
         app:layout_constraintEnd_toStartOf="@+id/myavatars_iv_avatar3"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toEndOf="@+id/myavatars_iv_avatar1"
-        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
 
     <ImageView
         android:id="@+id/myavatars_iv_avatar3"
@@ -78,57 +73,12 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_iv_avatar4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
-
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar4"
-        android:layout_width="106dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_btn_back"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar5"
-        android:layout_width="104dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="20dp"
         android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_btn_back"
-        app:layout_constraintEnd_toStartOf="@+id/myavatars_iv_avatar4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/myavatars_iv_avatar6" />
-
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar6"
-        android:layout_width="106dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintBottom_toTopOf="@+id/myavatars_btn_back"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
 
     <TextView
         android:id="@+id/myavatars_tv_myavatar"

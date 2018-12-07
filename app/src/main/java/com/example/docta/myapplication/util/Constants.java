@@ -39,7 +39,13 @@ public interface Constants {
     String DOWNLOAD_DONE ="validar descarca json";
     String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
     String URL_JSON_ACCOUNTS = "https://api.myjson.com/bins/b98ou";
+   // String URL_JSON_AVATARS=" https://api.myjson.com/bins/1e8hny";
+   String URL_JSON_AVATARS="https://api.myjson.com/bins/p8hz2";
+
 
     String EMPTY_CHAR = " ";
+
+    String AVATAR_UPLOAD_CHECK_PREF="checkIfWasInserted";
+    String AVATAR_BOOL_CHECK_KEY="boolForCheck";
 
 }

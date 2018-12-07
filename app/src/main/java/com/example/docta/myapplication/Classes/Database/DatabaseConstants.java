@@ -3,7 +3,7 @@ package com.example.docta.myapplication.Classes.Database;
 public interface DatabaseConstants {
 
     String DATABASE_NAME="dosbrains.db";
-    int DATABASE_VERSION=1;
+    int DATABASE_VERSION=2;
 
 
 
@@ -102,13 +102,15 @@ public interface DatabaseConstants {
             + AVATAR_COLUMN_NAME+ " TEXT, "
             + AVATAR_COLUMN_PRICE+ " REAL, "
             + AVATAR_COLUMN_IMAGE+ " BLOB, "
-            + AVATAR_COLUMN_APP_AVATAR + " BOOLEAN );";
+            + AVATAR_COLUMN_APP_AVATAR + " TEXT );";
 
     String DROP_TABLE_AVATAR= " DROP TABLE IF EXISTS "+ AVATAR_TABLE_NAME+" ; ";
     String INSERT_AVATAR ="insert into "+ AVATAR_TABLE_NAME
             + " (" + AVATAR_COLUMN_NAME+", " + AVATAR_COLUMN_PRICE
             + ", "+ AVATAR_COLUMN_IMAGE+", "+ AVATAR_COLUMN_APP_AVATAR
             + " ) values(?,?,?,?)";
+    String QUERY_FOR_AVATARS = "SELECT * FROM "+ AVATAR_TABLE_NAME+ " WHERE " + AVATAR_COLUMN_APP_AVATAR + "=? ;";
+
 
 
 

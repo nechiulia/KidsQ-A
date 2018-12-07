@@ -33,6 +33,7 @@ public class TeacherDAO implements DatabaseConstants{
             for (int i = 0; i < list.size(); i++) {
                 insert.bindString(1,list.get(i).getEmail());
                 insert.bindString(2,list.get(i).getPassword());
+
                 insert.executeInsert();
             }
             database.setTransactionSuccessful();
