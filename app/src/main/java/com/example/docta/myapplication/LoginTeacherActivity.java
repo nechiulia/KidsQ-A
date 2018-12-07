@@ -35,6 +35,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
     private TeacherSet setTeachers;
     private ArrayList<Teacher> TeacherAccounts;
     private TeacherDAO teacherDAO;
+    private Boolean isChecked = false;
 
 
     @Override
@@ -46,28 +47,32 @@ public class LoginTeacherActivity extends AppCompatActivity {
             this.setTitle(title);
         }
         initComponents();
-        @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
-            @Override
-            protected void onPostExecute(String s) {
-                try {
-                    setTeachers = TeacherParser.fromJson(s);
-                    TeacherAccounts = setTeachers.getTeacherList();
-                    teacherDAO.open();
-                    teacherDAO.insertTeacherAccountsInDatabase(TeacherAccounts);
-                    teacherDAO.close();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        isChecked = sharedPreferences.getBoolean(getString(R.string.LOGIN_SHARED_JSONKEY),false);
+        if(!isChecked) {
+            @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+                @Override
+                protected void onPostExecute(String s) {
+                    try {
+                        setTeachers = TeacherParser.fromJson(s);
+                        TeacherAccounts = setTeachers.getTeacherList();
+                        teacherDAO.open();
+                        teacherDAO.insertTeacherAccountsInDatabase(TeacherAccounts);
+                        teacherDAO.close();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    // Toast.makeText(getApplicationContext(),setTeachers.toString(),Toast.LENGTH_LONG).show();
                 }
-               // Toast.makeText(getApplicationContext(),setTeachers.toString(),Toast.LENGTH_LONG).show();
-            }
-        };
-        manager.execute(Constants.URL_JSON_ACCOUNTS);
+            };
+            manager.execute(Constants.URL_JSON_ACCOUNTS);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(getString(R.string.LOGIN_SHARED_JSONKEY),true);
+            editor.commit();
+        }
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 if(isValid()) {
                     String email = tie_email.getText().toString();
                     String password = tie_password.getText().toString();

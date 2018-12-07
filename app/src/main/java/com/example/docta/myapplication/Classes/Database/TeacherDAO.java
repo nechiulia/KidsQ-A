@@ -1,14 +1,12 @@
 package com.example.docta.myapplication.Classes.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
-import android.widget.Toast;
-
 import com.example.docta.myapplication.Classes.Teacher;
-
 import java.util.ArrayList;
 
 public class TeacherDAO implements DatabaseConstants{
@@ -52,7 +50,24 @@ public class TeacherDAO implements DatabaseConstants{
         }else{
             return false;
         }
+    }
 
+    public long UpdateTeacherAccount(String newPass,String email){
+//        String QUERRY_UPDATE_TEACHER_ACCOUNT = "UPDATE "+ TEACHER_TABLE_NAME + " SET " + TEACHER_COLUMN_PASSWORD + "=? WHERE " + TEACHER_COLUMN_EMAIL+ " = ?";
+
+//        //Cursor c = database.rawQuery("UPDATE "+ TEACHER_TABLE_NAME + " SET " + TEACHER_COLUMN_PASSWORD + " = '" +newPass+ "'  WHERE " + TEACHER_COLUMN_EMAIL+ " = ?",new String[]{email});
+
+//        if(c!=null){
+//            return true;
+//        }else{
+//            return false;
+//        }
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TEACHER_COLUMN_PASSWORD, newPass);
+
+
+        return  database.update(TEACHER_TABLE_NAME,contentValues,TEACHER_COLUMN_EMAIL + " = ?",new String[]{email});
     }
 
     public void close(){

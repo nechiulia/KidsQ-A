@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.TeacherDAO;
 import com.example.docta.myapplication.util.Constants;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button btn_save;
     private SharedPreferences sharedPreferences;
     Intent intent = getIntent();
+    private TeacherDAO teacherDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +66,18 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isValid()) {
-                    Toast.makeText(getApplicationContext(),getString(R.string.setari_prof_toast_succes),Toast.LENGTH_LONG).show();
-                    SharedPreferences.Editor editor= sharedPreferences.edit();
-                    editor.putString(Constants.PASSWORD_PREF, tie_new_pass.getText().toString());
-                    boolean result= editor.commit();
-                    finish();
+                    String newPass = tie_new_pass.getText().toString();
+                    String email = tie_email.getText().toString();
+                    teacherDAO.open();
+                    if(teacherDAO.UpdateTeacherAccount(newPass,email)!=-1) {
+                        teacherDAO.close();
+                        Toast.makeText(getApplicationContext(), getString(R.string.setari_prof_toast_succes), Toast.LENGTH_LONG).show();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(Constants.PASSWORD_PREF, tie_new_pass.getText().toString());
+                        boolean result = editor.commit();
+                        finish();
+                    }
                 }
-
             }
         });
     }
@@ -85,6 +92,7 @@ public class SettingsActivity extends AppCompatActivity {
         tie_new_pass = findViewById(R.id.settings_tid_passwordN);
         tie_confirm_pass = findViewById(R.id.settings_tid_passwordC);
         sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
+        teacherDAO = new TeacherDAO(getApplicationContext());
     }
 
     private boolean isValid(){

@@ -231,4 +231,5 @@
     <string name="Student_Adapter_boy">Băiat</string>
     <string name="Student_Adapter_girl">Fată</string>
     <string name="Student_Adapter_Ages">Ani</string>
+    <string name="LOGIN_SHARED_JSONKEY">LoginTeacher_JSON_shared</string>
 </resources>
