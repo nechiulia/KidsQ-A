@@ -5,6 +5,9 @@ public interface DatabaseConstants {
     String DATABASE_NAME="dosbrains.db";
     int DATABASE_VERSION=1;
 
+
+
+
     ////////////////TEACHER
     String TEACHER_TABLE_NAME = "Teacher";
 
@@ -84,6 +87,31 @@ public interface DatabaseConstants {
 
     String DROP_TABLE_TASKS=" DROP TABLE IF EXISTS "+TASKS_TABLE_NAME+" ; ";
 
+    ////////////////AVATARS
+    String AVATAR_TABLE_NAME="Avatar";
+
+    String AVATAR_COLUMN_ID_AVATAR="id_avatar";
+    String AVATAR_COLUMN_NAME="name_avatar";
+    String AVATAR_COLUMN_PRICE="price_avatar";
+    String AVATAR_COLUMN_IMAGE="image_avatar";
+    String AVATAR_COLUMN_APP_AVATAR="app_avatar";
+    String AVATAR_COLUMN_ID_STUDENT="id_student";
+
+    String CREATE_TABLE_AVATAR= "CREATE TABLE "+ AVATAR_TABLE_NAME
+            +" ( "+ AVATAR_COLUMN_ID_AVATAR + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + AVATAR_COLUMN_NAME+ " TEXT, "
+            + AVATAR_COLUMN_PRICE+ " REAL, "
+            + AVATAR_COLUMN_IMAGE+ " BLOB, "
+            + AVATAR_COLUMN_APP_AVATAR + " BOOLEAN, "
+            + AVATAR_COLUMN_ID_STUDENT + " FOREIGN KEY ( " + AVATAR_COLUMN_ID_STUDENT
+            + " ) REFERENCES " + STUDENT_TABLE_NAME
+            + " ( " +STUDENT_COLUMN_USERNAME+" ));";
+
+    String DROP_TABLE_AVATAR= " DROP TABLE IF EXISTS "+ AVATAR_TABLE_NAME+" ; ";
+    String INSERT_AVATAR ="insert into "+ AVATAR_TABLE_NAME
+            + " (" + AVATAR_COLUMN_NAME+", " + AVATAR_COLUMN_PRICE
+            + ", "+ AVATAR_COLUMN_IMAGE+", "+ AVATAR_COLUMN_APP_AVATAR
+            + ", "+ AVATAR_COLUMN_ID_STUDENT+") values(?,?,?,?,?)";
 
 
 

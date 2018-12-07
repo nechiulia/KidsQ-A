@@ -32,6 +32,7 @@ public class DatabaseController extends SQLiteOpenHelper implements DatabaseCons
         db.execSQL(CREATE_TABLE_STUDENT);
         db.execSQL(CREATE_TABLE_TASKS);
         db.execSQL(CREATE_TABLE_TESTRESULTS);
+        db.execSQL(CREATE_TABLE_AVATAR);
     }
 
     @Override
@@ -40,6 +41,7 @@ public class DatabaseController extends SQLiteOpenHelper implements DatabaseCons
         db.execSQL(DROP_TABLE_TESTRESULTS);
         db.execSQL(DROP_TABLE_TEACHER);
         db.execSQL(DROP_TABLE_TASKS);
+        db.execSQL(DROP_TABLE_AVATAR);
         onCreate(db);
     }
 }
