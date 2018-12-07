@@ -29,20 +29,13 @@ public class TeacherDAO implements DatabaseConstants{
     }
 
     public void insertTeacherAccountsInDatabase(ArrayList<Teacher> list) {
-
         database.beginTransaction();
-
-
         try{
             SQLiteStatement insert = database.compileStatement(INSERT_TEACHER);
             for (int i = 0; i < list.size(); i++) {
                 insert.bindString(1,list.get(i).getEmail());
                 insert.bindString(2,list.get(i).getPassword());
                 insert.executeInsert();
-//                ContentValues contentValues = new ContentValues();
-//                contentValues.put(TEACHER_COLUMN_EMAIL, list.get(i).getEmail());
-//                contentValues.put(TEACHER_COLUMN_PASSWORD, list.get(i).getPassword());
-//                database.insertOrThrow(TEACHER_TABLE_NAME, null, contentValues);
             }
             database.setTransactionSuccessful();
         }catch(SQLException e){
@@ -61,8 +54,6 @@ public class TeacherDAO implements DatabaseConstants{
         }
 
     }
-
-
 
     public void close(){
         try{
