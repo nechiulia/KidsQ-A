@@ -40,7 +40,8 @@ public interface Constants {
     String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
     String URL_JSON_ACCOUNTS = "https://api.myjson.com/bins/b98ou";
    // String URL_JSON_AVATARS=" https://api.myjson.com/bins/1e8hny";
-   String URL_JSON_AVATARS="https://api.myjson.com/bins/p8hz2";
+   //String URL_JSON_AVATARS="https://api.myjson.com/bins/p8hz2";
+    String URL_JSON_AVATARS="https://api.myjson.com/bins/h2uzi";
 
 
     String EMPTY_CHAR = " ";

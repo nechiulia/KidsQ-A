@@ -1,6 +1,7 @@
 package com.example.docta.myapplication.Classes;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Avatar implements Serializable {
     private Long id;
@@ -56,5 +57,14 @@ public class Avatar implements Serializable {
         this.appAvatar = appAvatar;
     }
 
-
+    @Override
+    public String toString() {
+        return "Avatar{" +
+              //  "id=" + id +
+                "  name='" + name + '\'' +
+                ", price=" + price +
+                ", image=" + Arrays.toString(image) +
+                ", appAvatar=" + appAvatar +
+                '}';
+    }
 }

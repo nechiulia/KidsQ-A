@@ -97,7 +97,7 @@ public interface DatabaseConstants {
     String AVATAR_COLUMN_APP_AVATAR="app_avatar";
 
 
-    String CREATE_TABLE_AVATAR= "CREATE TABLE "+ AVATAR_TABLE_NAME
+    String CREATE_TABLE_AVATAR= " CREATE TABLE "+ AVATAR_TABLE_NAME
             +" ( "+ AVATAR_COLUMN_ID_AVATAR + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + AVATAR_COLUMN_NAME+ " TEXT, "
             + AVATAR_COLUMN_PRICE+ " REAL, "

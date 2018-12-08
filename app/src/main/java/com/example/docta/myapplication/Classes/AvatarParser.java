@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.docta.myapplication.MyAvatarsActivity;
 import com.example.docta.myapplication.R;
@@ -31,7 +32,7 @@ public class AvatarParser {
             InputStream stream=imageUrl.openStream();
             Bitmap bmp= BitmapFactory.decodeStream(stream);
             ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.JPEG,100,byteArrayStream);
+            bmp.compress(Bitmap.CompressFormat.PNG,100,byteArrayStream);
             avatar = byteArrayStream.toByteArray();
             return  avatar;
         } catch (Exception e) {
