@@ -1,68 +1,55 @@
 package com.example.docta.myapplication.Classes;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
-import android.widget.Toast;
+import android.os.AsyncTask;
 
-import com.example.docta.myapplication.MyAvatarsActivity;
-import com.example.docta.myapplication.R;
-import com.squareup.picasso.Picasso;
+import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.List;
+
+import static com.example.docta.myapplication.util.Global.avatars;
 
 public class AvatarParser {
-    private static byte[] getLogoImage(String url){
+
+    private static void getLogoImage(String name,Double price , String url,boolean appAvatar){
+
         try {
-            byte[] avatar;
-            URL imageUrl = new URL(url);
-            InputStream stream=imageUrl.openStream();
-            Bitmap bmp= BitmapFactory.decodeStream(stream);
-            ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
-            bmp.compress(Bitmap.CompressFormat.PNG,100,byteArrayStream);
-            avatar = byteArrayStream.toByteArray();
-            return  avatar;
+            new ImageDownload().execute(name,price,url,appAvatar);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+
     }
-    public static ArrayList<Avatar> fromJson(String json) throws JSONException {
+
+    public static void fromJson(String json) throws JSONException {
         if(json==null){
-            return null;
+
         }
         JSONArray array= new JSONArray(json);
-        ArrayList<Avatar> avatars = getListAvatarsFromJson(array);
-        return avatars;
-
-    }
-    private static Avatar getAvatarFromJson(JSONObject object) throws JSONException {
-        if (object==null) {
-            return null;
+        for(int i = 0;i<array.length();i++){
+            getAvatarFromJson(array.getJSONObject(i));
         }
-        String name = object.getString("name");
-        Double price = object.getDouble("price");
-        String urlImage= object.getString("image");
-        byte[] image= getLogoImage(urlImage);
-        Boolean appAvatar= object.getBoolean("app_avatar");
 
-        return new Avatar(name,price,image,appAvatar);
+    }
+    public static void getAvatarFromJson(JSONObject object) throws JSONException {
+        if (object!=null) {
+            String name = object.getString("name");
+            Double price = object.getDouble("price");
+            String urlImage = object.getString("image");
+            Boolean appAvatar = object.getBoolean("app_avatar");
+            getLogoImage(name, price, urlImage, appAvatar);
+        }
     }
 
-    private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
+  /*  private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
         if (array==null){
             return null;
         }
@@ -74,8 +61,51 @@ public class AvatarParser {
             }
         }
         return list;
+    }*/
+
+
+
+}
+
+
+class ImageDownload extends AsyncTask<Object, Void, byte[]>
+{
+
+    Bitmap bmp=null;
+    @Override
+    protected void onPreExecute() {
+ 
+        super.onPreExecute();
+
+        //ShowDialog();
     }
 
+    @Override
+    protected byte[] doInBackground(Object... params)
+    {
+        byte[] avatar = new byte[0];
+        try {
+            URL urlSDADAD = new URL(params[2].toString());
+            bmp = BitmapFactory.decodeStream(urlSDADAD.openConnection().getInputStream());
+            ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
 
+            bmp.compress(Bitmap.CompressFormat.PNG,100,byteArrayStream);
+            avatar = byteArrayStream.toByteArray();
+
+            Avatar a = new Avatar(params[0].toString(),Double.valueOf(params[1].toString()),avatar,Boolean.getBoolean(params[3].toString()));
+            avatars.add(a);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return avatar;
+
+    }
+
+    @Override
+    protected void onPostExecute(byte[] result)
+    {
+        super.onPostExecute(result);
+    }
 
 }

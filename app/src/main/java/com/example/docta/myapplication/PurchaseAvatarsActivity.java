@@ -21,6 +21,8 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import static com.example.docta.myapplication.util.Global.avatars;
+
 public class PurchaseAvatarsActivity extends AppCompatActivity {
 
     private Button btn_back;
@@ -41,13 +43,14 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             this.setTitle(title);
         }
         sharedPreferences = getSharedPreferences(Constants.AVATAR_UPLOAD_CHECK_PREF,MODE_PRIVATE);
-        isChecked = sharedPreferences.getBoolean(getString(R.string.LOGIN_SHARED_JSONKEY),false);
-        if(!isChecked){
-            @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+        isChecked = sharedPreferences.getBoolean(Constants.AVATAR_BOOL_CHECK_KEY,false);
+        if(!isChecked) {
+            @SuppressLint("StaticFieldLeak") HttpManager managerJson = new HttpManager() {
                 @Override
                 protected void onPostExecute(String s) {
                     try {
-                        app_avatars = AvatarParser.fromJson(s);
+                        AvatarParser.fromJson(s);
+                        app_avatars=avatars;
                         Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
                         avatarDAO.open();
                         avatarDAO.insertAvatarsInDatabase(app_avatars);
@@ -57,11 +60,29 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                     }
                 }
             };
-            manager.execute(Constants.URL_JSON_AVATARS);
+            managerJson.execute(Constants.URL_JSON_AVATARS);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
             editor.commit();
         }
+        /*if(!isChecked){
+            @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+                @Override
+                protected void onPostExecute(String s) {
+                    try {
+                        app_avatars=avatars;
+                        Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
+                        avatarDAO.open();
+                        avatarDAO.insertAvatarsInDatabase(app_avatars);
+                        avatarDAO.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            manager.execute(Constants.URL_JSON_AVATARS);*/
+
+        //}
         else {
             app_avatars=avatarDAO.findAllAvatarsFromApp();
         }

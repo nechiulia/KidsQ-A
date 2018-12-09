@@ -5,6 +5,9 @@ import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Avatar;
+import com.example.docta.myapplication.Classes.AvatarParser;
 import com.example.docta.myapplication.Classes.Question;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.Classes.QuestionsSet;
@@ -23,8 +28,13 @@ import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONException;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static com.example.docta.myapplication.util.Global.avatars;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -53,6 +63,9 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //incarca lista avatare
+
+        //
         setContentView(R.layout.activity_home_page);
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
         sharedPreferencesSet = getSharedPreferences(getString(R.string.home_page_text_set_intrebari), MODE_PRIVATE);
@@ -76,6 +89,7 @@ public class HomePageActivity extends AppCompatActivity {
 
                 };
         manager.execute(URL);
+        Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_LONG).show();
         initComponents();
     }
 
