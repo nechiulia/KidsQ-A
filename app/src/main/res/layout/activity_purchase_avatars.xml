@@ -25,6 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/purchase_iv_myavatar" />
 
     <ImageView
+        android:scaleType="fitCenter"
         android:id="@+id/purchase_iv_myavatar"
         android:layout_width="102dp"
         android:layout_height="89dp"
@@ -43,10 +44,11 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginBottom="20dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost1"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -56,18 +58,20 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost2"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar1" />
 
     <ImageView
+
         android:id="@+id/purchase_iv_avatar3"
         android:layout_width="106dp"
         android:layout_height="92dp"
@@ -88,7 +92,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="18dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost6"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -116,9 +120,9 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="22dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost4"
         app:layout_constraintStart_toStartOf="parent" />

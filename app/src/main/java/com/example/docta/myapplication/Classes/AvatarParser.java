@@ -12,12 +12,13 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 
 import static com.example.docta.myapplication.util.Global.avatars;
 
-public class AvatarParser {
+public class AvatarParser implements Serializable {
 
     private static void getLogoImage(String name,Double price , String url,boolean appAvatar){
 
@@ -33,8 +34,9 @@ public class AvatarParser {
         if(json==null){
 
         }
-        JSONArray array= new JSONArray(json);
-        for(int i = 0;i<array.length();i++){
+        JSONArray array = new JSONArray(json);
+        ArrayList<Avatar> listAvat = new ArrayList<>();
+        for(int i = 0; i<array.length(); i++){
             getAvatarFromJson(array.getJSONObject(i));
         }
 
@@ -47,21 +49,22 @@ public class AvatarParser {
             Boolean appAvatar = object.getBoolean("app_avatar");
             getLogoImage(name, price, urlImage, appAvatar);
         }
+
     }
 
-  /*  private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
-        if (array==null){
-            return null;
-        }
-        ArrayList<Avatar> list = new ArrayList<>();
-        for (int i = 0 ; i < array.length();i++){
-            Avatar avatar = getAvatarFromJson(array.getJSONObject(i));
-            if(avatar!=null){
-                list.add(avatar);
-            }
-        }
-        return list;
-    }*/
+//    private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
+//        if (array==null){
+//            return null;
+//        }
+//        ArrayList<Avatar> list = new ArrayList<>();
+//        for (int i = 0 ; i < array.length();i++){
+//            Avatar avatar = getAvatarFromJson(array.getJSONObject(i));
+//            if(avatar!=null){
+//                list.add(avatar);
+//            }
+//        }
+//        return list;
+//    }
 
 
 

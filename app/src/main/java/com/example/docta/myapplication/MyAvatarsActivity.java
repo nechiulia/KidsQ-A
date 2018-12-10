@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Avatar;
 import com.example.docta.myapplication.Classes.AvatarParser;
@@ -21,11 +22,29 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.docta.myapplication.util.Global.avatars;
+
 public class MyAvatarsActivity extends AppCompatActivity {
 
     private Button btn_buy;
     private Button btn_back;
+    private Boolean isChecked=false;
+    private SharedPreferences sharedPreferences;
+    private ArrayList<Avatar> app_avatars=new ArrayList<>();
+    private AvatarDAO avatarDAO;
+
     Intent intent;
+//    @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
+//        @Override
+//        protected void onPostExecute(String s) {
+//            try {
+//                AvatarParser.fromJson(s);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    };
+
 
 
     @Override
@@ -38,14 +57,37 @@ public class MyAvatarsActivity extends AppCompatActivity {
         }
 
         init();
+        sharedPreferences = getSharedPreferences(Constants.AVATAR_UPLOAD_CHECK_PREF,MODE_PRIVATE);
+        isChecked = sharedPreferences.getBoolean(Constants.AVATAR_BOOL_CHECK_KEY,false);
 
+        if(!isChecked) {
+            @SuppressLint("StaticFieldLeak") HttpManager managerJson = new HttpManager() {
+                @Override
+                protected void onPostExecute(String s) {
+                    try {
+                        AvatarParser.fromJson(s);
+                        app_avatars=avatars;
+                        Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
+                        avatarDAO.open();
+                        avatarDAO.insertAvatarsInDatabase(app_avatars);
+                        avatarDAO.close();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            managerJson.execute(Constants.URL_JSON_AVATARS);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
+            editor.commit();
+        }
 
 
     }
     private void init(){
         btn_buy =findViewById(R.id.myavatars_btn_buy);
         btn_back=findViewById(R.id.myavatars_btn_back);
-
+        avatarDAO = new AvatarDAO(getApplicationContext());
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +104,4 @@ public class MyAvatarsActivity extends AppCompatActivity {
         });
 
     }
-
-
 }

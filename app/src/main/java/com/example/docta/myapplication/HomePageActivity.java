@@ -115,7 +115,7 @@ public class HomePageActivity extends AppCompatActivity {
             new Thread(() -> {
                 while (progressDialog.getProgress() <= progressDialog.getMax()) {
                     try {
-                        Thread.sleep(30);
+                        Thread.sleep(20);
                         handler.sendMessage(handler.obtainMessage());
                         if (progressDialog.getProgress() == progressDialog.getMax()) {
                             progressDialog.dismiss();

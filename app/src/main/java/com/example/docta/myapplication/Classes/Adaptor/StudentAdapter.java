@@ -54,7 +54,7 @@ public class StudentAdapter extends ArrayAdapter<Student> {
 
         Bitmap bmp = BitmapFactory.decodeByteArray(student.getAvatar(),0,student.getAvatar().length);
 
-        imgAvatar.setImageBitmap(Bitmap.createScaledBitmap(bmp,30,30,false));
+        imgAvatar.setImageBitmap(Bitmap.createBitmap(bmp));
         tvName.setText(student.getUsername());
         tvAge.setText(String.valueOf(student.getAge())+ Constants.EMPTY_CHAR + context.getString(R.string.Student_Adapter_Ages) );
         tvGender.setText(student.getGender() == R.id.signup_rb_boy ? "Băiat" : "Fată" );

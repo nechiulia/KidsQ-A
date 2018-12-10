@@ -40,7 +40,7 @@ public class AvatarDAO implements DatabaseConstants {
                 insert.bindString(1,list.get(i).getName());
                 insert.bindDouble(2,list.get(i).getPrice());
                 insert.bindBlob(3,list.get(i).getImage());
-                insert.bindString(4,list.get(i).getAppAvatar().toString());
+                insert.bindString(4,String.valueOf(list.get(i).getAppAvatar()));
 
                 insert.executeInsert();
             }
@@ -79,11 +79,9 @@ public class AvatarDAO implements DatabaseConstants {
                     .getColumnIndex(AVATAR_COLUMN_NAME));
             Double price = cursor.getDouble(cursor
                     .getColumnIndex(AVATAR_COLUMN_PRICE));
-            byte[] image = cursor
-                    .getBlob(cursor
-                            .getColumnIndex(AVATAR_COLUMN_IMAGE));
-            Boolean app_avatar= cursor.getString(cursor
-                    .getColumnIndex(AVATAR_COLUMN_APP_AVATAR)).equals("true")? true:false;
+
+            byte[] image = cursor.getBlob(cursor.getColumnIndex(AVATAR_COLUMN_IMAGE));
+            Boolean app_avatar= cursor.getString(cursor.getColumnIndex(AVATAR_COLUMN_APP_AVATAR)).equals("true") ? true:false;
 
             results.add(new Avatar(id, name, price, image,app_avatar));
         }

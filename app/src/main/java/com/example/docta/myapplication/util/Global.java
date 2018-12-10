@@ -7,4 +7,6 @@ import java.util.ArrayList;
 public class Global {
 
     public static ArrayList<Avatar> avatars = new ArrayList<>();
+
+
 }

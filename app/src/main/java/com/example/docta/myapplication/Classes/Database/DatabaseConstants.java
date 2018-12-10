@@ -3,7 +3,7 @@ package com.example.docta.myapplication.Classes.Database;
 public interface DatabaseConstants {
 
     String DATABASE_NAME="dosbrains.db";
-    int DATABASE_VERSION=2;
+    int DATABASE_VERSION=3;
 
 
 
@@ -40,7 +40,7 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_GENDER+ " TEXT, "+
             STUDENT_COLUMN_AGE+ " INTEGER, "+
             STUDENT_COLUMN_SCORE+ " REAL, "+
-            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT, " +
+            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT " +
             " FOREIGN KEY ( " + STUDENT_COLUMN_PROFESSOR_EMAIL +
             " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
 
