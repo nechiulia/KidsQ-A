@@ -232,4 +232,5 @@
     <string name="Student_Adapter_girl">Fată</string>
     <string name="Student_Adapter_Ages">Ani</string>
     <string name="LOGIN_SHARED_JSONKEY">LoginTeacher_JSON_shared</string>
+    <string name="purchase_tv_price_points">puncte</string>
 </resources>

@@ -1,23 +1,18 @@
 package com.example.docta.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Avatar;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
 
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 
@@ -109,27 +104,27 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             btm=BitmapFactory.decodeByteArray(app_avatars.get(0).getImage(),0,app_avatars.get(0).getImage().length);
             avatar1.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar1Name.setText(app_avatars.get(0).getName());
-            tvAvatar1Price.setText(app_avatars.get(0).getPrice().toString());
+            tvAvatar1Price.setText(app_avatars.get(0).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
             btm=BitmapFactory.decodeByteArray(app_avatars.get(1).getImage(),0,app_avatars.get(1).getImage().length);
             avatar2.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar2Name.setText(app_avatars.get(1).getName());
-            tvAvatar2Price.setText(app_avatars.get(1).getPrice().toString());
+            tvAvatar2Price.setText(app_avatars.get(1).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
             btm=BitmapFactory.decodeByteArray(app_avatars.get(2).getImage(),0,app_avatars.get(2).getImage().length);
             avatar3.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar3Name.setText(app_avatars.get(2).getName());
-            tvAvatar3Price.setText(app_avatars.get(2).getPrice().toString());
+            tvAvatar3Price.setText(app_avatars.get(2).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
             btm=BitmapFactory.decodeByteArray(app_avatars.get(3).getImage(),0,app_avatars.get(3).getImage().length);
             avatar4.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar4Name.setText(app_avatars.get(3).getName());
-            tvAvatar4Price.setText(app_avatars.get(3).getPrice().toString());
+            tvAvatar4Price.setText(app_avatars.get(3).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
             btm=BitmapFactory.decodeByteArray(app_avatars.get(4).getImage(),0,app_avatars.get(4).getImage().length);
             avatar5.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar5Name.setText(app_avatars.get(4).getName());
-            tvAvatar5Price.setText(app_avatars.get(4).getPrice().toString());
+            tvAvatar5Price.setText(app_avatars.get(4).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
             btm=BitmapFactory.decodeByteArray(app_avatars.get(5).getImage(),0,app_avatars.get(5).getImage().length);
             avatar6.setImageBitmap(Bitmap.createBitmap(btm));
             tvAvatar6Name.setText(app_avatars.get(5).getName());
-            tvAvatar6Price.setText(app_avatars.get(5).getPrice().toString());
+            tvAvatar6Price.setText(app_avatars.get(5).getPrice().toString()+ getString(R.string.purchase_tv_price_points));
 
 
         }

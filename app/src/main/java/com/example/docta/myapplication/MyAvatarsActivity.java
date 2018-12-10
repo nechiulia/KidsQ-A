@@ -49,7 +49,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
         init();
         sharedPreferences = getSharedPreferences(Constants.AVATAR_UPLOAD_CHECK_PREF,MODE_PRIVATE);
         isChecked = sharedPreferences.getBoolean(Constants.AVATAR_BOOL_CHECK_KEY,false);
-        isChecked=false;
         if(!isChecked) {
             @SuppressLint("StaticFieldLeak") HttpManager managerJson = new HttpManager() {
                 @Override

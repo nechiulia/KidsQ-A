@@ -289,7 +289,7 @@
         app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar2_name" />
 
     <TextView
-        android:id="@+id/purchase_tv_avatar4_name"
+        android:id="@+id/purchase_tv_avatar6_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -308,10 +308,10 @@
         android:layout_marginBottom="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar5"
-        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar4_name" />
+        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar6_name" />
 
     <TextView
-        android:id="@+id/purchase_tv_avatar6_name"
+        android:id="@+id/purchase_tv_avatar4_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
