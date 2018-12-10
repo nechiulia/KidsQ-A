@@ -49,28 +49,30 @@ public class MyAvatarsActivity extends AppCompatActivity {
         init();
         sharedPreferences = getSharedPreferences(Constants.AVATAR_UPLOAD_CHECK_PREF,MODE_PRIVATE);
         isChecked = sharedPreferences.getBoolean(Constants.AVATAR_BOOL_CHECK_KEY,false);
-
+        isChecked=false;
         if(!isChecked) {
             @SuppressLint("StaticFieldLeak") HttpManager managerJson = new HttpManager() {
                 @Override
                 protected void onPostExecute(String s) {
                     try {
                         app_avatars=AvatarParser.fromJson(s);
-                        //app_avatars=avatars;
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    finally {
                         avatarDAO.open();
                         avatarDAO.insertAvatarsInDatabase(app_avatars);
                         avatarDAO.close();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
+                        editor.commit();
                     }
                 }
             };
             managerJson.execute(URL_JSON_AVATARS);
             //managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
 
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
-            editor.commit();
+
         }
 
 

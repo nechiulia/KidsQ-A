@@ -21,8 +21,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.691"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/purchase_iv_myavatar" />
+        app:layout_constraintTop_toBottomOf="@+id/purchase_iv_myavatar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:scaleType="fitCenter"
@@ -77,9 +79,9 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost3"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -92,7 +94,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost6"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -107,11 +109,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost5"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar4"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.208"
         app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar6" />
 
     <ImageView
@@ -120,9 +122,7 @@
         android:layout_height="92dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="12dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost4"
         app:layout_constraintStart_toStartOf="parent" />
@@ -150,7 +150,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/avatare_tv_cost1_str"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar6"
         app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost2"
@@ -164,7 +164,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:layout_marginRight="84dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/avatare_tv_cost2_str"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar5"
         app:layout_constraintEnd_toStartOf="@+id/purchase_tv_cost3" />
@@ -173,9 +173,9 @@
         android:id="@+id/purchase_tv_cost3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/avatare_tv_cost3_str"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar4"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -236,7 +236,7 @@
     <Button
         android:id="@+id/purchase_btn_back"
         android:layout_width="59dp"
-        android:layout_height="42dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -250,5 +250,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar1_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar2"
+        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar1_name" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar3_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.711"
+        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar2_name" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar4_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar6"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar5_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar5"
+        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar4_name" />
+
+    <TextView
+        android:id="@+id/purchase_tv_avatar6_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toEndOf="@+id/purchase_tv_avatar5_name" />
 
 </android.support.constraint.ConstraintLayout>
