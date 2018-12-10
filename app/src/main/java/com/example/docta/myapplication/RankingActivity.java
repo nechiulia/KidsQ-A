@@ -10,12 +10,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
+import com.example.docta.myapplication.Classes.Student;
 import com.example.docta.myapplication.util.Constants;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public  class RankingActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private SharedPreferences sharedPreferences;
+    private ArrayList<Student> StudentsList;
+    private StudentDAO StudentDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

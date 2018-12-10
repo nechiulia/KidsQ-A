@@ -37,10 +37,10 @@ public interface DatabaseConstants {
             "CREATE TABLE "+STUDENT_TABLE_NAME+
             " ( "+STUDENT_COLUMN_USERNAME+ " TEXT PRIMARY KEY, "+
             STUDENT_COLUMN_CURRENT_AVATAR+ " BLOB, "+
-            STUDENT_COLUMN_GENDER+ " TEXT, "+
+            STUDENT_COLUMN_GENDER+ " INTEGER, "+
             STUDENT_COLUMN_AGE+ " INTEGER, "+
             STUDENT_COLUMN_SCORE+ " REAL, "+
-            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT " +
+            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT, " +
             " FOREIGN KEY ( " + STUDENT_COLUMN_PROFESSOR_EMAIL +
             " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
 
