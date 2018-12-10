@@ -34,7 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.example.docta.myapplication.util.Global.avatars;
+//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -89,7 +89,6 @@ public class HomePageActivity extends AppCompatActivity {
 
                 };
         manager.execute(URL);
-        Toast.makeText(getApplicationContext(),"Welcome",Toast.LENGTH_LONG).show();
         initComponents();
     }
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.docta.myapplication.util.Constants.URL_JSON_AVATARS;
-import static com.example.docta.myapplication.util.Global.avatars;
+//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class MyAvatarsActivity extends AppCompatActivity {
 
@@ -67,9 +67,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(String s) {
                     try {
-                        AvatarParser.fromJson(s);
-                        app_avatars=avatars;
-                        //Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
+                        app_avatars=AvatarParser.fromJson(s);
+                        //app_avatars=avatars;
                         avatarDAO.open();
                         avatarDAO.insertAvatarsInDatabase(app_avatars);
                         avatarDAO.close();
@@ -78,8 +77,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
                     }
                 }
             };
-//            managerJson.execute(URL_JSON_AVATARS);
-            managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
+            managerJson.execute(URL_JSON_AVATARS);
+            //managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);

@@ -16,59 +16,56 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static com.example.docta.myapplication.util.Global.avatars;
 
 public class AvatarParser implements Serializable {
-    public static ArrayList<Avatar> avatarss = new ArrayList<>();
-    private static void getLogoImage(String name,Double price , String url,boolean appAvatar){
+    private static ArrayList<Avatar> avatarss = new ArrayList<>();
 
+    public static ArrayList<Avatar> getAvatarss() {
+        return avatarss;
+    }
+
+    public static void setAvatarss(ArrayList<Avatar> avatarss) {
+        AvatarParser.avatarss = avatarss;
+    }
+
+    private static ArrayList<Avatar> getLogoImage(String name, Double price , String url, boolean appAvatar){
+        ArrayList<Avatar> appAvatars=new ArrayList<>();
         try {
-            new ImageDownload().execute(name,price,url,appAvatar);
+          appAvatars= new ImageDownload().execute(name,price,url,appAvatar).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return appAvatars;
     }
 
-    public static void fromJson(String json) throws JSONException {
-        if(json==null){
+    public static ArrayList<Avatar> fromJson(String json) throws JSONException {
+        ArrayList<Avatar> appAvatars= new ArrayList<>();
+        if(json!=null){
+            JSONArray array = new JSONArray(json);
+            for(int i = 0; i<array.length(); i++){
+                appAvatars=getAvatarFromJson(array.getJSONObject(i));
+            }
+        }
+        return appAvatars;
 
-        }
-        JSONArray array = new JSONArray(json);
-        for(int i = 0; i<array.length(); i++){
-            getAvatarFromJson(array.getJSONObject(i));
-        }
     }
-    public static void getAvatarFromJson(JSONObject object) throws JSONException {
+    public static ArrayList<Avatar> getAvatarFromJson(JSONObject object) throws JSONException {
+        ArrayList<Avatar> appAvatars= new ArrayList<>();
         if (object!=null) {
             String name = object.getString("name");
             Double price = object.getDouble("price");
             String urlImage = object.getString("image");
             Boolean appAvatar = object.getBoolean("app_avatar");
-            getLogoImage(name, price, urlImage, appAvatar);
+            appAvatars=getLogoImage(name, price, urlImage, appAvatar);
         }
+        return appAvatars;
 
     }
-
-//    private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
-//        if (array==null){
-//            return null;
-//        }
-//        ArrayList<Avatar> list = new ArrayList<>();
-//        for (int i = 0 ; i < array.length();i++){
-//            Avatar avatar = getAvatarFromJson(array.getJSONObject(i));
-//            if(avatar!=null){
-//                list.add(avatar);
-//            }
-//        }
-//        return list;
-//    }
-
-
 
 }
 
 
-class ImageDownload extends AsyncTask<Object, Void, byte[]>
+class ImageDownload extends AsyncTask<Object, Void,ArrayList<Avatar>>
 {
 
     Bitmap bmp=null;
@@ -81,8 +78,8 @@ class ImageDownload extends AsyncTask<Object, Void, byte[]>
     }
 
     @Override
-    protected byte[] doInBackground(Object... params)
-    {
+    protected ArrayList<Avatar> doInBackground(Object... params)
+    {   ArrayList<Avatar> avatars=AvatarParser.getAvatarss();
         byte[] avatar = new byte[0];
         try {
             URL urlSDADAD = new URL(params[2].toString());
@@ -98,13 +95,12 @@ class ImageDownload extends AsyncTask<Object, Void, byte[]>
         } catch (IOException e) {
             e.printStackTrace();
         }
-        AvatarParser.avatarss = avatars;
-        return avatar;
-
+        AvatarParser.setAvatarss(avatars);
+        return AvatarParser.getAvatarss();
     }
 
     @Override
-    protected void onPostExecute(byte[] result)
+    protected void onPostExecute(ArrayList<Avatar> result)
     {
         super.onPostExecute(result);
     }

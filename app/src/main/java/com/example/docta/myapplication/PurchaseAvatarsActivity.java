@@ -23,7 +23,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import static com.example.docta.myapplication.util.Global.avatars;
+//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class PurchaseAvatarsActivity extends AppCompatActivity {
 
@@ -94,7 +94,6 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         avatar3=findViewById(R.id.purchase_iv_avatar3);
         avatarDAO.open();
         app_avatars=avatarDAO.findAllAvatarsFromApp();
- //       Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
         avatarDAO.close();
         Bitmap btm=null;
         if(app_avatars.size()!=0){
@@ -107,10 +106,6 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             btm=BitmapFactory.decodeByteArray(app_avatars.get(2).getImage(),0,app_avatars.get(2).getImage().length);
             avatar3.setImageBitmap(Bitmap.createBitmap(btm));
 
-//            //avatar2.setImageBitmap(BitmapFactory.decodeByteArray( app_avatars.get(1).getImage(),
-//                    0,app_avatars.get(1).getImage().length));
-//            avatar3.setImageBitmap(BitmapFactory.decodeByteArray( app_avatars.get(2).getImage(),
-//                    0,app_avatars.get(2).getImage().length));
         }
 
         btn_back.setOnClickListener(new View.OnClickListener() {
