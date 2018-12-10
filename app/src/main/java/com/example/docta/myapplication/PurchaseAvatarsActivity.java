@@ -13,17 +13,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Avatar;
-import com.example.docta.myapplication.Classes.AvatarParser;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
-import com.example.docta.myapplication.Classes.Database.TeacherDAO;
-import com.example.docta.myapplication.Classes.Network.HttpManager;
-import com.example.docta.myapplication.util.Constants;
+
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
-//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class PurchaseAvatarsActivity extends AppCompatActivity {
 
@@ -44,28 +40,6 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_avatars);
 
-
-
-
-  //      app_avatars = avatars;
-
-        /*if(!isChecked){
-            @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
-                @Override
-                protected void onPostExecute(String s) {
-                    try {
-                        app_avatars=avatars;
-                        Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
-                        avatarDAO.open();
-                        avatarDAO.insertAvatarsInDatabase(app_avatars);
-                        avatarDAO.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-            manager.execute(Constants.URL_JSON_AVATARS);*/
-        //}
         initComponents();
     }
 

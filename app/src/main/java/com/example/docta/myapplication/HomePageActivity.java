@@ -34,7 +34,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class HomePageActivity extends AppCompatActivity {
 

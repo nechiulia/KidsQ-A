@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.docta.myapplication.util.Constants.URL_JSON_AVATARS;
-//import static com.example.docta.myapplication.util.Global.avatars;
 
 public class MyAvatarsActivity extends AppCompatActivity {
 
@@ -36,17 +35,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private AvatarDAO avatarDAO;
 
     Intent intent;
-//    @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager(){
-//        @Override
-//        protected void onPostExecute(String s) {
-//            try {
-//                AvatarParser.fromJson(s);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    };
-
 
 
     @Override
