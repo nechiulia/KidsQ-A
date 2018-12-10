@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import static com.example.docta.myapplication.util.Global.avatars;
 
 public class AvatarParser implements Serializable {
-
+    public static ArrayList<Avatar> avatarss = new ArrayList<>();
     private static void getLogoImage(String name,Double price , String url,boolean appAvatar){
 
         try {
@@ -27,7 +27,6 @@ public class AvatarParser implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void fromJson(String json) throws JSONException {
@@ -35,11 +34,9 @@ public class AvatarParser implements Serializable {
 
         }
         JSONArray array = new JSONArray(json);
-        ArrayList<Avatar> listAvat = new ArrayList<>();
         for(int i = 0; i<array.length(); i++){
             getAvatarFromJson(array.getJSONObject(i));
         }
-
     }
     public static void getAvatarFromJson(JSONObject object) throws JSONException {
         if (object!=null) {
@@ -101,6 +98,7 @@ class ImageDownload extends AsyncTask<Object, Void, byte[]>
         } catch (IOException e) {
             e.printStackTrace();
         }
+        AvatarParser.avatarss = avatars;
         return avatar;
 
     }

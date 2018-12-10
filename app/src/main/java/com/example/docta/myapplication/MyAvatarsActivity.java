@@ -3,6 +3,7 @@ package com.example.docta.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.docta.myapplication.util.Constants.URL_JSON_AVATARS;
 import static com.example.docta.myapplication.util.Global.avatars;
 
 public class MyAvatarsActivity extends AppCompatActivity {
@@ -67,7 +69,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                     try {
                         AvatarParser.fromJson(s);
                         app_avatars=avatars;
-                        Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), app_avatars.get(0).toString(),Toast.LENGTH_LONG).show();
                         avatarDAO.open();
                         avatarDAO.insertAvatarsInDatabase(app_avatars);
                         avatarDAO.close();
@@ -76,7 +78,9 @@ public class MyAvatarsActivity extends AppCompatActivity {
                     }
                 }
             };
-            managerJson.execute(Constants.URL_JSON_AVATARS);
+//            managerJson.execute(URL_JSON_AVATARS);
+            managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
+
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
             editor.commit();

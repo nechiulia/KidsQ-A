@@ -3,7 +3,7 @@ package com.example.docta.myapplication.Classes.Database;
 public interface DatabaseConstants {
 
     String DATABASE_NAME="dosbrains.db";
-    int DATABASE_VERSION=3;
+    int DATABASE_VERSION=6;
 
 
 
