@@ -9,7 +9,13 @@ public class Avatar implements Serializable {
     Double price;
     byte[] image;
     long appAvatar;
-
+    public Avatar(){
+        this.id=Long.parseLong("-3");
+        this.name="PhoneAvatar";
+        price=500.0;
+        byte[]image=null;
+        appAvatar=0;
+    }
     public Avatar(Long id, String name, Double price, byte[] image, long appAvatar) {
         this.id = id;
         this.name = name;
@@ -55,6 +61,14 @@ public class Avatar implements Serializable {
 
     public void setAppAvatar(long appAvatar) {
         this.appAvatar = appAvatar;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
