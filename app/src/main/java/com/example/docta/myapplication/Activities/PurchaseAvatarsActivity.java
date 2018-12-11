@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.docta.myapplication.Classes.Avatar;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
+import com.example.docta.myapplication.R;
 
 
 import java.util.ArrayList;

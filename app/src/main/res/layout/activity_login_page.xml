@@ -5,7 +5,7 @@
     android:background="@drawable/principala"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginPageActivity"
+    tools:context=".Activities.LoginPageActivity"
     tools:ignore="MissingDefaultResource">
 
     <Button

@@ -109,7 +109,6 @@ public interface DatabaseConstants {
             + " (" + AVATAR_COLUMN_NAME+", " + AVATAR_COLUMN_PRICE
             + ", "+ AVATAR_COLUMN_IMAGE+", "+ AVATAR_COLUMN_APP_AVATAR
             + " ) values(?,?,?,?)";
-    String QUERY_FOR_AVATARS = "SELECT * FROM "+ AVATAR_TABLE_NAME+ " WHERE " + AVATAR_COLUMN_APP_AVATAR + "=? ;";
 
 
 

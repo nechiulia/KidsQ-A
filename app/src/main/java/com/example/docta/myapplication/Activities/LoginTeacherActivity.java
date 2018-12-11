@@ -1,9 +1,8 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +17,7 @@ import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.Classes.Teacher;
 import com.example.docta.myapplication.Classes.TeacherParser;
 import com.example.docta.myapplication.Classes.TeacherSet;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONException;

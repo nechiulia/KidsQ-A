@@ -5,7 +5,7 @@
     android:background="@color/yellow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginStudentActivity"
+    tools:context=".Activities.LoginStudentActivity"
     tools:ignore="MissingDefaultResource">
 
     <android.support.design.widget.TextInputLayout

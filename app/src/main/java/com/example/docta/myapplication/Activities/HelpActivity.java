@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Adaptor.ExpandableListAdapter;
+import com.example.docta.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

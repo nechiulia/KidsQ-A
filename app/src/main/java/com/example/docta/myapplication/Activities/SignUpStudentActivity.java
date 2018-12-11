@@ -1,8 +1,7 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Student;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 import java.io.ByteArrayOutputStream;

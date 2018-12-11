@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 public  class RankingActivity extends AppCompatActivity {

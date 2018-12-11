@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Tasks;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 import java.util.ArrayList;

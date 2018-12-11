@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".ResultActivity"
+    tools:context=".Activities.ResultActivity"
     android:weightSum="100"
     tools:ignore="MissingDefaultResource">
 

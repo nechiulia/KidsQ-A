@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".PurchaseAvatarsActivity"
+    tools:context=".Activities.PurchaseAvatarsActivity"
     tools:ignore="MissingDefaultResource">
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost1"
@@ -261,8 +261,8 @@
         android:layout_marginLeft="28dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
-        android:textStyle="bold"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar1"
         app:layout_constraintStart_toStartOf="parent" />
 

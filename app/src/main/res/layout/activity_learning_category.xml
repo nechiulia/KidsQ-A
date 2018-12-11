@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:weightSum="100"
 
-    tools:context=".LearningCategoryActivity"
+    tools:context=".Activities.LearningCategoryActivity"
     tools:ignore="MissingDefaultResource">
 <LinearLayout
     android:orientation="vertical"

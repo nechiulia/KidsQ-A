@@ -1,10 +1,11 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 import com.squareup.picasso.Picasso;
 

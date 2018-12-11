@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/yellow"
     xmlns:design="http://schemas.android.com/apk/res-auto"
-    tools:context=".SettingsActivity"
+    tools:context=".Activities.SettingsActivity"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 

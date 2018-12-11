@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 
 import com.example.docta.myapplication.Classes.Tasks;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 public class AddTaskActivity extends AppCompatActivity {

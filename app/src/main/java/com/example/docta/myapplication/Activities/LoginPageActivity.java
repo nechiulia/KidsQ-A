@@ -1,24 +1,14 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.docta.myapplication.Classes.Database.TeacherDAO;
-import com.example.docta.myapplication.Classes.Network.HttpManager;
-import com.example.docta.myapplication.Classes.Teacher;
-import com.example.docta.myapplication.Classes.TeacherParser;
-import com.example.docta.myapplication.Classes.TeacherSet;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
 
 
 public class LoginPageActivity extends AppCompatActivity

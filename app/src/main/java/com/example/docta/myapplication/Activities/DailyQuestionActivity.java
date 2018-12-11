@@ -1,4 +1,4 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Question;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 import com.squareup.picasso.Picasso;
 

@@ -7,7 +7,7 @@
     xmlns:design="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".RankingActivity"
+    tools:context=".Activities.RankingActivity"
     tools:ignore="MissingDefaultResource">
 
     <TextView

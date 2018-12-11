@@ -1,13 +1,9 @@
-package com.example.docta.myapplication;
+package com.example.docta.myapplication.Activities;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -18,19 +14,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.Classes.Avatar;
-import com.example.docta.myapplication.Classes.AvatarParser;
 import com.example.docta.myapplication.Classes.Question;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.Classes.QuestionsSet;
 import com.example.docta.myapplication.Classes.QuestionsSetParser;
+import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONException;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 

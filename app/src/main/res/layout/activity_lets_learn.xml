@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/yellow"
-    tools:context=".LetsLearnActivity"
+    tools:context=".Activities.LetsLearnActivity"
     android:weightSum="8"
     tools:ignore="MissingDefaultResource">
 
