@@ -40,7 +40,7 @@ public class AvatarDAO implements DatabaseConstants {
                 insert.bindString(1,list.get(i).getName());
                 insert.bindDouble(2,list.get(i).getPrice());
                 insert.bindBlob(3,list.get(i).getImage());
-                insert.bindString(4,String.valueOf(list.get(i).getAppAvatar()));
+                insert.bindLong(4,Long.valueOf(list.get(i).getAppAvatar()));
 
                 insert.executeInsert();
             }
@@ -63,13 +63,12 @@ public class AvatarDAO implements DatabaseConstants {
 
         ArrayList<Avatar> results = new ArrayList<>();
 
-        Cursor cursor = database.query(AVATAR_TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
+        String whereClause = AVATAR_COLUMN_APP_AVATAR+ " = ?";
+        String[] whereArgs = new String[] {
+                "1",
+        };
+        Cursor cursor = database.query(AVATAR_TABLE_NAME, null, whereClause, whereArgs,
+                null, null, null);
 
         while (cursor.moveToNext()) {
 
@@ -81,7 +80,7 @@ public class AvatarDAO implements DatabaseConstants {
                     .getColumnIndex(AVATAR_COLUMN_PRICE));
 
             byte[] image = cursor.getBlob(cursor.getColumnIndex(AVATAR_COLUMN_IMAGE));
-            Boolean app_avatar= cursor.getString(cursor.getColumnIndex(AVATAR_COLUMN_APP_AVATAR)).equals("true") ? true:false;
+            long app_avatar= cursor.getLong(cursor.getColumnIndex(AVATAR_COLUMN_APP_AVATAR));
 
             results.add(new Avatar(id, name, price, image,app_avatar));
         }

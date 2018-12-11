@@ -28,7 +28,7 @@ public class AvatarParser implements Serializable {
         AvatarParser.avatarss = avatarss;
     }
 
-    private static ArrayList<Avatar> getLogoImage(String name, Double price , String url, boolean appAvatar){
+    private static ArrayList<Avatar> getLogoImage(String name, Double price , String url, long appAvatar){
         ArrayList<Avatar> appAvatars=new ArrayList<>();
         try {
           appAvatars= new ImageDownload().execute(name,price,url,appAvatar).get();
@@ -55,7 +55,7 @@ public class AvatarParser implements Serializable {
             String name = object.getString("name");
             Double price = object.getDouble("price");
             String urlImage = object.getString("image");
-            Boolean appAvatar = object.getBoolean("app_avatar");
+            long appAvatar = object.getInt("app_avatar");
             appAvatars=getLogoImage(name, price, urlImage, appAvatar);
         }
         return appAvatars;
@@ -89,7 +89,7 @@ class ImageDownload extends AsyncTask<Object, Void,ArrayList<Avatar>>
             bmp.compress(Bitmap.CompressFormat.PNG,100,byteArrayStream);
             avatar = byteArrayStream.toByteArray();
 
-            Avatar a = new Avatar(params[0].toString(),Double.valueOf(params[1].toString()),avatar,Boolean.getBoolean(params[3].toString()));
+            Avatar a = new Avatar(params[0].toString(),Double.valueOf(params[1].toString()),avatar, Long.parseLong(params[3].toString()));
             avatars.add(a);
 
         } catch (IOException e) {

@@ -8,9 +8,9 @@ public class Avatar implements Serializable {
     String name;
     Double price;
     byte[] image;
-    Boolean appAvatar;
+    long appAvatar;
 
-    public Avatar(Long id, String name, Double price, byte[] image, Boolean appAvatar) {
+    public Avatar(Long id, String name, Double price, byte[] image, long appAvatar) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -18,7 +18,7 @@ public class Avatar implements Serializable {
         this.appAvatar = appAvatar;
     }
 
-    public Avatar(String name, Double price, byte[] image, Boolean appAvatar) {
+    public Avatar(String name, Double price, byte[] image, long appAvatar) {
         this.name = name;
         this.price = price;
         this.image = image;
@@ -49,11 +49,11 @@ public class Avatar implements Serializable {
         this.image = image;
     }
 
-    public Boolean getAppAvatar() {
+    public long getAppAvatar() {
         return appAvatar;
     }
 
-    public void setAppAvatar(Boolean appAvatar) {
+    public void setAppAvatar(long appAvatar) {
         this.appAvatar = appAvatar;
     }
 
