@@ -1,21 +1,8 @@
 package com.example.docta.myapplication.Classes.Database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
-import com.example.docta.myapplication.Classes.Avatar;
-import com.example.docta.myapplication.Classes.Student;
-import com.example.docta.myapplication.Classes.Teacher;
-import com.example.docta.myapplication.util.Constants;
-
-import java.sql.Blob;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class DatabaseRepository implements DatabaseConstants{
 

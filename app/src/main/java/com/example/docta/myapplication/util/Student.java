@@ -1,12 +1,7 @@
-package com.example.docta.myapplication.Classes;
+package com.example.docta.myapplication.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
-
-import com.example.docta.myapplication.R;
-
-import java.sql.Blob;
 
 public class Student implements Parcelable {
 //private Long id;

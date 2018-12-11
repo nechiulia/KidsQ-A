@@ -1,10 +1,8 @@
-package com.example.docta.myapplication.Classes;
+package com.example.docta.myapplication.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-
-import com.example.docta.myapplication.util.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;

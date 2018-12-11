@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
-import com.example.docta.myapplication.Classes.Teacher;
+import com.example.docta.myapplication.util.Teacher;
 import java.util.ArrayList;
 
 public class TeacherDAO implements DatabaseConstants{

@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.Classes;
+package com.example.docta.myapplication.util;
 
 import org.json.JSONArray;
 import org.json.JSONException;

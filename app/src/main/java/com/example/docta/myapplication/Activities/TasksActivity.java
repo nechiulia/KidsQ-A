@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.Classes.Tasks;
+import com.example.docta.myapplication.util.Tasks;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 

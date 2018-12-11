@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.TeacherDAO;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
-import com.example.docta.myapplication.Classes.Teacher;
-import com.example.docta.myapplication.Classes.TeacherParser;
-import com.example.docta.myapplication.Classes.TeacherSet;
+import com.example.docta.myapplication.util.Teacher;
+import com.example.docta.myapplication.util.TeacherParser;
+import com.example.docta.myapplication.util.TeacherSet;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.util.Constants;
 
