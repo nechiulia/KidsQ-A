@@ -100,8 +100,15 @@ public class StudentDAO implements DatabaseConstants {
 
     public void updateScore(double score,String username){
         String QUERRY_UPDATE_SCORE = STUDENT_COLUMN_USERNAME + " =?";
+        String QUERRY_SELECT_CURRENT_SCORE = "SELECT "+ STUDENT_COLUMN_SCORE+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c = database.rawQuery(QUERRY_SELECT_CURRENT_SCORE,new String[]{username});
+        double Current_Score=0;
+        while (c.moveToNext()){
+            Current_Score = c.getDouble(c.getColumnIndex(STUDENT_COLUMN_SCORE));
+        }
+
         ContentValues contentValues = new ContentValues();
-        contentValues.put(STUDENT_COLUMN_SCORE,score);
+        contentValues.put(STUDENT_COLUMN_SCORE,score+Current_Score);
         database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_SCORE, new String[]{username});
     }
 

@@ -67,13 +67,28 @@ public class HomePageActivity extends AppCompatActivity {
             this.setTitle(title);
         }
                 @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
+
+
+                    @Override
+                    protected void onPreExecute() {
+                        super.onPreExecute();
+                        if(!isChecked) {
+                                getInfos();
+                            }
+                    }
+
+                    @Override
+                    protected String doInBackground(String... strings) {
+                        return super.doInBackground(strings);
+
+                    }
+
                     @Override
                     protected void onPostExecute(String s) {
                         try {
                             questionsSet = QuestionsSetParser.fromJson(s);
-                            if(!isChecked) {
-                                getInfos();
-                            }
+                            progressDialog.dismiss();
+//
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
@@ -110,7 +125,7 @@ public class HomePageActivity extends AppCompatActivity {
                         Thread.sleep(20);
                         handler.sendMessage(handler.obtainMessage());
                         if (progressDialog.getProgress() == progressDialog.getMax()) {
-                            progressDialog.dismiss();
+
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
