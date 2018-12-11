@@ -18,6 +18,7 @@ public class LoginPageActivity extends AppCompatActivity
     private SharedPreferences sharedPreferences;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

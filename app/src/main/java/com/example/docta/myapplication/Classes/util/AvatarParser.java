@@ -60,47 +60,61 @@ public class AvatarParser implements Serializable {
 
     }
 
-}
+
+//    private static ArrayList<Avatar> getListAvatarsFromJson(JSONArray array) throws JSONException {
+//        if (array==null){
+//            return null;
+//        }
+//        ArrayList<Avatar> list = new ArrayList<>();
+//        for (int i = 0 ; i < array.length();i++){
+//            Avatar avatar = getAvatarFromJson(array.getJSONObject(i));
+//            if(avatar!=null){
+//                list.add(avatar);
+//            }
+//        }
+//        return list;
+//    }
 
 
-class ImageDownload extends AsyncTask<Object, Void,ArrayList<Avatar>>
-{
+    static class ImageDownload extends AsyncTask<Object, Void, ArrayList<Avatar>> {
 
-    Bitmap bmp=null;
-    @Override
-    protected void onPreExecute() {
- 
-        super.onPreExecute();
+        Bitmap bmp = null;
 
-        //ShowDialog();
-    }
+        @Override
+        protected void onPreExecute() {
 
-    @Override
-    protected ArrayList<Avatar> doInBackground(Object... params)
-    {   ArrayList<Avatar> avatars=AvatarParser.getAvatarss();
-        byte[] avatar = new byte[0];
-        try {
-            URL urlSDADAD = new URL(params[2].toString());
-            bmp = BitmapFactory.decodeStream(urlSDADAD.openConnection().getInputStream());
-            ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
+            super.onPreExecute();
 
-            bmp.compress(Bitmap.CompressFormat.PNG,100,byteArrayStream);
-            avatar = byteArrayStream.toByteArray();
+            //ShowDialog();
+        }
+
+        @Override
+
+        protected ArrayList<Avatar> doInBackground(Object... params) {
+            ArrayList<Avatar> avatars = AvatarParser.getAvatarss();
+            byte[] avatar = new byte[0];
+            try {
+                URL urlSDADAD = new URL(params[2].toString());
+                bmp = BitmapFactory.decodeStream(urlSDADAD.openConnection().getInputStream());
+                ByteArrayOutputStream byteArrayStream = new ByteArrayOutputStream();
+
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, byteArrayStream);
+                avatar = byteArrayStream.toByteArray();
 
             Avatar a = new Avatar(params[0].toString(),Double.valueOf(params[1].toString()),avatar, Long.parseLong(params[3].toString()));
             avatars.add(a);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            AvatarParser.setAvatarss(avatars);
+            return AvatarParser.getAvatarss();
         }
-        AvatarParser.setAvatarss(avatars);
-        return AvatarParser.getAvatarss();
-    }
 
-    @Override
-    protected void onPostExecute(ArrayList<Avatar> result)
-    {
-        super.onPostExecute(result);
+        @Override
+        protected void onPostExecute(ArrayList<Avatar> result) {
+            super.onPostExecute(result);
+        }
     }
 
 }

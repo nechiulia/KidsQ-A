@@ -12,27 +12,27 @@ import com.example.docta.myapplication.Classes.util.Avatar;
 import java.util.ArrayList;
 
 public class AvatarDAO implements DatabaseConstants {
-    private  DatabaseController controller;
-    private  SQLiteDatabase database;
+    private DatabaseController controller;
+    private SQLiteDatabase database;
 
     public AvatarDAO(Context context){
         controller = DatabaseController.getInstance(context);
     }
-    public  void open(){
+    public void open(){
         try{
             database=controller.getWritableDatabase();
         }catch(SQLException e){
             e.printStackTrace();
         }
     }
-    public  void close(){
+    public void close(){
         try{
             database.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
     }
-    public  void insertAvatarsInDatabase(ArrayList<Avatar> list) {
+    public void insertAvatarsInDatabase(ArrayList<Avatar> list) {
         database.beginTransaction();
         try{
             SQLiteStatement insert = database.compileStatement(INSERT_AVATAR);
