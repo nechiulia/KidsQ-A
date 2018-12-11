@@ -1,5 +1,6 @@
 package com.example.docta.myapplication.Classes.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,27 +12,27 @@ import com.example.docta.myapplication.Classes.util.Avatar;
 import java.util.ArrayList;
 
 public class AvatarDAO implements DatabaseConstants {
-    private DatabaseController controller;
-    private SQLiteDatabase database;
+    private  DatabaseController controller;
+    private  SQLiteDatabase database;
 
     public AvatarDAO(Context context){
         controller = DatabaseController.getInstance(context);
     }
-    public void open(){
+    public  void open(){
         try{
             database=controller.getWritableDatabase();
         }catch(SQLException e){
             e.printStackTrace();
         }
     }
-    public void close(){
+    public  void close(){
         try{
             database.close();
         }catch(SQLException e){
             e.printStackTrace();
         }
     }
-    public void insertAvatarsInDatabase(ArrayList<Avatar> list) {
+    public  void insertAvatarsInDatabase(ArrayList<Avatar> list) {
         database.beginTransaction();
         try{
             SQLiteStatement insert = database.compileStatement(INSERT_AVATAR);
@@ -50,7 +51,7 @@ public class AvatarDAO implements DatabaseConstants {
             database.endTransaction();
         }
     }
-    public long insertAvatarInDatabase(Avatar avatar) {
+    public  long insertAvatarInDatabase(Avatar avatar) {
        long id=-2;
         if(avatar==null){
             id= -1;}
@@ -75,15 +76,8 @@ public class AvatarDAO implements DatabaseConstants {
         }
         return id;
     }
-    public boolean LoginTeacherFromDatabase(String email, String password){
-        Cursor c = database.rawQuery(QUERRY_FOR_LOGIN,new String[]{email,password});
-        if(c.getCount()>0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public ArrayList<Avatar> findAllAvatarsFromApp() {
+
+    public  ArrayList<Avatar> findAllAvatarsFromApp() {
 
         ArrayList<Avatar> results = new ArrayList<>();
 
@@ -112,7 +106,7 @@ public class AvatarDAO implements DatabaseConstants {
 
         return results;
     }
-    public ArrayList<Avatar> findAllAvatarsFromPhone() {
+    public  ArrayList<Avatar> findAllAvatarsFromPhone() {
 
         ArrayList<Avatar> results = new ArrayList<>();
 
@@ -140,6 +134,21 @@ public class AvatarDAO implements DatabaseConstants {
         cursor.close();
 
         return results;
+    }
+    public  long updatePhoneAvatar(String avatarName, Long id){
+
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(AVATAR_COLUMN_NAME, avatarName);
+
+
+        return  database.update(AVATAR_TABLE_NAME,contentValues,AVATAR_COLUMN_ID_AVATAR + " = ?",new String[]{id.toString()});
+    }
+    public  int deleteAvatarFromPhone(Avatar avatar){
+        if(avatar==null || avatar.getId()==null){
+            return -1;
+        }
+        return  database.delete(AVATAR_TABLE_NAME, AVATAR_COLUMN_ID_AVATAR +"=?", new String[]{avatar.getId().toString()} );
     }
 
 }

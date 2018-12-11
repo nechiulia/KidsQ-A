@@ -12,7 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.util.Avatar;
@@ -40,8 +42,16 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private AvatarDAO avatarDAO;
     private Button btn_add_from_pc;
     private ImageView ivAvatar1;
-
+    private ImageView ivAvatar2;
+    private ImageView ivAvatar3;
+    private TextView tvAvatar1Name;
+    private TextView tvAvatar2Name;
+    private TextView tvAvatar3Name;
+    private int ivSelected;
     Intent intent;
+
+    private ArrayList<Avatar> avatarsFromPhone=new ArrayList<>();
+
 
 
     @Override
@@ -90,6 +100,16 @@ public class MyAvatarsActivity extends AppCompatActivity {
         btn_add_from_pc=findViewById(R.id.myavatars_btn_add_from_pc);
         btn_add_from_pc.setOnClickListener(uploadImage());
         ivAvatar1=findViewById(R.id.myavatars_iv_avatar1);
+        ivAvatar2=findViewById(R.id.myavatars_iv_avatar2);
+        ivAvatar3=findViewById(R.id.myavatars_iv_avatar3);
+        tvAvatar1Name=findViewById(R.id.myavatars_tv_avatar1_name);
+        tvAvatar2Name=findViewById(R.id.myavatars_tv_avatar2_name);
+        tvAvatar3Name=findViewById(R.id.myavatars_tv_avatar3_name);
+        avatarDAO.open();
+        avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
+        avatarDAO.close();
+        initImageViews(avatarsFromPhone);
+
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,16 +124,87 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        tvAvatar1Name.setOnClickListener(changeName1());
+        tvAvatar2Name.setOnClickListener(changeName2());
+        tvAvatar3Name.setOnClickListener(changeName3());
+        ivAvatar1.setOnClickListener(deleteAvatar1());
 
     }
+    private View.OnClickListener deleteAvatar1(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                avatarDAO.open();
+                avatarDAO.deleteAvatarFromPhone(avatarsFromPhone.get(0));
+                avatarDAO.close();
+            }
+        };
+    }
+    private void initImageViews(ArrayList<Avatar> avatars){
+        /*avatarDAO.open();
+        avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
+        avatarDAO.close();*/
+        if(avatars.size()==1){
+            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
+            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
+            tvAvatar1Name.setText(avatars.get(0).getName());}
+        else if   (avatars.size()==2){
+            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
+            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
+            tvAvatar1Name.setText(avatars.get(0).getName());
+            Bitmap btm2=BitmapFactory.decodeByteArray(avatars.get(1).getImage(),0,avatars.get(1).getImage().length);
+            ivAvatar2.setImageBitmap(Bitmap.createBitmap(btm2));
+            tvAvatar2Name.setText(avatars.get(1).getName());}
+         else if (avatars.size()>=3) {
+            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
+            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
+            tvAvatar1Name.setText(avatars.get(0).getName());
+            Bitmap btm2=BitmapFactory.decodeByteArray(avatars.get(1).getImage(),0,avatars.get(1).getImage().length);
+            ivAvatar2.setImageBitmap(Bitmap.createBitmap(btm2));
+            tvAvatar2Name.setText(avatars.get(1).getName());
+            Bitmap btm3 = BitmapFactory.decodeByteArray(avatars.get(2).getImage(), 0, avatars.get(2).getImage().length);
+            ivAvatar3.setImageBitmap(Bitmap.createBitmap(btm3));
+            tvAvatar3Name.setText(avatars.get(2).getName());
+        }
 
+    }
+    private View.OnClickListener changeName1(){
+        return  new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivSelected=0;
+                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
+            }
+        };
+    }
+    private View.OnClickListener changeName2(){
+        return  new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivSelected=1;
+                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
+            }
+        };
+    }
+    private View.OnClickListener changeName3(){
+        return  new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ivSelected=2;
+                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
+            }
+        };
+    }
     private View.OnClickListener uploadImage(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, 1);
+                startActivityForResult(photoPickerIntent, Constants.UPLOAD_IMAGE_REQUEST_CODE);
 
             }
         };
@@ -121,37 +212,35 @@ public class MyAvatarsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {       Bitmap mBitmap=null;
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK)
+
+        if (resultCode == RESULT_OK && requestCode==Constants.UPLOAD_IMAGE_REQUEST_CODE)
         {
             Uri chosenImageUri = data.getData();
-            ArrayList<Avatar> avatarsFromPhone=new ArrayList<>();
-            Avatar avatarFromPhone= new Avatar();
             try {
                 mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), chosenImageUri);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 mBitmap .compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
-                Avatar avatar=new Avatar("Avatar propriu", 500.0, byteArray, 0);
+                Avatar avatar=new Avatar(byteArray);
                 avatarDAO.open();
                 long id=  avatarDAO.insertAvatarInDatabase(avatar);
                 avatarDAO.close();
 
-
-                if (id != -1) {
-                    avatarFromPhone.setId(id);
-                }
-                avatarDAO.open();
-                avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
-                avatarDAO.close();
-                Bitmap btm=BitmapFactory.decodeByteArray(avatarsFromPhone.get(0).getImage(),0,avatarsFromPhone.get(0).getImage().length);
-
-                ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
 
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(),"Nu s-a putut incarca imaginea",Toast.LENGTH_LONG).show();
             }
         }
+        else if(resultCode==RESULT_OK && requestCode==Constants.UPDATE_AVATAR_REQUEST_CODE && data!=null){
+            String newName= data.getStringExtra(Constants.SET_NAME_KEY);
+            tvAvatar1Name.setText(newName);
+            avatarDAO.open();
+            avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
+            avatarDAO.updatePhoneAvatar(newName,avatarsFromPhone.get(ivSelected).getId() );
+            avatarDAO.close();
+        }
+
 
     }
 }

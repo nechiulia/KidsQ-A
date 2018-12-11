@@ -234,4 +234,6 @@
     <string name="LOGIN_SHARED_JSONKEY">LoginTeacher_JSON_shared</string>
     <string name="purchase_tv_price_points">puncte</string>
     <string name="myavatars_add_pc_avatar">Adaugă avatarul propriu(500 pct)</string>
+    <string name="update_avatar_btn_save">Salveaza</string>
+    <string name="update_avatar_tid_hint">Nume avatar</string>
 </resources>

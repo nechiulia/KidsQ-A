@@ -46,5 +46,9 @@ public interface Constants {
 
     String AVATAR_UPLOAD_CHECK_PREF="checkIfWasInserted";
     String AVATAR_BOOL_CHECK_KEY="boolForCheck";
+    int UPDATE_AVATAR_REQUEST_CODE = 103;
+    String SET_NAME_KEY="name changed save";
+    int UPLOAD_IMAGE_REQUEST_CODE= 104;
+
 
 }

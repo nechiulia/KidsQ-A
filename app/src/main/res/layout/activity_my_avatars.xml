@@ -36,49 +36,89 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/sboy"/>
+<LinearLayout
+    android:id="@+id/my_avatars_layout_avatars_name"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:weightSum="3"
+    android:layout_marginTop="24dp"
+    app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy"
+    >
 
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar1"
-        android:layout_width="106dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="64dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
+    <TextView
+        android:id="@+id/myavatars_tv_avatar1_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_weight="1"
+         />
 
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar2"
-        android:layout_width="106dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintEnd_toStartOf="@+id/myavatars_iv_avatar3"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toEndOf="@+id/myavatars_iv_avatar1"
-        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
+    <TextView
+        android:id="@+id/myavatars_tv_avatar2_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:gravity="center"
+         />
 
-    <ImageView
-        android:id="@+id/myavatars_iv_avatar3"
-        android:layout_width="106dp"
-        android:layout_height="92dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myavatars_tv_buy" />
+    <TextView
+        android:id="@+id/myavatars_tv_avatar3_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_weight="1"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/myavatars_layout_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="3"
+        app:layout_constraintTop_toBottomOf="@id/my_avatars_layout_avatars_name">
+
+        <ImageView
+            android:id="@+id/myavatars_iv_avatar1"
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
+            />
+
+        <ImageView
+            android:id="@+id/myavatars_iv_avatar2"
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
+            android:clickable="true"
+
+           />
+
+        <ImageView
+            android:id="@+id/myavatars_iv_avatar3"
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
+            android:clickable="true"
+            />
+
+    </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/myavatars_tv_myavatar"
