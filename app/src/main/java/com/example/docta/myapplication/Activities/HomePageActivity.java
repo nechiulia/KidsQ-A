@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
 import com.example.docta.myapplication.Classes.util.Question;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.Classes.util.QuestionsSet;
@@ -50,6 +51,7 @@ public class HomePageActivity extends AppCompatActivity {
     Intent intent;
     private Boolean isChecked;
     private SharedPreferences sharedPreferencesSet;
+    private AssociativeDAO associativeDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,10 +134,15 @@ public class HomePageActivity extends AppCompatActivity {
         btn_back_teacher =findViewById(R.id.home_btn_backtoteacher);
         img_btn_help =findViewById(R.id.home_imgBtn_question);
         btn_tasks =findViewById(R.id.home_btn_tasks);
+        associativeDAO = new AssociativeDAO(this);
+        associativeDAO.open();
+        associativeDAO.close();
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-        String utilizator= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
+        String user= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
 
-        if(utilizator.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
+
+
+        if(user.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btn_back_teacher.setVisibility(View.VISIBLE);
         }
         else {
@@ -148,6 +155,7 @@ public class HomePageActivity extends AppCompatActivity {
         else {
         tv_avatar_name.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         }
+
         btn_learn.setOnClickListener(startToLearn());
         btn_play.setOnClickListener(startToPlay());
         btn_daily_question.setOnClickListener(openDailyQuestion());

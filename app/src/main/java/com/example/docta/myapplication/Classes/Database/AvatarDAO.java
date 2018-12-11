@@ -52,7 +52,7 @@ public class AvatarDAO implements DatabaseConstants {
         }
     }
     public boolean LoginTeacherFromDatabase(String email, String password){
-        Cursor c = database.rawQuery(QUERRY_FOR_LOGIN,new String[]{email,password});
+        Cursor c = database.rawQuery(QUERRY_LOGIN_TEACHER,new String[]{email,password});
         if(c.getCount()>0){
             return true;
         }else{

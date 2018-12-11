@@ -1,6 +1,7 @@
 package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.util.Student;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -28,6 +30,8 @@ public class ListStudentsActivity extends AppCompatActivity {
     private ListView lv_students;
     BottomNavigationView bottomNavigationView;
     private Button btn_back_to_teacher;
+    private StudentDAO studentDAO;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -97,7 +101,12 @@ public class ListStudentsActivity extends AppCompatActivity {
         btn_add_student =findViewById(R.id.liststudents_btn_addstudent);
         btn_back_to_teacher =findViewById(R.id.home_btn_backtoteacher);
         lv_students = findViewById(R.id.liststudents_lv_liststudents);
-
+        studentDAO = new StudentDAO(this);
+        sharedPreferences = getSharedPreferences(Constants.PASSWORD_PROF_PREF,MODE_PRIVATE);
+        String email = sharedPreferences.getString(Constants.EMAIL_PREF,null);
+        studentDAO.open();
+        students = studentDAO.findAllMyStudents(email);
+        studentDAO.close();
         StudentAdapter adapter = new StudentAdapter(getApplicationContext(), R.layout.lv_students_row, students, getLayoutInflater());
         lv_students.setAdapter(adapter);
     }

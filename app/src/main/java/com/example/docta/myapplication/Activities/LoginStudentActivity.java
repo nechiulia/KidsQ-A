@@ -1,6 +1,7 @@
 package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
 
@@ -18,6 +20,8 @@ public class LoginStudentActivity extends AppCompatActivity {
     private Button btn_login;
     private Button btn_create_account;
     Intent intent;
+    private SharedPreferences sharedPreferences;
+    private StudentDAO studentDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +46,19 @@ public class LoginStudentActivity extends AppCompatActivity {
              @Override
              public void onClick(View v) {
                  if(isValid()){
-                     String name = tie_avatar_name.getText().toString();
-                     intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                     intent.putExtra(Constants.NAME_KEY, name);
-                     startActivity(intent);
+                     String username = tie_avatar_name.getText().toString();
+                     studentDAO.open();
+                     if(studentDAO.loginStudent(username)) {
+                         studentDAO.close();
+                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
+                         intent.putExtra(Constants.NAME_KEY, username);
+                         SharedPreferences.Editor editor = sharedPreferences.edit();
+                         editor.putString(Constants.USERNAME_KEY,username);
+                         editor.commit();
+                         startActivity(intent);
+                     }else{
+                         Toast.makeText(getApplicationContext(),"Ati introdus incorect username-ul!",Toast.LENGTH_LONG).show();
+                     }
                  }
              }
          });
@@ -66,6 +79,9 @@ public class LoginStudentActivity extends AppCompatActivity {
         btn_create_account =findViewById(R.id.loginstundent_btn_create);
         tie_avatar_name = findViewById(R.id.loginstundent_tid_avatarname);
         btn_back=findViewById(R.id.loginstundent_btn_back);
+        sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+
+        studentDAO = new StudentDAO(this);
     }
 
     public boolean isValid(){

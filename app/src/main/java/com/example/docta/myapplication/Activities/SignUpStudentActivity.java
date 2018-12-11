@@ -39,6 +39,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_student);
+        studentDAO = new StudentDAO(this);
         intent=getIntent();
 
         if(savedInstanceState==null){
@@ -70,7 +71,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
         rg_gender =findViewById(R.id.signup_rg_sex);
         img_boy = findViewById(R.id.signup_img_boy);
         img_girl = findViewById(R.id.signup_img_girl);
-        studentDAO = new StudentDAO(getApplicationContext());
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,21 +98,25 @@ public class SignUpStudentActivity extends AppCompatActivity {
                    if(isValid()){
 
 
-                        Student student = initializareStudent();
+                        Student student = initStudent();
+                        studentDAO.open();
+                        studentDAO.insertStudentByTeacher(student);
+                        studentDAO.close();
                         intent.putExtra(Constants.ADD_STUDENT_KEY, student);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
                 } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     if(isValid()){
-                        Student student = initializareStudent();
+                        Student student = initStudent();
+                        studentDAO.open();
                         studentDAO.insertStudentByStudent(student);
+                        studentDAO.close();
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
                         intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
                     }
                 }
-
             }
         });
 
@@ -120,11 +124,13 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
     }
 
-    private Student initializareStudent(){
+    private Student initStudent(){
+
         String name = tie_name.getText().toString();
         int gender = rg_gender.getCheckedRadioButtonId();
         int age = Integer.parseInt(spn_age.getSelectedItem().toString());
         byte[] avatar;
+        double score =0;
         if(gender == R.id.signup_rb_boy ){
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sboy);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -136,7 +142,16 @@ public class SignUpStudentActivity extends AppCompatActivity {
             bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
             avatar = stream.toByteArray();
         }
-        Student student = new Student(name,avatar, age, gender);
+        sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF,MODE_PRIVATE);
+        String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
+        sharedPreferences = getSharedPreferences(Constants.PASSWORD_PROF_PREF,MODE_PRIVATE);
+        String email = sharedPreferences.getString(Constants.EMAIL_PREF,null);
+        Student student;
+        if(statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
+             student = new Student(name,avatar,age,gender,score,email);
+        }else{
+             student = new Student(name,avatar, age,score, gender);
+        }
         return student;
     }
 

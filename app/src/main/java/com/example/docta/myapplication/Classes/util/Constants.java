@@ -7,6 +7,8 @@ public interface Constants {
     String CONT_STATUT_PREF="ProfesorSauElev";
     String USER_PREF ="utilizator";
     String NAME_KEY ="numeAvatar";
+    String USERNAME_PREF= "user_pref";
+    String USERNAME_KEY = "key_username";
  //   String PAROLA_KEY ="PAROLA_KEY";
 
     int ADD_TASK_REQUEST_CODE =102;
