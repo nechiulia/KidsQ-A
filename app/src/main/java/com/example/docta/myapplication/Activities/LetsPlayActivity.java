@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.QuestionsSet;
-import com.example.docta.myapplication.util.Question;
+import com.example.docta.myapplication.Classes.util.QuestionsSet;
+import com.example.docta.myapplication.Classes.util.Question;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 import java.util.ArrayList;
 

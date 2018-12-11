@@ -8,18 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.docta.myapplication.util.Avatar;
-import com.example.docta.myapplication.util.AvatarParser;
+import com.example.docta.myapplication.Classes.util.Avatar;
+import com.example.docta.myapplication.Classes.util.AvatarParser;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import static com.example.docta.myapplication.util.Constants.URL_JSON_AVATARS;
+import static com.example.docta.myapplication.Classes.util.Constants.URL_JSON_AVATARS;
 
 public class MyAvatarsActivity extends AppCompatActivity {
 

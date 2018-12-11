@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 public  class RankingActivity extends AppCompatActivity {
 

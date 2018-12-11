@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Student;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Student;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 import java.util.List;
 

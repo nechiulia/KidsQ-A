@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.util;
+package com.example.docta.myapplication.Classes.util;
 
 public interface Constants {
     int ADD_STUDENT_REQUEST_CODE = 101;

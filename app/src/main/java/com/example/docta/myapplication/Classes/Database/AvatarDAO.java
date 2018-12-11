@@ -6,7 +6,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.example.docta.myapplication.util.Avatar;
+import com.example.docta.myapplication.Classes.util.Avatar;
 
 import java.util.ArrayList;
 

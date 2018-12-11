@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.util;
+package com.example.docta.myapplication.Classes.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;

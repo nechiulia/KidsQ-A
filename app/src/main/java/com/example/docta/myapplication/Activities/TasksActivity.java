@@ -9,9 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.Tasks;
+import com.example.docta.myapplication.Classes.util.Tasks;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;

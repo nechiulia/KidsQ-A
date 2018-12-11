@@ -14,12 +14,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.docta.myapplication.util.Question;
+import com.example.docta.myapplication.Classes.util.Question;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
-import com.example.docta.myapplication.util.QuestionsSet;
-import com.example.docta.myapplication.util.QuestionsSetParser;
+import com.example.docta.myapplication.Classes.util.QuestionsSet;
+import com.example.docta.myapplication.Classes.util.QuestionsSetParser;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 import org.json.JSONException;
 

@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.TeacherDAO;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 public class SettingsActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;

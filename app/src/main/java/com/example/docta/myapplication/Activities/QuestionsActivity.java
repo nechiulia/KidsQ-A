@@ -15,10 +15,10 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.TextView;
 
-import com.example.docta.myapplication.util.Question;
-import com.example.docta.myapplication.util.QuestionsSet;
+import com.example.docta.myapplication.Classes.util.Question;
+import com.example.docta.myapplication.Classes.util.QuestionsSet;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

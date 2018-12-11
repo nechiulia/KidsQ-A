@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 import com.squareup.picasso.Picasso;
 
 public class ShowImageActivity extends AppCompatActivity {

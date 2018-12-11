@@ -1,4 +1,4 @@
-package com.example.docta.myapplication.util;
+package com.example.docta.myapplication.Classes.util;
 
 import java.io.Serializable;
 import java.util.ArrayList;

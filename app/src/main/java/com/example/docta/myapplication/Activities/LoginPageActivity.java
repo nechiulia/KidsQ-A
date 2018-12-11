@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 
 public class LoginPageActivity extends AppCompatActivity

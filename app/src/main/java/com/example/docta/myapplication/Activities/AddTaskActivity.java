@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 
-import com.example.docta.myapplication.util.Tasks;
+import com.example.docta.myapplication.Classes.util.Tasks;
 import com.example.docta.myapplication.R;
-import com.example.docta.myapplication.util.Constants;
+import com.example.docta.myapplication.Classes.util.Constants;
 
 public class AddTaskActivity extends AppCompatActivity {
 
