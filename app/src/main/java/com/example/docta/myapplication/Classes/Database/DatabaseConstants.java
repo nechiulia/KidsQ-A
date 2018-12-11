@@ -3,7 +3,7 @@ package com.example.docta.myapplication.Classes.Database;
 public interface DatabaseConstants {
 
     String DATABASE_NAME="dosbrains.db";
-    int DATABASE_VERSION=6;
+    int DATABASE_VERSION=7;
 
 
 
@@ -11,12 +11,15 @@ public interface DatabaseConstants {
     ////////////////TEACHER
     String TEACHER_TABLE_NAME = "Teacher";
 
+    String TEACHER_COLUMN_ID_TEACHER = "id_teacher";
     String TEACHER_COLUMN_EMAIL ="email_teacher";
     String TEACHER_COLUMN_PASSWORD = "password";
 
     String CREATE_TABLE_TEACHER = "CREATE TABLE " + TEACHER_TABLE_NAME
-            + " ( " + TEACHER_COLUMN_EMAIL + " TEXT PRIMARY KEY, "+
-                      TEACHER_COLUMN_PASSWORD + " TEXT );";
+            + " ( " +
+            TEACHER_COLUMN_ID_TEACHER+ "INTEGER PRIMARY KEY AUTOINCREMENT, "+
+            TEACHER_COLUMN_EMAIL + " TEXT, "+
+            TEACHER_COLUMN_PASSWORD + " TEXT );";
 
     String DROP_TABLE_TEACHER = "DROP TABLE IF EXISTS " + TEACHER_TABLE_NAME +";";
 
@@ -31,7 +34,7 @@ public interface DatabaseConstants {
     String STUDENT_COLUMN_GENDER="gender";
     String STUDENT_COLUMN_AGE="age";
     String STUDENT_COLUMN_SCORE="score";
-    String STUDENT_COLUMN_PROFESSOR_EMAIL="professorEmail";
+    String STUDENT_COLUMN_ID_TEACHER="professorEmail";
 
     String CREATE_TABLE_STUDENT=
             "CREATE TABLE "+STUDENT_TABLE_NAME+
@@ -40,11 +43,18 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_GENDER+ " TEXT, "+
             STUDENT_COLUMN_AGE+ " INTEGER, "+
             STUDENT_COLUMN_SCORE+ " REAL, "+
-            STUDENT_COLUMN_PROFESSOR_EMAIL+ "TEXT " +
-            " FOREIGN KEY ( " + STUDENT_COLUMN_PROFESSOR_EMAIL +
-            " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
+            STUDENT_COLUMN_ID_TEACHER+ "INTEGER, " +
+            " FOREIGN KEY ( " + STUDENT_COLUMN_ID_TEACHER +
+            " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_ID_TEACHER + " ));";
 
     String DROP_TABLE_STUDENT = "DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
+    String INSERT_STUDENT = "insert into " + STUDENT_TABLE_NAME + " (" +
+            STUDENT_COLUMN_USERNAME +", " +
+            STUDENT_COLUMN_CURRENT_AVATAR +", " +
+            STUDENT_COLUMN_GENDER +", " +
+            STUDENT_COLUMN_AGE + ", " +
+            STUDENT_COLUMN_SCORE + ", " +
+            STUDENT_COLUMN_ID_TEACHER+ ") values(?,?,?,?,?,?)";
 
 
     ////////////////TESTRESULTS

@@ -17,6 +17,7 @@ public class AvatarDAO implements DatabaseConstants {
     public AvatarDAO(Context context){
         controller = DatabaseController.getInstance(context);
     }
+
     public void open(){
         try{
             database=controller.getWritableDatabase();

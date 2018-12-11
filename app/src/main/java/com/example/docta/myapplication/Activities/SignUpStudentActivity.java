@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.util.Student;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -32,6 +33,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
     private ImageView img_girl;
     Intent intent;
     private SharedPreferences sharedPreferences;
+    private StudentDAO studentDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
         rg_gender =findViewById(R.id.signup_rg_sex);
         img_boy = findViewById(R.id.signup_img_boy);
         img_girl = findViewById(R.id.signup_img_girl);
+        studentDAO = new StudentDAO(getApplicationContext());
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,29 +96,17 @@ public class SignUpStudentActivity extends AppCompatActivity {
                 String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                    if(isValid()){
-                        String name = tie_name.getText().toString();
-                        int gender = rg_gender.getCheckedRadioButtonId();
-                        int age = Integer.parseInt(spn_age.getSelectedItem().toString());
-                        byte[] avatar;
-                       if(gender == R.id.signup_rb_boy ){
-                           Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sboy);
-                           ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                           bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
-                           avatar = stream.toByteArray();
-                        }else{
-                           Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sgirl);
-                           ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                           bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
-                           avatar = stream.toByteArray();
-                       }
 
-                        Student student = new Student(name,avatar, age, gender);
+
+                        Student student = initializareStudent();
                         intent.putExtra(Constants.ADD_STUDENT_KEY, student);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
                 } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     if(isValid()){
+                        Student student = initializareStudent();
+                        studentDAO.insertStudentByStudent(student);
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
                         intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
@@ -126,6 +117,27 @@ public class SignUpStudentActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    private Student initializareStudent(){
+        String name = tie_name.getText().toString();
+        int gender = rg_gender.getCheckedRadioButtonId();
+        int age = Integer.parseInt(spn_age.getSelectedItem().toString());
+        byte[] avatar;
+        if(gender == R.id.signup_rb_boy ){
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sboy);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+            avatar = stream.toByteArray();
+        }else{
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sgirl);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
+            avatar = stream.toByteArray();
+        }
+        Student student = new Student(name,avatar, age, gender);
+        return student;
     }
 
 //    public static void convertBitmapToByte(){

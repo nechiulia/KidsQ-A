@@ -10,16 +10,16 @@ private byte[] avatar;
 private int age;
 private int gender;
 private double score;
-private String teacher_email;
+private Integer id_teacher;
 
 
-    public Student(String username, byte[] avatar, int age, int gender, Double score, String teacher_email) {
+    public Student(String username, byte[] avatar, int age, int gender, Double score, Integer id_teacher) {
         this.username = username;
         this.avatar = avatar;
         this.age = age;
         this.gender = gender;
         this.score = score;
-        this.teacher_email = teacher_email;
+        this.id_teacher = id_teacher;
     }
 
     public Student(String username, byte[] avatar, Integer age, Integer gender) {
@@ -36,7 +36,7 @@ private String teacher_email;
         age = in.readInt();
         gender = in.readInt();
         score = in.readDouble();
-        teacher_email = in.readString();
+        id_teacher = in.readInt();
     }
 
     public static final Creator<Student> CREATOR = new Creator<Student>() {
@@ -98,12 +98,12 @@ private String teacher_email;
         this.score = score;
     }
 
-    public String getTeacher_email() {
-        return teacher_email;
+    public Integer getId_teacher() {
+        return id_teacher;
     }
 
-    public void setTeacher_email(String teacher_email) {
-        this.teacher_email = teacher_email;
+    public void setId_teacher(Integer id_teacher) {
+        this.id_teacher = id_teacher;
     }
 
     @Override
@@ -113,6 +113,6 @@ private String teacher_email;
         dest.writeInt(age);
         dest.writeInt(gender);
         dest.writeDouble(score);
-        dest.writeString(teacher_email !=null ? teacher_email : null);
+        dest.writeInt(id_teacher);
     }
 }
