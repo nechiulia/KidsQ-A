@@ -87,7 +87,10 @@ public class HomePageActivity extends AppCompatActivity {
                     protected void onPostExecute(String s) {
                         try {
                             questionsSet = QuestionsSetParser.fromJson(s);
-                            progressDialog.dismiss();
+                            if(!isChecked) {
+                                progressDialog.dismiss();
+                            }
+
 //
                         } catch (JSONException e) {
                             e.printStackTrace();
