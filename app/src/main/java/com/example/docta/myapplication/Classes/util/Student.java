@@ -25,6 +25,9 @@ public class Student implements Parcelable {
 //        this.id_teacher = id_teacher;
 //    }
 
+    public Student(){
+    }
+
     public Student(String username, byte[] avatar, int age, int gender, double score, String email_teacher) {
         this.username = username;
         this.avatar = avatar;

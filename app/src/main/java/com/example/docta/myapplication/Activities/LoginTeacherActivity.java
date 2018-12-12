@@ -82,7 +82,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PASSWORD_PREF, tie_password.getText().toString());
                         editor.putString(Constants.EMAIL_PREF, tie_email.getText().toString());
-                        boolean result = editor.commit();
+                        editor.commit();
                         teacherDAO.close();
                         startActivity(intent);
                     }else{

@@ -112,6 +112,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
+        android:id="@+id/setting_linearlayout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -127,4 +128,18 @@
                 app:layout_constraintTop_toBottomOf="@id/setttings_til_passwordC"
                 />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/settings_btn_delete_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_delete_sweep_black_30dp"
+        android:background="?android:selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_linearlayout_btn" />
+
+
 </android.support.constraint.ConstraintLayout>

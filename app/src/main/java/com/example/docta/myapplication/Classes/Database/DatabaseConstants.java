@@ -57,7 +57,7 @@ public interface DatabaseConstants {
                     STUDENT_COLUMN_SCORE+ " REAL, "+
                     STUDENT_COLUMN_EMAIL_TEACHER+ " TEXT, " +
                     " FOREIGN KEY ( " + STUDENT_COLUMN_EMAIL_TEACHER +
-                    " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ));";
+                    " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ) ON DELETE SET NULL );";
 
     String DROP_TABLE_STUDENT = "DROP TABLE IF EXISTS "+STUDENT_TABLE_NAME+";";
     String INSERT_STUDENT = "insert into " + STUDENT_TABLE_NAME + " (" +
