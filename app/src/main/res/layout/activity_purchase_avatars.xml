@@ -51,6 +51,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         android:scaleType="fitCenter"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost1"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -67,6 +68,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         android:scaleType="fitCenter"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost2"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
@@ -83,6 +85,8 @@
         android:layout_marginRight="12dp"
         android:layout_marginBottom="12dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:clickable="true"
+
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost3"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -96,6 +100,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost6"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -111,6 +116,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost5"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar4"
         app:layout_constraintHorizontal_bias="0.208"
@@ -126,6 +132,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost4"
         app:layout_constraintStart_toStartOf="parent" />
 

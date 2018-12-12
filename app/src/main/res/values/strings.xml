@@ -236,4 +236,22 @@
     <string name="myavatars_add_pc_avatar">Adaugă avatarul propriu(500 pct)</string>
     <string name="update_avatar_btn_save">Salveaza</string>
     <string name="update_avatar_tid_hint">Nume avatar</string>
+    <string name="purchase_toast_already_buy">Ai cumparat deja acest avatar!</string>
+    <string name="purchase_toast_delete_one_avatar">Nu poti cumpara inca un avatar. Sterge unul existent!</string>
+    <string name="purchase_not_buy">Nu ai cumparat avatarul!</string>
+    <string name="purchase_toast_sure_buy">Esti sigur ca vrei sa cumperi acest avatar?</string>
+    <string name="purchase_toast_buy_avatar">Cumpara avatar!</string>
+    <string name="myavatars_toast_dont_change">Nu poti modifica numele unui avatar al aplicatiei.</string>
+    <string name="myavatars_toast_delete_one">Nu poti cumpara inca un avatar. Sterge unul existent!</string>
+    <string name="myavatars_toast_upload_failed">Nu s-a putut incarca imaginea</string>
+    <string name="myavatars_toast_delete_failed">Nu ai sters avatarul!</string>
+    <string name="myavatars_toast_delete_rejected">Stergere anulata!</string>
+    <string name="myavatars_toast_delete_ok">Avatar sters!</string>
+    <string name="myavatars_toast_only_one">Nu poti sterge singurul avatar pe care il ai!</string>
+    <string name="myavatars_toast_yes">Da</string>
+    <string name="myavatars_toast_sure_delete">Esti sigur ca vrei sa stergi acest avatar?</string>
+    <string name="myavatars_toast_delete_avatar">Sterge avatar!</string>
+    <string name="myavatars_toast_delete_nu">Nu</string>
+    <string name="myavatars_default_user_name">user</string>
+
 </resources>

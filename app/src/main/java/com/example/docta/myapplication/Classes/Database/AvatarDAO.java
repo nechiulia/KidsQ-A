@@ -51,11 +51,13 @@ public class AvatarDAO implements DatabaseConstants {
             database.endTransaction();
         }
     }
-    public  long insertAvatarInDatabase(Avatar avatar) {
-       long id=-2;
-        if(avatar==null){
-            id= -1;}
-        else {
+    public Long  insertAvatarInDatabase(Avatar avatar) {
+            Long id=Long.parseLong("-2");
+            if(avatar==null){
+                id=Long.parseLong("-1");
+            }
+            else
+            {
             database.beginTransaction();
             try {
                 SQLiteStatement insert = database.compileStatement(INSERT_AVATAR);
@@ -112,7 +114,7 @@ public class AvatarDAO implements DatabaseConstants {
 
         String whereClause = AVATAR_COLUMN_APP_AVATAR+ " = ?";
         String[] whereArgs = new String[] {
-                "0",
+                "0"
         };
         Cursor cursor = database.query(AVATAR_TABLE_NAME, null, whereClause, whereArgs,
                 null, null, null);
@@ -135,6 +137,33 @@ public class AvatarDAO implements DatabaseConstants {
 
         return results;
     }
+    public Avatar findAvatarById(Long idAvatar){
+        Avatar avatar= new Avatar(null);
+        String whereClause = AVATAR_COLUMN_ID_AVATAR+ " = ?";
+        String[] whereArgs = new String[] {
+                idAvatar.toString()
+        };
+        Cursor cursor = database.query(AVATAR_TABLE_NAME, null, whereClause, whereArgs,
+                null, null, null);
+
+        while (cursor.moveToNext()) {
+
+            Long id = cursor.getLong(cursor.getColumnIndex(AVATAR_COLUMN_ID_AVATAR));
+
+            String name = cursor.getString(cursor
+                    .getColumnIndex(AVATAR_COLUMN_NAME));
+            Double price = cursor.getDouble(cursor
+                    .getColumnIndex(AVATAR_COLUMN_PRICE));
+
+            byte[] image = cursor.getBlob(cursor.getColumnIndex(AVATAR_COLUMN_IMAGE));
+            long app_avatar= cursor.getLong(cursor.getColumnIndex(AVATAR_COLUMN_APP_AVATAR));
+
+            avatar= new Avatar(id, name, price, image,app_avatar);
+        }
+        cursor.close();
+
+        return avatar;
+    }
     public  long updatePhoneAvatar(String avatarName, Long id){
 
 
@@ -144,11 +173,11 @@ public class AvatarDAO implements DatabaseConstants {
 
         return  database.update(AVATAR_TABLE_NAME,contentValues,AVATAR_COLUMN_ID_AVATAR + " = ?",new String[]{id.toString()});
     }
-    public  int deleteAvatarFromPhone(Avatar avatar){
-        if(avatar==null || avatar.getId()==null){
+    public  int deleteAvatarFromPhone(Long id){
+        if(id==null ){
             return -1;
         }
-        return  database.delete(AVATAR_TABLE_NAME, AVATAR_COLUMN_ID_AVATAR +"=?", new String[]{avatar.getId().toString()} );
+        return  database.delete(AVATAR_TABLE_NAME, AVATAR_COLUMN_ID_AVATAR +"=? AND "+ AVATAR_COLUMN_APP_AVATAR+"=?", new String[]{id.toString(),"0"} );
     }
 
 }

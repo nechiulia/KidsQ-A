@@ -3,7 +3,7 @@ package com.example.docta.myapplication.Classes.Database;
 public interface DatabaseConstants {
 
     String DATABASE_NAME="dosbrains.db";
-    int DATABASE_VERSION=9;
+    int DATABASE_VERSION=12;
 
 
 
@@ -151,7 +151,12 @@ public interface DatabaseConstants {
             ASSOCIATIVE_COLUMN_USERNAME + " TEXT, " +
             ASSOCIATIVE_COLUMN_ID_AVATAR + " INTEGER, " +
             " PRIMARY KEY (" + ASSOCIATIVE_COLUMN_USERNAME+ ", " + ASSOCIATIVE_COLUMN_ID_AVATAR+"));";
+    String INSERT_ASSOCIATIVE_AVATAR= "insert into "+ ASSOCIATIVE_TABLE_NAME
+            + " (" + ASSOCIATIVE_COLUMN_ID_AVATAR+", " + ASSOCIATIVE_COLUMN_USERNAME
+            + " ) values(?,?)";
 
     String DROP_TABLE_ASSOCIATIVE= " DROP TABLE IF EXISTS "+ ASSOCIATIVE_TABLE_NAME;
+    String QUERRY_ASSOCIATIVE_AVATAR = "SELECT * FROM " +ASSOCIATIVE_TABLE_NAME + " WHERE " + ASSOCIATIVE_COLUMN_USERNAME + " =?" ;
+
 
 }

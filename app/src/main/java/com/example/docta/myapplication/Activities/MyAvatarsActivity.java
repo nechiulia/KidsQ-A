@@ -1,7 +1,9 @@
 package com.example.docta.myapplication.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
 import com.example.docta.myapplication.Classes.util.Avatar;
 import com.example.docta.myapplication.Classes.util.AvatarParser;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
@@ -40,6 +43,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private ArrayList<Avatar> app_avatars=new ArrayList<>();
     private AvatarDAO avatarDAO;
+    private AssociativeDAO associativeDAO;
     private Button btn_add_from_pc;
     private ImageView ivAvatar1;
     private ImageView ivAvatar2;
@@ -48,9 +52,14 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private TextView tvAvatar2Name;
     private TextView tvAvatar3Name;
     private int ivSelected;
+    private SharedPreferences sharedPreferencesUser;
+    private String user;
+    private ArrayList<Long> avatarsIdForUser= new ArrayList<>();
     Intent intent;
-
+    private ArrayList<Avatar> userAvatars=new ArrayList<>();
     private ArrayList<Avatar> avatarsFromPhone=new ArrayList<>();
+    ArrayList<TextView> textViewsNameList=new ArrayList<>();
+    ArrayList<ImageView> imageViewsAvatarList= new ArrayList<>();
 
 
 
@@ -77,7 +86,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                     }
                     finally {
                         avatarDAO.open();
-                        avatarDAO.insertAvatarsInDatabase(app_avatars);
+                          avatarDAO.insertAvatarsInDatabase(app_avatars);
                         avatarDAO.close();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
@@ -87,7 +96,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
             };
             managerJson.execute(URL_JSON_AVATARS);
             //managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
-
+        refreshListAvatar();
+        initControllers(userAvatars);
 
         }
 
@@ -97,115 +107,157 @@ public class MyAvatarsActivity extends AppCompatActivity {
         btn_buy =findViewById(R.id.myavatars_btn_buy);
         btn_back=findViewById(R.id.myavatars_btn_back);
         avatarDAO = new AvatarDAO(getApplicationContext());
+        associativeDAO= new AssociativeDAO(getApplicationContext());
         btn_add_from_pc=findViewById(R.id.myavatars_btn_add_from_pc);
         btn_add_from_pc.setOnClickListener(uploadImage());
         ivAvatar1=findViewById(R.id.myavatars_iv_avatar1);
         ivAvatar2=findViewById(R.id.myavatars_iv_avatar2);
         ivAvatar3=findViewById(R.id.myavatars_iv_avatar3);
+        imageViewsAvatarList.add(ivAvatar1);
+        imageViewsAvatarList.add(ivAvatar2);
+        imageViewsAvatarList.add(ivAvatar3);
         tvAvatar1Name=findViewById(R.id.myavatars_tv_avatar1_name);
         tvAvatar2Name=findViewById(R.id.myavatars_tv_avatar2_name);
         tvAvatar3Name=findViewById(R.id.myavatars_tv_avatar3_name);
-        avatarDAO.open();
-        avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
-        avatarDAO.close();
-        initImageViews(avatarsFromPhone);
+        textViewsNameList.add(tvAvatar1Name);
+        textViewsNameList.add(tvAvatar2Name);
+        textViewsNameList.add(tvAvatar3Name);
+        sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
+        refreshListAvatar();
+        initControllers(userAvatars);
+
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);
+                intent.putExtra(Constants.USER_AVATAR_KEY, userAvatars);
                 startActivity(intent);
+                finish();
             }
         });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
-        tvAvatar1Name.setOnClickListener(changeName1());
-        tvAvatar2Name.setOnClickListener(changeName2());
-        tvAvatar3Name.setOnClickListener(changeName3());
-        ivAvatar1.setOnClickListener(deleteAvatar1());
+        for(int i=0;i<textViewsNameList.size();i++){
+            textViewsNameList.get(i).setOnClickListener(changeName(i));
+        }
+
+        for(int i=0;i<imageViewsAvatarList.size();i++){
+            imageViewsAvatarList.get(i).setOnLongClickListener(deleteAvatar(i));
+        }
+
 
     }
-    private View.OnClickListener deleteAvatar1(){
+    private View.OnLongClickListener deleteAvatar(int position){
+       return new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+               AlertDialog.Builder builder= new AlertDialog.Builder(MyAvatarsActivity.this);
+               builder.setTitle(getString(R.string.myavatars_toast_delete_avatar))
+                       .setMessage(getString(R.string.myavatars_toast_sure_delete))
+                       .setPositiveButton(getString(R.string.myavatars_toast_yes), new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               if(userAvatars.size()==1){
+                                   Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_only_one),Toast.LENGTH_LONG).show();
+                               }
+                               else {
+                                   if (userAvatars.get(position).getAppAvatar() == 1) {
+                                       associativeDAO.open();
+                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId());
+                                       associativeDAO.close();
+                                       if (result >= 0) {
+                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
+                                           userAvatars.remove(position);
+                                           initControllers(userAvatars);
+
+                                       } else {
+                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
+                                       }
+
+                                   } else if (userAvatars.get(position).getAppAvatar() == 0) {
+                                       associativeDAO.open();
+                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId());
+                                       associativeDAO.close();
+                                       avatarDAO.open();
+                                       avatarDAO.deleteAvatarFromPhone(userAvatars.get(position).getId());
+                                       avatarDAO.close();
+
+                                       if (result >= 0) {
+                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
+                                           userAvatars.remove(position);
+                                           initControllers(userAvatars);
+
+                                       } else {
+                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
+                                       }
+                                   }
+                               }
+                           }
+                       })
+                       .setNegativeButton(getString(R.string.myavatars_toast_delete_nu), new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               Toast.makeText(MyAvatarsActivity.this,getString(R.string.myavatars_toast_delete_rejected), Toast.LENGTH_LONG).show();
+                           }
+                       });
+               builder.create().show();
+
+               return true;
+
+           }
+       };
+    }
+    private void initControllers(ArrayList<Avatar> userAv){
+        Bitmap btm=null;
+        ivAvatar1.setImageBitmap(null);
+        ivAvatar2.setImageBitmap(null);
+        ivAvatar3.setImageBitmap(null);
+        if(userAv.size()!=0){
+            for(int i=0;i<userAv.size();i++){
+                btm=BitmapFactory.decodeByteArray(userAv.get(i).getImage(),0,userAv.get(i).getImage().length);
+                imageViewsAvatarList.get(i).setImageBitmap(Bitmap.createBitmap(btm));
+                textViewsNameList.get(i).setText(userAv.get(i).getName());
+            }
+        }
+
+
+    }
+    private View.OnClickListener changeName(int position) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatarDAO.open();
-                avatarDAO.deleteAvatarFromPhone(avatarsFromPhone.get(0));
-                avatarDAO.close();
+                ivSelected = position;
+                if (userAvatars.get(position).getAppAvatar() == 0) {
+                    Intent intent = new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                    startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
+                } else {
+                    Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_dont_change), Toast.LENGTH_LONG).show();
+                }
             }
-        };
-    }
-    private void initImageViews(ArrayList<Avatar> avatars){
-        /*avatarDAO.open();
-        avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
-        avatarDAO.close();*/
-        if(avatars.size()==1){
-            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
-            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
-            tvAvatar1Name.setText(avatars.get(0).getName());}
-        else if   (avatars.size()==2){
-            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
-            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
-            tvAvatar1Name.setText(avatars.get(0).getName());
-            Bitmap btm2=BitmapFactory.decodeByteArray(avatars.get(1).getImage(),0,avatars.get(1).getImage().length);
-            ivAvatar2.setImageBitmap(Bitmap.createBitmap(btm2));
-            tvAvatar2Name.setText(avatars.get(1).getName());}
-         else if (avatars.size()>=3) {
-            Bitmap btm=BitmapFactory.decodeByteArray(avatars.get(0).getImage(),0,avatars.get(0).getImage().length);
-            ivAvatar1.setImageBitmap(Bitmap.createBitmap(btm));
-            tvAvatar1Name.setText(avatars.get(0).getName());
-            Bitmap btm2=BitmapFactory.decodeByteArray(avatars.get(1).getImage(),0,avatars.get(1).getImage().length);
-            ivAvatar2.setImageBitmap(Bitmap.createBitmap(btm2));
-            tvAvatar2Name.setText(avatars.get(1).getName());
-            Bitmap btm3 = BitmapFactory.decodeByteArray(avatars.get(2).getImage(), 0, avatars.get(2).getImage().length);
-            ivAvatar3.setImageBitmap(Bitmap.createBitmap(btm3));
-            tvAvatar3Name.setText(avatars.get(2).getName());
-        }
 
-    }
-    private View.OnClickListener changeName1(){
-        return  new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ivSelected=0;
-                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
-                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
-            }
+
         };
     }
-    private View.OnClickListener changeName2(){
-        return  new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ivSelected=1;
-                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
-                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
-            }
-        };
-    }
-    private View.OnClickListener changeName3(){
-        return  new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ivSelected=2;
-                Intent intent= new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
-                startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
-            }
-        };
-    }
+
     private View.OnClickListener uploadImage(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, Constants.UPLOAD_IMAGE_REQUEST_CODE);
-
+                if(userAvatars.size()>=3){
+                    Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_delete_one),Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                    photoPickerIntent.setType("image/*");
+                    startActivityForResult(photoPickerIntent, Constants.UPLOAD_IMAGE_REQUEST_CODE);
+                }
             }
         };
     }
@@ -223,24 +275,46 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 byte[] byteArray = stream.toByteArray();
                 Avatar avatar=new Avatar(byteArray);
                 avatarDAO.open();
-                long id=  avatarDAO.insertAvatarInDatabase(avatar);
+                Long id= avatarDAO.insertAvatarInDatabase(avatar);
                 avatarDAO.close();
+                avatar.setId(id);
+                if(id>=0) {
+                    associativeDAO.open();
+                        associativeDAO.insertAssociativeAvatar(user, id);
+                    associativeDAO.close();
+                }
+                refreshListAvatar();
+                initControllers(userAvatars);
 
 
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(getApplicationContext(),"Nu s-a putut incarca imaginea",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_upload_failed),Toast.LENGTH_LONG).show();
             }
+
         }
         else if(resultCode==RESULT_OK && requestCode==Constants.UPDATE_AVATAR_REQUEST_CODE && data!=null){
             String newName= data.getStringExtra(Constants.SET_NAME_KEY);
-            tvAvatar1Name.setText(newName);
+            //tvAvatar1Name.setText(newName);
             avatarDAO.open();
-            avatarsFromPhone=avatarDAO.findAllAvatarsFromPhone();
-            avatarDAO.updatePhoneAvatar(newName,avatarsFromPhone.get(ivSelected).getId() );
+            avatarDAO.updatePhoneAvatar(newName,userAvatars.get(ivSelected).getId() );
             avatarDAO.close();
+            refreshListAvatar();
+            initControllers(userAvatars);
+
         }
 
 
+    }
+    private void refreshListAvatar(){
+        userAvatars=new ArrayList<>();
+        associativeDAO.open();
+        avatarsIdForUser=associativeDAO.findAllAvatarsId(user);
+        associativeDAO.close();
+        avatarDAO.open();
+        for(int i=0; i< avatarsIdForUser.size();i++){
+            userAvatars.add(avatarDAO.findAvatarById(avatarsIdForUser.get(i)));
+        }
+        avatarDAO.close();
     }
 }
