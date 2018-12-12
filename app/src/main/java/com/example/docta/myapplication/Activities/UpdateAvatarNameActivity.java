@@ -16,18 +16,19 @@ public class UpdateAvatarNameActivity extends AppCompatActivity {
     private EditText tidName;
     Button btnSave;
     Intent intent;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_avatar_name);
         intent = getIntent();
-
+        name=getIntent().getStringExtra(Constants.CHANGE_NAME_KEY);
         initComponents();
     }
     private void initComponents(){
         tidName=findViewById(R.id.update_avatar_tid_name);
         btnSave=findViewById(R.id.update_avatar_btn_save);
-
+        tidName.setText(name);
         btnSave.setOnClickListener(saveChanges());
 
     }

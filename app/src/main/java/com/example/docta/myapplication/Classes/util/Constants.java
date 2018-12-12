@@ -52,6 +52,7 @@ public interface Constants {
     String SET_NAME_KEY="name changed save";
     int UPLOAD_IMAGE_REQUEST_CODE= 104;
     String USER_AVATAR_KEY="user avatar's list";
+    String CHANGE_NAME_KEY="change name key";
 
 
 }

@@ -95,7 +95,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 }
             };
             managerJson.execute(URL_JSON_AVATARS);
-            //managerJson.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,URL_JSON_AVATARS);
         refreshListAvatar();
         initControllers(userAvatars);
 
@@ -216,9 +215,12 @@ public class MyAvatarsActivity extends AppCompatActivity {
     }
     private void initControllers(ArrayList<Avatar> userAv){
         Bitmap btm=null;
-        ivAvatar1.setImageBitmap(null);
-        ivAvatar2.setImageBitmap(null);
-        ivAvatar3.setImageBitmap(null);
+        for(int i=0;i< imageViewsAvatarList.size();i++){
+            imageViewsAvatarList.get(i).setImageBitmap(null);
+        }
+        for(int i=0;i< textViewsNameList.size();i++){
+            textViewsNameList.get(i).setText("");
+        }
         if(userAv.size()!=0){
             for(int i=0;i<userAv.size();i++){
                 btm=BitmapFactory.decodeByteArray(userAv.get(i).getImage(),0,userAv.get(i).getImage().length);
@@ -236,6 +238,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 ivSelected = position;
                 if (userAvatars.get(position).getAppAvatar() == 0) {
                     Intent intent = new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                    intent.putExtra(Constants.CHANGE_NAME_KEY, textViewsNameList.get(position).getText().toString());
                     startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
                 } else {
                     Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_dont_change), Toast.LENGTH_LONG).show();
@@ -295,7 +298,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
         }
         else if(resultCode==RESULT_OK && requestCode==Constants.UPDATE_AVATAR_REQUEST_CODE && data!=null){
             String newName= data.getStringExtra(Constants.SET_NAME_KEY);
-            //tvAvatar1Name.setText(newName);
             avatarDAO.open();
             avatarDAO.updatePhoneAvatar(newName,userAvatars.get(ivSelected).getId() );
             avatarDAO.close();
