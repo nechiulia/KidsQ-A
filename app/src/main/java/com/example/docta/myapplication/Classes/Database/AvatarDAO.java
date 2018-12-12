@@ -52,7 +52,7 @@ public class AvatarDAO implements DatabaseConstants {
         }
     }
     public Long  insertAvatarInDatabase(Avatar avatar) {
-            Long id=Long.parseLong("-2");
+            Long id=Long.parseLong("-1");
             if(avatar==null){
                 id=Long.parseLong("-1");
             }
@@ -108,35 +108,7 @@ public class AvatarDAO implements DatabaseConstants {
 
         return results;
     }
-    public  ArrayList<Avatar> findAllAvatarsFromPhone() {
 
-        ArrayList<Avatar> results = new ArrayList<>();
-
-        String whereClause = AVATAR_COLUMN_APP_AVATAR+ " = ?";
-        String[] whereArgs = new String[] {
-                "0"
-        };
-        Cursor cursor = database.query(AVATAR_TABLE_NAME, null, whereClause, whereArgs,
-                null, null, null);
-
-        while (cursor.moveToNext()) {
-
-            Long id = cursor.getLong(cursor.getColumnIndex(AVATAR_COLUMN_ID_AVATAR));
-
-            String name = cursor.getString(cursor
-                    .getColumnIndex(AVATAR_COLUMN_NAME));
-            Double price = cursor.getDouble(cursor
-                    .getColumnIndex(AVATAR_COLUMN_PRICE));
-
-            byte[] image = cursor.getBlob(cursor.getColumnIndex(AVATAR_COLUMN_IMAGE));
-            long app_avatar= cursor.getLong(cursor.getColumnIndex(AVATAR_COLUMN_APP_AVATAR));
-
-            results.add(new Avatar(id, name, price, image,app_avatar));
-        }
-        cursor.close();
-
-        return results;
-    }
     public Avatar findAvatarById(Long idAvatar){
         Avatar avatar= new Avatar(null);
         String whereClause = AVATAR_COLUMN_ID_AVATAR+ " = ?";
