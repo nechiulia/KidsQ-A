@@ -179,7 +179,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
                                        } else {
                                            Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
                                        }
-
                                    } else if (userAvatars.get(position).getAppAvatar() == 0) {
                                        associativeDAO.open();
                                        int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId());

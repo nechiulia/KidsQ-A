@@ -53,7 +53,8 @@
         android:scaleType="fitCenter"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/purchase_iv_avatar2"
@@ -72,7 +73,8 @@
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost2"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar3"
         app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar1" />
+        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar1"
+        android:focusable="true" />
 
     <ImageView
 
@@ -88,7 +90,8 @@
         android:clickable="true"
 
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/purchase_iv_avatar4"
@@ -102,7 +105,8 @@
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost6"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/purchase_iv_avatar5"
@@ -120,7 +124,8 @@
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost5"
         app:layout_constraintEnd_toStartOf="@+id/purchase_iv_avatar4"
         app:layout_constraintHorizontal_bias="0.208"
-        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar6" />
+        app:layout_constraintStart_toEndOf="@+id/purchase_iv_avatar6"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/purchase_iv_avatar6"
@@ -134,7 +139,8 @@
         android:contentDescription="@string/cumpara_avatare_iv_cd_avatar"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/purchase_tv_cost4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
     <TextView
         android:id="@+id/purchase_tv_myavatar"

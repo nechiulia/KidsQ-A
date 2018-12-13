@@ -54,13 +54,16 @@ public class ListStudentsActivity extends AppCompatActivity {
                     case R.id.menu_setari:
                         intent = new Intent(getApplicationContext(),SettingsActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.menu_clasament:
                         intent = new Intent(getApplicationContext(),RankingActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.menu_profil:
                         startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
+                        finish();
                         break;
                 }
                 return false;

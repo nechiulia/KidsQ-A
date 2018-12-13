@@ -54,15 +54,6 @@ public class TeacherDAO implements DatabaseConstants{
     }
 
     public long UpdateTeacherAccount(String newPass,String email){
-//        String QUERRY_UPDATE_TEACHER_ACCOUNT = "UPDATE "+ TEACHER_TABLE_NAME + " SET " + TEACHER_COLUMN_PASSWORD + "=? WHERE " + TEACHER_COLUMN_EMAIL+ " = ?";
-
-//        //Cursor c = database.rawQuery("UPDATE "+ TEACHER_TABLE_NAME + " SET " + TEACHER_COLUMN_PASSWORD + " = '" +newPass+ "'  WHERE " + TEACHER_COLUMN_EMAIL+ " = ?",new String[]{email});
-
-//        if(c!=null){
-//            return true;
-//        }else{
-//            return false;
-//        }
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(TEACHER_COLUMN_PASSWORD, newPass);
@@ -70,6 +61,11 @@ public class TeacherDAO implements DatabaseConstants{
 
         return  database.update(TEACHER_TABLE_NAME,contentValues,TEACHER_COLUMN_EMAIL + " = ?",new String[]{email});
     }
+
+    public int DeleteTeacherAccount(String email){
+        return database.delete(TEACHER_TABLE_NAME,TEACHER_COLUMN_EMAIL+" =?", new String[]{email});
+    }
+
 
     public void close(){
         try{
