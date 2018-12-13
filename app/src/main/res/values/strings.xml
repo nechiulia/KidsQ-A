@@ -243,7 +243,7 @@
     <string name="purchase_toast_buy_avatar">Cumpara avatar!</string>
     <string name="myavatars_toast_dont_change">Nu poti modifica numele unui avatar al aplicatiei.</string>
     <string name="myavatars_toast_delete_one">Nu poti cumpara inca un avatar. Sterge unul existent!</string>
-    <string name="myavatars_toast_upload_failed">Nu s-a putut incarca imaginea</string>
+    <string name="myavatars_toast_upload_failed">Imaginea selectata nu poate fi incarcata</string>
     <string name="myavatars_toast_delete_failed">Nu ai sters avatarul!</string>
     <string name="myavatars_toast_delete_rejected">Stergere anulata!</string>
     <string name="myavatars_toast_delete_ok">Avatar sters!</string>

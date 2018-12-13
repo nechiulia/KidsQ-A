@@ -271,31 +271,45 @@ public class MyAvatarsActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode==Constants.UPLOAD_IMAGE_REQUEST_CODE)
         {
             Uri chosenImageUri = data.getData();
+            Avatar avatar= new Avatar(null);
+            Long id=-Long.parseLong("-1");
             try {
                 mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), chosenImageUri);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                mBitmap .compress(Bitmap.CompressFormat.PNG, 100, stream);
+                mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
-                Avatar avatar=new Avatar(byteArray);
+                avatar = new Avatar(byteArray);
                 avatarDAO.open();
-                Long id= avatarDAO.insertAvatarInDatabase(avatar);
+                 id = avatarDAO.insertAvatarInDatabase(avatar);
                 avatarDAO.close();
                 avatar.setId(id);
-                if(id>=0) {
+                if (id != -1) {
                     associativeDAO.open();
-                        associativeDAO.insertAssociativeAvatar(user, id);
+                    associativeDAO.insertAssociativeAvatar(user, id);
                     associativeDAO.close();
                 }
                 refreshListAvatar();
                 initControllers(userAvatars);
 
-
-            } catch (IOException e) {
+            }catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_upload_failed),Toast.LENGTH_LONG).show();
             }
+            catch(Exception e){
+                avatarDAO.open();
+                avatarDAO.deleteAvatarFromPhone(id);
+                avatarDAO.close();
+                associativeDAO.open();
+                associativeDAO.deleteAvatarById(id);
+                associativeDAO.close();
+                refreshListAvatar();
+                initControllers(userAvatars);
+                Toast.makeText(getApplicationContext(), getString(R.string.myavatars_toast_upload_failed),Toast.LENGTH_LONG).show();
+            }
 
-        }
+            }
+
+
         else if(resultCode==RESULT_OK && requestCode==Constants.UPDATE_AVATAR_REQUEST_CODE && data!=null){
             String newName= data.getStringExtra(Constants.SET_NAME_KEY);
             avatarDAO.open();
