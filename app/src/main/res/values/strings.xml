@@ -261,5 +261,6 @@
     <string name="ajutor_tv_Intrebarea3">3.Cum pot cumpara un avatar?</string>
     <string name="ajutor_tv_Intrebarea4">4.Cum pot sterge un avatar?</string>
     <string name="ajutor_tv_Intrebarea5">5.Cum pot modifica numele unui avatar?</string>
+    <string name="purchase_toast_is_buy">Avatar cumparat!</string>
 
 </resources>

@@ -32,38 +32,14 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
     private ArrayList<Avatar> app_avatars=new ArrayList<>();
     private AvatarDAO avatarDAO;
     private AssociativeDAO associativeDAO;
-    private ImageView avatar1;
-    private ImageView avatar2;
-    private ImageView avatar3;
-    private ImageView avatar4;
-    private ImageView avatar5;
-    private ImageView avatar6;
     private ImageView myavatar;
-    private TextView tvAvatar1Name;
-    private TextView tvAvatar2Name;
-    private TextView tvAvatar3Name;
-    private TextView tvAvatar4Name;
-    private TextView tvAvatar5Name;
-    private TextView tvAvatar6Name;
-    private TextView tvAvatar1Price;
-    private TextView tvAvatar2Price;
-    private TextView tvAvatar3Price;
-    private TextView tvAvatar4Price;
-    private TextView tvAvatar5Price;
-    private TextView tvAvatar6Price;
-    private TextView tvAvatar1Buy;
-    private TextView tvAvatar2Buy;
-    private TextView tvAvatar3Buy;
-    private TextView tvAvatar4Buy;
-    private TextView tvAvatar5Buy;
-    private TextView tvAvatar6Buy;
     private SharedPreferences sharedPreferencesUser;
     private String user;
-   private ArrayList<TextView> textViewsNameList=new ArrayList<>();
-   private ArrayList<TextView> textViewsPriceList= new ArrayList<>();
-   private ArrayList<ImageView> imageViewsAvatarList= new ArrayList<>();
-   private ArrayList<Avatar> userAvatars=new ArrayList<>();
-   private ArrayList<TextView> textViewsBuy= new ArrayList<>();
+    private ArrayList<TextView> textViewsNameList=new ArrayList<>();
+    private ArrayList<TextView> textViewsPriceList= new ArrayList<>();
+    private ArrayList<ImageView> imageViewsAvatarList= new ArrayList<>();
+    private ArrayList<Avatar> userAvatars=new ArrayList<>();
+    private ArrayList<TextView> textViewsBuy= new ArrayList<>();
     private Intent intent;
 
     @Override
@@ -85,83 +61,49 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         }else{
             Bitmap btm=null;
             btm=BitmapFactory.decodeByteArray(app_avatars.get(0).getImage(),0,app_avatars.get(0).getImage().length);
-            avatar1.setImageBitmap(Bitmap.createScaledBitmap(btm,50,50,false));
+            imageViewsAvatarList.get(0).setImageBitmap(Bitmap.createScaledBitmap(btm,50,50,false));
         }
     }
 
     private void initComponents(){
-
+        btn_back=findViewById(R.id.purchase_btn_back);
+        myavatar = findViewById(R.id.purchase_iv_myavatar);
         avatarDAO = new AvatarDAO(getApplicationContext());
         associativeDAO= new AssociativeDAO(getApplicationContext());
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
         user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, "user");
         userAvatars=(ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
-        tvAvatar1Buy=findViewById(R.id.purchase_tv_buyed1);
-        textViewsBuy.add(tvAvatar1Buy);
-        tvAvatar2Buy=findViewById(R.id.purchase_tv_buyed2);
-        textViewsBuy.add(tvAvatar2Buy);
-        tvAvatar3Buy=findViewById(R.id.purchase_tv_buyed3);
-        textViewsBuy.add(tvAvatar3Buy);
-        tvAvatar4Buy=findViewById(R.id.purchase_tv_buyed4);
-        textViewsBuy.add(tvAvatar4Buy);
-        tvAvatar5Buy=findViewById(R.id.purchase_tv_buyed5);
-        textViewsBuy.add(tvAvatar5Buy);
-        tvAvatar6Buy=findViewById(R.id.purchase_tv_buyed6);
-        textViewsBuy.add(tvAvatar6Buy);
-       /* textViewsBuy.add(findViewById(R.id.purchase_tv_buyed1));
-        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed2));
-        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed3));
-        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed4));
-        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed5));
-        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed6));*/
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed1));
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed2));
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed3));
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed4));
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed5));
+        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed6));
 
-        btn_back=findViewById(R.id.purchase_btn_back);
-        myavatar = findViewById(R.id.purchase_iv_myavatar);
-        avatar1=findViewById(R.id.purchase_iv_avatar1);
-        avatar2=findViewById(R.id.purchase_iv_avatar2);
-        avatar3=findViewById(R.id.purchase_iv_avatar3);
-        avatar4=findViewById(R.id.purchase_iv_avatar4);
-        avatar5=findViewById(R.id.purchase_iv_avatar5);
-        avatar6=findViewById(R.id.purchase_iv_avatar6);
-        imageViewsAvatarList.add(avatar1);
-        imageViewsAvatarList.add(avatar2);
-        imageViewsAvatarList.add(avatar3);
-        imageViewsAvatarList.add(avatar4);
-        imageViewsAvatarList.add(avatar5);
-        imageViewsAvatarList.add(avatar6);
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar1));
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar2));
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar3));
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar4));
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar5));
+        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar6));
 
-        tvAvatar1Name=findViewById(R.id.purchase_tv_avatar1_name);
-        tvAvatar2Name=findViewById(R.id.purchase_tv_avatar2_name);
-        tvAvatar3Name=findViewById(R.id.purchase_tv_avatar3_name);
-        tvAvatar4Name=findViewById(R.id.purchase_tv_avatar4_name);
-        tvAvatar5Name=findViewById(R.id.purchase_tv_avatar5_name);
-        tvAvatar6Name=findViewById(R.id.purchase_tv_avatar6_name);
-        textViewsNameList.add(tvAvatar1Name);
-        textViewsNameList.add(tvAvatar2Name);
-        textViewsNameList.add(tvAvatar3Name);
-        textViewsNameList.add(tvAvatar4Name);
-        textViewsNameList.add(tvAvatar5Name);
-        textViewsNameList.add(tvAvatar6Name);
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar1_name));
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar2_name));
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar3_name));
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar4_name));
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar5_name));
+        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar6_name));
 
-        tvAvatar1Price=findViewById(R.id.purchase_tv_cost1);
-        tvAvatar2Price=findViewById(R.id.purchase_tv_cost2);
-        tvAvatar3Price=findViewById(R.id.purchase_tv_cost3);
-        tvAvatar4Price=findViewById(R.id.purchase_tv_cost4);
-        tvAvatar5Price=findViewById(R.id.purchase_tv_cost5);
-        tvAvatar6Price=findViewById(R.id.purchase_tv_cost6);
-        textViewsPriceList.add(tvAvatar1Price);
-        textViewsPriceList.add(tvAvatar2Price);
-        textViewsPriceList.add(tvAvatar3Price);
-        textViewsPriceList.add(tvAvatar4Price);
-        textViewsPriceList.add(tvAvatar5Price);
-        textViewsPriceList.add(tvAvatar6Price);
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost1));
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost2));
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost3));
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost4));
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost5));
+        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost6));
 
-        avatar1.setOnLongClickListener(buyAvatar(0));
-        avatar2.setOnLongClickListener(buyAvatar(1));
-        avatar3.setOnLongClickListener(buyAvatar(2));
-        avatar4.setOnLongClickListener(buyAvatar(3));
-        avatar5.setOnLongClickListener(buyAvatar(4));
-        avatar6.setOnLongClickListener(buyAvatar(5));
+        for (int i=0; i<imageViewsAvatarList.size();i++){
+            imageViewsAvatarList.get(i).setOnLongClickListener(buyAvatar(i));
+        }
 
         avatarDAO.open();
         app_avatars=avatarDAO.findAllAvatarsFromApp();
@@ -231,12 +173,16 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                                     long result= associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
                                     associativeDAO.close();
                                     if(result!=-1) {
-                                        Toast.makeText(getApplicationContext(),"Avatar cumparat!",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_is_buy),Toast.LENGTH_LONG).show();
+                                        Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
+                                        startActivity(intent);
                                         finish();
                                     }
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_delete_one_avatar),Toast.LENGTH_LONG).show();
+                                    Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
+                                    startActivity(intent);
                                     finish();
                                 }
 

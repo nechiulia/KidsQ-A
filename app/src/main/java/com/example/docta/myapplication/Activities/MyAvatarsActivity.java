@@ -133,7 +133,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);
                 intent.putExtra(Constants.USER_AVATAR_KEY, userAvatars);
                 startActivity(intent);
-
+                finish();
             }
         });
 
