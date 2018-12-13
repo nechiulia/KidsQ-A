@@ -51,12 +51,19 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
     private TextView tvAvatar4Price;
     private TextView tvAvatar5Price;
     private TextView tvAvatar6Price;
+    private TextView tvAvatar1Buy;
+    private TextView tvAvatar2Buy;
+    private TextView tvAvatar3Buy;
+    private TextView tvAvatar4Buy;
+    private TextView tvAvatar5Buy;
+    private TextView tvAvatar6Buy;
     private SharedPreferences sharedPreferencesUser;
     private String user;
    private ArrayList<TextView> textViewsNameList=new ArrayList<>();
    private ArrayList<TextView> textViewsPriceList= new ArrayList<>();
    private ArrayList<ImageView> imageViewsAvatarList= new ArrayList<>();
    private ArrayList<Avatar> userAvatars=new ArrayList<>();
+   private ArrayList<TextView> textViewsBuy= new ArrayList<>();
     private Intent intent;
 
     @Override
@@ -89,6 +96,25 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
         user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, "user");
         userAvatars=(ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
+        tvAvatar1Buy=findViewById(R.id.purchase_tv_buyed1);
+        textViewsBuy.add(tvAvatar1Buy);
+        tvAvatar2Buy=findViewById(R.id.purchase_tv_buyed2);
+        textViewsBuy.add(tvAvatar2Buy);
+        tvAvatar3Buy=findViewById(R.id.purchase_tv_buyed3);
+        textViewsBuy.add(tvAvatar3Buy);
+        tvAvatar4Buy=findViewById(R.id.purchase_tv_buyed4);
+        textViewsBuy.add(tvAvatar4Buy);
+        tvAvatar5Buy=findViewById(R.id.purchase_tv_buyed5);
+        textViewsBuy.add(tvAvatar5Buy);
+        tvAvatar6Buy=findViewById(R.id.purchase_tv_buyed6);
+        textViewsBuy.add(tvAvatar6Buy);
+       /* textViewsBuy.add(findViewById(R.id.purchase_tv_buyed1));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed2));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed3));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed4));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed5));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed6));*/
+
         btn_back=findViewById(R.id.purchase_btn_back);
         myavatar = findViewById(R.id.purchase_iv_myavatar);
         avatar1=findViewById(R.id.purchase_iv_avatar1);
@@ -140,8 +166,31 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         avatarDAO.open();
         app_avatars=avatarDAO.findAllAvatarsFromApp();
         avatarDAO.close();
-        initControllers();
 
+        initControllers();
+        boolean exists=false;
+        for(int i=0;i< textViewsBuy.size();i++){
+            exists=false;
+            if(userAvatars.size()!=1){
+            for(int j=0;j<userAvatars.size();j++) {
+                if (userAvatars.get(j).getId().equals(app_avatars.get(i).getId()) ) {
+                    exists = true;
+                    imageViewsAvatarList.get(i).setOnLongClickListener(null);
+                    imageViewsAvatarList.get(i).setAlpha(80);
+                }
+            }}
+            else {
+                if (userAvatars.get(0).getId().equals(app_avatars.get(i).getId()) ) {
+                    exists = true;
+                    imageViewsAvatarList.get(i).setOnLongClickListener(null);
+                    imageViewsAvatarList.get(i).setAlpha(80);
+                }
+            }
+            if(!exists) {
+                textViewsBuy.get(i).setVisibility(View.INVISIBLE);
+            }
+
+        }
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,17 +230,14 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                                     associativeDAO.open();
                                     long result= associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
                                     associativeDAO.close();
-                                    if(result==-1){
-                                        Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_already_buy), Toast.LENGTH_LONG).show();
-                                    }else {
-                                        avatarDAO.open();
-                                        userAvatars.add(avatarDAO.findAvatarById(app_avatars.get(position).getId()));
-                                        avatarDAO.close();
+                                    if(result!=-1) {
+                                        Toast.makeText(getApplicationContext(),"Avatar cumparat!",Toast.LENGTH_LONG).show();
+                                        finish();
                                     }
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_delete_one_avatar),Toast.LENGTH_LONG).show();
-
+                                    finish();
                                 }
 
                             }

@@ -33,7 +33,10 @@ public class SignUpStudentActivity extends AppCompatActivity {
     private ImageView img_girl;
     Intent intent;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferencesUser;
+
     private StudentDAO studentDAO;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +74,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
         rg_gender =findViewById(R.id.signup_rg_sex);
         img_boy = findViewById(R.id.signup_img_boy);
         img_girl = findViewById(R.id.signup_img_girl);
-
+        sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +115,9 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         studentDAO.open();
                         studentDAO.insertStudentByStudent(student);
                         studentDAO.close();
+                        SharedPreferences.Editor editor= sharedPreferencesUser.edit();
+                        editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
+                        editor.commit();
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
                         intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);

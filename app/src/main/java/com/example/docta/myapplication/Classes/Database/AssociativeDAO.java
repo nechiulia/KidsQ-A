@@ -55,11 +55,11 @@ public class AssociativeDAO implements DatabaseConstants {
         c.close();
         return results;
     }
-    public int deleteAvatarById(Long id){
+    public int deleteAvatarById(Long id, String user){
         if(id==null){
             return -1;
         }
-        return  database.delete(ASSOCIATIVE_TABLE_NAME, ASSOCIATIVE_COLUMN_ID_AVATAR +"=?", new String[]{id.toString()} );
+        return  database.delete(ASSOCIATIVE_TABLE_NAME, ASSOCIATIVE_COLUMN_ID_AVATAR +"=? AND "+ ASSOCIATIVE_COLUMN_USERNAME+"=?", new String[]{id.toString(),user} );
     }
     public void close(){
         try{

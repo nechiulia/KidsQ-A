@@ -352,4 +352,88 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/purchase_iv_avatar6"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar1"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar1"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar1"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar1" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar2"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar2"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar2"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar2" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar3"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar3"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar3"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar3" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar4"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar4"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar4"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar4" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar5"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar5"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar5"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar5" />
+
+    <TextView
+        android:id="@+id/purchase_tv_buyed6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cumparat"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/purchase_iv_avatar6"
+        app:layout_constraintEnd_toEndOf="@+id/purchase_iv_avatar6"
+        app:layout_constraintStart_toStartOf="@+id/purchase_iv_avatar6"
+        app:layout_constraintTop_toTopOf="@+id/purchase_iv_avatar6" />
 </android.support.constraint.ConstraintLayout>

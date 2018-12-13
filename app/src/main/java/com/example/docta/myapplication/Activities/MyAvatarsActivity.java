@@ -133,7 +133,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);
                 intent.putExtra(Constants.USER_AVATAR_KEY, userAvatars);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -169,7 +169,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                                else {
                                    if (userAvatars.get(position).getAppAvatar() == 1) {
                                        associativeDAO.open();
-                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId());
+                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
                                        associativeDAO.close();
                                        if (result >= 0) {
                                            Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
@@ -181,7 +181,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                                        }
                                    } else if (userAvatars.get(position).getAppAvatar() == 0) {
                                        associativeDAO.open();
-                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId());
+                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
                                        associativeDAO.close();
                                        avatarDAO.open();
                                        avatarDAO.deleteAvatarFromPhone(userAvatars.get(position).getId());
@@ -299,7 +299,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 avatarDAO.deleteAvatarFromPhone(id);
                 avatarDAO.close();
                 associativeDAO.open();
-                associativeDAO.deleteAvatarById(id);
+                associativeDAO.deleteAvatarById(id,user);
                 associativeDAO.close();
                 refreshListAvatar();
                 initControllers(userAvatars);
