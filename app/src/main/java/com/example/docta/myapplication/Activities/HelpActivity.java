@@ -73,20 +73,34 @@ public class HelpActivity extends AppCompatActivity {
     private void CreareLista(){
         questionsList = new ArrayList<String>();
         answersList = new HashMap<String, List<String>>();
+        ArrayList<List<String>> answers= new ArrayList<>();
 
-        questionsList.add(getString(R.string.ajutor_tv_primaIntrebare));
-        questionsList.add(getString(R.string.ajutor_tv_aDouaIntrebare));
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea1));
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea2));
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea3));
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea4));
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea5));
 
         List<String> answer1 = new ArrayList<String>();
-        answer1.add(getString(R.string.ajutor_tv_alDoileaRaspuns));
-
+        answer1.add(getString(R.string.ajutor_tv_Raspuns1));
+        answers.add(answer1);
         List<String> answer2 = new ArrayList<String>();
-        answer2.add(getString(R.string.ajutor_tv_alDoilea_raspuns));
-
-
-        answersList.put(questionsList.get(0), answer1);
-        answersList.put(questionsList.get(1), answer2);
-
+        answer2.add(getString(R.string.ajutor_tv_Raspuns2));
+        answers.add(answer2);
+        List<String> answer3 = new ArrayList<String>();
+        answer3.add(getString(R.string.ajutor_tv_Raspuns3_1));
+        answer3.add(getString(R.string.ajutor_tv_Raspuns3_2));
+        answer3.add(getString(R.string.ajutor_tv_Raspuns3_3));
+        answers.add(answer3);
+        List<String> answer4 = new ArrayList<String>();
+        answer4.add(getString(R.string.ajutor_tv_Raspuns4));
+        answers.add(answer4);
+        List<String> answer5 = new ArrayList<String>();
+        answer5.add(getString(R.string.ajutor_tv_Raspuns5));
+        answers.add(answer5);
+        for(int i=0;i< questionsList.size();i++) {
+            answersList.put(questionsList.get(i), answers.get(i));
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

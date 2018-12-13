@@ -122,10 +122,10 @@
     <string name="principala_utilizator_elev_pref_message">student</string>
     <string name="principala_utilizator_profesor_pref_message">profesor</string>
     <string name="ajutor_tv_titlu_text">Întrebări frecvente</string>
-    <string name="ajutor_tv_alDoilea_raspuns">Avatarele se pot cumpăra cu monede obținute pe baza punctajului, accesând categoria Avatarele mele din pagina principală.</string>
-    <string name="ajutor_tv_aDouaIntrebare">2. Cum pot obține noi avatare?</string>
-    <string name="ajutor_tv_alDoileaRaspuns">Pentru orice modificare a contului intră la Setări.</string>
-    <string name="ajutor_tv_primaIntrebare">1. Cum îmi pot modifica numele avatarului?</string>
+    <string name="ajutor_tv_Raspuns2">Avatarele se pot cumpăra cu monede obținute pe baza punctajului, accesând categoria Avatarele mele din pagina principală.</string>
+    <string name="ajutor_tv_Intrebarea2">2. Cum pot obține noi avatare?</string>
+    <string name="ajutor_tv_Raspuns1">Pentru orice modificare a contului intră la Setări.</string>
+    <string name="ajutor_tv_Intrebarea1">1. Cum îmi pot modifica numele avatarului?</string>
     <string name="cumpara_avatare_tv_cumpara_avatar">Cumpara alt avatar</string>
     <string name="avatare_disponibile_tv_alte_avatare">Alte avatare disponibile</string>
     <string name="avatare_disponibile_btn_cumpara_avatare">Cumpara avatare</string>
@@ -253,5 +253,13 @@
     <string name="myavatars_toast_delete_avatar">Sterge avatar!</string>
     <string name="myavatars_toast_delete_nu">Nu</string>
     <string name="myavatars_default_user_name">user</string>
+    <string name="ajutor_tv_Raspuns3_1">Pentru a cumpara un avatar propriu, apasa pe `Adauga avatar propriu`. Pentru asta trebuie sa ai 500 de puncte.</string>
+    <string name="ajutor_tv_Raspuns3_2">Pentru a cumpara un avatar oferit de aplicatie, apasa butonul: `Cumpara avatare` si tine apasat pe avatarul dorit.</string>
+    <string name="ajutor_tv_Raspuns3_3">Poti avea maxim 3 avatare cumparate in acelasi timp. Daca vrei unul nou, sterge mai intai un avatar existent.</string>
+    <string name="ajutor_tv_Raspuns4">Tine apasat pe avatarul pe care vrei sa-l stergi si confirma stergerea acestuia.</string>
+    <string name="ajutor_tv_Raspuns5">Poti schimba doar numele unui avatar propriu, nu si al unui avatar al aplicatiei. Apasa pe numele pe care vrei sa-l schimbi si salveaza modificarile facute</string>
+    <string name="ajutor_tv_Intrebarea3">3.Cum pot cumpara un avatar?</string>
+    <string name="ajutor_tv_Intrebarea4">4.Cum pot sterge un avatar?</string>
+    <string name="ajutor_tv_Intrebarea5">5.Cum pot modifica numele unui avatar?</string>
 
 </resources>
