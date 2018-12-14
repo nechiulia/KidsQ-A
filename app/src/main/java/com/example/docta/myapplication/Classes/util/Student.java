@@ -10,6 +10,7 @@ public class Student implements Parcelable {
     private int age;
     private int gender;
     private double score;
+    private int noCorrect;
   //  private Integer id_teacher;
     private String email_teacher;
 
@@ -28,6 +29,7 @@ public class Student implements Parcelable {
     public Student(){
     }
 
+
     public Student(String username, byte[] avatar, int age, int gender, double score, String email_teacher) {
         this.username = username;
         this.avatar = avatar;
@@ -36,6 +38,15 @@ public class Student implements Parcelable {
         this.score = score;
         this.email_teacher = email_teacher;
     }
+
+    public int getNoCorrect() {
+        return noCorrect;
+    }
+
+    public void setNoCorrect(int noCorrect) {
+        this.noCorrect = noCorrect;
+    }
+
     public void setScore(double score) {
         this.score = score;
     }

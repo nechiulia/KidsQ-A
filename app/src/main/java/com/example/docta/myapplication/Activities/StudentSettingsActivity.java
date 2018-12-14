@@ -36,11 +36,14 @@ public class StudentSettingsActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.DIFFICULTY_PREF, spn_difficulty.getSelectedItem().toString());
+                // editor.putString(Constants.SPINNER_DIFICULTY, spn_difficulty.getSelectedItem().toString());
                 int selectedPosition = spn_difficulty.getSelectedItemPosition();
                 editor.putInt(Constants.SPINNER_POSITION, selectedPosition);
-                editor.commit();
+                String dific = spn_difficulty.getSelectedItem().toString();
+                editor.putString(Constants.SPINNER_DIFICULTY,dific);
+                editor.apply();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
                 startActivity(intent);

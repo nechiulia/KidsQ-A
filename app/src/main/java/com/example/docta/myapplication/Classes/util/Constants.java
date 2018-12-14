@@ -17,9 +17,13 @@ public interface Constants {
     String PASSWORD_PREF ="ParolaVeche";
     String EMAIL_PREF="Email";
 
+    String CATEG_PREF = "categPref";
+    String GET_CATEG = "categGet";
+
     String STUDENT_SETTINGS_PREF = "setariPref";
     String DIFFICULTY_PREF = "dificultatePref";
     String SPINNER_POSITION ="SETARI_ELEV_POZITIE_SPINNER";
+    String SPINNER_DIFICULTY= "Spiner_Dif";
     String DAILY_TEST ="TestulZilei";
  //   String VALIDARE_TESTE_PREF="validare";
 

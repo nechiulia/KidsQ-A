@@ -10,7 +10,8 @@
         android:id="@+id/studentsrow_img_avatar"
         android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_weight="0.5"/>
+        android:layout_weight="0.5"
+        />
 
     <TextView
         android:id="@+id/studentsrow_lv_name"
