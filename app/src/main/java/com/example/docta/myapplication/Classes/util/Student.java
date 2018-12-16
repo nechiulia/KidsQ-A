@@ -39,6 +39,10 @@ public class Student implements Parcelable {
         this.email_teacher = email_teacher;
     }
 
+    public Student(String username){
+        this.username = username;
+    }
+
     public int getNoCorrect() {
         return noCorrect;
     }

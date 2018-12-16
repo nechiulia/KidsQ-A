@@ -3,6 +3,8 @@ package com.example.docta.myapplication.Classes.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class TestResult implements Parcelable {
     private int id_test;
     private String difficulty;
@@ -10,6 +12,7 @@ public class TestResult implements Parcelable {
     private String username;
     private int noCorrectAnswers;
     private double score;
+    private ArrayList<Integer> dif_tests;
 
     public TestResult(int id_test, String dificultate, String categorie, String username, int nrIntrebari, double punctaj) {
         this.id_test = id_test;
@@ -33,6 +36,9 @@ public class TestResult implements Parcelable {
         this.noCorrectAnswers = nrIntrebari;
         this.score = punctaj;
     }
+    public TestResult() {
+
+    }
 
 
     protected TestResult(Parcel in) {
@@ -42,6 +48,14 @@ public class TestResult implements Parcelable {
         username = in.readString();
         noCorrectAnswers = in.readInt();
         score = in.readDouble();
+    }
+
+    public ArrayList<Integer> getDif_tests() {
+        return dif_tests;
+    }
+
+    public void setDif_tests(ArrayList<Integer> dif_tests) {
+        this.dif_tests = dif_tests;
     }
 
     public int getId_test() {

@@ -59,27 +59,84 @@ public class TestResultDAO implements DatabaseConstants {
         }
     }
 
-    public HashMap<String,ArrayList<TestResult>> findMyStudentTests(ArrayList<Student> students){
-        HashMap<String,ArrayList<TestResult>> resultStud = new HashMap<>();
+    public HashMap<Student,ArrayList<TestResult>> findMyStudentTests(ArrayList<Student> students){
+        HashMap<Student,ArrayList<TestResult>> resultStud = new HashMap<>();
         String QUERYY_FIND = "SELECT * FROM "+ TESTRESULTS_TABLE_NAME + " WHERE " + TESTRESULTS_COLUMN_USERNAMESTUD + " =?";
         for(int i = 0 ;i < students.size();i++) {
             ArrayList<TestResult> tests = new ArrayList<>();
 
             Cursor c = database.rawQuery(QUERYY_FIND, new String[]{students.get(i).getUsername()});
-            if (c.getCount() > 0){
-                while (c.moveToNext()) {
+
+                while (c.moveToNext()){
                     String category = c.getString(c.getColumnIndex(TESTRESULTS_COLUMN_CATEGORY));
                     String dificulty = c.getString(c.getColumnIndex(TESTRESULTS_COLUMN_DIFFICULTY));
                     int noCorrectAnswers = c.getInt(c.getColumnIndex(TESTRESULTS_COLUMN_CORRECTANSWERS));
                     double score = c.getDouble(c.getColumnIndex(TESTRESULTS_COLUMN_SCORE));
                     TestResult testResult = new TestResult(dificulty, category, noCorrectAnswers, score);
                     tests.add(testResult);
+                    Student student = new Student(tests.get(i).getUsername());
+//                    tests.add(category);
+//                    tests.add(dificulty);
+//                    tests.add(String.valueOf(noCorrectAnswers));
+//                    tests.add(String.valueOf(score));
+                    resultStud.put(student, tests);
                 }
-            resultStud.put(tests.get(i).getUsername(), tests);
-          }else{
-                return null;
-            }
-        }
+          }
+//          else{
+//
+//            }
         return resultStud;
+    }
+
+
+    public HashMap<Student,TestResult> FindThemAll(ArrayList<Student> students){
+        String QUERY_SUM_SCORE = "SELECT SUM( "+ TESTRESULTS_COLUMN_SCORE + " ) as sumx , SUM( "+ TESTRESULTS_COLUMN_CORRECTANSWERS +" ) as sumy FROM "
+                + TESTRESULTS_TABLE_NAME + " WHERE " +
+                TESTRESULTS_COLUMN_USERNAMESTUD +" =?";
+
+        String QUERY_COUNT_TESTDIF= "SELECT COUNT( "+TESTRESULTS_COLUMN_DIFFICULTY + " ) as count FROM "+ TESTRESULTS_TABLE_NAME+
+                " WHERE "+ TESTRESULTS_COLUMN_USERNAMESTUD + " =? AND "+
+                TESTRESULTS_COLUMN_DIFFICULTY + " =?" +" GROUP BY "+TESTRESULTS_COLUMN_DIFFICULTY;
+
+        HashMap<Student,TestResult> resultHashMap = new HashMap<>();
+        //SQLiteStatement score = database.compileStatement()
+        for(int i = 0 ; i < students.size(); i++){
+            TestResult result = new TestResult();
+//            int dif_usor=0;
+//            int dif_mediu=0;
+//            int dif_greu=0;
+            ArrayList<Integer> no_tests = new ArrayList<>();
+            Cursor c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Usor"});
+            if(c1.moveToFirst()){
+                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+            }else{
+                no_tests.add(0);
+            }
+
+            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Mediu"});
+            if(c1.moveToFirst()){
+                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+            }else{
+                no_tests.add(0);
+            }
+
+            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Greu"});
+            if(c1.moveToFirst()){
+                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+            }else{
+                no_tests.add(0);
+            }
+
+            Cursor c = database.rawQuery(QUERY_SUM_SCORE,new String[]{students.get(i).getUsername()});
+            if (c.moveToFirst()){
+                int noCorrectAnswers = c.getInt(c.getColumnIndex("sumy"));
+                double score = c.getDouble(c.getColumnIndex("sumx"));
+                result.setNoCorrectAnswers(noCorrectAnswers);
+                result.setScore(score);
+                result.setDif_tests(no_tests);
+                }
+            resultHashMap.put(students.get(i),result);
+        }
+        return resultHashMap;
     }
 }

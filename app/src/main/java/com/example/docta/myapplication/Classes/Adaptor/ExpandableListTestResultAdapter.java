@@ -4,11 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,58 +25,68 @@ import java.util.HashMap;
 public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
     private Context context;
     private ArrayList<Student> header;
-    private HashMap<String,ArrayList<TestResult>> child;
+    private HashMap<Student,TestResult> child;
 
-    public ExpandableListTestResultAdapter(Context context, ArrayList<Student> studentHeader, HashMap<String, ArrayList<TestResult>> studentTest) {
+    public ExpandableListTestResultAdapter(Context context, ArrayList<Student> studentHeader, HashMap<Student, TestResult> studentTest) {
         this.context = context;
         this.header = studentHeader;
         this.child = studentTest;
     }
-
-    @Override
-    public Object getChild(int groupPosition, int childPosititon) {
-
-        // This will return the child
-        return this.child.get(this.header.get(groupPosition).getUsername()).get(
-                childPosititon);
-    }
-
-    @Override
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-
-    @Override
-    public int getChildrenCount(int groupPosition) {
-
-        // return children count
-        return this.child.get(this.header.get(groupPosition).getUsername()).size();
-    }
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final TestResult result = (TestResult) getChild(groupPosition, childPosition);
-
+        //final TestResult result1 = child.get(groupPosition).get(childPosition);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.ex_tests_results_items, null);
         }
-        if(result==null){
-            TextView categ = convertView.findViewById(R.id.ex_item_categ);
-            categ.setText("Nu exista teste rezolvate");
+
+        if(result == null){
+            TextView error = convertView.findViewById(R.id.ex_item_noCorrects);
+            error.setText("Nu exista teste rezolvate");
             return convertView;
         }
+        else {
+            TextView Usor = convertView.findViewById(R.id.ex_item_Usor);
+            TextView Mediu = convertView.findViewById(R.id.ex_item_Mediu);
+            TextView Greu = convertView.findViewById(R.id.ex_item_Greu);
 
-        TextView categ = convertView.findViewById(R.id.ex_item_categ);
-        TextView dific = convertView.findViewById(R.id.ex_item_dificulty);
-        TextView noCorrect = convertView.findViewById(R.id.ex_item_noCorrects);
-        TextView score = convertView.findViewById(R.id.ex_item_score);
+            TextView noCorrect = convertView.findViewById(R.id.ex_item_noCorrects);
+            TextView score = convertView.findViewById(R.id.ex_item_score);
 
-        categ.setText(result.getCategory());
-        dific.setText(result.getDifficulty());
-        noCorrect.setText(result.getNoCorrectAnswers());
-        score.setText(String.valueOf(result.getScore()));
-        return convertView;
+            Usor.setText("Test Usor: "+String.valueOf(result.getDif_tests().get(0)));
+            Mediu.setText("Test Mediu: "+String.valueOf(result.getDif_tests().get(1)));
+            Greu.setText("Test Greu: "+String.valueOf(result.getDif_tests().get(2)));
+
+            noCorrect.setText("Raspunsuri \ncorecte: "+String.valueOf(result.getNoCorrectAnswers()));
+            score.setText("Punctaj Total: "+String.valueOf(result.getScore()));
+            return convertView;
+        }
+    }
+
+
+
+    @Override
+    public int getGroupCount() {
+
+        // Get header size
+        return this.header.size();
+    }
+
+    @Override
+    public int getChildrenCount(int groupPosition) {
+
+//        // return children count
+//        int size=0;
+//        try{
+//            size = this.child.get(this.header.get(groupPosition)).size();
+//            // size=1;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return size;
+        return 1;
     }
 
     @Override
@@ -85,28 +97,41 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public int getGroupCount() {
+    public Object getChild(int groupPosition, int childPosititon) {
 
-        // Get header size
-        return this.header.size();
+        // This will return the child
+        return this.child.get(this.header.get(groupPosition));
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
     }
 
     @Override
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
+
+
+
+
+
+
+
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         Student student = (Student) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.ex_tests_results_group, parent,false);
+            convertView = inflater.inflate(R.layout.ex_tests_results_group, null);
         }
 
         ImageView avatar = convertView.findViewById(R.id.imgAvatar_ex_tests_results_group);
         TextView username = convertView.findViewById(R.id.tvUsername_ex_tests_results_group);
-        Spinner category = convertView.findViewById(R.id.spnCateg_ex_tests_results_group);
+        //Spinner category = convertView.findViewById(R.id.spnCateg_ex_tests_results_group);
 
         byte[] avt = student.getAvatar();
         Bitmap bitmap = BitmapFactory.decodeByteArray(avt,0,avt.length);
@@ -114,8 +139,8 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
 
         username.setText(student.getUsername());
 
-        ArrayAdapter<CharSequence> adapterspn = ArrayAdapter.createFromResource(context,R.array.ex_test_result,R.layout.support_simple_spinner_dropdown_item);
-        category.setAdapter(adapterspn);
+//        ArrayAdapter<CharSequence> adapterspn = ArrayAdapter.createFromResource(context,R.array.ex_test_result,R.layout.support_simple_spinner_dropdown_item);
+//        category.setAdapter(adapterspn);
 
         return convertView;
     }
@@ -131,6 +156,4 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-
-
 }
