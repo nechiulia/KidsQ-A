@@ -263,5 +263,12 @@
     <string name="ajutor_tv_Intrebarea5">5.Cum pot modifica numele unui avatar?</string>
     <string name="purchase_toast_is_buy">Avatar cumparat!</string>
     <string name="menu_deteletetasks_hint">Sterge toate sarcinile</string>
+    <string name="taskactivity_deletetask_popul">Stergere sarcina</string>
+    <string name="taskactivity_deletetask">Esti sigur ca vrei sa stergi sarcina?</string>
+    <string name="taskactivity_success">Stergerea s-a realizat cu succes!</string>
+    <string name="taskactivity_failedtodelete">Stergerea nu s-a putut realiza!</string>
+    <string name="tasksactivity_possitivebutton">Da</string>
+    <string name="tasksactivity_negativebutton">Nu</string>
+    <string name="addtask_btn_save_hint">SALVARE</string>
 
 </resources>

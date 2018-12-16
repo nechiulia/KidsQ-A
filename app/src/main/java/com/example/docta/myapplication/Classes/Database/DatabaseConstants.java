@@ -114,8 +114,9 @@ public interface DatabaseConstants {
             +" ( "+ TASKS_COLUMN_DATE+" , "
             +TASKS_COLUMN_INFO+ " , "
             +TASKS_COLUMN_ID_STUDENT+"  )values(?,?,?) ";
- String QUERY_TASKS=" SELECT "+TASKS_COLUMN_DATE+" , "+TASKS_COLUMN_INFO+ " FROM " +TASKS_TABLE_NAME + " WHERE "+TASKS_COLUMN_ID_STUDENT+" =? ";
-
+    String QUERY_TASKS=" SELECT "+TASKS_COLUMN_ID_TASK+" , "+TASKS_COLUMN_DATE+" , "+TASKS_COLUMN_INFO+ " FROM " +TASKS_TABLE_NAME + " WHERE "+TASKS_COLUMN_ID_STUDENT+" =? ";
+    String QUERY_IDTASK = "SELECT " + TASKS_COLUMN_ID_TASK + " FROM " + TASKS_TABLE_NAME + " WHERE " + TASKS_COLUMN_DATE + " =? AND "
+                            + TASKS_COLUMN_INFO + " =? AND " + TASKS_COLUMN_ID_STUDENT + " =? ";
     ////////////////AVATARS
     String AVATAR_TABLE_NAME="Avatar";
 
