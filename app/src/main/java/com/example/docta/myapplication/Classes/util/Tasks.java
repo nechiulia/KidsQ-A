@@ -7,9 +7,21 @@ public class Tasks implements Parcelable {
 
     private String date;
     private String info;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Tasks(String date, String info, String username) {
+        this.date = date;
+        this.info = info;
+        this.username = username;
+    }
 
     public Tasks(String date, String info) {
         this.date = date;
+
         this.info = info;
     }
 
@@ -33,17 +45,20 @@ public class Tasks implements Parcelable {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Data: " +
+                 date + '\n' +
+                "Info: " + info ;
+
+    }
+
     public String getInfo() {
         return info;
     }
 
     public void setInfo(String info) {
         this.info = info;
-    }
-
-    public String toString ()
-    {
-        return "Data: "+ date + "\nInfo: " + info;
     }
 
     private Tasks(Parcel in)

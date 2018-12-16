@@ -193,6 +193,8 @@ public class HomePageActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(),TasksActivity.class);
+            String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+            intent.putExtra(Constants.NAME_KEY, nume);
             startActivity(intent);
            }
        };

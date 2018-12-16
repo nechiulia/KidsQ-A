@@ -110,6 +110,11 @@ public interface DatabaseConstants {
             TASKS_COLUMN_ID_STUDENT+" TEXT );";
 
     String DROP_TABLE_TASKS=" DROP TABLE IF EXISTS "+TASKS_TABLE_NAME+" ; ";
+    String INSERT_TASKS=" insert into "+TASKS_TABLE_NAME
+            +" ( "+ TASKS_COLUMN_DATE+" , "
+            +TASKS_COLUMN_INFO+ " , "
+            +TASKS_COLUMN_ID_STUDENT+"  )values(?,?,?) ";
+ String QUERY_TASKS=" SELECT "+TASKS_COLUMN_DATE+" , "+TASKS_COLUMN_INFO+ " FROM " +TASKS_TABLE_NAME + " WHERE "+TASKS_COLUMN_ID_STUDENT+" =? ";
 
     ////////////////AVATARS
     String AVATAR_TABLE_NAME="Avatar";
