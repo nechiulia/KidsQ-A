@@ -59,4 +59,7 @@ public interface Constants {
     String CHANGE_NAME_KEY="change name key";
 
 
+    String[] COLUMNS_NAME_CSV=new String[]{"NR_CRT","NAME","PUNCTAJ TOTAL","NR INTREBARI","TEST USOR","TEST MEDIU","TEST GREU"};
+
+
 }

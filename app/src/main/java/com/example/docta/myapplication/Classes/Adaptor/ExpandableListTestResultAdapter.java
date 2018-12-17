@@ -3,16 +3,11 @@ package com.example.docta.myapplication.Classes.Adaptor;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.docta.myapplication.Classes.util.Student;
@@ -65,41 +60,26 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
         }
     }
 
-
-
     @Override
     public int getGroupCount() {
 
-        // Get header size
         return this.header.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-
-//        // return children count
-//        int size=0;
-//        try{
-//            size = this.child.get(this.header.get(groupPosition)).size();
-//            // size=1;
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return size;
         return 1;
     }
 
     @Override
     public Object getGroup(int groupPosition) {
 
-        // Get header position
         return this.header.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
 
-        // This will return the child
         return this.child.get(this.header.get(groupPosition));
     }
 
@@ -113,13 +93,6 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
-
-
-
-
-
-
-
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         Student student = (Student) getGroup(groupPosition);
@@ -131,16 +104,12 @@ public class ExpandableListTestResultAdapter extends BaseExpandableListAdapter {
 
         ImageView avatar = convertView.findViewById(R.id.imgAvatar_ex_tests_results_group);
         TextView username = convertView.findViewById(R.id.tvUsername_ex_tests_results_group);
-        //Spinner category = convertView.findViewById(R.id.spnCateg_ex_tests_results_group);
 
         byte[] avt = student.getAvatar();
         Bitmap bitmap = BitmapFactory.decodeByteArray(avt,0,avt.length);
         avatar.setImageBitmap(bitmap);
 
         username.setText(student.getUsername());
-
-//        ArrayAdapter<CharSequence> adapterspn = ArrayAdapter.createFromResource(context,R.array.ex_test_result,R.layout.support_simple_spinner_dropdown_item);
-//        category.setAdapter(adapterspn);
 
         return convertView;
     }
