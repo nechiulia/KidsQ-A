@@ -30,6 +30,7 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
         name=getIntent().getStringExtra(Constants.CHANGE_NAME_KEY);
         init();
 
+        
     }
 
     private void init() {
