@@ -1,5 +1,6 @@
 package com.example.docta.myapplication.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -65,41 +66,42 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("FindViewByIdCast")
     private void initComponents(){
         btn_back=findViewById(R.id.purchase_btn_back);
         myavatar = findViewById(R.id.purchase_iv_myavatar);
         avatarDAO = new AvatarDAO(getApplicationContext());
         associativeDAO= new AssociativeDAO(getApplicationContext());
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, "user");
-        userAvatars=(ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed1));
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed2));
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed3));
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed4));
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed5));
-        textViewsBuy.add((TextView)findViewById(R.id.purchase_tv_buyed6));
+        user= getIntent().getStringExtra(Constants.NAME_KEY);
+        userAvatars = (ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed1));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed2));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed3));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed4));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed5));
+        textViewsBuy.add(findViewById(R.id.purchase_tv_buyed6));
 
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar1));
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar2));
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar3));
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar4));
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar5));
-        imageViewsAvatarList.add((ImageView)findViewById(R.id.purchase_iv_avatar6));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar1));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar2));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar3));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar4));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar5));
+        imageViewsAvatarList.add(findViewById(R.id.purchase_iv_avatar6));
 
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar1_name));
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar2_name));
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar3_name));
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar4_name));
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar5_name));
-        textViewsNameList.add((TextView)findViewById(R.id.purchase_tv_avatar6_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar1_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar2_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar3_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar4_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar5_name));
+        textViewsNameList.add(findViewById(R.id.purchase_tv_avatar6_name));
 
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost1));
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost2));
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost3));
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost4));
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost5));
-        textViewsPriceList.add((TextView)findViewById(R.id.purchase_tv_cost6));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost1));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost2));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost3));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost4));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost5));
+        textViewsPriceList.add(findViewById(R.id.purchase_tv_cost6));
 
         for (int i=0; i<imageViewsAvatarList.size();i++){
             imageViewsAvatarList.get(i).setOnLongClickListener(buyAvatar(i));
@@ -146,6 +148,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
 
 
     }
+    @SuppressLint("SetTextI18n")
     private void initControllers(){
         Bitmap btm=null;
         if(app_avatars.size()!=0){
@@ -170,11 +173,12 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 if(userAvatars.size()<=2) {
                                     associativeDAO.open();
-                                    long result= associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
+                                    long result = associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
                                     associativeDAO.close();
                                     if(result!=-1) {
                                         Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_is_buy),Toast.LENGTH_LONG).show();
                                         Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
+                                        intent.putExtra(Constants.NAME_KEY,user);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -182,6 +186,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                                 else {
                                     Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_delete_one_avatar),Toast.LENGTH_LONG).show();
                                     Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
+                                    intent.putExtra(Constants.NAME_KEY,user);
                                     startActivity(intent);
                                     finish();
                                 }

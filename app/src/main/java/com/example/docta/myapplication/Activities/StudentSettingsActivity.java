@@ -59,16 +59,17 @@ public class StudentSettingsActivity extends AppCompatActivity {
                 editor.putString(Constants.DIFFICULTY_PREF, spn_difficulty.getSelectedItem().toString());
                 int selectedPosition = spn_difficulty.getSelectedItemPosition();
                 editor.putInt(Constants.SPINNER_POSITION, selectedPosition);
-                editor.commit();
+                editor.apply();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
 
                 String nume = getIntent().getStringExtra(Constants.NAME_KEY);
-                if(nume==nume_student.getText().toString()) {
+                if(nume.equals(nume_student.getText().toString())) {
                     intent.putExtra(Constants.NAME_KEY, nume);
                 }else{
                     intent.putExtra(Constants.NAME_KEY, nume_student.getText().toString());
-
+                    editor.putString(Constants.USERNAME_KEY,nume_student.getText().toString());
+                    editor.apply();
                 }
                 startActivity(intent);
                 finish();
@@ -115,6 +116,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         studentDao=new StudentDAO(this);
         associativeDAO=new AssociativeDAO(this);
         studentDao.open();
+        user = getIntent().getStringExtra(Constants.NAME_KEY);
         Bitmap btm=null;
         btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
         avatar.setImageBitmap(Bitmap.createBitmap(btm));

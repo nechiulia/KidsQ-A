@@ -35,6 +35,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.crypto.Cipher;
+
 import static com.example.docta.myapplication.Classes.util.Constants.URL_JSON_AVATARS;
 
 public class MyAvatarsActivity extends AppCompatActivity {
@@ -95,7 +97,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                         avatarDAO.close();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean(Constants.AVATAR_BOOL_CHECK_KEY,true);
-                        editor.commit();
+                        editor.apply();
                     }
                 }
             };
@@ -129,7 +131,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
         textViewsNameList.add(tvAvatar2Name);
         textViewsNameList.add(tvAvatar3Name);
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
+        user = getIntent().getStringExtra(Constants.NAME_KEY);
         refreshListAvatar();
         initControllers(userAvatars);
         studentDao=new StudentDAO(this);
@@ -147,6 +149,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);
                 intent.putExtra(Constants.USER_AVATAR_KEY, userAvatars);
+                intent.putExtra(Constants.NAME_KEY,user);
                 startActivity(intent);
                 finish();
             }
