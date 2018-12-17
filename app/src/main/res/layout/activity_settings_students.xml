@@ -40,15 +40,15 @@
         android:id="@+id/settings_img_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
         android:contentDescription="@string/setari_cont_iv_cd_avatar"
         app:layout_constraintStart_toEndOf="@+id/settings_tv_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/settings_tv_mysettings"
-        android:background="@drawable/sboy" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv_mysettings" />
 
     <TextView
+
         android:id="@+id/settings_tv_dificulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,12 +82,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/setari_btn_design"
         android:background="@drawable/rounded_button"
+        android:text="@string/setari_btn_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintVertical_bias="0.651" />
 
     <Button
         android:id="@+id/settings_btn_logout"
@@ -96,17 +96,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/setari_btn_logout"
         android:background="@drawable/rounded_button2"
+        android:text="@string/setari_btn_logout"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.397"
-        app:layout_constraintStart_toEndOf="@+id/settings_btn_design"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintVertical_bias="0.789" />
 
     <Button
         android:id="@+id/settings_btn_back"
@@ -125,6 +121,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/settings_btn_changename"
+        android:layout_width="146dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/settings_students_schimbanumele"
+        app:layout_constraintBottom_toTopOf="@+id/settings_tv_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv_mysettings" />
+
+    <TextView
+        android:id="@+id/settings_tv_name"
+        android:layout_width="127dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/settings_tv_avatar"
+        app:layout_constraintEnd_toStartOf="@+id/settings_btn_changename"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv_mysettings" />
+
+    <TextView
+        android:id="@+id/settings_student_tv_numelemeu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/settings_student_tv_numelemeu"
+        app:layout_constraintBottom_toTopOf="@+id/settings_tv_avatar"
+        app:layout_constraintEnd_toStartOf="@+id/settings_tv_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_tv_mysettings" />
+
+    <Button
+        android:id="@+id/settings_student_btn_stergere"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button2"
+        android:text="@string/settings_student_btn_sterge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/settings_btn_logout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789" />
 
 
 </android.support.constraint.ConstraintLayout>

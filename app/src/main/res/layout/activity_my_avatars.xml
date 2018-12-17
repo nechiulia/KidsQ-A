@@ -34,8 +34,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/avatarele_mele_iv_cd_avatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/sboy"/>
+        app:layout_constraintTop_toTopOf="parent" />
 <LinearLayout
     android:id="@+id/my_avatars_layout_avatars_name"
     android:layout_width="match_parent"

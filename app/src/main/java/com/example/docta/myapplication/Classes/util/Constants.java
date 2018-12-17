@@ -55,4 +55,7 @@ public interface Constants {
     String CHANGE_NAME_KEY="change name key";
 
 
+    String CHANGE_STUDENT_NAME_KEY ="change stud name key" ;
+    int UPDATE_NAME_REQUEST_CODE = 104;
+    String SET_STUDENT_NAME_KEY = "student name changed";
 }

@@ -57,7 +57,7 @@ public class LoginStudentActivity extends AppCompatActivity {
                          editor.commit();
                          startActivity(intent);
                      }else{
-                         Toast.makeText(getApplicationContext(),"Ati introdus incorect username-ul!",Toast.LENGTH_LONG).show();
+                         Toast.makeText(getApplicationContext(),getString(R.string.login_student_user_incorect),Toast.LENGTH_LONG).show();
                      }
                  }
              }

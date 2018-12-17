@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.util.Avatar;
 import com.example.docta.myapplication.Classes.util.AvatarParser;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
@@ -29,6 +30,7 @@ import com.example.docta.myapplication.Classes.util.Constants;
 
 import org.json.JSONException;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,6 +62,9 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private ArrayList<Avatar> avatarsFromPhone=new ArrayList<>();
     ArrayList<TextView> textViewsNameList=new ArrayList<>();
     ArrayList<ImageView> imageViewsAvatarList= new ArrayList<>();
+    private ImageView avatarprincipal;
+
+    private StudentDAO studentDao;
 
 
 
@@ -103,6 +108,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
 
     }
     private void init(){
+
+        avatarprincipal=findViewById(R.id.myavatars_iv_myavatar);
         btn_buy =findViewById(R.id.myavatars_btn_buy);
         btn_back=findViewById(R.id.myavatars_btn_back);
         avatarDAO = new AvatarDAO(getApplicationContext());
@@ -125,6 +132,14 @@ public class MyAvatarsActivity extends AppCompatActivity {
         user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
         refreshListAvatar();
         initControllers(userAvatars);
+        studentDao=new StudentDAO(this);
+
+        studentDao.open();
+        Bitmap btm=null;
+        btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
+        avatarprincipal.setImageBitmap(Bitmap.createBitmap(btm));
+        studentDao.close();
+
 
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
@@ -151,8 +166,49 @@ public class MyAvatarsActivity extends AppCompatActivity {
             imageViewsAvatarList.get(i).setOnLongClickListener(deleteAvatar(i));
         }
 
-
+        for(int i=0;i<imageViewsAvatarList.size();i++){
+            imageViewsAvatarList.get(i).setOnClickListener(updateAvatar(i));
+        }
     }
+
+
+    private View.OnClickListener updateAvatar(int position)
+    {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder= new AlertDialog.Builder(MyAvatarsActivity.this);
+                builder.setTitle(getString(R.string.myavatars_toast_schimbaretitle))
+                        .setMessage(getString(R.string.myavatars_toast_modifavatar))
+                        .setPositiveButton(getString(R.string.myavatars_toast_yes), new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Bitmap btm=null;
+                                btm=BitmapFactory.decodeByteArray(userAvatars.get(position).getImage(),0,userAvatars.get(position).getImage().length);
+                                avatarprincipal.setImageBitmap(Bitmap.createBitmap(btm));
+                                  studentDao.open();
+                                  studentDao.updateAvatar(userAvatars.get(position).getImage(),user);
+                                  studentDao.close();
+                                Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_update_success), Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setNegativeButton(getString(R.string.myavatars_toast_delete_nu), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MyAvatarsActivity.this,getString(R.string.myavatars_toast_update_failed), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                builder.create().show();
+
+
+
+            }
+        };
+    }
+
+
+
     private View.OnLongClickListener deleteAvatar(int position){
        return new View.OnLongClickListener() {
            @Override

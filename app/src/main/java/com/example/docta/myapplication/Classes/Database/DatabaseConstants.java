@@ -6,8 +6,6 @@ public interface DatabaseConstants {
     int DATABASE_VERSION=12;
 
 
-
-
     ////////////////TEACHER
     String TEACHER_TABLE_NAME = "Teacher";
 
@@ -68,6 +66,7 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_SCORE + ", " +
             STUDENT_COLUMN_EMAIL_TEACHER+ ") values(?,?,?,?,?,?)";
     String QUERRY_LOGIN_STUDENT = "SELECT " + STUDENT_COLUMN_USERNAME +" FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+    String QUERRY_STUDENT_NAMES= "SELECT "+STUDENT_COLUMN_USERNAME +" FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
     String QUERRY_STUDENT_LIST = "SELECT * FROM " +STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_EMAIL_TEACHER + " =?" ;
     //String QUERRY_UPDATA_PUNCTAJ = "UPDATE "
 

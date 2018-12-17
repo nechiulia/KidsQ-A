@@ -103,16 +103,23 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
                         Student student = initStudent();
                         studentDAO.open();
-                        studentDAO.insertStudentByTeacher(student);
-                        studentDAO.close();
-                        intent.putExtra(Constants.ADD_STUDENT_KEY, student);
-                        setResult(RESULT_OK, intent);
-                        finish();
+                        if(studentDAO.verifyStudentsName(tie_name.getText().toString())==false) {
+                            studentDAO.insertStudentByTeacher(student);
+                            studentDAO.close();
+                            intent.putExtra(Constants.ADD_STUDENT_KEY, student);
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }else{
+                            Toast.makeText(getApplicationContext(),getString(R.string.signup_student_insert_err_exista),Toast.LENGTH_LONG).show();
+                        }
+
+
                     }
                 } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     if(isValid()){
                         Student student = initStudent();
                         studentDAO.open();
+                        if(studentDAO.verifyStudentsName(tie_name.getText().toString())==false) {
                         studentDAO.insertStudentByStudent(student);
                         studentDAO.close();
                         SharedPreferences.Editor editor= sharedPreferencesUser.edit();
@@ -121,6 +128,9 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
                         intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
+                        }else{
+                            Toast.makeText(getApplicationContext(),getString(R.string.signup_student_insert_err_exista),Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
             }

@@ -262,5 +262,25 @@
     <string name="ajutor_tv_Intrebarea4">4.Cum pot sterge un avatar?</string>
     <string name="ajutor_tv_Intrebarea5">5.Cum pot modifica numele unui avatar?</string>
     <string name="purchase_toast_is_buy">Avatar cumparat!</string>
+    <string name="myavatars_toast_modifavatar">Doriti sa modificati avatarul?</string>
+    <string name="myavatars_toast_schimbaretitle">Schimbare avatar</string>
+    <string name="myavatars_toast_update_failed">Nu s-a modificat avatarul.</string>
+    <string name="myavatars_toast_update_success">Avatarul s-a modificat cu success.</string>
+    <string name="settings_students_schimbanumele">Schimba numele</string>
+    <string name="update_student_name_hint">Nume nou</string>
+    <string name="update_student_name_salveaza">Salveaza</string>
+    <string name="update_student_name_err_necompletat">Alegeti un nume nou.</string>
+    <string name="update_student_name_err_exista">Alege un nume valid.</string>
+    <string name="update_student_name_successfull">Ai ales un nou nume.</string>
+    <string name="login_student_user_incorect">Ati introdus incorect username-ul!</string>
+    <string name="settings_student_tv_numelemeu">Numele meu:</string>
+    <string name="signup_student_insert_err_exista">Acest nume exista deja. Alege altul.</string>
+    <string name="settings_student_btn_sterge">Sterge cont</string>
+    <string name="settings_student_stergere_title_">Stergere cont</string>
+    <string name="settings_student_alert_message">Sunteti sigur ca doriti sa stergeti contul?</string>
+    <string name="settings_student_alert_yes">Da</string>
+    <string name="settings_student_delete_success">Contul s-a sters cu success</string>
+    <string name="settings_student_alert_no">Nu</string>
+    <string name="settings_student_delete_err">Contul nu a fost sters</string>
 
 </resources>

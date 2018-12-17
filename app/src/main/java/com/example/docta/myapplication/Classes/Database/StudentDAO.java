@@ -6,10 +6,15 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 
 import com.example.docta.myapplication.Classes.util.Student;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +88,19 @@ public class StudentDAO implements DatabaseConstants {
         }
     }
 
+    public boolean verifyStudentsName(String username){
+        int s=0;
+        Cursor c =  database.rawQuery(QUERRY_STUDENT_NAMES, new String[]{username});
+        while (c.moveToNext()){
+             s=c.getCount();
+        }
+        if(s>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public ArrayList<Student> findAllMyStudents(String email){
         ArrayList<Student> listStud = new ArrayList<>();
 
@@ -113,6 +131,48 @@ public class StudentDAO implements DatabaseConstants {
         contentValues.put(STUDENT_COLUMN_SCORE,score+Current_Score);
         database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_SCORE, new String[]{username});
     }
+
+    public long updateStudentName(String newName, String user) {
+        String QUERRY_UPDATE_NAME=STUDENT_COLUMN_USERNAME+" =? ";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STUDENT_COLUMN_USERNAME, newName);
+
+        return  database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{user});
+    }
+
+    public int updateAvatar(byte[] avatar, String username)
+    {
+        String QUERRY_UPDATE_AVATAR = STUDENT_COLUMN_USERNAME + " =?";
+        String QUERRY_SELECT_CURRENT_AVATAR = "SELECT "+ STUDENT_COLUMN_CURRENT_AVATAR+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c=database.rawQuery(QUERRY_SELECT_CURRENT_AVATAR,new String[]{username});
+
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(STUDENT_COLUMN_CURRENT_AVATAR, avatar);
+       return database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_AVATAR,new String[]{username});
+
+
+    }
+
+    public byte[] findMyAvatar(String username){
+        String QUERRY_SELECT_CURRENT_AVATAR = "SELECT "+ STUDENT_COLUMN_CURRENT_AVATAR+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c=database.rawQuery(QUERRY_SELECT_CURRENT_AVATAR, new String[] {username});
+        byte[] avatar=null;
+        while (c.moveToNext()) {
+             avatar = c.getBlob(c.getColumnIndex(STUDENT_COLUMN_CURRENT_AVATAR));
+        }
+        return avatar;
+    }
+
+    public  int deleteStudent(String username){
+        String QUERRY_DELETE_STUD=STUDENT_COLUMN_USERNAME+" =?";
+        if(username==null ){
+            return -1;
+        }
+        return  database.delete(STUDENT_TABLE_NAME, QUERRY_DELETE_STUD, new String[]{username} );
+    }
+
+
+
 
 //    public void updataStudentAfterDeleteTeacher( String email){
 //        ContentValues contentValues = new ContentValues();

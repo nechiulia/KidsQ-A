@@ -1,5 +1,6 @@
 package com.example.docta.myapplication.Classes.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -61,6 +62,29 @@ public class AssociativeDAO implements DatabaseConstants {
         }
         return  database.delete(ASSOCIATIVE_TABLE_NAME, ASSOCIATIVE_COLUMN_ID_AVATAR +"=? AND "+ ASSOCIATIVE_COLUMN_USERNAME+"=?", new String[]{id.toString(),user} );
     }
+
+    public void updateUsername(String newName, String username){
+        String QUERRY_UPDATE_NAME=ASSOCIATIVE_COLUMN_USERNAME+" =? ";
+        String QUERRY_SELECT_USERNAME="SELECT "+ ASSOCIATIVE_COLUMN_USERNAME+ " FROM " + ASSOCIATIVE_TABLE_NAME + " WHERE " + ASSOCIATIVE_COLUMN_USERNAME +" =?";
+
+        Cursor c=database.rawQuery(QUERRY_SELECT_USERNAME,new String[]{username});
+        while(c.moveToNext()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(ASSOCIATIVE_COLUMN_USERNAME, newName);
+            database.update(ASSOCIATIVE_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{username});
+        }
+    }
+
+    public void deleteUsername(String username){
+        String QUERRY_UPDATE_NAME=ASSOCIATIVE_COLUMN_USERNAME+" =? ";
+        String QUERRY_SELECT_USERNAME="SELECT "+ ASSOCIATIVE_COLUMN_USERNAME+ " FROM " + ASSOCIATIVE_TABLE_NAME + " WHERE " + ASSOCIATIVE_COLUMN_USERNAME +" =?";
+
+        Cursor c=database.rawQuery(QUERRY_SELECT_USERNAME,new String[]{username});
+        while(c.moveToNext()) {
+            database.delete(ASSOCIATIVE_TABLE_NAME,QUERRY_UPDATE_NAME,new String[]{username});
+        }
+    }
+
     public void close(){
         try{
             database.close();

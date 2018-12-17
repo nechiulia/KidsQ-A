@@ -91,7 +91,8 @@
         <activity
             android:name=".Activities.ShowImageActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.UpdateAvatarNameActivity"></activity>
+        <activity android:name=".Activities.UpdateAvatarNameActivity" />
+        <activity android:name=".Activities.UpdateStudentNameActivity"></activity>
     </application>
 
 </manifest>
