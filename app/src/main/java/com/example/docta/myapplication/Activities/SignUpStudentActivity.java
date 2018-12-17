@@ -99,8 +99,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
                 String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                    if(isValid()){
-
-
                         Student student = initStudent();
                         studentDAO.open();
                         if(studentDAO.verifyStudentsName(tie_name.getText().toString())==false) {

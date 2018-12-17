@@ -12,6 +12,14 @@
     <string name="lecc_rb_baietel">Baietel</string>
     <string name="lecc_rb_fetita">Fetita</string>
     <string name="lecc_btn_creare">Creare</string>
+    <string-array name="ex_test_result">
+        <item>Matematica</item>
+        <item>Animale</item>
+        <item>Litere</item>
+        <item>Viata</item>
+        <item>Fructe si Legume</item>
+
+    </string-array>
     <string-array name="lecc_spn_varsta">
         <item>5</item>
         <item>6</item>

@@ -23,6 +23,8 @@ import com.example.docta.myapplication.Classes.Adaptor.StudentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.transform.Result;
+
 public class ListStudentsActivity extends AppCompatActivity {
 
     private Button btn_add_student;
@@ -57,7 +59,7 @@ public class ListStudentsActivity extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.menu_clasament:
-                        intent = new Intent(getApplicationContext(),RankingActivity.class);
+                        intent = new Intent(getApplicationContext(),ResultTestVisualizationActivity.class);
                         startActivity(intent);
                         finish();
                         break;

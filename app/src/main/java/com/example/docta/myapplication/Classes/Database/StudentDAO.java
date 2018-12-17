@@ -61,6 +61,9 @@ public class StudentDAO implements DatabaseConstants {
         }
     }
     public void insertStudentByTeacher(Student student){
+//        String QUERRY_IF_STUD_EXISTS = "SELECT " + STUDENT_COLUMN_USERNAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+//        //Cursor c = database.rawQuery(QUERRY_IF_STUD_EXISTS,new String[]{});
+
         database.beginTransaction();
         try{
             SQLiteStatement insert = database.compileStatement(INSERT_STUDENT);

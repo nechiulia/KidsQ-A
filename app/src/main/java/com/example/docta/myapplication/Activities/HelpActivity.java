@@ -39,7 +39,6 @@ public class HelpActivity extends AppCompatActivity {
 
 
         listaExp.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
@@ -67,7 +66,6 @@ public class HelpActivity extends AppCompatActivity {
     }
     private void initComponents(){
         listaExp = findViewById(R.id.help_elv_questionlist);
-
     }
 
     private void CreareLista(){
