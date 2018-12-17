@@ -282,5 +282,13 @@
     <string name="settings_student_delete_success">Contul s-a sters cu success</string>
     <string name="settings_student_alert_no">Nu</string>
     <string name="settings_student_delete_err">Contul nu a fost sters</string>
+    <string name="menu_deteletetasks_hint">Sterge toate sarcinile</string>
+    <string name="taskactivity_deletetask_popul">Stergere sarcina</string>
+    <string name="taskactivity_deletetask">Esti sigur ca vrei sa stergi sarcina?</string>
+    <string name="taskactivity_success">Stergerea s-a realizat cu succes!</string>
+    <string name="taskactivity_failedtodelete">Stergerea nu s-a putut realiza!</string>
+    <string name="tasksactivity_possitivebutton">Da</string>
+    <string name="tasksactivity_negativebutton">Nu</string>
+    <string name="addtask_btn_save_hint">SALVARE</string>
 
 </resources>

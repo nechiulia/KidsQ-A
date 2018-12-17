@@ -12,7 +12,9 @@ public interface Constants {
  //   String PAROLA_KEY ="PAROLA_KEY";
 
     int ADD_TASK_REQUEST_CODE =102;
-    String ADD_TASK_KEY ="adaugaTask";
+    int UPDATE_TASK_REQUEST_CODE=105;
+    String ADD_TASK_KEY ="adaugareSarcina";
+    String UPDATE_TASK_KEY="modificareSarcina";
     String PASSWORD_PROF_PREF ="tineMinteParola";
     String PASSWORD_PREF ="ParolaVeche";
     String EMAIL_PREF="Email";

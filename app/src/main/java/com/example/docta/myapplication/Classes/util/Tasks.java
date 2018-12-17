@@ -5,8 +5,31 @@ import android.os.Parcelable;
 
 public class Tasks implements Parcelable {
 
+    private Long id;
     private String date;
     private String info;
+    private String username;
+
+    public Tasks(Long id, String date, String info, String username) {
+        this.date = date;
+        this.info = info;
+        this.username = username;
+        this.id = id;
+    }
+
+    public Tasks(String date, String info, String username) {
+        this.date = date;
+        this.info = info;
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public Tasks(String date, String info) {
         this.date = date;
@@ -33,6 +56,14 @@ public class Tasks implements Parcelable {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "Data: " +
+                 date + '\n' +
+                "Info: " + info ;
+
+    }
+
     public String getInfo() {
         return info;
     }
@@ -41,15 +72,12 @@ public class Tasks implements Parcelable {
         this.info = info;
     }
 
-    public String toString ()
-    {
-        return "Data: "+ date + "\nInfo: " + info;
-    }
-
     private Tasks(Parcel in)
     {
          date = in.readString();
          info = in.readString();
+         username = in.readString();
+         id = in.readLong();
     }
 
     @Override
@@ -62,5 +90,7 @@ public class Tasks implements Parcelable {
     {
         dest.writeString(date);
         dest.writeString(info);
+        dest.writeString(username);
+        dest.writeLong(id);
     }
 }
