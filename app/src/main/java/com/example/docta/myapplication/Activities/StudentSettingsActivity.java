@@ -44,6 +44,8 @@ public class StudentSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_students);
         initComps();
+        String nume = getIntent().getStringExtra(Constants.NAME_KEY);
+        nume_student.setText(nume);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_SetariCont);
             this.setTitle(title);
@@ -60,6 +62,14 @@ public class StudentSettingsActivity extends AppCompatActivity {
                 editor.commit();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
+
+                String nume = getIntent().getStringExtra(Constants.NAME_KEY);
+                if(nume==nume_student.getText().toString()) {
+                    intent.putExtra(Constants.NAME_KEY, nume);
+                }else{
+                    intent.putExtra(Constants.NAME_KEY, nume_student.getText().toString());
+
+                }
                 startActivity(intent);
                 finish();
             }
@@ -167,7 +177,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), UpdateStudentNameActivity.class);
-            intent.putExtra(Constants.CHANGE_STUDENT_NAME_KEY, avatar.toString());
+            intent.putExtra(Constants.CHANGE_STUDENT_NAME_KEY, nume_student.toString());
             startActivityForResult(intent, Constants.UPDATE_NAME_REQUEST_CODE);
         }
         };
@@ -177,10 +187,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == Constants.UPDATE_NAME_REQUEST_CODE && data != null) {
             String newName = data.getStringExtra(Constants.SET_STUDENT_NAME_KEY);
-            //nume_student.setText(newName);
-            /*SharedPreferences.Editor editor= sharedPreferencesUser.edit();
-            editor.putString(Constants.USERNAME_KEY, newName);
-            editor.commit();*/
+            nume_student.setText(newName);
             studentDao.open();
             studentDao.updateStudentName(newName, user);
             studentDao.close();

@@ -259,6 +259,8 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MyAvatarsActivity.class);
+                String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+                intent.putExtra(Constants.NAME_KEY, nume);
                 startActivity(intent);
             }
         };
@@ -271,6 +273,8 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RankingActivity.class);
+                String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+                intent.putExtra(Constants.NAME_KEY, nume);
                 startActivity(intent);
             }
         };
@@ -283,6 +287,8 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), StudentSettingsActivity.class);
+                String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+                intent.putExtra(Constants.NAME_KEY, nume);
                 startActivity(intent);
             }
 
