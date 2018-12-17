@@ -116,16 +116,6 @@ public class   TasksActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AddTaskActivity.class);
-                intent.putExtra(Constants.NAME_KEY, nume);
-                startActivityForResult(intent, Constants.ADD_TASK_REQUEST_CODE);
-            }
-        });*/
         fab.setOnClickListener(addNewTask());
 
     }
