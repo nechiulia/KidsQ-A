@@ -59,6 +59,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private TextView tvAvatar1Name;
     private TextView tvAvatar2Name;
     private TextView tvAvatar3Name;
+    private TextView tvScore;
     private int ivSelected;
     private String user;
     private ArrayList<Long> avatarsIdForUser= new ArrayList<>();
@@ -133,19 +134,12 @@ public class MyAvatarsActivity extends AppCompatActivity {
         textViewsNameList.add(tvAvatar1Name);
         textViewsNameList.add(tvAvatar2Name);
         textViewsNameList.add(tvAvatar3Name);
+        tvScore=findViewById(R.id.myavatars_tv_score);
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
-        //user = getIntent().getStringExtra(Constants.NAME_KEY);
+        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         refreshListAvatar();
         studentDao=new StudentDAO(this);
         initControllers(userAvatars);
-
-       /* studentDao.open();
-        Bitmap btm=null;
-        btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
-        avatarprincipal.setImageBitmap(Bitmap.createBitmap(btm));
-        studentDao.close();
-*/
 
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +147,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 intent=new Intent(getApplicationContext(), PurchaseAvatarsActivity.class);
                 intent.putExtra(Constants.USER_AVATAR_KEY, userAvatars);
-                intent.putExtra(Constants.NAME_KEY,user);
                 startActivity(intent);
                 finish();
             }
@@ -162,6 +155,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });
@@ -245,15 +239,16 @@ public class MyAvatarsActivity extends AppCompatActivity {
                                        avatarDAO.close();
                                    }
                                    if (result >= 0) {
+
+                                       Avatar avatarSelectat= userAvatars.get(position);
+                                       Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
+                                       userAvatars.remove(position);
                                        studentDao.open();
                                        byte[] avatarCurrent =studentDao.findMyAvatar(user);
-                                       if(Arrays.equals(avatarCurrent, userAvatars.get(position).getImage())){
+                                       if(Arrays.equals(avatarCurrent, avatarSelectat.getImage())){
                                            studentDao.updateAvatar(userAvatars.get(0).getImage(),user);
                                        }
                                        studentDao.close();
-
-                                       Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
-                                       userAvatars.remove(position);
                                        initControllers(userAvatars);
 
                                    } else {
@@ -296,7 +291,9 @@ public class MyAvatarsActivity extends AppCompatActivity {
         studentDao.close();
         btmCurrent=BitmapFactory.decodeByteArray(avatarCurrent,0,avatarCurrent.length);
         avatarprincipal.setImageBitmap(Bitmap.createBitmap(btmCurrent));
-
+        studentDao.open();
+            tvScore.setText(studentDao.findScoreByUser(user).toString()+" puncte");
+        studentDao.close();
     }
     private View.OnClickListener changeName(int position) {
         return new View.OnClickListener() {
@@ -320,13 +317,24 @@ public class MyAvatarsActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(userAvatars.size()>=3){
                     Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_delete_one),Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                    photoPickerIntent.setType("image/*");
-                    startActivityForResult(photoPickerIntent, Constants.UPLOAD_IMAGE_REQUEST_CODE);
+                    Double score;
+                    studentDao.open();
+                    score = studentDao.findScoreByUser(user);
+                    studentDao.close();
+                    if(score>=500){
+                        Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                        photoPickerIntent.setType("image/*");
+                        startActivityForResult(photoPickerIntent, Constants.UPLOAD_IMAGE_REQUEST_CODE);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),getString(R.string.not_enough_points),Toast.LENGTH_LONG).show();
+                    }
+
                 }
             }
         };
@@ -354,6 +362,9 @@ public class MyAvatarsActivity extends AppCompatActivity {
                     associativeDAO.open();
                     associativeDAO.insertAssociativeAvatar(user, id);
                     associativeDAO.close();
+                    studentDao.open();
+                    studentDao.updateScore(-500,user);
+                    studentDao.close();
                 }
                 refreshListAvatar();
                 initControllers(userAvatars);

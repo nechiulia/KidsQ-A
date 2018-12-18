@@ -66,7 +66,7 @@ public class AddTaskActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         finalDate = sdf.format(new Date(date));
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        username= sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
+        username= sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         if(intent.hasExtra(Constants.UPDATE_TASK_KEY)){
             Tasks task = intent.getParcelableExtra(Constants.UPDATE_TASK_KEY);
             if(task != null)

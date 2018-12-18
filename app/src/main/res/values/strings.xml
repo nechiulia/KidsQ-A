@@ -298,5 +298,7 @@
     <string name="tasksactivity_possitivebutton">Da</string>
     <string name="tasksactivity_negativebutton">Nu</string>
     <string name="addtask_btn_save_hint">SALVARE</string>
+    <string name="default_user_pref">user</string>
+    <string name="not_enough_points">Nu ai destule puncte pentru a cumpara acest avatar!</string>
 
 </resources>

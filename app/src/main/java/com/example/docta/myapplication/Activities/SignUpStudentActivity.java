@@ -96,7 +96,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF,MODE_PRIVATE);
-                String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
+                String statut= sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 if (statut.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0) {
                    if(isValid()){
                         Student student = initStudent();
@@ -124,7 +124,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
                         editor.commit();
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                        //intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
                         }else{
                             Toast.makeText(getApplicationContext(),getString(R.string.signup_student_insert_err_exista),Toast.LENGTH_LONG).show();
@@ -157,7 +156,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             avatar = stream.toByteArray();
         }
         sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF,MODE_PRIVATE);
-        String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
+        String statut= sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.principala_utilizator_elev_pref_message));
         sharedPreferences = getSharedPreferences(Constants.PASSWORD_PROF_PREF,MODE_PRIVATE);
         String email = sharedPreferences.getString(Constants.EMAIL_PREF,null);
         Student student;
@@ -169,12 +168,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
         return student;
     }
 
-//    public static void convertBitmapToByte(){
-//        Bitmap bmp = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.sboy);
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bmp.compress(Bitmap.CompressFormat.PNG,100,stream);
-//        byte[] avatar = stream.toByteArray();
-//    }
     public boolean isValid(){
 
         if(tie_name.getText().toString().trim().isEmpty() || tie_name.getText().toString().contains(" ")){

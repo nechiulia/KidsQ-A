@@ -103,7 +103,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         avatar=findViewById(R.id.settings_img_avatar);
 
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
+        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.default_user_pref));
         studentDao=new StudentDAO(this);
         associativeDAO=new AssociativeDAO(this);
         tasksDAO=new TasksDAO(this);

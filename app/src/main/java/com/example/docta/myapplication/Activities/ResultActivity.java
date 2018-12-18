@@ -57,7 +57,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void initComponents() {
         sharedPreferencesUser = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,null);
+        username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
         no_correct_answers = getIntent().getIntExtra(Constants.NO_CORECT_ANSWERS, 0);
         btn_back = findViewById(R.id.result_btn_back);

@@ -156,7 +156,7 @@ public class HomePageActivity extends AppCompatActivity {
         associativeDAO.open();
         associativeDAO.close();
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-        String user= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
+        String user= sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.ppj_utilizator_default_pref));
 
 
 
