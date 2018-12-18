@@ -28,6 +28,10 @@ public class LetsPlayActivity extends AppCompatActivity {
     private QuestionsSet questionsSet;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferencesCateg;
+    SharedPreferences.Editor editorCateg;
+
+
 
     private ArrayList<Question> difficultyQuestionsList;
     private ArrayList<Question> testQuestionsList;
@@ -60,6 +64,7 @@ public class LetsPlayActivity extends AppCompatActivity {
         btn_letters.setOnClickListener(openLettersTest());
         btn_animals.setOnClickListener(openAnimalsTest());
         btn_life.setOnClickListener(openLifeTests());
+        sharedPreferencesCateg= getSharedPreferences(Constants.CATEG_PREF, MODE_PRIVATE);
         difficulty = sharedPreferences.getString(Constants.DIFFICULTY_PREF,Constants.DIFFICULTY_EASY_TEST);
 
         initDificultyList();
@@ -92,10 +97,9 @@ public class LetsPlayActivity extends AppCompatActivity {
                             testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
-                    sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString(Constants.GET_CATEG,Constants.CATEGORY_ANIMALS);
-                    editor.commit();
+                    editorCateg= sharedPreferencesCateg.edit();
+                    editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_ANIMALS);
+                    editorCateg.commit();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -120,10 +124,9 @@ public class LetsPlayActivity extends AppCompatActivity {
                             testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
-                    sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString(Constants.GET_CATEG,Constants.CATEGORY_LETTERS);
-                    editor.commit();
+                    editorCateg= sharedPreferencesCateg.edit();
+                    editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_LETTERS);
+                    editorCateg.commit();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -147,10 +150,9 @@ public class LetsPlayActivity extends AppCompatActivity {
                             testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
-                    sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString(Constants.GET_CATEG,Constants.CATEGORY_FRUITS);
-                    editor.commit();
+                    editorCateg= sharedPreferencesCateg.edit();
+                    editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_FRUITS);
+                    editorCateg.commit();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -173,10 +175,9 @@ public class LetsPlayActivity extends AppCompatActivity {
                             testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
-                    sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString(Constants.GET_CATEG,Constants.CATEGORY_LIFE);
-                    editor.commit();
+                    editorCateg= sharedPreferencesCateg.edit();
+                    editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_LIFE);
+                    editorCateg.commit();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -199,10 +200,9 @@ public class LetsPlayActivity extends AppCompatActivity {
                             testQuestionsList.add(difficultyQuestionsList.get(i));
                         }
                     }
-                    sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString(Constants.GET_CATEG,Constants.CATEGORY_MATH);
-                    editor.commit();
+                    editorCateg= sharedPreferencesCateg.edit();
+                    editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_MATH);
+                    editorCateg.commit();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);

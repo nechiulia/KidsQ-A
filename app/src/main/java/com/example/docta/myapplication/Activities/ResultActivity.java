@@ -25,6 +25,7 @@ public class ResultActivity extends AppCompatActivity {
     private int no_correct_answers;
     private double score;
     private String username;
+    private SharedPreferences sharedPreferencesUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,8 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        username = sharedPreferences.getString(Constants.USERNAME_KEY,null);
+        sharedPreferencesUser = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+        username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,null);
         score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
         no_correct_answers = getIntent().getIntExtra(Constants.NO_CORECT_ANSWERS, 0);
         btn_back = findViewById(R.id.result_btn_back);
@@ -71,7 +72,7 @@ public class ResultActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
         String categ = sharedPreferences.getString(Constants.GET_CATEG,null);
         sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
-        String dificult = sharedPreferences.getString(Constants.SPINNER_DIFICULTY,null);
+        String dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,null);
         /*sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
         String username = sharedPreferences.getString(Constants.USERNAME_KEY,null);*/
         return new TestResult(dificult ,categ ,username ,no_correct_answers ,score);

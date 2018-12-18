@@ -61,7 +61,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
                 editor.putString(Constants.DIFFICULTY_PREF, spn_difficulty.getSelectedItem().toString());
                 int selectedPosition = spn_difficulty.getSelectedItemPosition();
                 editor.putInt(Constants.SPINNER_POSITION, selectedPosition);
-                editor.apply();
+                editor.commit();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
                 startActivity(intent);
@@ -117,9 +117,6 @@ public class StudentSettingsActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
         restoreDifficulty();
-
-
-
         btn_changename.setOnClickListener(changeName());
         btn_stergere.setOnClickListener(deleteStudent());
 
