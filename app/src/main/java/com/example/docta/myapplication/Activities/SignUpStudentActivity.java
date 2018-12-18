@@ -124,7 +124,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
                         editor.commit();
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
-                        intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
+                        //intent.putExtra(Constants.NAME_KEY, tie_name.getText().toString());
                         startActivity(intent);
                         }else{
                             Toast.makeText(getApplicationContext(),getString(R.string.signup_student_insert_err_exista),Toast.LENGTH_LONG).show();

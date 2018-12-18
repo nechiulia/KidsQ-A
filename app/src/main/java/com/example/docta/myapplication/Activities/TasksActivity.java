@@ -2,6 +2,7 @@ package com.example.docta.myapplication.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -36,6 +37,8 @@ public class   TasksActivity extends AppCompatActivity {
     private TasksDAO tasksDAO;
     private   ArrayAdapter<Tasks> adapter;
     private int selectedPosition;
+    private String user;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +50,14 @@ public class   TasksActivity extends AppCompatActivity {
         }
         initComponents();
 
-        String nume = getIntent().getStringExtra(Constants.NAME_KEY);
 
-        Cursor c = tasksDAO.selectTasksUser(nume);
+        Cursor c = tasksDAO.selectTasksUser(user);
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
             Long id = c.getLong(c.getColumnIndex("id_task"));
             String date = c.getString(c.getColumnIndex("date_task"));
             String info = c.getString(c.getColumnIndex("info_task"));
             //String username = c.getString(c.getColumnIndex("username"));
-            tasks.add(new Tasks(id,date, info,nume));
+            tasks.add(new Tasks(id,date, info,user));
         }
 
         adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, tasks);
@@ -67,7 +69,6 @@ public class   TasksActivity extends AppCompatActivity {
                 Tasks taskToEdit = (Tasks) parent.getItemAtPosition(position);
 
                 Intent intent = new Intent(getApplicationContext(), AddTaskActivity.class);
-                intent.putExtra(Constants.NAME_KEY, nume);
                 intent.putExtra(Constants.UPDATE_TASK_KEY, taskToEdit);
                 selectedPosition = position;
 
@@ -126,7 +127,6 @@ public class   TasksActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AddTaskActivity.class);
-                intent.putExtra(Constants.NAME_KEY, nume);
                 startActivityForResult(intent, Constants.ADD_TASK_REQUEST_CODE);
             }
         };
@@ -134,7 +134,8 @@ public class   TasksActivity extends AppCompatActivity {
     private void initComponents() {
         lv_tasks = findViewById(R.id.tasks_lv_task);
         fab = findViewById(R.id.tasks_fab_add);
-
+        sharedPreferences= getSharedPreferences(Constants.USERNAME_PREF, MODE_PRIVATE);
+        user= sharedPreferences.getString(Constants.USERNAME_KEY,"user");
         tasksDAO = new TasksDAO(getApplicationContext());
         tasksDAO.open();
     }
@@ -171,10 +172,9 @@ public class   TasksActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         tasksDAO.open();
-        String nume= getIntent().getStringExtra(Constants.NAME_KEY);
         switch (item.getItemId()) {
             case R.id.menu_deletetasks:
-                tasksDAO.deleteAllTasks(nume);
+                tasksDAO.deleteAllTasks(user);
                 tasksDAO.close();
                 tasks.removeAll(tasks);
                 adapter.notifyDataSetChanged();

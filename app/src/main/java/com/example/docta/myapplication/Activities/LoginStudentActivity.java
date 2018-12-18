@@ -80,7 +80,6 @@ public class LoginStudentActivity extends AppCompatActivity {
         tie_avatar_name = findViewById(R.id.loginstundent_tid_avatarname);
         btn_back=findViewById(R.id.loginstundent_btn_back);
         sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-
         studentDAO = new StudentDAO(this);
     }
 

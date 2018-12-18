@@ -45,6 +45,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private Button btn_back;
     private Boolean isChecked=false;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferencesUser;
+
     private ArrayList<Avatar> app_avatars=new ArrayList<>();
     private AvatarDAO avatarDAO;
     private AssociativeDAO associativeDAO;
@@ -56,7 +58,6 @@ public class MyAvatarsActivity extends AppCompatActivity {
     private TextView tvAvatar2Name;
     private TextView tvAvatar3Name;
     private int ivSelected;
-    private SharedPreferences sharedPreferencesUser;
     private String user;
     private ArrayList<Long> avatarsIdForUser= new ArrayList<>();
     Intent intent;
@@ -131,7 +132,8 @@ public class MyAvatarsActivity extends AppCompatActivity {
         textViewsNameList.add(tvAvatar2Name);
         textViewsNameList.add(tvAvatar3Name);
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user = getIntent().getStringExtra(Constants.NAME_KEY);
+        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
+        //user = getIntent().getStringExtra(Constants.NAME_KEY);
         refreshListAvatar();
         initControllers(userAvatars);
         studentDao=new StudentDAO(this);

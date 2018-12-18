@@ -1,6 +1,7 @@
 package com.example.docta.myapplication.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class AddTaskActivity extends AppCompatActivity {
     private Long date;
     private String finalDate;
     private TasksDAO tasksDAO;
+    private String username;
+    private SharedPreferences sharedPreferencesUser;
 
 
 
@@ -62,7 +65,8 @@ public class AddTaskActivity extends AppCompatActivity {
         date = cv_date.getDate();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         finalDate = sdf.format(new Date(date));
-
+        sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+        username= sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
         if(intent.hasExtra(Constants.UPDATE_TASK_KEY)){
             Tasks task = intent.getParcelableExtra(Constants.UPDATE_TASK_KEY);
             if(task != null)
@@ -94,7 +98,6 @@ public class AddTaskActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(isValid()) {
                     String info = tid_info.getText().toString();
-                    String username = getIntent().getStringExtra(Constants.NAME_KEY);
 
                     if(intent.hasExtra(Constants.UPDATE_TASK_KEY)) {
                         Tasks taskToEdit = intent.getParcelableExtra(Constants.UPDATE_TASK_KEY);

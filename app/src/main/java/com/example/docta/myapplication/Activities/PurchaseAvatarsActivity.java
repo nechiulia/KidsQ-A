@@ -75,7 +75,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         avatarDAO = new AvatarDAO(getApplicationContext());
         associativeDAO= new AssociativeDAO(getApplicationContext());
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user= getIntent().getStringExtra(Constants.NAME_KEY);
+        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
         userAvatars = (ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
         textViewsBuy.add(findViewById(R.id.purchase_tv_buyed1));
         textViewsBuy.add(findViewById(R.id.purchase_tv_buyed2));
@@ -151,7 +151,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), MyAvatarsActivity.class);
-                intent.putExtra(Constants.NAME_KEY, user);
+                //intent.putExtra(Constants.NAME_KEY, user);
                 startActivity(intent);
                 finish();
             }
@@ -190,7 +190,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                                     if(result!=-1) {
                                         Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_is_buy),Toast.LENGTH_LONG).show();
                                         Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
-                                        intent.putExtra(Constants.NAME_KEY,user);
+                                        //intent.putExtra(Constants.NAME_KEY,user);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -198,7 +198,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                                 else {
                                     Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_delete_one_avatar),Toast.LENGTH_LONG).show();
                                     Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
-                                    intent.putExtra(Constants.NAME_KEY,user);
+                                    //intent.putExtra(Constants.NAME_KEY,user);
                                     startActivity(intent);
                                     finish();
                                 }

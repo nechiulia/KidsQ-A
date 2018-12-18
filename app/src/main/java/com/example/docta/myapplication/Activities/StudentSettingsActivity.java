@@ -35,19 +35,19 @@ public class StudentSettingsActivity extends AppCompatActivity {
     private AssociativeDAO associativeDAO;
     private TasksDAO tasksDAO;
     private String user;
-   private TextView nume_student;
+   private TextView student_name;
    private Button btn_stergere;
 
-    SharedPreferences sharedPreferences;
     SharedPreferences sharedPreferencesUser;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_students);
         initComps();
-        String nume = getIntent().getStringExtra(Constants.NAME_KEY);
-        nume_student.setText(nume);
+        //String nume = getIntent().getStringExtra(Constants.NAME_KEY);
+        student_name.setText(user);
         if(savedInstanceState==null){
             String title = getString(R.string.Titlu_SetariCont);
             this.setTitle(title);
@@ -64,15 +64,6 @@ public class StudentSettingsActivity extends AppCompatActivity {
                 editor.apply();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
-
-                String nume = getIntent().getStringExtra(Constants.NAME_KEY);
-                if(nume.equals(nume_student.getText().toString())) {
-                    intent.putExtra(Constants.NAME_KEY, nume);
-                }else{
-                    intent.putExtra(Constants.NAME_KEY, nume_student.getText().toString());
-                    editor.putString(Constants.USERNAME_KEY,nume_student.getText().toString());
-                    editor.apply();
-                }
                 startActivity(intent);
                 finish();
             }
@@ -97,8 +88,6 @@ public class StudentSettingsActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private void initComps(){
@@ -113,19 +102,19 @@ public class StudentSettingsActivity extends AppCompatActivity {
         btn_changename=findViewById(R.id.settings_btn_changename);
         avatar=findViewById(R.id.settings_img_avatar);
 
-        sharedPreferences= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user= sharedPreferences.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
+        sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+        user= sharedPreferencesUser.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
         studentDao=new StudentDAO(this);
         associativeDAO=new AssociativeDAO(this);
         tasksDAO=new TasksDAO(this);
         studentDao.open();
-        user = getIntent().getStringExtra(Constants.NAME_KEY);
+        //user = getIntent().getStringExtra(Constants.NAME_KEY);
         Bitmap btm=null;
         btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
         avatar.setImageBitmap(Bitmap.createBitmap(btm));
         studentDao.close();
 
-        nume_student=findViewById(R.id.settings_tv_name);
+        student_name =findViewById(R.id.settings_tv_name);
 
         sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
         restoreDifficulty();
@@ -185,7 +174,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), UpdateStudentNameActivity.class);
-            intent.putExtra(Constants.CHANGE_STUDENT_NAME_KEY, nume_student.toString());
+            intent.putExtra(Constants.CHANGE_STUDENT_NAME_KEY, student_name.toString());
             startActivityForResult(intent, Constants.UPDATE_NAME_REQUEST_CODE);
         }
         };
@@ -195,7 +184,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == Constants.UPDATE_NAME_REQUEST_CODE && data != null) {
             String newName = data.getStringExtra(Constants.SET_STUDENT_NAME_KEY);
-            nume_student.setText(newName);
+            student_name.setText(newName);
             studentDao.open();
             studentDao.updateStudentName(newName, user);
             studentDao.close();
@@ -207,6 +196,11 @@ public class StudentSettingsActivity extends AppCompatActivity {
             tasksDAO.open();
             tasksDAO.updateUsername(newName, user);
             tasksDAO.close();
+
+                SharedPreferences.Editor editorUser = sharedPreferencesUser.edit();
+                editorUser.putString(Constants.USERNAME_KEY, student_name.getText().toString());
+                editorUser.commit();
+
 
         }
 
