@@ -1,6 +1,7 @@
 package com.example.docta.myapplication.Activities;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -34,6 +35,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.crypto.Cipher;
 
@@ -135,15 +137,15 @@ public class MyAvatarsActivity extends AppCompatActivity {
         user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
         //user = getIntent().getStringExtra(Constants.NAME_KEY);
         refreshListAvatar();
-        initControllers(userAvatars);
         studentDao=new StudentDAO(this);
+        initControllers(userAvatars);
 
-        studentDao.open();
+       /* studentDao.open();
         Bitmap btm=null;
         btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
         avatarprincipal.setImageBitmap(Bitmap.createBitmap(btm));
         studentDao.close();
-
+*/
 
 
         btn_buy.setOnClickListener(new View.OnClickListener() {
@@ -228,34 +230,34 @@ public class MyAvatarsActivity extends AppCompatActivity {
                                    Toast.makeText(getApplicationContext(),getString(R.string.myavatars_toast_only_one),Toast.LENGTH_LONG).show();
                                }
                                else {
+                                   int result=-1;
                                    if (userAvatars.get(position).getAppAvatar() == 1) {
                                        associativeDAO.open();
-                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
+                                       result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
                                        associativeDAO.close();
-                                       if (result >= 0) {
-                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
-                                           userAvatars.remove(position);
-                                           initControllers(userAvatars);
 
-                                       } else {
-                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
-                                       }
                                    } else if (userAvatars.get(position).getAppAvatar() == 0) {
                                        associativeDAO.open();
-                                       int result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
+                                       result = associativeDAO.deleteAvatarById(userAvatars.get(position).getId(),user);
                                        associativeDAO.close();
                                        avatarDAO.open();
                                        avatarDAO.deleteAvatarFromPhone(userAvatars.get(position).getId());
                                        avatarDAO.close();
-
-                                       if (result >= 0) {
-                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
-                                           userAvatars.remove(position);
-                                           initControllers(userAvatars);
-
-                                       } else {
-                                           Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
+                                   }
+                                   if (result >= 0) {
+                                       studentDao.open();
+                                       byte[] avatarCurrent =studentDao.findMyAvatar(user);
+                                       if(Arrays.equals(avatarCurrent, userAvatars.get(position).getImage())){
+                                           studentDao.updateAvatar(userAvatars.get(0).getImage(),user);
                                        }
+                                       studentDao.close();
+
+                                       Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_ok), Toast.LENGTH_LONG).show();
+                                       userAvatars.remove(position);
+                                       initControllers(userAvatars);
+
+                                   } else {
+                                       Toast.makeText(MyAvatarsActivity.this, getString(R.string.myavatars_toast_delete_failed), Toast.LENGTH_LONG).show();
                                    }
                                }
                            }
@@ -288,7 +290,12 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 textViewsNameList.get(i).setText(userAv.get(i).getName());
             }
         }
-
+        Bitmap btmCurrent=null;
+        studentDao.open();
+        byte[] avatarCurrent =studentDao.findMyAvatar(user);
+        studentDao.close();
+        btmCurrent=BitmapFactory.decodeByteArray(avatarCurrent,0,avatarCurrent.length);
+        avatarprincipal.setImageBitmap(Bitmap.createBitmap(btmCurrent));
 
     }
     private View.OnClickListener changeName(int position) {

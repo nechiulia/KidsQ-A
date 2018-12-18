@@ -108,7 +108,6 @@ public class StudentSettingsActivity extends AppCompatActivity {
         associativeDAO=new AssociativeDAO(this);
         tasksDAO=new TasksDAO(this);
         studentDao.open();
-        //user = getIntent().getStringExtra(Constants.NAME_KEY);
         Bitmap btm=null;
         btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
         avatar.setImageBitmap(Bitmap.createBitmap(btm));
