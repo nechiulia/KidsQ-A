@@ -76,7 +76,4 @@ public class ResultActivity extends AppCompatActivity {
         dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,null);
     }
 
-    private TestResult initTestResult(){
-        return new TestResult(dificult ,categ ,username ,no_correct_answers ,score);
-    }
 }
