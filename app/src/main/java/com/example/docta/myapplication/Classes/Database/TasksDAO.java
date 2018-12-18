@@ -95,4 +95,27 @@ public class TasksDAO implements DatabaseConstants{
                 +" =? ",new String[]{id.toString()});
     }
 
+    public void updateUsername(String newName, String username){
+        String QUERRY_UPDATE_NAME=TASKS_COLUMN_ID_STUDENT+" =? ";
+        String QUERRY_SELECT_USERNAME="SELECT "+ TASKS_COLUMN_ID_STUDENT+ " FROM " + TASKS_TABLE_NAME + " WHERE " + TASKS_COLUMN_ID_STUDENT +" =?";
+
+        Cursor c=database.rawQuery(QUERRY_SELECT_USERNAME,new String[]{username});
+        while(c.moveToNext()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(TASKS_COLUMN_ID_STUDENT, newName);
+            database.update(TASKS_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{username});
+        }
+    }
+
+
+    public void deleteUsername(String username){
+        String QUERRY_UPDATE_NAME=TASKS_COLUMN_ID_STUDENT+" =? ";
+        String QUERRY_SELECT_USERNAME="SELECT "+ TASKS_COLUMN_ID_STUDENT+ " FROM " + TASKS_TABLE_NAME + " WHERE " + TASKS_COLUMN_ID_STUDENT +" =?";
+
+        Cursor c=database.rawQuery(QUERRY_SELECT_USERNAME,new String[]{username});
+        while(c.moveToNext()) {
+            database.delete(TASKS_TABLE_NAME,QUERRY_UPDATE_NAME,new String[]{username});
+        }
+    }
+
 }

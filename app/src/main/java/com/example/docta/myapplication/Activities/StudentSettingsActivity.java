@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
 import com.example.docta.myapplication.Classes.Database.StudentDAO;
+import com.example.docta.myapplication.Classes.Database.TasksDAO;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
 
@@ -32,6 +33,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
     private ImageView avatar;
     private StudentDAO studentDao;
     private AssociativeDAO associativeDAO;
+    private TasksDAO tasksDAO;
     private String user;
    private TextView nume_student;
    private Button btn_stergere;
@@ -115,6 +117,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         user= sharedPreferences.getString(Constants.USERNAME_KEY, getString(R.string.myavatars_default_user_name));
         studentDao=new StudentDAO(this);
         associativeDAO=new AssociativeDAO(this);
+        tasksDAO=new TasksDAO(this);
         studentDao.open();
         user = getIntent().getStringExtra(Constants.NAME_KEY);
         Bitmap btm=null;
@@ -153,6 +156,9 @@ public class StudentSettingsActivity extends AppCompatActivity {
                                 associativeDAO.open();
                                 associativeDAO.deleteUsername(user);
                                 associativeDAO.close();
+                                tasksDAO.open();
+                                tasksDAO.deleteUsername(user);
+                                tasksDAO.close();
                                 Toast.makeText(StudentSettingsActivity.this, getString(R.string.settings_student_delete_success), Toast.LENGTH_LONG).show();
                                 intent=new Intent(getApplicationContext(), LoginPageActivity.class);
                                 startActivity(intent);
@@ -197,6 +203,10 @@ public class StudentSettingsActivity extends AppCompatActivity {
             associativeDAO.open();
             associativeDAO.updateUsername(newName, user);
             associativeDAO.close();
+
+            tasksDAO.open();
+            tasksDAO.updateUsername(newName, user);
+            tasksDAO.close();
 
         }
 

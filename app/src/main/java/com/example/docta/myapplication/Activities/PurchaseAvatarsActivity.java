@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
+import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.util.Avatar;
 import com.example.docta.myapplication.Classes.Database.AvatarDAO;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -33,6 +34,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
     private ArrayList<Avatar> app_avatars=new ArrayList<>();
     private AvatarDAO avatarDAO;
     private AssociativeDAO associativeDAO;
+    private StudentDAO studentDao;
     private ImageView myavatar;
     private SharedPreferences sharedPreferencesUser;
     private String user;
@@ -111,6 +113,15 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         app_avatars=avatarDAO.findAllAvatarsFromApp();
         avatarDAO.close();
 
+
+        studentDao=new StudentDAO(this);
+
+        studentDao.open();
+        Bitmap btm=null;
+        btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
+        myavatar.setImageBitmap(Bitmap.createBitmap(btm));
+        studentDao.close();
+
         initControllers();
         boolean exists=false;
         for(int i=0;i< textViewsBuy.size();i++){
@@ -140,6 +151,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), MyAvatarsActivity.class);
+                intent.putExtra(Constants.NAME_KEY, user);
                 startActivity(intent);
                 finish();
             }
