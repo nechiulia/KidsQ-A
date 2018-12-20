@@ -57,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.menu_clasament:
-                        startActivity(new Intent(getApplicationContext(),RankingActivity.class));
+                        startActivity(new Intent(getApplicationContext(),ResultTestVisualizationActivity.class));
                         finish();
                         break;
                     case R.id.menu_lista:

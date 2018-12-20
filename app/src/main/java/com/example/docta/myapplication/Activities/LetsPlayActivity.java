@@ -99,7 +99,7 @@ public class LetsPlayActivity extends AppCompatActivity {
                     }
                     editorCateg= sharedPreferencesCateg.edit();
                     editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_ANIMALS);
-                    editorCateg.commit();
+                    editorCateg.apply();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -126,7 +126,7 @@ public class LetsPlayActivity extends AppCompatActivity {
                     }
                     editorCateg= sharedPreferencesCateg.edit();
                     editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_LETTERS);
-                    editorCateg.commit();
+                    editorCateg.apply();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -152,7 +152,7 @@ public class LetsPlayActivity extends AppCompatActivity {
                     }
                     editorCateg= sharedPreferencesCateg.edit();
                     editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_FRUITS);
-                    editorCateg.commit();
+                    editorCateg.apply();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -177,7 +177,7 @@ public class LetsPlayActivity extends AppCompatActivity {
                     }
                     editorCateg= sharedPreferencesCateg.edit();
                     editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_LIFE);
-                    editorCateg.commit();
+                    editorCateg.apply();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);
@@ -202,7 +202,7 @@ public class LetsPlayActivity extends AppCompatActivity {
                     }
                     editorCateg= sharedPreferencesCateg.edit();
                     editorCateg.putString(Constants.GET_CATEG,Constants.CATEGORY_MATH);
-                    editorCateg.commit();
+                    editorCateg.apply();
                     Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                     intent.putExtra(Constants.QUESTIONS_LIST_KEY, testQuestionsList);
                     startActivity(intent);

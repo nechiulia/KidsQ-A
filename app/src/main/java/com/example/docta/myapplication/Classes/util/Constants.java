@@ -44,6 +44,9 @@ public interface Constants {
     String CATEGORY_LETTERS ="litere";
     String CATEGORY_FRUITS ="fructe si legume";
     String CATEGORY_LIFE ="viata-de-zi-cu-zi";
+    String TEST_OF_THE_DAY ="Testul zilei";
+    String QUESTION_OF_THE_DAY="Intrebarea zilei";
+
     String DOWNLOAD_DONE ="validar descarca json";
     String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
     String URL_JSON_ACCOUNTS = "https://api.myjson.com/bins/b98ou";

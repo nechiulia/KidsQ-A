@@ -39,12 +39,12 @@ public class StudentAdapter extends ArrayAdapter<Student> {
     }
 
 
-    @SuppressLint("ResourceType")
+    @SuppressLint({"ResourceType", "SetTextI18n"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView,
                         @NonNull ViewGroup parent) {
-        View row = inflater.inflate(resource, parent, false);
+        @SuppressLint("ViewHolder") View row = inflater.inflate(resource, parent, false);
 
         TextView tvName = row.findViewById(R.id.studentsrow_lv_name);
         TextView tvGender = row.findViewById(R.id.studentsrow_lv_sex);

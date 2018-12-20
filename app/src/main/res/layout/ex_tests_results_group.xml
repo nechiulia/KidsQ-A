@@ -16,6 +16,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_weight="1"
+        android:textAlignment="center"
         android:src="@mipmap/ic_launcher"
         />
     <TextView
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textStyle="bold"
+        android:gravity="center"
         android:textSize="14sp"
         android:textAlignment="center"/>
 

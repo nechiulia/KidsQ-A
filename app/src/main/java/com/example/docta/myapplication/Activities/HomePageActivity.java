@@ -51,6 +51,7 @@ public class HomePageActivity extends AppCompatActivity {
     Intent intent;
     private Boolean isChecked;
     private SharedPreferences sharedPreferencesSet;
+    private SharedPreferences.Editor editor;
     private AssociativeDAO associativeDAO;
 
     @Override
@@ -114,7 +115,7 @@ public class HomePageActivity extends AppCompatActivity {
             progressDialog.setCancelable(false);
             progressDialog.getButton(ProgressDialog.BUTTON_NEUTRAL).setVisibility(View.INVISIBLE);
 
-        @SuppressLint("StaticFieldLeak") Handler handler = new Handler() {
+        @SuppressLint({"StaticFieldLeak", "HandlerLeak"}) Handler handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
                     super.handleMessage(msg);
@@ -139,6 +140,7 @@ public class HomePageActivity extends AppCompatActivity {
             //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initComponents(){
         btn_play =findViewById(R.id.home_btn_play);
         btn_learn =findViewById(R.id.home_btn_learn);
@@ -233,6 +235,9 @@ public class HomePageActivity extends AppCompatActivity {
                 Collections.shuffle(dailyQuestion);
                 Intent intent = new Intent(getApplicationContext(), DailyQuestionActivity.class);
                 intent.putExtra(Constants.DAILY_QUESTION_KEY, dailyQuestion.get(0));
+                editor = sharedPreferences.edit();
+                editor.putString(Constants.GET_CATEG, Constants.QUESTION_OF_THE_DAY);
+                editor.apply();
                 startActivity(intent);
             }
         };
@@ -246,6 +251,9 @@ public class HomePageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                 intent.putExtra(Constants.DAILY_TEST,getString(R.string.Valoare_TestulZilei));
                 intent.putExtra(Constants.QUESTIONS_LIST_KEY, dailyTestQuestions);
+                editor = sharedPreferences.edit();
+                editor.putString(Constants.GET_CATEG, Constants.TEST_OF_THE_DAY);
+                editor.apply();
                 startActivity(intent);
                 finish();
             }

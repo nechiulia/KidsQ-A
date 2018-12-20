@@ -12,12 +12,14 @@ import com.example.docta.myapplication.R;
 public class LoadingActivity extends AppCompatActivity {
     private ImageView loading_iv_tranz;
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        startActivity(new Intent(getApplicationContext(),LoginPageActivity.class));
-        finish();
-    }
+
+
+//    @Override
+//    protected void onPostResume() {
+//        super.onPostResume();
+//        startActivity(new Intent(getApplicationContext(),LoginPageActivity.class));
+//        finish();
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
