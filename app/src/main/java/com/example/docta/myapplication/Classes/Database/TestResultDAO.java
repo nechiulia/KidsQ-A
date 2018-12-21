@@ -137,21 +137,6 @@ public class TestResultDAO implements DatabaseConstants {
     @SuppressLint("Recycle")
     public ArrayList<String> studentTestResult(String username,String[] dificulties,String category){
         ArrayList<String> result = new ArrayList<>();
-        String QUERY_1 = "SELECT SUM( "+ TESTRESULTS_COLUMN_SCORE + " ) as sumx , SUM( "+ TESTRESULTS_COLUMN_CORRECTANSWERS +" ) as sumy FROM "
-                + TESTRESULTS_TABLE_NAME + " WHERE " +
-                TESTRESULTS_COLUMN_USERNAMESTUD +" =? AND "+ TESTRESULTS_COLUMN_DIFFICULTY + " =? AND "+ TESTRESULTS_COLUMN_CATEGORY + "=?";
-
-        String QUERY_2 = "SELECT COUNT( "+TESTRESULTS_COLUMN_DIFFICULTY + " ) as count FROM "+ TESTRESULTS_TABLE_NAME+
-                " WHERE "+ TESTRESULTS_COLUMN_USERNAMESTUD + " =? AND "+
-                TESTRESULTS_COLUMN_DIFFICULTY + " =? AND "+ TESTRESULTS_COLUMN_CATEGORY+" =?" +" GROUP BY "+TESTRESULTS_COLUMN_DIFFICULTY;
-
-        String QUERY_3 = "SELECT SUM( "+ TESTRESULTS_COLUMN_SCORE + " ) as sumx , SUM( "+ TESTRESULTS_COLUMN_CORRECTANSWERS +" ) as sumy FROM "
-                + TESTRESULTS_TABLE_NAME + " WHERE " +
-                TESTRESULTS_COLUMN_USERNAMESTUD +" =? AND "+ TESTRESULTS_COLUMN_DIFFICULTY + " =?";
-
-        String QUERY_4 = "SELECT COUNT( "+TESTRESULTS_COLUMN_DIFFICULTY + " ) as count FROM "+ TESTRESULTS_TABLE_NAME+
-                " WHERE "+ TESTRESULTS_COLUMN_USERNAMESTUD + " =? AND "+
-                TESTRESULTS_COLUMN_DIFFICULTY + " =?" +" GROUP BY "+TESTRESULTS_COLUMN_DIFFICULTY;
         //answers
         double no_correct=0;
         double no_easy_corrects=0;
@@ -163,114 +148,84 @@ public class TestResultDAO implements DatabaseConstants {
         double no_medium_tests = 0;
         double no_hard_tests = 0;
         Cursor c;
-        if(!category.equals("total")) {
-            if (dificulties[0] != null) {
-                c = database.rawQuery(QUERY_1, new String[]{username, dificulties[0], category});
-                if (c.moveToFirst()) {
-                    no_correct = c.getInt(c.getColumnIndex("sumy"));
-                    no_easy_corrects = no_correct;
-                }
-            }
-            if (dificulties[1] != null) {
-                c = database.rawQuery(QUERY_1, new String[]{username, dificulties[1], category});
-                if (c.moveToFirst()) {
-                    no_correct += c.getInt(c.getColumnIndex("sumy"));
-                    no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
-                }
-            }
-            if (dificulties[2] != null) {
-                c = database.rawQuery(QUERY_1, new String[]{username, dificulties[2], category});
-                if (c.moveToFirst()) {
-                    no_correct += c.getInt(c.getColumnIndex("sumy"));
-                    no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
+        for(int i =0;i<dificulties.length;i++) {
+            if (!category.equals("total")) {
+                if (dificulties[i] != null) {
+                    c = database.rawQuery(QUERY_1, new String[]{username, dificulties[i],category});
+                    if (c.moveToFirst()) {
+                        no_correct += c.getDouble(c.getColumnIndex("sumy"));
+                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
+                            no_easy_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                            no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                            no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                    }
 
+                    c = database.rawQuery(QUERY_2, new String[]{username, dificulties[i],category});
+                    if (c.moveToFirst()) {
+                        resolved_Tests += c.getDouble(c.getColumnIndex("count"));
+                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
+                            no_easy_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                            no_medium_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                            no_hard_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                    }
                 }
             }
+            //cand e total
+            else {
+                if (dificulties[i] != null) {
+                    c = database.rawQuery(QUERY_3, new String[]{username, dificulties[i]});
+                    if (c.moveToFirst()) {
+                        no_correct += c.getDouble(c.getColumnIndex("sumy"));
+                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
+                            no_easy_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                            no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                            no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
+                        }
+                    }
 
-
-            if (dificulties[0] != null) {
-                c = database.rawQuery(QUERY_2, new String[]{username, dificulties[0], category});
-                if (c.moveToFirst()) {
-                    resolved_Tests = c.getInt(c.getColumnIndex("count"));
-                    no_easy_tests = resolved_Tests;
-                }
-            }
-
-            if (dificulties[1] != null) {
-                c = database.rawQuery(QUERY_2, new String[]{username, dificulties[1], category});
-                if (c.moveToFirst()) {
-                    resolved_Tests += c.getInt(c.getColumnIndex("count"));
-                    no_medium_tests = c.getInt(c.getColumnIndex("count"));
-                }
-            }
-            if (dificulties[2] != null) {
-                c = database.rawQuery(QUERY_2, new String[]{username, dificulties[2], category});
-                if (c.moveToFirst()) {
-                    resolved_Tests += c.getInt(c.getColumnIndex("count"));
-                    no_hard_tests = c.getInt(c.getColumnIndex("count"));
-                }
-            }
-        }
-        else{
-            if (dificulties[0] != null) {
-                c = database.rawQuery(QUERY_3, new String[]{username, dificulties[0]});
-                if (c.moveToFirst()) {
-                    no_correct = c.getInt(c.getColumnIndex("sumy"));
-                    no_easy_corrects = no_correct;
-                }
-            }
-            if (dificulties[1] != null) {
-                c = database.rawQuery(QUERY_3, new String[]{username, dificulties[1]});
-                if (c.moveToFirst()) {
-                    no_correct += c.getInt(c.getColumnIndex("sumy"));
-                    no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
-                }
-            }
-            if (dificulties[2] != null) {
-                c = database.rawQuery(QUERY_3, new String[]{username, dificulties[2]});
-                if (c.moveToFirst()) {
-                    no_correct += c.getInt(c.getColumnIndex("sumy"));
-                    no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
-
-                }
-            }
-
-
-            if (dificulties[0] != null) {
-                c = database.rawQuery(QUERY_4, new String[]{username, dificulties[0]});
-                if (c.moveToFirst()) {
-                    resolved_Tests = c.getInt(c.getColumnIndex("count"));
-                    no_easy_tests = resolved_Tests;
-                }
-            }
-
-            if (dificulties[1] != null) {
-                c = database.rawQuery(QUERY_4, new String[]{username, dificulties[1]});
-                if (c.moveToFirst()) {
-                    resolved_Tests += c.getInt(c.getColumnIndex("count"));
-                    no_medium_tests = c.getInt(c.getColumnIndex("count"));
-                }
-            }
-            if (dificulties[2] != null) {
-                c = database.rawQuery(QUERY_4, new String[]{username, dificulties[2]});
-                if (c.moveToFirst()) {
-                    resolved_Tests += c.getInt(c.getColumnIndex("count"));
-                    no_hard_tests = c.getInt(c.getColumnIndex("count"));
+                    c = database.rawQuery(QUERY_4, new String[]{username, dificulties[i]});
+                    if (c.moveToFirst()) {
+                        resolved_Tests += c.getDouble(c.getColumnIndex("count"));
+                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
+                            no_easy_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                            no_medium_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                            no_hard_tests = c.getInt(c.getColumnIndex("count"));
+                        }
+                    }
                 }
             }
         }
 
         int average_Efficiency=0;
+        double x1, x2 ,x3 =0;
         if(no_easy_tests!=0 && no_medium_tests !=0 && no_hard_tests!=0) {
-            double x1 = no_easy_corrects /((double) 5 * no_easy_tests);
-            double x2 = no_medium_corrects /((double) 5 * no_medium_tests);
-            double x3 = no_hard_corrects /((double) 5 * no_hard_tests);
+             x1 = no_easy_corrects /((double) 5 * no_easy_tests);
+             x2 = no_medium_corrects /((double) 5 * no_medium_tests);
+             x3 = no_hard_corrects /((double) 5 * no_hard_tests);
             average_Efficiency = (int)(((x1+x2+x3)/3)*(double)100);
 
         }else if(no_easy_tests!=0 && no_medium_tests !=0 ||no_easy_tests !=0 && no_hard_tests!=0 || no_medium_tests!=0 && no_hard_tests!=0 ){
-            double x1 = no_easy_corrects /((double) 5 * no_easy_tests);
-            double x2 = no_medium_corrects /((double) 5 * no_medium_tests);
-            double x3 = no_hard_corrects /((double) 5 * no_hard_tests);
+             x1 = no_easy_corrects /((double) 5 * no_easy_tests);
+             x2 = no_medium_corrects /((double) 5 * no_medium_tests);
+             x3 = no_hard_corrects /((double) 5 * no_hard_tests);
             if(Double.isNaN(x1)){
                 x1=0;
             }
@@ -281,10 +236,11 @@ public class TestResultDAO implements DatabaseConstants {
                 x3=0;
             }
             average_Efficiency = (int)(((x1+x2+x3)/2)*(double)100);
+
         }else if(no_easy_tests != 0 || no_medium_tests != 0 || no_hard_tests!=0){
-            double x1 = no_easy_corrects /((double) 5 * no_easy_tests);
-            double x2 = no_medium_corrects /((double) 5 * no_medium_tests);
-            double x3 = no_hard_corrects /((double) 5 * no_hard_tests);
+             x1 = no_easy_corrects /((double) 5 * no_easy_tests);
+             x2 = no_medium_corrects /((double) 5 * no_medium_tests);
+             x3 = no_hard_corrects /((double) 5 * no_hard_tests);
             if(Double.isNaN(x1)){
                 x1=0;
             }
@@ -297,24 +253,10 @@ public class TestResultDAO implements DatabaseConstants {
             average_Efficiency = (int)(((x1+x2+x3))*(double)100);
         }
 
-        //+ no_medium_corrects / 5 * no_medium_tests + no_hard_corrects / 5 * no_hard_tests
         result.add(String.valueOf((int)no_correct));
-        result.add(String.valueOf((int) resolved_Tests));
+        result.add(String.valueOf((int)resolved_Tests));
         result.add(String.valueOf(average_Efficiency));
 
         return result;
     }
-
-//    private void NaNnumber(double x1, double x2, double x3){
-//        if(Double.isNaN(x1)){
-//            x1=0;
-//        }
-//        if(Double.isNaN(x2)){
-//            x2=0;
-//        }
-//        if(Double.isNaN(x3)){
-//            x3=0;
-//        }
-//
-//    }
 }

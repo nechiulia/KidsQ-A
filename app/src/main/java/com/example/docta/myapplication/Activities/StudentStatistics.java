@@ -98,6 +98,10 @@ public class StudentStatistics extends AppCompatActivity {
                 public void onClick(View v) {
                     if(!cb_Easy_Test.isChecked() && !cb_Medium_Test.isChecked() && !cb_Hard_Test.isChecked()) {
                         Toast.makeText(getApplicationContext(),"Nu a fost selectat nicio dificultate!",Toast.LENGTH_LONG).show();
+                        pb_average.setProgress(0);
+                        tv_avarage_efficiency.setText("%");
+                        tv_correct_answers.setText("Raspunsuri corecte: " );
+                        tv_tests_resolved.setText("Teste rezolvate: " );
                     }else {
                         chosen_Category = spn_categ.getSelectedItem().toString().toLowerCase();
                         testResultDAO.open();
@@ -107,15 +111,7 @@ public class StudentStatistics extends AppCompatActivity {
                         tv_tests_resolved.setText("Teste rezolvate: " + list.get(1));
                         pb_average.setProgress(Integer.parseInt(list.get(2)), true);
                         tv_avarage_efficiency.setText(list.get(2) + "%");
-//                        if(Integer.parseInt(list.get(2))>65){
-//                            v.startAnimation(animAlpha);
-//                            btn_calculation.setText("Felicitari!");
-//                        }else {
-//
-//                            v.startAnimation(animAlpha);
-//                            btn_calculation.setText("Se putea si mai bine!");
-//
-//                        }
+
                     }
                 }
             });
