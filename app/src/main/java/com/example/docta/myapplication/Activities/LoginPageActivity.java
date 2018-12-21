@@ -37,7 +37,7 @@ public class LoginPageActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),LoginStudentActivity.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
-                editor.putString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
+                editor.putString(Constants.USER_STATUT_PREF, getString(R.string.principala_utilizator_elev_pref_message));
                 boolean result = editor.commit();
                 startActivity(intent);
             }
@@ -50,7 +50,7 @@ public class LoginPageActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),LoginTeacherActivity.class);
                 SharedPreferences.Editor editor= sharedPreferences.edit();
-                editor.putString(Constants.USER_PREF, getString(R.string.principala_utilizator_profesor_pref_message));
+                editor.putString(Constants.USER_STATUT_PREF, getString(R.string.principala_utilizator_profesor_pref_message));
                 boolean result= editor.commit();
                 startActivity(intent);
             }

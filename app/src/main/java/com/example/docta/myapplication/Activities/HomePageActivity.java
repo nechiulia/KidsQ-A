@@ -160,7 +160,7 @@ public class HomePageActivity extends AppCompatActivity {
         associativeDAO.open();
         associativeDAO.close();
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-        String user = sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
+        String user = sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.ppj_utilizator_default_pref));
 
 
 
@@ -240,9 +240,6 @@ public class HomePageActivity extends AppCompatActivity {
                 Collections.shuffle(dailyQuestion);
                 Intent intent = new Intent(getApplicationContext(), DailyQuestionActivity.class);
                 intent.putExtra(Constants.DAILY_QUESTION_KEY, dailyQuestion.get(0));
-                editor = sharedPreferences.edit();
-                editor.putString(Constants.GET_CATEG, Constants.QUESTION_OF_THE_DAY);
-                editor.apply();
                 startActivity(intent);
             }
         };
@@ -256,16 +253,13 @@ public class HomePageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                 intent.putExtra(Constants.DAILY_TEST,getString(R.string.Valoare_TestulZilei));
                 intent.putExtra(Constants.QUESTIONS_LIST_KEY, dailyTestQuestions);
-                editor = sharedPreferences.edit();
-                editor.putString(Constants.GET_CATEG, Constants.TEST_OF_THE_DAY);
-                editor.apply();
                 startActivity(intent);
                 finish();
             }
 
         };
-    }
 
+    }
     private View.OnClickListener openResults(){
         return new View.OnClickListener() {
             @Override
@@ -275,6 +269,7 @@ public class HomePageActivity extends AppCompatActivity {
             }
         };
     }
+
     private View.OnClickListener openAvatars(){
 
         return new View.OnClickListener() {

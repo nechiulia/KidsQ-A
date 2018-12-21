@@ -26,6 +26,8 @@ public class ResultActivity extends AppCompatActivity {
     private double score;
     private String username;
     private SharedPreferences sharedPreferencesUser;
+    private String  categ;
+    private String dificult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,11 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
-                testResultDAO.open();
-                testResultDAO.insertTestResult(initTestResult());
-                testResultDAO.close();
+                if(!categ.equals(Constants.DAILY_QUESTION_KEY) ){
+                    testResultDAO.open();
+                    testResultDAO.insertTestResult(new TestResult(dificult ,categ ,username ,no_correct_answers ,score));
+                    testResultDAO.close();
+                }
                 startActivity(intent);
                 finish();
             }
@@ -53,7 +57,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private void initComponents() {
         sharedPreferencesUser = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,null);
+        username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
         no_correct_answers = getIntent().getIntExtra(Constants.NO_CORECT_ANSWERS, 0);
         btn_back = findViewById(R.id.result_btn_back);
@@ -66,15 +70,10 @@ public class ResultActivity extends AppCompatActivity {
         studentDAO.updateScore(score,username);
         studentDAO.close();
         testResultDAO = new TestResultDAO(this);
+        sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
+        categ = sharedPreferences.getString(Constants.GET_CATEG,null);
+        sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
+        dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,null);
     }
 
-    private TestResult initTestResult(){
-        sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
-        String categ = sharedPreferences.getString(Constants.GET_CATEG,null);
-        sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
-        String dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,null);
-        /*sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        String username = sharedPreferences.getString(Constants.USERNAME_KEY,null);*/
-        return new TestResult(dificult ,categ ,username ,no_correct_answers ,score);
-    }
 }

@@ -27,7 +27,7 @@ public  class RankingActivity extends AppCompatActivity {
         }
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         sharedPreferences=getSharedPreferences(Constants.CONT_STATUT_PREF,MODE_PRIVATE);
-        String statut= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.principala_utilizator_elev_pref_message));
+        String statut= sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.principala_utilizator_elev_pref_message));
         if(statut.equals(getString(R.string.principala_utilizator_elev_pref_message))){
             bottomNavigationView.setVisibility(View.GONE);
 

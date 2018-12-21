@@ -75,7 +75,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
         avatarDAO = new AvatarDAO(getApplicationContext());
         associativeDAO= new AssociativeDAO(getApplicationContext());
         sharedPreferencesUser= getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
-        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,"user");
+        user=sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         userAvatars = (ArrayList<Avatar>) getIntent().getSerializableExtra(Constants.USER_AVATAR_KEY);
         textViewsBuy.add(findViewById(R.id.purchase_tv_buyed1));
         textViewsBuy.add(findViewById(R.id.purchase_tv_buyed2));
@@ -151,7 +151,6 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(getApplicationContext(), MyAvatarsActivity.class);
-                //intent.putExtra(Constants.NAME_KEY, user);
                 startActivity(intent);
                 finish();
             }
@@ -184,24 +183,35 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if(userAvatars.size()<=2) {
-                                    associativeDAO.open();
-                                    long result = associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
-                                    associativeDAO.close();
-                                    if(result!=-1) {
-                                        Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_is_buy),Toast.LENGTH_LONG).show();
-                                        Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
-                                        //intent.putExtra(Constants.NAME_KEY,user);
+                                    Double score;
+                                    studentDao.open();
+                                    score = studentDao.findScoreByUser(user);
+                                    studentDao.close();
+                                    if (score >= app_avatars.get(position).getPrice()) {
+                                        associativeDAO.open();
+                                        long result = associativeDAO.insertAssociativeAvatar(user, app_avatars.get(position).getId());
+                                        associativeDAO.close();
+                                        if (result != -1) {
+                                            Toast.makeText(getApplicationContext(), getString(R.string.purchase_toast_is_buy), Toast.LENGTH_LONG).show();
+                                            studentDao.open();
+                                                studentDao.updateScore(-app_avatars.get(position).getPrice(),user);
+                                            studentDao.close();
+                                            Intent intent = new Intent(getApplicationContext(), MyAvatarsActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                else{
+                                        Toast.makeText(getApplicationContext(), getString(R.string.not_enough_points), Toast.LENGTH_LONG).show();
+
+                                    }
+                                }
+                                     else {
+                                        Toast.makeText(getApplicationContext(), getString(R.string.purchase_toast_delete_one_avatar), Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(getApplicationContext(), MyAvatarsActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
-                                }
-                                else {
-                                    Toast.makeText(getApplicationContext(),getString(R.string.purchase_toast_delete_one_avatar),Toast.LENGTH_LONG).show();
-                                    Intent intent= new Intent(getApplicationContext(),MyAvatarsActivity.class);
-                                    //intent.putExtra(Constants.NAME_KEY,user);
-                                    startActivity(intent);
-                                    finish();
-                                }
 
                             }
                         })

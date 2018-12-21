@@ -122,7 +122,6 @@ public class   TasksActivity extends AppCompatActivity {
     }
 
     private View.OnClickListener addNewTask(){
-        String nume = getIntent().getStringExtra(Constants.NAME_KEY);
         return new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -135,7 +134,7 @@ public class   TasksActivity extends AppCompatActivity {
         lv_tasks = findViewById(R.id.tasks_lv_task);
         fab = findViewById(R.id.tasks_fab_add);
         sharedPreferences= getSharedPreferences(Constants.USERNAME_PREF, MODE_PRIVATE);
-        user= sharedPreferences.getString(Constants.USERNAME_KEY,"user");
+        user= sharedPreferences.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         tasksDAO = new TasksDAO(getApplicationContext());
         tasksDAO.open();
     }

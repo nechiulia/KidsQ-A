@@ -173,6 +173,15 @@ public class StudentDAO implements DatabaseConstants {
         }
         return  database.delete(STUDENT_TABLE_NAME, QUERRY_DELETE_STUD, new String[]{username} );
     }
+    public Double findScoreByUser(String username){
+        String QUERRY_SELECT_SCORE = "SELECT "+ STUDENT_COLUMN_SCORE+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c=database.rawQuery(QUERRY_SELECT_SCORE, new String[] {username});
+        Double score=0.0;
+        while (c.moveToNext()) {
+            score = c.getDouble(c.getColumnIndex(STUDENT_COLUMN_SCORE));
+        }
+        return score;
+    }
 
 
 

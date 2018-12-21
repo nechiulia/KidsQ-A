@@ -5,7 +5,7 @@ public interface Constants {
     String ADD_STUDENT_KEY = "adaugareElev";
     String STATUT_KEY="statutKey";
     String CONT_STATUT_PREF="ProfesorSauElev";
-    String USER_PREF ="utilizator";
+    String USER_STATUT_PREF ="utilizator";
     String NAME_KEY ="numeAvatar";
     String USERNAME_PREF= "user_pref";
     String USERNAME_KEY = "key_username";
