@@ -215,7 +215,7 @@ public class TestResultDAO implements DatabaseConstants {
         }
 
         int average_Efficiency=0;
-        double x1, x2 ,x3 =0;
+        double x1, x2 ,x3 ;
         if(no_easy_tests!=0 && no_medium_tests !=0 && no_hard_tests!=0) {
              x1 = no_easy_corrects /((double) 5 * no_easy_tests);
              x2 = no_medium_corrects /((double) 5 * no_medium_tests);
