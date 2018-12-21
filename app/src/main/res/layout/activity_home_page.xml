@@ -77,7 +77,7 @@
         android:layout_height="55dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/rounded_button2"
+        android:background="@drawable/rounded_button_general"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
@@ -94,7 +94,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/ppj_btn_testulZilei_text"
-        android:background="@drawable/rounded_button2"
+        android:background="@drawable/rounded_button_general"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_btn_dailyquestion"
         app:layout_constraintTop_toBottomOf="@+id/home_btn_play" />
@@ -110,7 +110,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:text="@string/ppj_btn_avatareleMele_text"
-        android:background="@drawable/rounded_button2"
+        android:background="@drawable/rounded_button_general"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_btn_dailyquestion" />
 
@@ -124,7 +124,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/ppj_btn_clasament_text"
-        android:background="@drawable/rounded_button2"
+        android:background="@drawable/rounded_button_general"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_btn_myavatars"
         app:layout_constraintTop_toBottomOf="@+id/home_btn_dailytest" />
@@ -138,11 +138,28 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:text="@string/ppj_btn_setari_text"
         android:background="@drawable/rounded_button"
+        android:text="@string/ppj_btn_setari_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_btn_tasks"
         app:layout_constraintTop_toBottomOf="@id/home_btn_ranking" />
+
+    <Button
+        android:id="@+id/home_btn_statistics"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/ppj_btn_rezultate"
+        app:layout_constraintBottom_toTopOf="@+id/home_imgBtn_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_tasks" />
 
     <ImageButton
         android:id="@+id/home_imgBtn_star"

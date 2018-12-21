@@ -93,15 +93,16 @@
         <activity
             android:name=".Activities.ShowImageActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.UpdateAvatarNameActivity"
+        <activity
+            android:name=".Activities.UpdateAvatarNameActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.UpdateStudentNameActivity"
+        <activity
+            android:name=".Activities.UpdateStudentNameActivity"
             android:screenOrientation="portrait" />
-
-
-        <activity android:name=".Activities.ResultTestVisualizationActivity"
-            android:screenOrientation="portrait" ></activity>
-
+        <activity
+            android:name=".Activities.ResultTestVisualizationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.StudentStatistics"></activity>
     </application>
 
 </manifest>

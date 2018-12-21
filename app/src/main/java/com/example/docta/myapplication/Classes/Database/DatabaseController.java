@@ -53,4 +53,5 @@ public class DatabaseController extends SQLiteOpenHelper implements DatabaseCons
         db.execSQL(DROP_TABLE_ASSOCIATIVE);
         onCreate(db);
     }
+
 }

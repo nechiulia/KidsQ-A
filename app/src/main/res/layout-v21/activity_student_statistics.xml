@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.StudentStatistics"
+    android:background="@color/yellow"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/std_statistics_tv_title"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/std_statistics_title"
+        android:textAlignment="center"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:id="@+id/ll_std_Statistics_spinneer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/std_statistics_tv_categ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:text="@string/std_statistics_tv_categ"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp" />
+        <Spinner
+            android:id="@+id/std_statistics_spn_Categ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            tools:ignore="Suspicious0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_std_Statistics_checkboxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+        <CheckBox
+            android:id="@+id/std_Statistics_cb_Easy"
+            android:layout_width="0dp"
+            android:layout_weight="0.55"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/std_statistics_tv_testUsor"
+            android:checked="false"
+            android:buttonTint="@color/white"
+            tools:targetApi="lollipop" />
+
+        <CheckBox
+            android:id="@+id/std_Statistics_cb_Medium"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:textSize="16sp"
+            android:checked="false"
+            android:layout_height="wrap_content"
+            android:text="@string/std_statistics_tv_testMediu"
+            android:buttonTint="@color/white"
+            tools:targetApi="lollipop" />
+        <CheckBox
+            android:id="@+id/std_Statistics_cb_Hard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:textSize="16sp"
+            android:text="@string/std_statistics_tv_testGreu"
+            android:checked="false"
+            android:buttonTint="@color/white"
+            tools:targetApi="lollipop" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_std_Statistics_result"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/std_statistics_tv_Raspunsuri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="Suspicious0dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="Raspunsuri corecte: "/>
+        <TextView
+            android:id="@+id/std_statistics_tv_Teste"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:text="Teste rezolvate: "/>
+
+        <TextView
+            android:id="@+id/std_statistics_tv_Medie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="40dp"
+            android:text="%"
+            android:textSize="20sp"/>
+
+        <ProgressBar
+            android:id="@+id/std_Statistics_progressB_medie"
+            android:layout_marginTop="10dp"
+            android:min="1"
+            android:max="100"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            style="?android:attr/progressBarStyleHorizontal"
+            tools:targetApi="o"
+            android:indeterminateTint="@color/white"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_std_statistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp">
+        <Button
+            android:id="@+id/std_Statistics_btn_Calculeaza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_white"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/std_statistics_btn_calculeaza"
+            android:textSize="16sp" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/std_statistics_tv_anim"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBaseline="@+id/std_Statistics_btn_Calculeaza"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_marginStart="1dp"-->
+            <!--android:clickable="false"-->
+            <!--android:gravity="center"-->
+            <!--android:text="ceva"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textSize="22sp" />-->
+    </RelativeLayout>
+    <Button
+        android:id="@+id/std_statistics_btn_back"
+        android:layout_width="59dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/back" />
+
+</LinearLayout>

@@ -37,6 +37,7 @@ public class HomePageActivity extends AppCompatActivity {
     private Button btn_my_avatars;
     private Button btn_daily_test;
     private Button btn_daily_question;
+    private Button btn_results;
     private ImageButton img_btn_feedback;
     private TextView tv_avatar_name;
     private Button btn_back_teacher;
@@ -154,19 +155,22 @@ public class HomePageActivity extends AppCompatActivity {
         btn_back_teacher =findViewById(R.id.home_btn_backtoteacher);
         img_btn_help =findViewById(R.id.home_imgBtn_question);
         btn_tasks =findViewById(R.id.home_btn_tasks);
+        btn_results = findViewById(R.id.home_btn_statistics);
         associativeDAO = new AssociativeDAO(this);
         associativeDAO.open();
         associativeDAO.close();
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-        String user= sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
+        String user = sharedPreferences.getString(Constants.USER_PREF, getString(R.string.ppj_utilizator_default_pref));
 
 
 
         if(user.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btn_back_teacher.setVisibility(View.VISIBLE);
+            btn_results.setVisibility(View.INVISIBLE);
         }
         else {
             btn_back_teacher.setVisibility(View.INVISIBLE);
+            btn_results.setVisibility(View.VISIBLE);
         }
         String nume= getIntent().getStringExtra(Constants.NAME_KEY);
         if (nume==null){
@@ -187,6 +191,7 @@ public class HomePageActivity extends AppCompatActivity {
         btn_back_teacher.setOnClickListener(backToTeacher());
         img_btn_help.setOnClickListener(openHelp());
         btn_tasks.setOnClickListener(openTasks());
+        btn_results.setOnClickListener(openResults());
    }
 
    private View.OnClickListener openTasks()
@@ -259,7 +264,16 @@ public class HomePageActivity extends AppCompatActivity {
             }
 
         };
+    }
 
+    private View.OnClickListener openResults(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getApplicationContext(),StudentStatistics.class));
+            }
+        };
     }
     private View.OnClickListener openAvatars(){
 

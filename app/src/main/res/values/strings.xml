@@ -149,6 +149,15 @@
         <item>Times New Roman</item>
         <item>Calibri</item>
     </string-array>
+
+    <string-array name="student_statistics_categories">
+        <item>Matematica</item>
+        <item>Animale</item>
+        <item>Litere</item>
+        <item>Viata de zi cu zi</item>
+        <item>Fructe si legume</item>
+        <item>Total</item>
+    </string-array>
     <string name="sarcini_info_hint">info</string>
     <string name="ppj_txt_sarcini">Sarcini</string>
     <string name="as_btn_adauga">Adaugare</string>
@@ -298,5 +307,12 @@
     <string name="tasksactivity_possitivebutton">Da</string>
     <string name="tasksactivity_negativebutton">Nu</string>
     <string name="addtask_btn_save_hint">SALVARE</string>
+    <string name="std_statistics_title">Rezultatele mele</string>
+    <string name="std_statistics_tv_categ">Categorie Test:</string>
+    <string name="std_statistics_tv_testUsor">Test Usor</string>
+    <string name="std_statistics_tv_testMediu">Test Mediu</string>
+    <string name="std_statistics_tv_testGreu">Test Greu</string>
+    <string name="ppj_btn_rezultate">Reuzultate</string>
+    <string name="std_statistics_btn_calculeaza">Calculeaza Rezultate</string>
 
 </resources>
