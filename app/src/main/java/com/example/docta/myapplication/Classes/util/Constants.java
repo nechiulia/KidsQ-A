@@ -24,6 +24,7 @@ public interface Constants {
 
     String TIME_PREF = "timepref";
     String TIMEKEY_PREF="timeeer";
+    String TIMEKEYTEST_PREF="timeeerrrr";
 
     String STUDENT_SETTINGS_PREF = "setariPref";
     String DIFFICULTY_PREF = "dificultatePref";
@@ -72,5 +73,8 @@ public interface Constants {
     String SET_STUDENT_NAME_KEY = "student name changed";
     String[] COLUMNS_NAME_CSV=new String[]{"NR_CRT","NAME","PUNCTAJ TOTAL","NR INTREBARI","TEST USOR","TEST MEDIU","TEST GREU"};
 
-
+    String CATEG_TOTAL ="total";
+    String SUMY="sumy";
+    String SUMX="sumx";
+    String COUNT ="count";
 }

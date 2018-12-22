@@ -179,7 +179,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
                 AlertDialog.Builder builder= new AlertDialog.Builder(PurchaseAvatarsActivity.this);
                 builder.setTitle(getString(R.string.purchase_toast_buy_avatar))
                         .setMessage(getString(R.string.purchase_toast_sure_buy))
-                        .setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.positive_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if(userAvatars.size()<=2) {
@@ -215,7 +215,7 @@ public class PurchaseAvatarsActivity extends AppCompatActivity {
 
                             }
                         })
-                        .setNegativeButton("Nu", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.negative_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(PurchaseAvatarsActivity.this,getString(R.string.purchase_not_buy), Toast.LENGTH_LONG).show();

@@ -107,11 +107,11 @@ public class AddTaskActivity extends AppCompatActivity {
 
                             if (result == 1) {
                                 Toast.makeText(AddTaskActivity.this,
-                                        "Sarcina a fost actualizata !",
+                                        getString(R.string.add_task_sarcina_Actualizata_succes),
                                         Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(AddTaskActivity.this,
-                                        "Sarcina nu s-a actualizat !",
+                                        getString(R.string.add_task_sarcina_neactualizata),
                                         Toast.LENGTH_LONG).show();
                             }
 

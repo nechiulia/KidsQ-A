@@ -101,7 +101,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                    if(isValid()){
                         Student student = initStudent();
                         studentDAO.open();
-                        if(studentDAO.verifyStudentsName(tie_name.getText().toString())==false) {
+                        if(!studentDAO.verifyStudentsName(tie_name.getText().toString())) {
                             studentDAO.insertStudentByTeacher(student);
                             studentDAO.close();
                             intent.putExtra(Constants.ADD_STUDENT_KEY, student);
@@ -117,12 +117,12 @@ public class SignUpStudentActivity extends AppCompatActivity {
                     if(isValid()){
                         Student student = initStudent();
                         studentDAO.open();
-                        if(studentDAO.verifyStudentsName(tie_name.getText().toString())==false) {
+                        if(!studentDAO.verifyStudentsName(tie_name.getText().toString())) {
                         studentDAO.insertStudentByStudent(student);
                         studentDAO.close();
                         SharedPreferences.Editor editor= sharedPreferencesUser.edit();
                         editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
-                        editor.commit();
+                        editor.apply();
                         intent = new Intent(getApplicationContext(), HomePageActivity.class);
                         startActivity(intent);
                         }else{

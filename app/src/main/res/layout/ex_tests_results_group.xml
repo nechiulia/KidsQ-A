@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="2"
-    android:padding="8dp"
-    android:paddingStart="12dp"
-    android:paddingLeft="12dp"
+    android:padding="14dp"
+    android:paddingStart="14dp"
+    android:paddingLeft="14dp"
     tools:ignore="RtlSymmetry">
 
     <ImageView

@@ -275,6 +275,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
         Bitmap btm=null;
         for(int i=0;i< imageViewsAvatarList.size();i++){
             imageViewsAvatarList.get(i).setImageBitmap(null);
+            imageViewsAvatarList.get(i).setEnabled(false);
         }
         for(int i=0;i< textViewsNameList.size();i++){
             textViewsNameList.get(i).setText("");
@@ -284,6 +285,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
                 btm=BitmapFactory.decodeByteArray(userAv.get(i).getImage(),0,userAv.get(i).getImage().length);
                 imageViewsAvatarList.get(i).setImageBitmap(Bitmap.createBitmap(btm));
                 textViewsNameList.get(i).setText(userAv.get(i).getName());
+                imageViewsAvatarList.get(i).setEnabled(true);
             }
         }
         Bitmap btmCurrent=null;

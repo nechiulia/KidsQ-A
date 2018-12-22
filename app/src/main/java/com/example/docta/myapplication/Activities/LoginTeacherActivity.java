@@ -82,7 +82,11 @@ public class LoginTeacherActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PASSWORD_PREF, tie_password.getText().toString());
                         editor.putString(Constants.EMAIL_PREF, tie_email.getText().toString());
-                        editor.commit();
+                        editor.apply();
+                        sharedPreferences = getSharedPreferences(Constants.TIME_PREF,MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        editor.remove(Constants.TIMEKEY_PREF);
+                        editor.apply();
                         teacherDAO.close();
                         startActivity(intent);
                     }else{
@@ -106,6 +110,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
         btn_back=findViewById(R.id.logintacher_btn_back);
         sharedPreferences=getSharedPreferences(Constants.PASSWORD_PROF_PREF, MODE_PRIVATE);
         teacherDAO = new TeacherDAO(getApplicationContext());
+
 
     }
 

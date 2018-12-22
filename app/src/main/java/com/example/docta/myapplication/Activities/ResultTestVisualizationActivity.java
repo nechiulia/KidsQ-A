@@ -76,7 +76,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         break;
-                    case R.id.menu_clasament:
+                    case R.id.menu_lista:
                         intent = new Intent(getApplicationContext(),ListStudentsActivity.class);
                         startActivity(intent);
                         finish();
@@ -105,17 +105,17 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ResultTestVisualizationActivity.this);
                 builder.setMessage(R.string.resultTestV_formatExtern).
-                        setTitle("Salvare rezultate");
+                        setTitle(getText(R.string.alert_dialog_files_title));
                 final EditText input = new EditText(getApplicationContext());
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
-                input.setHint("Nume Fisier");
+                input.setHint(getString(R.string.save_files_filename));
                 input.setTextSize(15);
 
                 builder.setIcon(R.drawable.ic_save_black_24dp).
                         setView(input).
-                        setPositiveButton("CSV File", null).
-                        setNeutralButton("Cancel", null).
-                        setNegativeButton("Txt File", null);
+                        setPositiveButton(getString(R.string.alert_dialog_csvBtn), null).
+                        setNeutralButton(getString(R.string.alert_dialog_cancel), null).
+                        setNegativeButton(getString(R.string.alert_dialog_text_file), null);
                // builder.create();
 
                 final AlertDialog alert = builder.create();
@@ -168,7 +168,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             txtWriter(dialog, baseDirectory, fileName);
         }
         else if (!input.getText().toString().contains(".txt") || input.getText().toString().matches(" ") || input.getText().toString().matches("")){
-            input.setError("Extensie incompatibila\nExemplu: fisier.txt sau fisier");
+            input.setError(getString(R.string.save_file_txt_edittext_error));
         }
     }
 
@@ -178,7 +178,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
         FileOutputStream fos;
         OutputStreamWriter osw;
         if(file.exists()){
-            Toast.makeText(getApplicationContext(),"Fisierul exista!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_txt_exists),Toast.LENGTH_LONG).show();
         }
         else{
             try {
@@ -198,7 +198,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_name_file_saved,fileName),Toast.LENGTH_LONG).show();
         }
         dialog.dismiss();
     }
@@ -208,17 +208,17 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
     private void writeInCSVfile(EditText input,AlertDialog dialog) {
         String baseDirectory = Environment.getExternalStorageDirectory().getAbsolutePath()+"/";
         String fileName;
-        if(input.getText().toString().contains(".txt") && !input.getText().toString().contains(" ")) {
+        if(input.getText().toString().contains(".csv") && !input.getText().toString().contains(" ")) {
             fileName = input.getText().toString();
             csvWriter(dialog, baseDirectory, fileName);
         }
         else if (!input.getText().toString().trim().isEmpty() && !input.getText().toString().matches("") && !input.getText().toString().contains(" ")){
 
-            fileName = input.getText().toString()+".txt";
+            fileName = input.getText().toString()+".csv";
             csvWriter(dialog, baseDirectory, fileName);
         }
-        else if (!input.getText().toString().contains(".txt") || input.getText().toString().matches(" ") || input.getText().toString().matches("")){
-            input.setError("Extensie incompatibila\nExemplu: fisier.txt sau fisier");
+        else if (!input.getText().toString().contains(".csv") || input.getText().toString().matches(" ") || input.getText().toString().matches("")){
+            input.setError(getString(R.string.save_file_csv_edittext_error));
         }
     }
 
@@ -227,7 +227,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
         File file = new File(filePath);
         CSVWriter writer;
         if(file.exists()){
-            Toast.makeText(getApplicationContext(),"Fisierul exista!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_txt_exists),Toast.LENGTH_LONG).show();
         }
         else{
             try {
@@ -240,7 +240,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_name_file_saved,fileName),Toast.LENGTH_LONG).show();
         }
         dialog.dismiss();
 

@@ -98,31 +98,31 @@ public class TestResultDAO implements DatabaseConstants {
         for(int i = 0 ; i < students.size(); i++){
             TestResult result = new TestResult();
             ArrayList<Integer> no_tests = new ArrayList<>();
-            Cursor c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Usor"});
+            Cursor c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),Constants.DIFFICULTY_EASY_TEST});
             if(c1.moveToFirst()){
-                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+                no_tests.add(c1.getInt(c1.getColumnIndex(Constants.COUNT)));
             }else{
                 no_tests.add(0);
             }
 
-            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Mediu"});
+            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),Constants.DIFFICULTY_MEDIUM_TEST});
             if(c1.moveToFirst()){
-                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+                no_tests.add(c1.getInt(c1.getColumnIndex(Constants.COUNT)));
             }else{
                 no_tests.add(0);
             }
 
-            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),"Greu"});
+            c1 = database.rawQuery(QUERY_COUNT_TESTDIF,new String[]{students.get(i).getUsername(),Constants.DIFFICULTY_HARD_TEST});
             if(c1.moveToFirst()){
-                no_tests.add(c1.getInt(c1.getColumnIndex("count")));
+                no_tests.add(c1.getInt(c1.getColumnIndex(Constants.COUNT)));
             }else{
                 no_tests.add(0);
             }
 
             Cursor c = database.rawQuery(QUERY_SUM_SCORE,new String[]{students.get(i).getUsername()});
             if (c.moveToFirst()){
-                int noCorrectAnswers = c.getInt(c.getColumnIndex("sumy"));
-                double score = c.getDouble(c.getColumnIndex("sumx"));
+                int noCorrectAnswers = c.getInt(c.getColumnIndex(Constants.SUMY));
+                double score = c.getDouble(c.getColumnIndex(Constants.SUMX));
                 result.setNoCorrectAnswers(noCorrectAnswers);
                 result.setScore(score);
                 result.setDif_tests(no_tests);
@@ -149,33 +149,33 @@ public class TestResultDAO implements DatabaseConstants {
         double no_hard_tests = 0;
         Cursor c;
         for(int i =0;i<dificulties.length;i++) {
-            if (!category.equals("total")) {
+            if (!category.equals(Constants.CATEG_TOTAL)) {
                 if (dificulties[i] != null) {
                     c = database.rawQuery(QUERY_1, new String[]{username, dificulties[i],category});
                     if (c.moveToFirst()) {
-                        no_correct += c.getDouble(c.getColumnIndex("sumy"));
+                        no_correct += c.getDouble(c.getColumnIndex(Constants.SUMY));
                         if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
-                            no_easy_corrects = c.getInt(c.getColumnIndex("sumy"));
+                            no_easy_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
                         }
                         if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
-                            no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
+                            no_medium_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
                         }
                         if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
-                            no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
+                            no_hard_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
                         }
                     }
 
                     c = database.rawQuery(QUERY_2, new String[]{username, dificulties[i],category});
                     if (c.moveToFirst()) {
-                        resolved_Tests += c.getDouble(c.getColumnIndex("count"));
+                        resolved_Tests += c.getDouble(c.getColumnIndex(Constants.COUNT));
                         if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
-                            no_easy_tests = c.getInt(c.getColumnIndex("count"));
+                            no_easy_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
                         }
                         if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
-                            no_medium_tests = c.getInt(c.getColumnIndex("count"));
+                            no_medium_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
                         }
                         if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
-                            no_hard_tests = c.getInt(c.getColumnIndex("count"));
+                            no_hard_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
                         }
                     }
                 }
@@ -185,30 +185,34 @@ public class TestResultDAO implements DatabaseConstants {
                 if (dificulties[i] != null) {
                     c = database.rawQuery(QUERY_3, new String[]{username, dificulties[i]});
                     if (c.moveToFirst()) {
-                        no_correct += c.getDouble(c.getColumnIndex("sumy"));
-                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
-                            no_easy_corrects = c.getInt(c.getColumnIndex("sumy"));
-                        }
-                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
-                            no_medium_corrects = c.getInt(c.getColumnIndex("sumy"));
-                        }
-                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
-                            no_hard_corrects = c.getInt(c.getColumnIndex("sumy"));
-                        }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST) ){
+                                no_correct += c.getDouble(c.getColumnIndex(Constants.SUMY));
+                                no_easy_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
+                            }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                                no_correct += c.getDouble(c.getColumnIndex(Constants.SUMY));
+                                no_medium_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
+                            }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                                no_correct += c.getDouble(c.getColumnIndex(Constants.SUMY));
+                                no_hard_corrects = c.getInt(c.getColumnIndex(Constants.SUMY));
+                            }
                     }
 
                     c = database.rawQuery(QUERY_4, new String[]{username, dificulties[i]});
                     if (c.moveToFirst()) {
-                        resolved_Tests += c.getDouble(c.getColumnIndex("count"));
-                        if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
-                            no_easy_tests = c.getInt(c.getColumnIndex("count"));
-                        }
-                        if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
-                            no_medium_tests = c.getInt(c.getColumnIndex("count"));
-                        }
-                        if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
-                            no_hard_tests = c.getInt(c.getColumnIndex("count"));
-                        }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_EASY_TEST)){
+                                resolved_Tests += c.getDouble(c.getColumnIndex(Constants.COUNT));
+                                no_easy_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
+                            }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_MEDIUM_TEST)){
+                                resolved_Tests += c.getDouble(c.getColumnIndex(Constants.COUNT));
+                                no_medium_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
+                            }
+                            if(dificulties[i].equals(Constants.DIFFICULTY_HARD_TEST)){
+                                resolved_Tests += c.getDouble(c.getColumnIndex(Constants.COUNT));
+                                no_hard_tests = c.getInt(c.getColumnIndex(Constants.COUNT));
+                            }
                     }
                 }
             }
@@ -252,7 +256,6 @@ public class TestResultDAO implements DatabaseConstants {
             }
             average_Efficiency = (int)(((x1+x2+x3))*(double)100);
         }
-
         result.add(String.valueOf((int)no_correct));
         result.add(String.valueOf((int)resolved_Tests));
         result.add(String.valueOf(average_Efficiency));

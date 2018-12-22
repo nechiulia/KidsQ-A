@@ -21,6 +21,8 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
     Intent intent;
     String name;
     private StudentDAO studentDAO;
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
         tid_avatar_name=findViewById(R.id.update_student_name_tid_name);
 
         btn_change.setOnClickListener(saveChanges());
+        sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
 
         studentDAO=new StudentDAO(this);
 
@@ -57,7 +60,12 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
                     studentDAO.close();
                     intent = getIntent();
                     intent.putExtra(Constants.SET_STUDENT_NAME_KEY, username);
+                    intent.putExtra(Constants.DOWNLOAD_DONE,true);
+                    editor = sharedPreferences.edit();
+                    editor.putString(Constants.USERNAME_KEY,username);
+                    editor.apply();
                     setResult(RESULT_OK, intent);
+                    //startActivity(new Intent(getApplicationContext(),StudentSettingsActivity.class));
                     finish();
 
 

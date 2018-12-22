@@ -354,8 +354,23 @@
     <string name="resultTestV_formatExtern">Doriti sa salvati rezultatele elevilor intr-un format extern?</string>
     <string name="loginTeacher_gresitEmail">Ati gresit parola sau email-ul</string>
     <string name="home_page_intrebarea_zilei_reload">Intrebarea zilei este gata sa fie rezolvata</string>
-    <string name="home_page_intrebarea_zilei_delay">Intrebarea zilei v-a fi activa la data de:</string>
+    <string name="home_page_intrebarea_zilei_delay">Intrebarea zilei va fi activa la data de:</string>
     <string name="my_avatars_no_points">puncte</string>
     <string name="gregorianDateFormat">dd-MM-yyyy</string>
+    <string name="add_task_sarcina_Actualizata_succes">Sarcina a fost actualizata !</string>
+    <string name="add_task_sarcina_neactualizata">Sarcina nu s-a actualizat !</string>
+    <string name="negative_button">Nu</string>
+    <string name="positive_button">Da</string>
+    <string name="alert_dialog_files_title">Salvare rezultate</string>
+    <string name="save_files_filename">Nume Fisier</string>
+    <string name="alert_dialog_csvBtn">CSV File</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="alert_dialog_text_file">Txt File</string>
+    <string name="save_file_txt_edittext_error">Extensie incompatibila Exemplu: fisier.txt sau fisier</string>
+    <string name="save_file_csv_edittext_error">Extensie incompatibila Exemplu: fisier.csv sau fisier</string>
+    <string name="save_file_txt_exists">Fisierul exista!</string>
+    <string name="save_file_name_file_saved">Fisierul %1$s salvat cu succes!</string>
+    <string name="home_page_testule_zilei_delay">Testul zilei va fi activ la data de:</string>
+    <string name="home_page_testul_zilei_zilei_reload">Testul zilei este pregatit pentru a fi rezolvat!</string>
 
 </resources>

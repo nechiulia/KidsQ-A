@@ -40,12 +40,11 @@ public class StudentStatistics extends AppCompatActivity {
         private ProgressBar pb_average;
         private Button btn_calculation;
         private ArrayList<String> list;
-        private String[] array_dificulty = new String[3];
+        private String[] array_dificulty = new String[5];
         private String user;
         private TestResultDAO testResultDAO;
-        private String chosen_Category;
         private SharedPreferences sharedPreferences;
-        //final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha_button);
+        private String chosen_Category;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +103,14 @@ public class StudentStatistics extends AppCompatActivity {
                         tv_tests_resolved.setText(getString(R.string.student_statistics_tRezolvate) );
                     }else {
                         chosen_Category = spn_categ.getSelectedItem().toString().toLowerCase();
+                        if(chosen_Category.equals("total")){
+                            array_dificulty[3]="Special";
+                            array_dificulty[4]="Special";
+                        }
+                        else{
+                            array_dificulty[3]=null;
+                            array_dificulty[4]=null;
+                        }
                         testResultDAO.open();
                         list = testResultDAO.studentTestResult(user, array_dificulty, chosen_Category);
                         testResultDAO.close();

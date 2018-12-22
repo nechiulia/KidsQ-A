@@ -46,17 +46,27 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
-                if(!categ.equals(Constants.DAILY_QUESTION_KEY) ){
-                    testResultDAO.open();
-                    testResultDAO.insertTestResult(new TestResult(dificult ,categ ,username ,no_correct_answers ,score));
-                    testResultDAO.close();
-                }else{
+                if(categ.equals(Constants.DAILY_QUESTION_KEY )|| categ.equals(Constants.TEST_OF_THE_DAY)){
                     sharedPreferences = getSharedPreferences(Constants.TIME_PREF,MODE_PRIVATE);
                     SharedPreferences.Editor editor2 = sharedPreferences.edit();
                     Date date = new Date(System.currentTimeMillis());
                     Long millis = date.getTime();
-                    editor2.putLong(getString(R.string.result_activity_timestamp), millis);
-                    editor2.apply();
+                    if(categ.equals(Constants.DAILY_QUESTION_KEY )){
+                        editor2.putLong(Constants.TIMEKEY_PREF, millis);
+                        editor2.apply();
+                    }
+                    else{
+                        editor2.putLong(Constants.TIMEKEYTEST_PREF, millis);
+                        editor2.apply();
+                    }
+
+                    testResultDAO.open();
+                    testResultDAO.insertTestResult(new TestResult("Special" ,"Special" ,username ,no_correct_answers ,score));
+                    testResultDAO.close();
+                } else{
+                    testResultDAO.open();
+                    testResultDAO.insertTestResult(new TestResult(dificult ,categ ,username ,no_correct_answers ,score));
+                    testResultDAO.close();
                 }
                 startActivity(intent);
                 finish();

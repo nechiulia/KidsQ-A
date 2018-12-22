@@ -69,6 +69,7 @@ public class HomePageActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferencesSet;
     private SharedPreferences.Editor editor;
     private AssociativeDAO associativeDAO;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +113,18 @@ public class HomePageActivity extends AppCompatActivity {
                 };
         manager.execute(URL);
         initComponents();
-        QuestionDayDelayed();
+        if(user.equals(getString(R.string.principala_utilizator_profesor_pref_message)))
+        {
+            btn_daily_test.setEnabled(true);
+            btn_daily_test.setBackgroundResource(R.drawable.rounded_button_general);
+            btn_daily_question.setEnabled(true);
+            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
+        }
+        else{
+            QuestionDayDelayed();
+            TestDayDelayed();
+        }
+
 
 
     }
@@ -123,12 +135,8 @@ public class HomePageActivity extends AppCompatActivity {
         long one_minute = 1000 * 60*60*24;
         SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
         Long oldTime = pref.getLong(Constants.TIMEKEY_PREF, 0);
-        long newTime = oldTime + one_minute; // //4:18 + 3  = 4:21 // 4:20 //60000
+        long newTime = oldTime + one_minute;
         Date d = new Date(newTime);
-        // Long oldT = Long.parseLong(oldTime);
-//        DateFormat df = new SimpleDateFormat("HH 'hours', mm 'mins,' ss 'seconds'");
-//        df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
-
         @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat(getString(R.string.gregorianDateFormat));
         sdf.format(d);
         Calendar cal = Calendar. getInstance();
@@ -140,36 +148,37 @@ public class HomePageActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_reload) ,Toast.LENGTH_LONG).show();
         } else {
             btn_daily_question.setEnabled(false);
-            Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_delay) + cal.getTime(),Toast.LENGTH_LONG).show();
             btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
+            if(!isChecked){
+                Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_delay) + cal.getTime(),Toast.LENGTH_LONG).show();
+            }
         }
     }
-
-//    public static String getDurationBreakdown(long millis) {
-//        if(millis < 0) {
-//            throw new IllegalArgumentException("Trebuie sa fie mai mare ca 0!");
-//        }
-//
-//        long days = TimeUnit.MILLISECONDS.toDays(millis);
-//        millis -= TimeUnit.DAYS.toMillis(days);
-//        long hours = TimeUnit.MILLISECONDS.toHours(millis);
-//        millis -= TimeUnit.HOURS.toMillis(hours);
-//        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
-//        millis -= TimeUnit.MINUTES.toMillis(minutes);
-//        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
-//
-//        StringBuilder sb = new StringBuilder(64);
-//        sb.append(days);
-//        sb.append(" Days ");
-//        sb.append(hours);
-//        sb.append(" Hours ");
-//        sb.append(minutes);
-//        sb.append(" Minutes ");
-//        sb.append(seconds);
-//        sb.append(" Seconds");
-//
-//        return(sb.toString());
-//    }
+    private void TestDayDelayed() {
+        //               milli min  hour  day
+//          long one_Day = 1000 * 60 * 60 * 24;
+        long one_minute = 1000 * 60*60*24;
+        SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
+        Long oldTime = pref.getLong(Constants.TIMEKEYTEST_PREF, 0);
+        long newTime = oldTime + one_minute;
+        Date d = new Date(newTime);
+        @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat(getString(R.string.gregorianDateFormat));
+        sdf.format(d);
+        Calendar cal = Calendar. getInstance();
+        cal. setTime(d);
+        cal.setTimeZone(null);
+        if (System.currentTimeMillis() - oldTime > one_minute) {
+            btn_daily_test.setEnabled(true);
+            btn_daily_test.setBackgroundResource(R.drawable.rounded_button_general);
+            Toast.makeText(getApplicationContext(),getString(R.string.home_page_testul_zilei_zilei_reload) ,Toast.LENGTH_LONG*2).show();
+        } else {
+            btn_daily_test.setEnabled(false);
+            btn_daily_test.setBackgroundResource(R.drawable.rounded_button_invalidate);
+            if(!isChecked){
+                Toast.makeText(getApplicationContext(),getString(R.string.home_page_testule_zilei_delay) + cal.getTime(),Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
 
     private void getInfos(){
@@ -227,11 +236,12 @@ public class HomePageActivity extends AppCompatActivity {
         associativeDAO.open();
         associativeDAO.close();
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
-        String user = sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.ppj_utilizator_default_pref));
+        user = sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.ppj_utilizator_default_pref));
 
         if(user.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btn_back_teacher.setVisibility(View.VISIBLE);
             btn_results.setVisibility(View.INVISIBLE);
+
         }
         else {
             btn_back_teacher.setVisibility(View.INVISIBLE);
@@ -323,6 +333,10 @@ public class HomePageActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sr = getSharedPreferences(Constants.CATEG_PREF, MODE_PRIVATE);
+                editor = sr.edit();
+                editor.putString(Constants.GET_CATEG, Constants.TEST_OF_THE_DAY);
+                editor.apply();
                 dailyTestQuestions = questionsSet.getHard();
                 Intent intent = new Intent(getApplicationContext(), QuestionsActivity.class);
                 intent.putExtra(Constants.DAILY_TEST,getString(R.string.Valoare_TestulZilei));

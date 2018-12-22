@@ -12,18 +12,11 @@
         android:id="@+id/ex_image"
         android:layout_width="108dp"
         android:layout_height="76dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="137dp"
-        android:layout_marginLeft="137dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="61dp"
-        android:layout_marginRight="61dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toStartOf="@+id/ex_item_Mediu"
-        android:layout_toLeftOf="@+id/ex_item_Mediu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="17dp"
         android:src="@drawable/icon_parallel_loading" />
 
     <TextView
