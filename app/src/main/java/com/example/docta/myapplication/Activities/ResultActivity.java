@@ -55,7 +55,7 @@ public class ResultActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor2 = sharedPreferences.edit();
                     Date date = new Date(System.currentTimeMillis());
                     Long millis = date.getTime();
-                    editor2.putLong("smstimestamp", millis);
+                    editor2.putLong(getString(R.string.result_activity_timestamp), millis);
                     editor2.apply();
                 }
                 startActivity(intent);

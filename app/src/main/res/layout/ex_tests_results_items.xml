@@ -38,7 +38,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:text="TextView"
+        android:text="@string/ex_tr_greu"
         android:textSize="14sp" />
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="TextView"
+        android:text="@string/ex_tr_usor"
         android:textSize="14sp" />
 
     <TextView
@@ -64,7 +64,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="21dp"
-        android:text="TextView"
+        android:text="@string/ex_tr_noCorrects"
         android:textSize="16sp" />
 
     <TextView
@@ -77,7 +77,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="21dp"
-        android:text="TextView"
+        android:text="@string/ex_tr_scor"
         android:textSize="16sp" />
 
     <TextView
@@ -90,7 +90,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:text="TextView"
+        android:text="@string/ex_tr_mediu"
         android:textAlignment="center"
 
         android:textSize="14sp" />

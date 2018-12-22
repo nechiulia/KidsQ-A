@@ -96,7 +96,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-                builder.setTitle("Ștergere Cont")
+                builder.setTitle(R.string.settings_title_stergereCont)
                         .setMessage("Sunteți sigur că doriți ștergeți contul?")
                         .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                             @Override

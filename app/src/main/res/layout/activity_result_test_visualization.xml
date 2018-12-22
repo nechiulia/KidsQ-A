@@ -24,7 +24,7 @@
         android:layout_weight="0.8"
         android:paddingTop="10dp"
         android:textAlignment="center"
-        android:text="Rezultate Elevi"
+        android:text="@string/rezultate_elevi_tv_titlu"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
         />

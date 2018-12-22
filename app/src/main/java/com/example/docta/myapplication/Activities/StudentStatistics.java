@@ -97,18 +97,18 @@ public class StudentStatistics extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if(!cb_Easy_Test.isChecked() && !cb_Medium_Test.isChecked() && !cb_Hard_Test.isChecked()) {
-                        Toast.makeText(getApplicationContext(),"Nu a fost selectat nicio dificultate!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),getString(R.string.student_statistics_neselectat),Toast.LENGTH_LONG).show();
                         pb_average.setProgress(0);
                         tv_avarage_efficiency.setText("%");
-                        tv_correct_answers.setText("Raspunsuri corecte: " );
-                        tv_tests_resolved.setText("Teste rezolvate: " );
+                        tv_correct_answers.setText(getString(R.string.student_statistics_raspCorecte) );
+                        tv_tests_resolved.setText(getString(R.string.student_statistics_tRezolvate) );
                     }else {
                         chosen_Category = spn_categ.getSelectedItem().toString().toLowerCase();
                         testResultDAO.open();
                         list = testResultDAO.studentTestResult(user, array_dificulty, chosen_Category);
                         testResultDAO.close();
-                        tv_correct_answers.setText("Raspunsuri corecte: " + list.get(0));
-                        tv_tests_resolved.setText("Teste rezolvate: " + list.get(1));
+                        tv_correct_answers.setText(getString(R.string.student_sts_rCorecte) + list.get(0));
+                        tv_tests_resolved.setText(getString(R.string.student_sts_tRez) + list.get(1));
                         pb_average.setProgress(Integer.parseInt(list.get(2)), true);
                         tv_avarage_efficiency.setText(list.get(2) + "%");
 

@@ -104,7 +104,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ResultTestVisualizationActivity.this);
-                builder.setMessage("Doriti sa salvati rezultatele elevilor intr-un format extern?").
+                builder.setMessage(R.string.resultTestV_formatExtern).
                         setTitle("Salvare rezultate");
                 final EditText input = new EditText(getApplicationContext());
                 input.setInputType(InputType.TYPE_CLASS_TEXT);

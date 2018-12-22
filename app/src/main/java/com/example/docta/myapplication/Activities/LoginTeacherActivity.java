@@ -86,7 +86,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
                         teacherDAO.close();
                         startActivity(intent);
                     }else{
-                        Toast.makeText(getApplicationContext(),"Ati gresit parola sau email-ul",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),getString(R.string.loginTeacher_gresitEmail),Toast.LENGTH_LONG).show();
                     }
                 }
             }
