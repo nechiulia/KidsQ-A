@@ -353,5 +353,9 @@
     <string name="settings_title_stergereCont">Ștergere Cont</string>
     <string name="resultTestV_formatExtern">Doriti sa salvati rezultatele elevilor intr-un format extern?</string>
     <string name="loginTeacher_gresitEmail">Ati gresit parola sau email-ul</string>
+    <string name="home_page_intrebarea_zilei_reload">Intrebarea zilei este gata sa fie rezolvata</string>
+    <string name="home_page_intrebarea_zilei_delay">Intrebarea zilei v-a fi activa la data de:</string>
+    <string name="my_avatars_no_points">puncte</string>
+    <string name="gregorianDateFormat">dd-MM-yyyy</string>
 
 </resources>

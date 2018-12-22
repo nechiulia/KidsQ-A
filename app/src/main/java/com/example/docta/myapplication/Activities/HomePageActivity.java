@@ -69,14 +69,7 @@ public class HomePageActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferencesSet;
     private SharedPreferences.Editor editor;
     private AssociativeDAO associativeDAO;
-    private long dateForQuestion;
-//    private static final IntentFilter s_intentFilter;
-//    static {
-//        s_intentFilter = new IntentFilter();
-//       s_intentFilter.addAction(Intent.ACTION_TIME_TICK);
-//       s_intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
-//       s_intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
-//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,14 +86,13 @@ public class HomePageActivity extends AppCompatActivity {
                     protected void onPreExecute() {
                         super.onPreExecute();
                         if(!isChecked) {
-                                getInfos();
-                            }
+                             getInfos();
+                        }
                     }
 
                     @Override
                     protected String doInBackground(String... strings) {
                         return super.doInBackground(strings);
-
                     }
 
                     @Override
@@ -130,14 +122,14 @@ public class HomePageActivity extends AppCompatActivity {
 //          long one_Day = 1000 * 60 * 60 * 24;
         long one_minute = 1000 * 60*60*24;
         SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
-        Long oldTime = pref.getLong("smstimestamp", 0);
+        Long oldTime = pref.getLong(Constants.TIMEKEY_PREF, 0);
         long newTime = oldTime + one_minute; // //4:18 + 3  = 4:21 // 4:20 //60000
         Date d = new Date(newTime);
         // Long oldT = Long.parseLong(oldTime);
 //        DateFormat df = new SimpleDateFormat("HH 'hours', mm 'mins,' ss 'seconds'");
 //        df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
 
-        @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat(getString(R.string.gregorianDateFormat));
         sdf.format(d);
         Calendar cal = Calendar. getInstance();
         cal. setTime(d);
@@ -145,39 +137,39 @@ public class HomePageActivity extends AppCompatActivity {
         if (System.currentTimeMillis() - oldTime > one_minute) {
             btn_daily_question.setEnabled(true);
             btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
-            Toast.makeText(getApplicationContext(),"Intrebarea zilei este gata sa fie rezolvata " ,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_reload) ,Toast.LENGTH_LONG).show();
         } else {
             btn_daily_question.setEnabled(false);
-            Toast.makeText(getApplicationContext(),"Intrebarea zilei v-a fi activa la data de: " + cal.getTime(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_delay) + cal.getTime(),Toast.LENGTH_LONG).show();
             btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
         }
     }
 
-    public static String getDurationBreakdown(long millis) {
-        if(millis < 0) {
-            throw new IllegalArgumentException("Duration must be greater than zero!");
-        }
-
-        long days = TimeUnit.MILLISECONDS.toDays(millis);
-        millis -= TimeUnit.DAYS.toMillis(days);
-        long hours = TimeUnit.MILLISECONDS.toHours(millis);
-        millis -= TimeUnit.HOURS.toMillis(hours);
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
-        millis -= TimeUnit.MINUTES.toMillis(minutes);
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
-
-        StringBuilder sb = new StringBuilder(64);
-        sb.append(days);
-        sb.append(" Days ");
-        sb.append(hours);
-        sb.append(" Hours ");
-        sb.append(minutes);
-        sb.append(" Minutes ");
-        sb.append(seconds);
-        sb.append(" Seconds");
-
-        return(sb.toString());
-    }
+//    public static String getDurationBreakdown(long millis) {
+//        if(millis < 0) {
+//            throw new IllegalArgumentException("Trebuie sa fie mai mare ca 0!");
+//        }
+//
+//        long days = TimeUnit.MILLISECONDS.toDays(millis);
+//        millis -= TimeUnit.DAYS.toMillis(days);
+//        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+//        millis -= TimeUnit.HOURS.toMillis(hours);
+//        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+//        millis -= TimeUnit.MINUTES.toMillis(minutes);
+//        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+//
+//        StringBuilder sb = new StringBuilder(64);
+//        sb.append(days);
+//        sb.append(" Days ");
+//        sb.append(hours);
+//        sb.append(" Hours ");
+//        sb.append(minutes);
+//        sb.append(" Minutes ");
+//        sb.append(seconds);
+//        sb.append(" Seconds");
+//
+//        return(sb.toString());
+//    }
 
 
     private void getInfos(){
@@ -417,81 +409,5 @@ public class HomePageActivity extends AppCompatActivity {
             }
         };
     }
-
-
-
-
-//    public void startt() {
-//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        int interval = 20000;
-//
-//        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
-//        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
-//        btn_daily_question.setEnabled(false);
-//    }
-//
-//    public void startAt10() {
-//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        int interval = 1000 * 60 * 20;
-//
-//        /* Set the alarm to start at 10:30 AM */
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, 4);
-//        calendar.set(Calendar.MINUTE, 37);
-//
-//        /* Repeating on every 20 minutes interval */
-//        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-//                1000 * 60 , pendingIntent);
-//        btn_daily_question.setEnabled(true);
-//    }
-//
-//    public void cancel() {
-//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        manager.cancel(pendingIntent);
-//        Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
-//    }
-
-//    public void startAlarm(View view){
-//        long two_min = 1000 * 10;
-//        Long alertTime = new GregorianCalendar().getTimeInMillis() + two_min;
-//        Long alertAlternative = System.currentTimeMillis() + two_min;
-//        Intent intentAlert = new Intent(getApplicationContext(),AlertReceiver.class);
-//
-//        //   long one_minute = 1000 * 60*3;
-//        SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
-//        Long oldTime = pref.getLong("smstimestamp", 0);
-//        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        alarmManager.set(AlarmManager.RTC_WAKEUP,alertAlternative,PendingIntent.getBroadcast(getApplicationContext(),1,intentAlert,PendingIntent.FLAG_UPDATE_CURRENT));
-        // Long oldT = Long.parseLong(oldTime);
-//        if (System.currentTimeMillis() - oldTime > two_min) {
-//            btn_daily_question.setEnabled(true);
-//            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
-//        } else {
-//            btn_daily_question.setEnabled(false);
-//            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
-//        }
-
-//    private void startAlarma(boolean isNotification, boolean isRepeat) {
-//        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-//        Intent myIntent;
-//        PendingIntent pendingIntent;
-//
-//        // SET TIME HERE
-//        Calendar calendar= Calendar.getInstance();
-//        calendar.set(Calendar.HOUR_OF_DAY,15);
-//        calendar.set(Calendar.MINUTE,32);
-//
-//
-//        myIntent = new Intent(HomePageActivity.this,AlertReceiver.class);
-//        pendingIntent = PendingIntent.getBroadcast(this,0,myIntent,0);
-//
-//
-//        if(!isRepeat)
-//            manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+3000,pendingIntent);
-//        else
-//            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
-//    }
-
 }
 

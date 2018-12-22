@@ -53,7 +53,7 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),getString(R.string.update_student_name_err_necompletat),Toast.LENGTH_LONG).show();
                 }
                 studentDAO.open();
-                if(studentDAO.verifyStudentsName(username)==false) {
+                if(!studentDAO.verifyStudentsName(username)) {
                     studentDAO.close();
                     intent = getIntent();
                     intent.putExtra(Constants.SET_STUDENT_NAME_KEY, username);

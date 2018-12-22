@@ -270,6 +270,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
            }
        };
     }
+    @SuppressLint("SetTextI18n")
     private void initControllers(ArrayList<Avatar> userAv){
         Bitmap btm=null;
         for(int i=0;i< imageViewsAvatarList.size();i++){
@@ -292,7 +293,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
         btmCurrent=BitmapFactory.decodeByteArray(avatarCurrent,0,avatarCurrent.length);
         avatarprincipal.setImageBitmap(Bitmap.createBitmap(btmCurrent));
         studentDao.open();
-            tvScore.setText(studentDao.findScoreByUser(user).toString()+" puncte");
+            tvScore.setText(studentDao.findScoreByUser(user).toString()+getString(R.string.my_avatars_no_points));
         studentDao.close();
     }
     private View.OnClickListener changeName(int position) {
