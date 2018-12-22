@@ -112,9 +112,6 @@
             android:name=".Activities.ShowImageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.UpdateAvatarNameActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activities.UpdateStudentNameActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -304,7 +304,7 @@ public class MyAvatarsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ivSelected = position;
                 if (userAvatars.get(position).getAppAvatar() == 0) {
-                    Intent intent = new Intent(getApplicationContext(), UpdateAvatarNameActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), UpdateStudentNameActivity.class);
                     intent.putExtra(Constants.CHANGE_NAME_KEY, textViewsNameList.get(position).getText().toString());
                     startActivityForResult(intent, Constants.UPDATE_AVATAR_REQUEST_CODE);
                 } else {
