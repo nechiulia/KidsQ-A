@@ -61,7 +61,7 @@ public class ResultActivity extends AppCompatActivity {
                     }
 
                     testResultDAO.open();
-                    testResultDAO.insertTestResult(new TestResult("Special" ,"Special" ,username ,no_correct_answers ,score));
+                    testResultDAO.insertTestResult(new TestResult(Constants.CATEG_SPEC ,Constants.CATEG_SPEC ,username ,no_correct_answers ,score));
                     testResultDAO.close();
                 } else{
                     testResultDAO.open();

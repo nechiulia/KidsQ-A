@@ -77,4 +77,6 @@ public interface Constants {
     String SUMY="sumy";
     String SUMX="sumx";
     String COUNT ="count";
+
+    String CATEG_SPEC= "Special";
 }
