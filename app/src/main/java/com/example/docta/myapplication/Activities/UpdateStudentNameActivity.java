@@ -28,6 +28,10 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_student_name);
+        if(savedInstanceState==null){
+            String title = getString(R.string.update_username);
+            this.setTitle(title);
+        }
         intent = getIntent();
         name=getIntent().getStringExtra(Constants.CHANGE_NAME_KEY);
         init();

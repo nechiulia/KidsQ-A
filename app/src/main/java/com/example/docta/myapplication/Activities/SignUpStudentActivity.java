@@ -143,7 +143,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
         int gender = rg_gender.getCheckedRadioButtonId();
         int age = Integer.parseInt(spn_age.getSelectedItem().toString());
         byte[] avatar;
-        double score =0;
+        double score =1000;
         if(gender == R.id.signup_rb_boy ){
             Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.sboy);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();

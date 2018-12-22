@@ -59,7 +59,10 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_test_visualization);
-
+        if(savedInstanceState==null){
+            String title = getString(R.string.result_test_visulization_title);
+            this.setTitle(title);
+        }
 
         verifyStoragePermissions(ResultTestVisualizationActivity.this);
         initComponents();

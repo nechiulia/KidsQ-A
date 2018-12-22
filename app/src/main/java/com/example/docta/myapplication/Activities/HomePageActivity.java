@@ -145,8 +145,8 @@ public class HomePageActivity extends AppCompatActivity {
         if (System.currentTimeMillis() - oldTime > one_minute) {
             btn_daily_question.setEnabled(true);
             btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
-            Toast.makeText(getApplicationContext(),getString(R.string.home_page_intrebarea_zilei_reload) ,Toast.LENGTH_LONG).show();
-        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.home_page_intrebarea_zilei_reload), Toast.LENGTH_LONG).show();
+            } else {
             btn_daily_question.setEnabled(false);
             btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
             if(!isChecked){

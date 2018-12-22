@@ -372,5 +372,9 @@
     <string name="save_file_name_file_saved">Fisierul %1$s salvat cu succes!</string>
     <string name="home_page_testule_zilei_delay">Testul zilei va fi activ la data de:</string>
     <string name="home_page_testul_zilei_zilei_reload">Testul zilei este pregatit pentru a fi rezolvat!</string>
+    <string name="result_test_visulization_title">Rezultatele Elevilor</string>
+    <string name="update_avatarName">Update Nume Erou</string>
+    <string name="update_username">Update Username</string>
+    <string name="student_sts_eficienta">Eficienta mea</string>
 
 </resources>

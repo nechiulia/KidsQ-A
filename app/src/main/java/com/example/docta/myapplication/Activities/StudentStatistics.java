@@ -49,6 +49,10 @@ public class StudentStatistics extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_statistics);
+            if(savedInstanceState==null){
+                String title = getString(R.string.student_sts_eficienta);
+                this.setTitle(title);
+            }
         initComp();
 
             btn_back.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +65,7 @@ public class StudentStatistics extends AppCompatActivity {
             cb_Easy_Test.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(cb_Easy_Test.isChecked()){
+                    if(isChecked){
                         array_dificulty[0] = Constants.DIFFICULTY_EASY_TEST;
                     }else {
                         array_dificulty[0] = null;
@@ -72,7 +76,7 @@ public class StudentStatistics extends AppCompatActivity {
             cb_Medium_Test.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(cb_Medium_Test.isChecked()){
+                    if(isChecked){
                         array_dificulty[1] = Constants.DIFFICULTY_MEDIUM_TEST;
                     }else {
                         array_dificulty[1] = null;
@@ -103,9 +107,9 @@ public class StudentStatistics extends AppCompatActivity {
                         tv_tests_resolved.setText(getString(R.string.student_statistics_tRezolvate) );
                     }else {
                         chosen_Category = spn_categ.getSelectedItem().toString().toLowerCase();
-                        if(chosen_Category.equals("total")){
-                            array_dificulty[3]="Special";
-                            array_dificulty[4]="Special";
+                        if(chosen_Category.equals(Constants.CATEG_TOTAL)){
+                            array_dificulty[3]=Constants.CATEG_SPEC;
+                            array_dificulty[4]=Constants.CATEG_SPEC;
                         }
                         else{
                             array_dificulty[3]=null;

@@ -21,6 +21,10 @@ public class UpdateAvatarNameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_avatar_name);
+        if(savedInstanceState==null){
+            String title = getString(R.string.update_avatarName);
+            this.setTitle(title);
+        }
         intent = getIntent();
         name=getIntent().getStringExtra(Constants.CHANGE_NAME_KEY);
         initComponents();
