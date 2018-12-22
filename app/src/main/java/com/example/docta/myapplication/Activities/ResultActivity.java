@@ -14,6 +14,8 @@ import com.example.docta.myapplication.Classes.util.TestResult;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
 
+import java.util.Date;
+
 public class ResultActivity extends AppCompatActivity {
 
     private Button btn_back;
@@ -48,6 +50,13 @@ public class ResultActivity extends AppCompatActivity {
                     testResultDAO.open();
                     testResultDAO.insertTestResult(new TestResult(dificult ,categ ,username ,no_correct_answers ,score));
                     testResultDAO.close();
+                }else{
+                    sharedPreferences = getSharedPreferences(Constants.TIME_PREF,MODE_PRIVATE);
+                    SharedPreferences.Editor editor2 = sharedPreferences.edit();
+                    Date date = new Date(System.currentTimeMillis());
+                    Long millis = date.getTime();
+                    editor2.putLong("smstimestamp", millis);
+                    editor2.apply();
                 }
                 startActivity(intent);
                 finish();
@@ -73,7 +82,7 @@ public class ResultActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(Constants.CATEG_PREF,MODE_PRIVATE);
         categ = sharedPreferences.getString(Constants.GET_CATEG,null);
         sharedPreferences = getSharedPreferences(Constants.STUDENT_SETTINGS_PREF,MODE_PRIVATE);
-        dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,null);
+        dificult = sharedPreferences.getString(Constants.DIFFICULTY_PREF,Constants.DIFFICULTY_EASY_TEST);
     }
 
 }

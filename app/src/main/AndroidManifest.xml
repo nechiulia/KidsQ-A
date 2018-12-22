@@ -15,6 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <!--<receiver android:name=".Classes.util.DeviceBootReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <!--&lt;!&ndash;<category android:name="android.intent.category.HOME" />&ndash;&gt;-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!--<receiver android:name=".Classes.util.AlertReceiver"/>-->
+
+        <!--<service-->
+            <!--android:name=".Classes.util.MyService"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true" />-->
+
         <activity
             android:name=".Activities.LoadingActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -23,7 +39,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
         <activity
             android:name=".Activities.LoginPageActivity"
             android:screenOrientation="portrait" />
@@ -102,7 +120,8 @@
         <activity
             android:name=".Activities.ResultTestVisualizationActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.StudentStatistics"></activity>
+        <activity android:name=".Activities.StudentStatistics"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

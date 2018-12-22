@@ -6,11 +6,6 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 
 import com.example.docta.myapplication.Classes.util.Student;
 

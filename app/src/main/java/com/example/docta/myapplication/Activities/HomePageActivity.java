@@ -1,11 +1,20 @@
 package com.example.docta.myapplication.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
+
 import com.example.docta.myapplication.Classes.util.Question;
 import com.example.docta.myapplication.Classes.Network.HttpManager;
 import com.example.docta.myapplication.Classes.util.QuestionsSet;
@@ -24,8 +34,15 @@ import com.example.docta.myapplication.Classes.util.Constants;
 
 import org.json.JSONException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 
 public class HomePageActivity extends AppCompatActivity {
@@ -54,14 +71,19 @@ public class HomePageActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferencesSet;
     private SharedPreferences.Editor editor;
     private AssociativeDAO associativeDAO;
-
+    private long dateForQuestion;
+//    private static final IntentFilter s_intentFilter;
+//    static {
+//        s_intentFilter = new IntentFilter();
+//       s_intentFilter.addAction(Intent.ACTION_TIME_TICK);
+//       s_intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED);
+//       s_intentFilter.addAction(Intent.ACTION_TIME_CHANGED);
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //incarca lista avatare
-
-        //
         setContentView(R.layout.activity_home_page);
+
         isChecked = getIntent().getBooleanExtra(Constants.DOWNLOAD_DONE,false);
         sharedPreferencesSet = getSharedPreferences(getString(R.string.home_page_text_set_intrebari), MODE_PRIVATE);
         if(savedInstanceState==null){
@@ -69,8 +91,6 @@ public class HomePageActivity extends AppCompatActivity {
             this.setTitle(title);
         }
                 @SuppressLint("StaticFieldLeak") HttpManager manager = new HttpManager() {
-
-
                     @Override
                     protected void onPreExecute() {
                         super.onPreExecute();
@@ -93,7 +113,6 @@ public class HomePageActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                             }
 
-//
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), getString(R.string.jucam_parsare_eroare), Toast.LENGTH_LONG).show();
@@ -103,7 +122,65 @@ public class HomePageActivity extends AppCompatActivity {
                 };
         manager.execute(URL);
         initComponents();
+        QuestionDayDelayed();
+
+
     }
+
+    private void QuestionDayDelayed() {
+        //               milli min  hour  day
+//          long one_Day = 1000 * 60 * 60 * 24;
+        long one_minute = 1000 * 60*60*24;
+        SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
+        Long oldTime = pref.getLong("smstimestamp", 0);
+        long newTime = oldTime + one_minute; // //4:18 + 3  = 4:21 // 4:20 //60000
+        Date d = new Date(newTime);
+        // Long oldT = Long.parseLong(oldTime);
+//        DateFormat df = new SimpleDateFormat("HH 'hours', mm 'mins,' ss 'seconds'");
+//        df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+
+        @SuppressLint("SimpleDateFormat") DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.format(d);
+        Calendar cal = Calendar. getInstance();
+        cal. setTime(d);
+        cal.setTimeZone(null);
+        if (System.currentTimeMillis() - oldTime > one_minute) {
+            btn_daily_question.setEnabled(true);
+            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
+            Toast.makeText(getApplicationContext(),"Intrebarea zilei este gata sa fie rezolvata " ,Toast.LENGTH_LONG).show();
+        } else {
+            btn_daily_question.setEnabled(false);
+            Toast.makeText(getApplicationContext(),"Intrebarea zilei v-a fi activa la data de: " + cal.getTime(),Toast.LENGTH_LONG).show();
+            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
+        }
+    }
+
+    public static String getDurationBreakdown(long millis) {
+        if(millis < 0) {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long days = TimeUnit.MILLISECONDS.toDays(millis);
+        millis -= TimeUnit.DAYS.toMillis(days);
+        long hours = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.HOURS.toMillis(hours);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+        millis -= TimeUnit.MINUTES.toMillis(minutes);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(days);
+        sb.append(" Days ");
+        sb.append(hours);
+        sb.append(" Hours ");
+        sb.append(minutes);
+        sb.append(" Minutes ");
+        sb.append(seconds);
+        sb.append(" Seconds");
+
+        return(sb.toString());
+    }
+
 
     private void getInfos(){
           //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -162,8 +239,6 @@ public class HomePageActivity extends AppCompatActivity {
         sharedPreferences= getSharedPreferences(Constants.CONT_STATUT_PREF, MODE_PRIVATE);
         String user = sharedPreferences.getString(Constants.USER_STATUT_PREF, getString(R.string.ppj_utilizator_default_pref));
 
-
-
         if(user.compareTo(getString(R.string.principala_utilizator_profesor_pref_message))==0){
             btn_back_teacher.setVisibility(View.VISIBLE);
             btn_results.setVisibility(View.INVISIBLE);
@@ -179,6 +254,7 @@ public class HomePageActivity extends AppCompatActivity {
         else {
         tv_avatar_name.setText(getString(R.string.ppj_tv_bineAiVenit)+ nume);
         }
+
 
         btn_learn.setOnClickListener(startToLearn());
         btn_play.setOnClickListener(startToPlay());
@@ -232,15 +308,23 @@ public class HomePageActivity extends AppCompatActivity {
             }
         };
     }
-    private View.OnClickListener openDailyQuestion(){
+    private View.OnClickListener openDailyQuestion() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dailyQuestion = questionsSet.getDailyQuestion();
-                Collections.shuffle(dailyQuestion);
-                Intent intent = new Intent(getApplicationContext(), DailyQuestionActivity.class);
-                intent.putExtra(Constants.DAILY_QUESTION_KEY, dailyQuestion.get(0));
-                startActivity(intent);
+                if (!btn_daily_question.isEnabled()) {
+                } else {
+                    SharedPreferences sr = getSharedPreferences(Constants.CATEG_PREF, MODE_PRIVATE);
+                    editor = sr.edit();
+                    editor.putString(Constants.GET_CATEG, Constants.QUESTION_OF_THE_DAY);
+                    editor.apply();
+                    dailyQuestion = questionsSet.getDailyQuestion();
+                    Collections.shuffle(dailyQuestion);
+                    Intent intent = new Intent(getApplicationContext(), DailyQuestionActivity.class);
+                    intent.putExtra(Constants.DAILY_QUESTION_KEY, dailyQuestion.get(0));
+
+                    startActivity(intent);
+                }
             }
         };
     }
@@ -255,6 +339,7 @@ public class HomePageActivity extends AppCompatActivity {
                 intent.putExtra(Constants.QUESTIONS_LIST_KEY, dailyTestQuestions);
                 startActivity(intent);
                 finish();
+
             }
 
         };
@@ -337,4 +422,78 @@ public class HomePageActivity extends AppCompatActivity {
 
 
 
+
+//    public void startt() {
+//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        int interval = 20000;
+//
+//        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+//        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
+//        btn_daily_question.setEnabled(false);
+//    }
+//
+//    public void startAt10() {
+//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        int interval = 1000 * 60 * 20;
+//
+//        /* Set the alarm to start at 10:30 AM */
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(System.currentTimeMillis());
+//        calendar.set(Calendar.HOUR_OF_DAY, 4);
+//        calendar.set(Calendar.MINUTE, 37);
+//
+//        /* Repeating on every 20 minutes interval */
+//        manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+//                1000 * 60 , pendingIntent);
+//        btn_daily_question.setEnabled(true);
+//    }
+//
+//    public void cancel() {
+//        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        manager.cancel(pendingIntent);
+//        Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
+//    }
+
+//    public void startAlarm(View view){
+//        long two_min = 1000 * 10;
+//        Long alertTime = new GregorianCalendar().getTimeInMillis() + two_min;
+//        Long alertAlternative = System.currentTimeMillis() + two_min;
+//        Intent intentAlert = new Intent(getApplicationContext(),AlertReceiver.class);
+//
+//        //   long one_minute = 1000 * 60*3;
+//        SharedPreferences pref = getSharedPreferences(Constants.TIME_PREF, MODE_PRIVATE);
+//        Long oldTime = pref.getLong("smstimestamp", 0);
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+//        alarmManager.set(AlarmManager.RTC_WAKEUP,alertAlternative,PendingIntent.getBroadcast(getApplicationContext(),1,intentAlert,PendingIntent.FLAG_UPDATE_CURRENT));
+        // Long oldT = Long.parseLong(oldTime);
+//        if (System.currentTimeMillis() - oldTime > two_min) {
+//            btn_daily_question.setEnabled(true);
+//            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
+//        } else {
+//            btn_daily_question.setEnabled(false);
+//            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_invalidate);
+//        }
+
+//    private void startAlarma(boolean isNotification, boolean isRepeat) {
+//        AlarmManager manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+//        Intent myIntent;
+//        PendingIntent pendingIntent;
+//
+//        // SET TIME HERE
+//        Calendar calendar= Calendar.getInstance();
+//        calendar.set(Calendar.HOUR_OF_DAY,15);
+//        calendar.set(Calendar.MINUTE,32);
+//
+//
+//        myIntent = new Intent(HomePageActivity.this,AlertReceiver.class);
+//        pendingIntent = PendingIntent.getBroadcast(this,0,myIntent,0);
+//
+//
+//        if(!isRepeat)
+//            manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime()+3000,pendingIntent);
+//        else
+//            manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY,pendingIntent);
+//    }
+
 }
+

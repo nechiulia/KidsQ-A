@@ -22,6 +22,9 @@ public interface Constants {
     String CATEG_PREF = "categPref";
     String GET_CATEG = "categGet";
 
+    String TIME_PREF = "timepref";
+    String TIMEKEY_PREF="timeeer";
+
     String STUDENT_SETTINGS_PREF = "setariPref";
     String DIFFICULTY_PREF = "dificultatePref";
     String SPINNER_POSITION ="SETARI_ELEV_POZITIE_SPINNER";

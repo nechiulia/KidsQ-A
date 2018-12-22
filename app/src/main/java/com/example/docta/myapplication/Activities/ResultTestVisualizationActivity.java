@@ -177,31 +177,13 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
         File file = new File(filePath);
         FileOutputStream fos;
         OutputStreamWriter osw;
-        if(file.exists() && !file.isDirectory()){
-            try {
-                fos = new FileOutputStream(file);
-                osw = new OutputStreamWriter(fos);
-                //fileWriter =new BufferedWriter(new FileWriter(filePath,true));
-                for(int i = 0; i<Constants.COLUMNS_NAME_CSV.length; i++){
-                    osw.append(Constants.COLUMNS_NAME_CSV[i]).append(" | ");
-                }
-                for(int i = 0; i< students.size();i++){
-                    osw.append("\n");
-                    for(int j = 0; j < Objects.requireNonNull(hashMapCsv.get(i)).length; j++) {
-                        osw.append(Objects.requireNonNull(hashMapCsv.get(i))[j]).append("     |     ");
-                    }
-                }
-                osw.close();
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(file.exists()){
+            Toast.makeText(getApplicationContext(),"Fisierul exista!",Toast.LENGTH_LONG).show();
         }
         else{
             try {
                 fos = new FileOutputStream(file);
                 osw = new OutputStreamWriter(fos);
-                //fileWriter =new BufferedWriter(new FileWriter(filePath,true));
                 for(int i = 0; i<Constants.COLUMNS_NAME_CSV.length; i++){
                     osw.append(Constants.COLUMNS_NAME_CSV[i]).append(" | ");
                 }
@@ -216,8 +198,8 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
         dialog.dismiss();
     }
 
@@ -244,19 +226,8 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
         String filePath = baseDirectory + File.separator + fileName;
         File file = new File(filePath);
         CSVWriter writer;
-        FileWriter fileWriter;
-        if(file.exists() && !file.isDirectory()){
-            try {
-                fileWriter = new FileWriter(filePath,true);
-                writer = new CSVWriter(fileWriter);
-                writer.writeNext(Constants.COLUMNS_NAME_CSV);
-                for(int i =0 ;i <students.size();i++){
-                    writer.writeNext(hashMapCsv.get(i));
-                }
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if(file.exists()){
+            Toast.makeText(getApplicationContext(),"Fisierul exista!",Toast.LENGTH_LONG).show();
         }
         else{
             try {
@@ -269,8 +240,8 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
         }
-        Toast.makeText(getApplicationContext(),"Fisierul "+fileName+" salvat cu succes!",Toast.LENGTH_LONG).show();
         dialog.dismiss();
 
     }
@@ -328,6 +299,4 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             );
         }
     }
-
-
 }
