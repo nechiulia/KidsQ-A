@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="10dp">
         <Button
             android:id="@+id/std_Statistics_btn_Calculeaza"
             android:layout_width="match_parent"
@@ -143,6 +143,7 @@
             android:layout_marginStart="10dp"
             android:text="@string/std_statistics_btn_calculeaza"
             android:textSize="16sp" />
+
 
         <!--<TextView-->
             <!--android:id="@+id/std_statistics_tv_anim"-->
@@ -157,16 +158,54 @@
             <!--android:textAlignment="center"-->
             <!--android:textSize="22sp" />-->
     </RelativeLayout>
-    <Button
-        android:id="@+id/std_statistics_btn_back"
-        android:layout_width="59dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/back" />
+    <RelativeLayout
+        android:id="@+id/rl_std_statistics_std"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <ImageButton
+            android:id="@+id/img_result_visualization_save_std"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@null"
+            android:src="@drawable/ic_save_black_24dp" />
+
+        <Button
+            android:id="@+id/std_statistics_btn_back"
+            android:layout_width="59dp"
+            android:layout_height="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/back" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/std_statistics_tv_anim"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/std_Statistics_btn_Calculeaza"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginStart="1dp"-->
+        <!--android:clickable="false"-->
+        <!--android:gravity="center"-->
+        <!--android:text="ceva"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textSize="22sp" />-->
+    </RelativeLayout>
+
+
+
+
+
 
 </LinearLayout>

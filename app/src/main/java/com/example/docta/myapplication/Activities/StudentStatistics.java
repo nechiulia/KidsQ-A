@@ -1,13 +1,21 @@
 package com.example.docta.myapplication.Activities;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +23,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,8 +33,16 @@ import android.widget.Toast;
 import com.example.docta.myapplication.Classes.Database.TestResultDAO;
 import com.example.docta.myapplication.Classes.util.Constants;
 import com.example.docta.myapplication.R;
+import com.opencsv.CSVWriter;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class StudentStatistics extends AppCompatActivity {
         private TextView tv_title;
@@ -45,6 +63,7 @@ public class StudentStatistics extends AppCompatActivity {
         private TestResultDAO testResultDAO;
         private SharedPreferences sharedPreferences;
         private String chosen_Category;
+        private ImageButton img_files;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +145,61 @@ public class StudentStatistics extends AppCompatActivity {
                     }
                 }
             });
+
+
+            img_files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(StudentStatistics.this);
+                    builder.setMessage(R.string.resultTestV_formatExtern2).
+                            setTitle(getText(R.string.alert_dialog_files_title));
+                    final EditText input = new EditText(getApplicationContext());
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    input.setHint(getString(R.string.save_files_filename));
+                    input.setTextSize(15);
+
+                    builder.setIcon(R.drawable.ic_save_black_24dp).
+                            setView(input).
+                            setPositiveButton(getString(R.string.alert_dialog_csvBtn), null).
+                            setNeutralButton(getString(R.string.alert_dialog_cancel), null).
+                            setNegativeButton(getString(R.string.alert_dialog_text_file), null);
+                    // builder.create();
+
+                    final AlertDialog alert = builder.create();
+                    alert.setCancelable(false);
+                    alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface dialog) {
+                            Button positiveBtn = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_POSITIVE);
+                            positiveBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    writeInCSVfile(input,alert);
+                                }
+                            });
+
+                            Button negativeBtn = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_NEGATIVE);
+                            negativeBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    writeInTxtFile(input,alert);
+                                }
+                            });
+
+                            Button neutralBtn = ((AlertDialog)dialog).getButton(DialogInterface.BUTTON_NEUTRAL);
+                            neutralBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    alert.dismiss();
+                                }
+                            });
+                        }
+                    });
+                    alert.show();
+                    verifyStoragePermissions(StudentStatistics.this);
+                }
+            });
+
         }
     private void initComp(){
         btn_back = findViewById(R.id.std_statistics_btn_back);
@@ -144,7 +218,124 @@ public class StudentStatistics extends AppCompatActivity {
         pb_average.getProgressDrawable().setColorFilter(Color.WHITE,PorterDuff.Mode.SRC_IN);
         btn_calculation = findViewById(R.id.std_Statistics_btn_Calculeaza);
         sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
+        img_files = findViewById(R.id.img_result_visualization_save_std);
         user = sharedPreferences.getString(Constants.USERNAME_KEY,null);
         testResultDAO = new TestResultDAO(this);
+    }
+
+
+    private void writeInTxtFile(EditText input, AlertDialog dialog){
+        String baseDirectory = Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName;
+        if(input.getText().toString().contains(".txt") && !input.getText().toString().contains(" ")) {
+            fileName = input.getText().toString();
+            txtWriter(dialog, baseDirectory, fileName);
+        }
+        else if (!input.getText().toString().trim().isEmpty() && !input.getText().toString().matches("") && !input.getText().toString().contains(" ")){
+            fileName = input.getText().toString()+".txt";
+            txtWriter(dialog, baseDirectory, fileName);
+        }
+        else if (!input.getText().toString().contains(".txt") || input.getText().toString().matches(" ") || input.getText().toString().matches("")){
+            input.setError(getString(R.string.save_file_txt_edittext_error));
+        }
+    }
+
+    private void txtWriter(AlertDialog dialog, String baseDirectory, String fileName) {
+        String filePath = baseDirectory + File.separator + fileName;
+        File file = new File(filePath);
+        FileOutputStream fos;
+        OutputStreamWriter osw;
+        if(file.exists()){
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_txt_exists),Toast.LENGTH_LONG).show();
+        }
+        else{
+            try {
+                fos = new FileOutputStream(file);
+                osw = new OutputStreamWriter(fos);
+                for(int i = 0; i<Constants.COLUMNS_NAME_RAPORT2.length; i++){
+                    osw.append(Constants.COLUMNS_NAME_RAPORT2[i]).append(" | ");
+                }
+                osw.append("\n");
+                if(list!=null) {
+                    Writer append = osw.append(spn_categ.getSelectedItem().toString());
+                    osw.append(list.get(0)).append("       ");
+                    osw.append(list.get(1)).append("       ");
+                    osw.append(list.get(2)).append("       ");
+                    Toast.makeText(getApplicationContext(),getString(R.string.save_file_name_file_saved,fileName),Toast.LENGTH_LONG).show();
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),getString(R.string.std_statistics_alert_null_list),Toast.LENGTH_LONG).show();
+                }
+                osw.close();
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        dialog.dismiss();
+    }
+
+
+    //csv File
+    private void writeInCSVfile(EditText input,AlertDialog dialog) {
+        String baseDirectory = Environment.getExternalStorageDirectory().getAbsolutePath()+"/";
+        String fileName;
+        if(input.getText().toString().contains(".csv") && !input.getText().toString().contains(" ")) {
+            fileName = input.getText().toString();
+            csvWriter(dialog, baseDirectory, fileName);
+        }
+        else if (!input.getText().toString().trim().isEmpty() && !input.getText().toString().matches("") && !input.getText().toString().contains(" ")){
+
+            fileName = input.getText().toString()+".csv";
+            csvWriter(dialog, baseDirectory, fileName);
+        }
+        else if (!input.getText().toString().contains(".csv") || input.getText().toString().matches(" ") || input.getText().toString().matches("")){
+            input.setError(getString(R.string.save_file_csv_edittext_error));
+        }
+    }
+
+    private void csvWriter(AlertDialog dialog,String baseDirectory, String fileName) {
+        String filePath = baseDirectory + File.separator + fileName;
+        File file = new File(filePath);
+        CSVWriter writer;
+        if(file.exists()){
+            Toast.makeText(getApplicationContext(),getString(R.string.save_file_txt_exists),Toast.LENGTH_LONG).show();
+        }
+        else{
+            try {
+                writer = new CSVWriter(new FileWriter(filePath));
+                writer.writeNext(Constants.COLUMNS_NAME_RAPORT3);
+                if(list !=null) {
+                    writer.writeNext(list.toArray(new String[0]));
+                    Toast.makeText(getApplicationContext(),getString(R.string.save_file_name_file_saved,fileName),Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),getString(R.string.std_statistics_alert_null_list),Toast.LENGTH_LONG).show();
+                }
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        dialog.dismiss();
+
+    }
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            //  Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    public static void verifyStoragePermissions(Activity activity) {
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
     }
 }

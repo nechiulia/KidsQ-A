@@ -72,6 +72,8 @@ public interface Constants {
     int UPDATE_NAME_REQUEST_CODE = 106;
     String SET_STUDENT_NAME_KEY = "student name changed";
     String[] COLUMNS_NAME_CSV=new String[]{"NR_CRT","NAME","PUNCTAJ TOTAL","NR INTREBARI","TEST USOR","TEST MEDIU","TEST GREU"};
+    String[] COLUMNS_NAME_RAPORT2=new String[]{"CATEGORIE","RASPUNSURI CORECTE","TESTE REZOLVATE","EFICIENTA"};
+    String[] COLUMNS_NAME_RAPORT3=new String[]{"RASPUNSURI CORECTE","TESTE REZOLVATE","EFICIENTA"};
 
     String CATEG_TOTAL ="total";
     String SUMY="sumy";

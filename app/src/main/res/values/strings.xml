@@ -352,6 +352,8 @@
     <string name="student_sts_tRez">Teste rezolvate:</string>
     <string name="settings_title_stergereCont">Ștergere Cont</string>
     <string name="resultTestV_formatExtern">Doriti sa salvati rezultatele elevilor intr-un format extern?</string>
+    <string name="resultTestV_formatExtern2">Doriti sa salvati rezultatele intr-un format extern?</string>
+
     <string name="loginTeacher_gresitEmail">Ati gresit parola sau email-ul</string>
     <string name="home_page_intrebarea_zilei_reload">Intrebarea zilei este gata sa fie rezolvata</string>
     <string name="home_page_intrebarea_zilei_delay">Intrebarea zilei va fi activa la data de:</string>
@@ -379,5 +381,6 @@
     <string name="settings_teacher_alertdialog_message">Sunteți sigur că doriți ștergeți contul?</string>
     <string name="settings_teacher_alertdialog_delete_successful">Contul a fost sters cu succes!</string>
     <string name="settings_teacher_alertdialog_delete_failed">Contul nu a fost șters!</string>
+    <string name="std_statistics_alert_null_list">Nu ati calculat rezultatele pentru a putea fi salvate</string>
 
 </resources>
