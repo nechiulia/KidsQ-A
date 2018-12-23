@@ -257,10 +257,10 @@ public class StudentStatistics extends AppCompatActivity {
                 }
                 osw.append("\n");
                 if(list!=null) {
-                    Writer append = osw.append(spn_categ.getSelectedItem().toString());
-                    osw.append(list.get(0)).append("       ");
-                    osw.append(list.get(1)).append("       ");
-                    osw.append(list.get(2)).append("       ");
+                    Writer append = osw.append(spn_categ.getSelectedItem().toString()).append("          ");
+                    osw.append(list.get(0)).append("                ");
+                    osw.append(list.get(1)).append("                ");
+                    osw.append(list.get(2)).append("                ");
                     Toast.makeText(getApplicationContext(),getString(R.string.save_file_name_file_saved,fileName),Toast.LENGTH_LONG).show();
 
                 }
