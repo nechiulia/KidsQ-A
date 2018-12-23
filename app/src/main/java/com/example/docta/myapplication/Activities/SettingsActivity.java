@@ -48,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
             String title = getString(R.string.Titlu_SetariProfesor);
             this.setTitle(title);
         }
+
         initComponent();
         Menu menu = bottomNavigationView.getMenu();
         MenuItem item = menu.getItem(1);
@@ -164,6 +165,4 @@ public class SettingsActivity extends AppCompatActivity {
             }
         return true;
     }
-
-
 }

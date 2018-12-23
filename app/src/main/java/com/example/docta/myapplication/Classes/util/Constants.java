@@ -69,9 +69,9 @@ public interface Constants {
 
 
     String CHANGE_STUDENT_NAME_KEY ="change stud name key" ;
-    int UPDATE_NAME_REQUEST_CODE = 104;
+    int UPDATE_NAME_REQUEST_CODE = 108;
     String SET_STUDENT_NAME_KEY = "student name changed";
-    String[] COLUMNS_NAME_CSV=new String[]{"NR_CRT","NAME","PUNCTAJ TOTAL","NR INTREBARI","TEST USOR","TEST MEDIU","TEST GREU"};
+    String[] COLUMNS_NAME_CSV = new String[]{"NR_CRT","NAME","PUNCTAJ TOTAL","NR INTREBARI","TEST USOR","TEST MEDIU","TEST GREU"};
 
     String CATEG_TOTAL ="total";
     String SUMY="sumy";
@@ -79,4 +79,5 @@ public interface Constants {
     String COUNT ="count";
 
     String CATEG_SPEC= "Special";
+
 }

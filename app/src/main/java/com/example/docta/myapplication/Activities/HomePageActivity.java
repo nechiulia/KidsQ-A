@@ -142,6 +142,7 @@ public class HomePageActivity extends AppCompatActivity {
             }
         }
     }
+    
     private void TestDayDelayed() {
         //               milli min  hour  day
 //          long one_Day = 1000 * 60 * 60 * 24;
@@ -167,7 +168,6 @@ public class HomePageActivity extends AppCompatActivity {
             }
         }
     }
-
 
     private void getInfos(){
           //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
