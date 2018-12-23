@@ -46,7 +46,7 @@ public class ListStudentsActivity extends AppCompatActivity {
         initComponents();
 
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(1);
+        MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -58,13 +58,9 @@ public class ListStudentsActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         break;
-                    case R.id.menu_clasament:
+                    case R.id.menu_resultest:
                         intent = new Intent(getApplicationContext(),ResultTestVisualizationActivity.class);
                         startActivity(intent);
-                        finish();
-                        break;
-                    case R.id.menu_profil:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
                         finish();
                         break;
                 }

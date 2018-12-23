@@ -54,8 +54,7 @@ public class ResultActivity extends AppCompatActivity {
                     if(categ.equals(Constants.DAILY_QUESTION_KEY )){
                         editor2.putLong(Constants.TIMEKEY_PREF, millis);
                         editor2.apply();
-                    }
-                    else{
+                    } else{
                         editor2.putLong(Constants.TIMEKEYTEST_PREF, millis);
                         editor2.apply();
                     }

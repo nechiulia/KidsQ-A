@@ -118,15 +118,17 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_marginTop="8dp"
+        android:weightSum="2"
         app:layout_constraintTop_toBottomOf="@id/setttings_til_passwordC">
-            <Button
-                android:id="@+id/settings_btn_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/setari_btn_salveaza"
-                app:layout_constraintTop_toBottomOf="@id/setttings_til_passwordC"
-                />
+
+        <Button
+            android:id="@+id/settings_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="@string/setari_btn_salveaza"
+            app:layout_constraintTop_toBottomOf="@id/setttings_til_passwordC" />
     </LinearLayout>
 
     <ImageButton
@@ -141,5 +143,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setting_linearlayout_btn" />
 
-
+    <ImageButton
+        android:id="@+id/settings_btn_logout_acc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:selectableItemBackground"
+        android:src="@drawable/ic_exit_to_app_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setting_linearlayout_btn" />
 </android.support.constraint.ConstraintLayout>

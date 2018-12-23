@@ -34,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button btn_save;
     private ImageButton imgBtn_delete_account;
+    private ImageButton imgBtn_log_out;
     private SharedPreferences sharedPreferences;
     Intent intent = getIntent();
     private TeacherDAO teacherDAO;
@@ -49,23 +50,19 @@ public class SettingsActivity extends AppCompatActivity {
         }
         initComponent();
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem item = menu.getItem(2);
+        MenuItem item = menu.getItem(1);
         item.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
 
-                    case R.id.menu_clasament:
+                    case R.id.menu_resultest:
                         startActivity(new Intent(getApplicationContext(),ResultTestVisualizationActivity.class));
                         finish();
                         break;
                     case R.id.menu_lista:
                         startActivity(new Intent(getApplicationContext(),ListStudentsActivity.class));
-                        finish();
-                        break;
-                    case R.id.menu_profil:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
                         finish();
                         break;
                 }
@@ -85,10 +82,17 @@ public class SettingsActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getString(R.string.setari_prof_toast_succes), Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(Constants.PASSWORD_PREF, tie_new_pass.getText().toString());
-                        editor.commit();
-                        finish();
+                        editor.apply();
                     }
                 }
+            }
+        });
+
+        imgBtn_log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(),LoginPageActivity.class));
+                    finish();
             }
         });
 
@@ -97,22 +101,22 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
                 builder.setTitle(R.string.settings_title_stergereCont)
-                        .setMessage("Sunteți sigur că doriți ștergeți contul?")
-                        .setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                        .setMessage(getString(R.string.settings_teacher_alertdialog_message))
+                        .setPositiveButton(getString(R.string.positive_button), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String email = sharedPreferences.getString(Constants.EMAIL_PREF,null);
                                 teacherDAO.open();
                                 if(teacherDAO.DeleteTeacherAccount(email)>=0){
                                     teacherDAO.close();
-                                    Toast.makeText(getApplicationContext(),"Contul a fost sters cu succes!",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),getString(R.string.settings_teacher_alertdialog_delete_successful),Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getApplicationContext(),LoginPageActivity.class));
                                     finish();
                                 }else{
-                                    Toast.makeText(getApplicationContext(),"Contul nu a fost șters!",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),getString(R.string.settings_teacher_alertdialog_delete_failed),Toast.LENGTH_LONG).show();
                                 }
                             }
-                        }).setNegativeButton("Nu", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton(getString(R.string.negative_button), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -124,11 +128,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initComponent(){
-
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         btn_save =findViewById(R.id.settings_btn_save);
         imgBtn_delete_account = findViewById(R.id.settings_btn_delete_account);
+        imgBtn_log_out = findViewById(R.id.settings_btn_logout_acc);
         tie_email = findViewById(R.id.settings_tid_email);
         tie_old_pass = findViewById(R.id.settings_tid_passwordO);
         tie_new_pass = findViewById(R.id.settings_tid_passwordN);
@@ -159,7 +162,6 @@ public class SettingsActivity extends AppCompatActivity {
                 tie_confirm_pass.setError(getString(R.string.setari_parolaConfirm_eroare));
                 return false;
             }
-
         return true;
     }
 

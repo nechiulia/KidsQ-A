@@ -130,12 +130,12 @@ public class StudentDAO implements DatabaseConstants {
         database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_SCORE, new String[]{username});
     }
 
-    public long updateStudentName(String newName, String user) {
+    public void updateStudentName(String newName, String user) {
         String QUERRY_UPDATE_NAME=STUDENT_COLUMN_USERNAME+" =? ";
         ContentValues contentValues = new ContentValues();
         contentValues.put(STUDENT_COLUMN_USERNAME, newName);
 
-        return  database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{user});
+        database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{user});
     }
 
     public int updateAvatar(byte[] avatar, String username)
@@ -146,7 +146,7 @@ public class StudentDAO implements DatabaseConstants {
 
         ContentValues contentValues=new ContentValues();
         contentValues.put(STUDENT_COLUMN_CURRENT_AVATAR, avatar);
-       return database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_AVATAR,new String[]{username});
+        return database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_AVATAR,new String[]{username});
 
 
     }

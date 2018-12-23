@@ -193,11 +193,10 @@ public class StudentSettingsActivity extends AppCompatActivity {
             tasksDAO.updateUsername(newName, user);
             tasksDAO.close();
 
+            sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
                 SharedPreferences.Editor editorUser = sharedPreferencesUser.edit();
                 editorUser.putString(Constants.USERNAME_KEY, student_name.getText().toString());
-                editorUser.commit();
-
-
+                editorUser.apply();
         }
 
 

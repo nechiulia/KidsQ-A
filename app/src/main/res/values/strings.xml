@@ -376,5 +376,8 @@
     <string name="update_avatarName">Update Nume Erou</string>
     <string name="update_username">Update Username</string>
     <string name="student_sts_eficienta">Eficienta mea</string>
+    <string name="settings_teacher_alertdialog_message">Sunteți sigur că doriți ștergeți contul?</string>
+    <string name="settings_teacher_alertdialog_delete_successful">Contul a fost sters cu succes!</string>
+    <string name="settings_teacher_alertdialog_delete_failed">Contul nu a fost șters!</string>
 
 </resources>

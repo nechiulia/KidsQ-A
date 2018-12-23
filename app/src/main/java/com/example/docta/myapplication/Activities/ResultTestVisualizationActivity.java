@@ -64,10 +64,10 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
             this.setTitle(title);
         }
 
-        verifyStoragePermissions(ResultTestVisualizationActivity.this);
+
         initComponents();
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(3);
+        MenuItem menuItem = menu.getItem(2);
         menuItem.setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,10 +82,6 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
                     case R.id.menu_lista:
                         intent = new Intent(getApplicationContext(),ListStudentsActivity.class);
                         startActivity(intent);
-                        finish();
-                        break;
-                    case R.id.menu_profil:
-                        startActivity(new Intent(getApplicationContext(),HomePageActivity.class));
                         finish();
                         break;
                 }
@@ -152,6 +148,7 @@ public class ResultTestVisualizationActivity extends AppCompatActivity {
                     }
                 });
                 alert.show();
+                verifyStoragePermissions(ResultTestVisualizationActivity.this);
             }
         });
 

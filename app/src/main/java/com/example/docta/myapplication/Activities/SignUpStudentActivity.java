@@ -110,8 +110,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(getApplicationContext(),getString(R.string.signup_student_insert_err_exista),Toast.LENGTH_LONG).show();
                         }
-
-
                     }
                 } else if (statut.compareTo(getString(R.string.principala_utilizator_elev_pref_message))==0){
                     if(isValid()){
@@ -120,6 +118,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         if(!studentDAO.verifyStudentsName(tie_name.getText().toString())) {
                         studentDAO.insertStudentByStudent(student);
                         studentDAO.close();
+                        sharedPreferences=getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
                         SharedPreferences.Editor editor= sharedPreferencesUser.edit();
                         editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
                         editor.apply();

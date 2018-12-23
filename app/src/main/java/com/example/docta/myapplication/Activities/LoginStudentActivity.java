@@ -54,7 +54,7 @@ public class LoginStudentActivity extends AppCompatActivity {
                          intent.putExtra(Constants.NAME_KEY, username);
                          SharedPreferences.Editor editor = sharedPreferences.edit();
                          editor.putString(Constants.USERNAME_KEY,username);
-                         editor.commit();
+                         editor.apply();
                          startActivity(intent);
                      }else{
                          Toast.makeText(getApplicationContext(),getString(R.string.login_student_user_incorect),Toast.LENGTH_LONG).show();

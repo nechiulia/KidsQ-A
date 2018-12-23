@@ -69,10 +69,7 @@ public class UpdateStudentNameActivity extends AppCompatActivity {
                     editor.putString(Constants.USERNAME_KEY,username);
                     editor.apply();
                     setResult(RESULT_OK, intent);
-                    //startActivity(new Intent(getApplicationContext(),StudentSettingsActivity.class));
                     finish();
-
-
                 }else{
                     Toast.makeText(getApplicationContext(),getString(R.string.update_student_name_err_exista),Toast.LENGTH_LONG).show();
                 }

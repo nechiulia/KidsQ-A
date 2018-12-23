@@ -52,7 +52,7 @@ public interface Constants {
     String QUESTION_OF_THE_DAY="Intrebarea zilei";
 
     String DOWNLOAD_DONE ="validar descarca json";
-    String URL_JSON_TESTS ="https://api.myjson.com/bins/1dmmju";
+    String URL_JSON_TESTS ="https://api.myjson.com/bins/kw2yo";
     String URL_JSON_ACCOUNTS = "https://api.myjson.com/bins/b98ou";
     String URL_JSON_AVATARS="https://api.myjson.com/bins/6armc";
 

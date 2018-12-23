@@ -34,14 +34,10 @@ import org.json.JSONException;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.TimeZone;
-import java.util.concurrent.TimeUnit;
-
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -113,17 +109,9 @@ public class HomePageActivity extends AppCompatActivity {
                 };
         manager.execute(URL);
         initComponents();
-        if(user.equals(getString(R.string.principala_utilizator_profesor_pref_message)))
-        {
-            btn_daily_test.setEnabled(true);
-            btn_daily_test.setBackgroundResource(R.drawable.rounded_button_general);
-            btn_daily_question.setEnabled(true);
-            btn_daily_question.setBackgroundResource(R.drawable.rounded_button_general);
-        }
-        else{
-            QuestionDayDelayed();
-            TestDayDelayed();
-        }
+        QuestionDayDelayed();
+        TestDayDelayed();
+
 
 
 
@@ -247,7 +235,8 @@ public class HomePageActivity extends AppCompatActivity {
             btn_back_teacher.setVisibility(View.INVISIBLE);
             btn_results.setVisibility(View.VISIBLE);
         }
-        String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+        sharedPreferences= getSharedPreferences(Constants.USERNAME_PREF, MODE_PRIVATE);
+        String nume= sharedPreferences.getString(Constants.USERNAME_KEY,null);
         if (nume==null){
             tv_avatar_name.setText(getString(R.string.ppj_tv_bine_ai_venit_null));
         }
