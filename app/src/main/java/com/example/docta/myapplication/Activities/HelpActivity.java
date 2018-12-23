@@ -78,7 +78,7 @@ public class HelpActivity extends AppCompatActivity {
         questionsList.add(getString(R.string.ajutor_tv_Intrebarea3));
         questionsList.add(getString(R.string.ajutor_tv_Intrebarea4));
         questionsList.add(getString(R.string.ajutor_tv_Intrebarea5));
-
+        questionsList.add(getString(R.string.ajutor_tv_Intrebarea6));
         List<String> answer1 = new ArrayList<String>();
         answer1.add(getString(R.string.ajutor_tv_Raspuns1));
         answers.add(answer1);
@@ -96,6 +96,9 @@ public class HelpActivity extends AppCompatActivity {
         List<String> answer5 = new ArrayList<String>();
         answer5.add(getString(R.string.ajutor_tv_Raspuns5));
         answers.add(answer5);
+       List<String> answer6 = new ArrayList<String>();
+        answer6.add(getString(R.string.ajutor_tv_Raspuns6));
+        answers.add(answer6);
         for(int i=0;i< questionsList.size();i++) {
             answersList.put(questionsList.get(i), answers.get(i));
         }
