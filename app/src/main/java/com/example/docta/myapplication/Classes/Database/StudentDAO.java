@@ -56,8 +56,6 @@ public class StudentDAO implements DatabaseConstants {
         }
     }
     public void insertStudentByTeacher(Student student){
-//        String QUERRY_IF_STUD_EXISTS = "SELECT " + STUDENT_COLUMN_USERNAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
-//        //Cursor c = database.rawQuery(QUERRY_IF_STUD_EXISTS,new String[]{});
 
         database.beginTransaction();
         try{
@@ -180,24 +178,6 @@ public class StudentDAO implements DatabaseConstants {
 
 
 
-
-//    public void updataStudentAfterDeleteTeacher( String email){
-//        ContentValues contentValues = new ContentValues();
-//
-//        List<String> stringList = new ArrayList<>();
-//        String QUERRY_SELECT_EMAIL = "SELECT " + STUDENT_COLUMN_EMAIL_TEACHER+" FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_EMAIL_TEACHER +" =?";
-//        Cursor c = database.rawQuery(QUERRY_SELECT_EMAIL,new String[]{email});
-//        while (c.moveToNext()){ contentValues.putNull(STUDENT_COLUMN_EMAIL_TEACHER);
-//           Student student = new Student();
-//           student.setUsername(c.getString(c.getColumnIndex(STUDENT_COLUMN_USERNAME)));
-//           // stud.add(student);
-//            stringList.add(student.getUsername());
-//        }
-//        c.close();
-//        String[] stringArray = stringList.toArray(new String[stringList.size()]);
-//        database.update(STUDENT_TABLE_NAME,contentValues,STUDENT_COLUMN_USERNAME + " =?",stringArray);
-//
-//    }
 
 
 

@@ -282,7 +282,7 @@
     <string name="myavatars_toast_modifavatar">Doriti sa modificati avatarul?</string>
     <string name="myavatars_toast_schimbaretitle">Schimbare avatar</string>
     <string name="myavatars_toast_update_failed">Nu s-a modificat avatarul.</string>
-    <string name="myavatars_toast_update_success">Avatarul s-a modificat cu success.</string>
+    <string name="myavatars_toast_update_success">Avatarul s-a modificat cu succes.</string>
     <string name="settings_students_schimbanumele">Schimba numele</string>
     <string name="update_student_name_hint">Nume nou</string>
     <string name="update_student_name_salveaza">Salveaza</string>

@@ -63,27 +63,6 @@ public class TestResultDAO implements DatabaseConstants {
         }
     }
 
-//    public HashMap<Student,ArrayList<TestResult>> findMyStudentTests(ArrayList<Student> students){
-//        HashMap<Student,ArrayList<TestResult>> resultStud = new HashMap<>();
-//        String QUERYY_FIND = "SELECT * FROM "+ TESTRESULTS_TABLE_NAME + " WHERE " + TESTRESULTS_COLUMN_USERNAMESTUD + " =?";
-//        for(int i = 0 ;i < students.size();i++) {
-//            ArrayList<TestResult> tests = new ArrayList<>();
-//
-//            Cursor c = database.rawQuery(QUERYY_FIND, new String[]{students.get(i).getUsername()});
-//
-//                while (c.moveToNext()){
-//                    String category = c.getString(c.getColumnIndex(TESTRESULTS_COLUMN_CATEGORY));
-//                    String dificulty = c.getString(c.getColumnIndex(TESTRESULTS_COLUMN_DIFFICULTY));
-//                    int noCorrectAnswers = c.getInt(c.getColumnIndex(TESTRESULTS_COLUMN_CORRECTANSWERS));
-//                    double score = c.getDouble(c.getColumnIndex(TESTRESULTS_COLUMN_SCORE));
-//                    TestResult testResult = new TestResult(dificulty, category, noCorrectAnswers, score);
-//                    tests.add(testResult);
-//                    Student student = new Student(tests.get(i).getUsername());
-//                    resultStud.put(student, tests);
-//                }
-//          }
-//        return resultStud;
-//    }
 public void updateUsername(String newName, String username){
     String QUERRY_UPDATE_NAME=TESTRESULTS_COLUMN_USERNAMESTUD+" =? ";
     String QUERRY_SELECT_USERNAME="SELECT "+ TESTRESULTS_COLUMN_USERNAMESTUD+ " FROM " +TESTRESULTS_TABLE_NAME+ " WHERE " + TESTRESULTS_COLUMN_USERNAMESTUD +" =?";
