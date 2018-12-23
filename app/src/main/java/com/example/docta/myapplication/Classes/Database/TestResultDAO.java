@@ -155,6 +155,18 @@ public void updateUsername(String newName, String username){
         return resultHashMap;
     }
 
+    public void updateStudentNameTest(String newName, String username) {
+        String QUERRY_UPDATE_NAME=TESTRESULTS_COLUMN_USERNAMESTUD+" =? ";
+        String QUERRY_SELECT_USERNAME="SELECT "+ TESTRESULTS_COLUMN_USERNAMESTUD+ " FROM " + TESTRESULTS_TABLE_NAME + " WHERE " + TESTRESULTS_COLUMN_USERNAMESTUD +" =?";
+
+        Cursor c=database.rawQuery(QUERRY_SELECT_USERNAME,new String[]{username});
+        while(c.moveToNext()) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(TESTRESULTS_COLUMN_USERNAMESTUD, newName);
+            database.update(TESTRESULTS_TABLE_NAME,contentValues,QUERRY_UPDATE_NAME,new String[]{username});
+        }
+    }
+
 
 
     @SuppressLint("Recycle")
