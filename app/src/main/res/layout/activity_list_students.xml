@@ -44,23 +44,24 @@
         android:weightSum="2"
         android:gravity="center"
         android:layout_marginTop="20dp">
-    <Button
-        android:id="@+id/liststudents_btn_addstudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:text="@string/Adaugare_elev"
-        android:textSize="35sp"
-        style="?android:attr/borderlessButtonStyle" />
 
         <Button
+            android:id="@+id/liststudents_btn_addstudent"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="@string/Adaugare_elev"
+            android:textSize="35sp" />
+
+       <!-- <Button
             android:id="@+id/liststudents_btn_removestudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:text="@string/Stergere_elev"
             android:textSize="35sp"
-            style="?android:attr/borderlessButtonStyle"/>
+            style="?android:attr/borderlessButtonStyle"/>-->
     </LinearLayout>
 
 
