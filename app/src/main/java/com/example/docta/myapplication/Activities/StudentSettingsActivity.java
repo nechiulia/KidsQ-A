@@ -17,8 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.AssociativeDAO;
+import com.example.docta.myapplication.Classes.Database.AvatarDAO;
 import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.Database.TasksDAO;
+import com.example.docta.myapplication.Classes.Database.TestResultDAO;
+import com.example.docta.myapplication.Classes.util.TestResult;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
 
@@ -34,6 +37,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
     private StudentDAO studentDao;
     private AssociativeDAO associativeDAO;
     private TasksDAO tasksDAO;
+    private TestResultDAO testresultDAO;
     private String user;
    private TextView student_name;
    private Button btn_stergere;
@@ -57,11 +61,14 @@ public class StudentSettingsActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.DIFFICULTY_PREF, spn_difficulty.getSelectedItem().toString());
+                // editor.putString(Constants.SPINNER_DIFICULTY, spn_difficulty.getSelectedItem().toString());
                 int selectedPosition = spn_difficulty.getSelectedItemPosition();
                 editor.putInt(Constants.SPINNER_POSITION, selectedPosition);
-                editor.commit();
+                String dific = spn_difficulty.getSelectedItem().toString();
+                editor.putString(Constants.SPINNER_DIFICULTY,dific);
+                editor.apply();
                 intent=new Intent(getApplicationContext(), HomePageActivity.class);
                 intent.putExtra(Constants.DOWNLOAD_DONE,true);
                 startActivity(intent);
@@ -107,6 +114,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         studentDao=new StudentDAO(this);
         associativeDAO=new AssociativeDAO(this);
         tasksDAO=new TasksDAO(this);
+        testresultDAO=new TestResultDAO(this);
         studentDao.open();
         Bitmap btm=null;
         btm=BitmapFactory.decodeByteArray(studentDao.findMyAvatar(user),0,studentDao.findMyAvatar(user).length);
@@ -181,9 +189,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == Constants.UPDATE_NAME_REQUEST_CODE && data != null) {
             String newName = data.getStringExtra(Constants.SET_STUDENT_NAME_KEY);
             student_name.setText(newName);
-            studentDao.open();
-            studentDao.updateStudentName(newName, user);
-            studentDao.close();
+
 
             associativeDAO.open();
             associativeDAO.updateUsername(newName, user);
@@ -192,6 +198,15 @@ public class StudentSettingsActivity extends AppCompatActivity {
             tasksDAO.open();
             tasksDAO.updateUsername(newName, user);
             tasksDAO.close();
+
+            testresultDAO.open();
+            testresultDAO.updateUsername(newName,user);
+            testresultDAO.close();
+
+
+            studentDao.open();
+            studentDao.updateStudentName(newName, user);
+            studentDao.close();
 
             sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
                 SharedPreferences.Editor editorUser = sharedPreferencesUser.edit();
