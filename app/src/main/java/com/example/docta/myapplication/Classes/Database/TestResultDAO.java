@@ -20,6 +20,7 @@ public class TestResultDAO implements DatabaseConstants {
     private SQLiteDatabase database;
     private DatabaseController controller;
 
+
     public TestResultDAO(Context context){
         controller = DatabaseController.getInstance(context);
     }
@@ -275,5 +276,31 @@ public void updateUsername(String newName, String username){
         result.add(String.valueOf(average_Efficiency));
 
         return result;
+    }
+    public HashMap<String,Float> findAllTestCategory(String username){
+        String QUERRY_COUNT_TEST = "SELECT + COUNT( "+ TESTRESULTS_COLUMN_CATEGORY +" ) AS count FROM "
+                + TESTRESULTS_TABLE_NAME + " WHERE " +
+                TESTRESULTS_COLUMN_USERNAMESTUD +" =? AND "+ TESTRESULTS_COLUMN_CATEGORY+ " =?  GROUP BY "+TESTRESULTS_COLUMN_CATEGORY;;
+
+                ArrayList<String> categories= new ArrayList<>();
+        categories.add(Constants.CATEGORY_ANIMALS);
+        categories.add(Constants.CATEGORY_FRUITS);
+        categories.add(Constants.CATEGORY_LETTERS);
+        categories.add(Constants.CATEGORY_LIFE);
+        categories.add(Constants.CATEGORY_MATH);
+        HashMap<String,Float> resultHashMap = new HashMap<>();
+
+        ArrayList<Float> no_tests = new ArrayList<>();
+        for(int i = 0 ; i < categories.size(); i++){
+            Cursor c1 = database.rawQuery(QUERRY_COUNT_TEST,new String[]{username,categories.get(i)});
+            if(c1.moveToFirst()){
+                no_tests.add(c1.getFloat(c1.getColumnIndex(Constants.COUNT)));
+            }else{
+                no_tests.add(0f);
+            }
+
+            resultHashMap.put(categories.get(i),no_tests.get(i));
+        }
+        return resultHashMap;
     }
 }

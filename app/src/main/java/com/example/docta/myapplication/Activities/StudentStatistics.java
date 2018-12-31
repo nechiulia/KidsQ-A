@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -64,7 +66,9 @@ public class StudentStatistics extends AppCompatActivity {
         private SharedPreferences sharedPreferences;
         private String chosen_Category;
         private ImageButton img_files;
-        @Override
+        private FloatingActionButton fabGraph;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_statistics);
@@ -221,6 +225,18 @@ public class StudentStatistics extends AppCompatActivity {
         img_files = findViewById(R.id.img_result_visualization_save_std);
         user = sharedPreferences.getString(Constants.USERNAME_KEY,null);
         testResultDAO = new TestResultDAO(this);
+        fabGraph= findViewById(R.id.student_statistics_fab);
+        fabGraph.setOnClickListener(graph());
+    }
+
+    private View.OnClickListener graph() {
+        return  new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), TestsGraph.class);
+                startActivity(intent);
+            }
+        };
     }
 
 
