@@ -14,6 +14,7 @@ public class TestResult implements Parcelable {
     private double score;
     private ArrayList<Integer> dif_tests;
 
+
     public TestResult(int id_test, String dificultate, String categorie, String username, int nrIntrebari, double punctaj) {
         this.id_test = id_test;
         this.difficulty = dificultate;

@@ -1,5 +1,7 @@
 package com.example.docta.myapplication.Classes.util;
 
+import java.util.ArrayList;
+
 public interface Constants {
     int ADD_STUDENT_REQUEST_CODE = 101;
     String ADD_STUDENT_KEY = "adaugareElev";
@@ -48,6 +50,7 @@ public interface Constants {
     String CATEGORY_LETTERS ="litere";
     String CATEGORY_FRUITS ="fructe si legume";
     String CATEGORY_LIFE ="viata-de-zi-cu-zi";
+
     String TEST_OF_THE_DAY ="Testul zilei";
     String QUESTION_OF_THE_DAY="Intrebarea zilei";
 

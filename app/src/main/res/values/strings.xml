@@ -133,7 +133,7 @@
     <string name="ajutor_tv_Raspuns2">Avatarele se pot cumpăra cu monede obținute pe baza punctajului, accesând categoria Avatarele mele din pagina principală.</string>
     <string name="ajutor_tv_Intrebarea2">2. Cum pot obține noi avatare?</string>
     <string name="ajutor_tv_Raspuns1">Pentru orice modificare a contului intră la Setări.</string>
-    <string name="ajutor_tv_Intrebarea1">1. Cum îmi pot modifica numele avatarului?</string>
+    <string name="ajutor_tv_Intrebarea1">1. Cum îmi pot modifica numele?</string>
     <string name="cumpara_avatare_tv_cumpara_avatar">Cumpara alt avatar</string>
     <string name="avatare_disponibile_tv_alte_avatare">Alte avatare disponibile</string>
     <string name="avatare_disponibile_btn_cumpara_avatare">Cumpara avatare</string>
@@ -382,5 +382,7 @@
     <string name="settings_teacher_alertdialog_delete_successful">Contul a fost sters cu succes!</string>
     <string name="settings_teacher_alertdialog_delete_failed">Contul nu a fost șters!</string>
     <string name="std_statistics_alert_null_list">Nu ati calculat rezultatele pentru a putea fi salvate</string>
+    <string name="ajutor_tv_Intrebarea6">6.Cum pot să-mi modific avatarul folosit pentru cont?</string>
+    <string name="ajutor_tv_Raspuns6">Apasa pe avatarul pe care ti-l doresti si confirma modificarea!</string>
 
 </resources>
