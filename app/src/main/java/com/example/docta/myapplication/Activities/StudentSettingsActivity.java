@@ -21,6 +21,8 @@ import com.example.docta.myapplication.Classes.Database.AvatarDAO;
 import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.Database.TasksDAO;
 import com.example.docta.myapplication.Classes.Database.TestResultDAO;
+import com.example.docta.myapplication.Classes.Firebase.FirebaseController;
+import com.example.docta.myapplication.Classes.util.Student;
 import com.example.docta.myapplication.Classes.util.TestResult;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -41,6 +43,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
     private String user;
    private TextView student_name;
    private Button btn_stergere;
+   private FirebaseController firebaseController;
 
     SharedPreferences sharedPreferencesUser;
     SharedPreferences sharedPreferences;
@@ -98,6 +101,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
     }
 
     private void initComps(){
+        firebaseController = FirebaseController.getInstance();
         spn_difficulty =findViewById(R.id.settings_spn_difficulty);
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(getApplicationContext(), R.array.setari_spn_dificultati, R.layout.support_simple_spinner_dropdown_item);
         spn_difficulty.setAdapter(adapter);
@@ -152,6 +156,8 @@ public class StudentSettingsActivity extends AppCompatActivity {
                                 tasksDAO.open();
                                 tasksDAO.deleteUsername(user);
                                 tasksDAO.close();
+
+                                firebaseController.remove(user);
                                 Toast.makeText(StudentSettingsActivity.this, getString(R.string.settings_student_delete_success), Toast.LENGTH_LONG).show();
                                 intent=new Intent(getApplicationContext(), LoginPageActivity.class);
                                 startActivity(intent);
@@ -207,6 +213,9 @@ public class StudentSettingsActivity extends AppCompatActivity {
             studentDao.open();
             studentDao.updateStudentName(newName, user);
             studentDao.close();
+            Student std = new Student();
+            std.setUsername(newName);
+            firebaseController.updateUsername(user,newName);
 
             sharedPreferences = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
                 SharedPreferences.Editor editorUser = sharedPreferencesUser.edit();
@@ -220,5 +229,9 @@ public class StudentSettingsActivity extends AppCompatActivity {
 
     private void restoreDifficulty(){
         spn_difficulty.setSelection(sharedPreferences.getInt(Constants.SPINNER_POSITION,0));
+    }
+
+    private String exportToFirebase(Student student){
+        return firebaseController.upsertAccountInClasament(student);
     }
 }

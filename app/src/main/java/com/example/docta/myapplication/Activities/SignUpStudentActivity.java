@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.docta.myapplication.Classes.Database.StudentDAO;
+import com.example.docta.myapplication.Classes.Firebase.FirebaseController;
 import com.example.docta.myapplication.Classes.util.Student;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -36,7 +37,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferencesUser;
 
     private StudentDAO studentDAO;
-
+    private FirebaseController firebaseController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        firebaseController = FirebaseController.getInstance();
         btn_back = findViewById(R.id.signup_btn_back);
         spn_age = findViewById(R.id.signup_spinner_age);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.lecc_spn_varsta, R.layout.support_simple_spinner_dropdown_item);
@@ -104,6 +106,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         if(!studentDAO.verifyStudentsName(tie_name.getText().toString())) {
                             studentDAO.insertStudentByTeacher(student);
                             studentDAO.close();
+                            String GlobalID = ExportToFirebase(student);
                             intent.putExtra(Constants.ADD_STUDENT_KEY, student);
                             setResult(RESULT_OK, intent);
                             finish();
@@ -118,6 +121,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         if(!studentDAO.verifyStudentsName(tie_name.getText().toString())) {
                         studentDAO.insertStudentByStudent(student);
                         studentDAO.close();
+                        String GlobalID = ExportToFirebase(student);
                         sharedPreferences=getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
                         SharedPreferences.Editor editor= sharedPreferencesUser.edit();
                         editor.putString(Constants.USERNAME_KEY, tie_name.getText().toString());
@@ -132,10 +136,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
     private Student initStudent(){
 
         String name = tie_name.getText().toString();
@@ -180,5 +181,9 @@ public class SignUpStudentActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private String ExportToFirebase(Student student){
+         return firebaseController.upsertAccountInClasament(student);
     }
 }
