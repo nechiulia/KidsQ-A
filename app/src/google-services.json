@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1061629166688",
+    "firebase_url": "https://proiectdosbrains.firebaseio.com",
+    "project_id": "proiectdosbrains",
+    "storage_bucket": "proiectdosbrains.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061629166688:android:4f05779fa84f5560",
+        "android_client_info": {
+          "package_name": "com.example.docta.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061629166688-puu4jlpnsdnv1h77uk59ec7g8f481ncr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5PxLFE1yzKsJa8B4OFQkcXjHfo7XbH1Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
