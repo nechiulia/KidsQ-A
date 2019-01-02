@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.example.docta.myapplication.Classes.Database.StudentDAO;
 import com.example.docta.myapplication.Classes.Database.TestResultDAO;
+import com.example.docta.myapplication.Classes.Firebase.FirebaseController;
+import com.example.docta.myapplication.Classes.util.Student;
 import com.example.docta.myapplication.Classes.util.TestResult;
 import com.example.docta.myapplication.R;
 import com.example.docta.myapplication.Classes.util.Constants;
@@ -30,6 +32,7 @@ public class ResultActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferencesUser;
     private String  categ;
     private String dificult;
+    private FirebaseController firebaseController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +65,12 @@ public class ResultActivity extends AppCompatActivity {
                     testResultDAO.open();
                     testResultDAO.insertTestResult(new TestResult(Constants.CATEG_SPEC ,Constants.CATEG_SPEC ,username ,no_correct_answers ,score));
                     testResultDAO.close();
+                    firebaseController.updateScore(score,no_correct_answers,username);
                 } else{
                     testResultDAO.open();
                     testResultDAO.insertTestResult(new TestResult(dificult ,categ ,username ,no_correct_answers ,score));
                     testResultDAO.close();
+                    firebaseController.updateScore(score,no_correct_answers,username);
                 }
                 startActivity(intent);
                 finish();
@@ -74,6 +79,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
+        firebaseController = FirebaseController.getInstance();
         sharedPreferencesUser = getSharedPreferences(Constants.USERNAME_PREF,MODE_PRIVATE);
         username = sharedPreferencesUser.getString(Constants.USERNAME_KEY,getString(R.string.default_user_pref));
         score = getIntent().getDoubleExtra(Constants.SCORE_KEY, 0);
@@ -95,3 +101,4 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 }
+

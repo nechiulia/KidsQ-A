@@ -2,9 +2,11 @@ package com.example.docta.myapplication.Classes.util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
-public class Student implements Parcelable {
+public class Student implements Parcelable,Comparable<Student> {
 //private Long id;
+    private String globalID;
     private String username;
     private byte[] avatar;
     private int age;
@@ -17,19 +19,21 @@ public class Student implements Parcelable {
 
 
 
-//    public Student(String username, byte[] avatar, int age, int gender, Double score, Integer id_teacher) {
-//        this.username = username;
-//        this.avatar = avatar;
-//        this.age = age;
-//        this.gender = gender;
-//        this.score = score;
-//        this.id_teacher = id_teacher;
-//    }
+    public Student(String username, int age, int gender, int noCorrect,double score) {
+        this.username = username;
+        this.age = age;
+        this.gender = gender;
+        this.noCorrect = noCorrect;
+        this.score = score;
+    }
 
     public Student(){
     }
 
-
+    public Student(String username, double score){
+        this.username=username;
+        this.score=score;
+    }
     public Student(String username, byte[] avatar, int age, int gender, double score, String email_teacher) {
         this.username = username;
         this.avatar = avatar;
@@ -37,6 +41,25 @@ public class Student implements Parcelable {
         this.gender = gender;
         this.score = score;
         this.email_teacher = email_teacher;
+    }
+
+    public Student(String globalID, String username, byte[] avatar, int age, int gender, double score, int noCorrect, String email_teacher) {
+        this.globalID = globalID;
+        this.username = username;
+        this.avatar = avatar;
+        this.age = age;
+        this.gender = gender;
+        this.score = score;
+        this.noCorrect = noCorrect;
+        this.email_teacher = email_teacher;
+    }
+
+    public String getGlobalID() {
+        return globalID;
+    }
+
+    public void setGlobalID(String globalID) {
+        this.globalID = globalID;
     }
 
     public Student(String username){
@@ -49,10 +72,6 @@ public class Student implements Parcelable {
 
     public void setNoCorrect(int noCorrect) {
         this.noCorrect = noCorrect;
-    }
-
-    public void setScore(double score) {
-        this.score = score;
     }
 
     public String getEmail_teacher() {
@@ -158,5 +177,14 @@ public class Student implements Parcelable {
         dest.writeDouble(score);
   //      dest.writeInt(id_teacher);
         dest.writeString(email_teacher);
+    }
+
+    @Override
+    public int compareTo(@NonNull Student student) {
+        if(getScore()==null || student.getScore()==null){
+            return 0;
+        }else{
+           return getScore().compareTo(student.getScore());
+        }
     }
 }

@@ -98,7 +98,7 @@ public class TestsGraph extends AppCompatActivity {
 
 
         Random r= new Random();
-ArrayList<Integer> colors= new ArrayList<>();
+        ArrayList<Integer> colors= new ArrayList<>();
         for(int i=0; i<no_tests.size();i++){
             int color= Color.argb(230,1+r.nextInt(254), 1+r.nextInt(254),1+r.nextInt(254));
             yEntrys.add(new PieEntry(no_tests.get(categories.get(i)),i));
