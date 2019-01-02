@@ -148,18 +148,29 @@
         android:id="@+id/home_btn_statistics"
         android:layout_width="140dp"
         android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         android:text="@string/ppj_btn_rezultate"
-        app:layout_constraintBottom_toTopOf="@+id/home_imgBtn_question"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_btn_tasks" />
+
+    <Button
+        android:id="@+id/home_btn_contact"
+        android:layout_width="140dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+
+        android:background="@drawable/rounded_button"
+        android:text="@string/home_btn_contact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/home_btn_statistics"
+        app:layout_constraintTop_toBottomOf="@+id/home_btn_settings" />
 
     <ImageButton
         android:id="@+id/home_imgBtn_star"

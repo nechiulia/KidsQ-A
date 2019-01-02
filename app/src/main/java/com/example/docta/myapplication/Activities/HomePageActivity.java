@@ -49,6 +49,7 @@ public class HomePageActivity extends AppCompatActivity {
     private Button btn_daily_test;
     private Button btn_daily_question;
     private Button btn_results;
+    private Button btn_contact;
     private ImageButton img_btn_feedback;
     private TextView tv_avatar_name;
     private Button btn_back_teacher;
@@ -214,6 +215,7 @@ public class HomePageActivity extends AppCompatActivity {
         btn_daily_question =findViewById(R.id.home_btn_dailyquestion);
         btn_daily_test =findViewById(R.id.home_btn_dailytest);
         btn_settings =findViewById(R.id.home_btn_settings);
+        btn_contact=findViewById(R.id.home_btn_contact);
         img_btn_feedback =findViewById(R.id.home_imgBtn_star);
         tv_avatar_name =findViewById(R.id.home_tv_welcome);
         btn_back_teacher =findViewById(R.id.home_btn_backtoteacher);
@@ -257,9 +259,24 @@ public class HomePageActivity extends AppCompatActivity {
         img_btn_help.setOnClickListener(openHelp());
         btn_tasks.setOnClickListener(openTasks());
         btn_results.setOnClickListener(openResults());
+        btn_contact.setOnClickListener(openContact());
    }
 
-   private View.OnClickListener openTasks()
+    private View.OnClickListener openContact() {
+        {
+            return new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(),ContactMapsActivity.class);
+                    String nume= getIntent().getStringExtra(Constants.NAME_KEY);
+                    intent.putExtra(Constants.NAME_KEY, nume);
+                    startActivity(intent);
+                }
+            };
+        }
+    }
+
+    private View.OnClickListener openTasks()
    {
        return new View.OnClickListener() {
            @Override

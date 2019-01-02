@@ -384,5 +384,18 @@
     <string name="std_statistics_alert_null_list">Nu ati calculat rezultatele pentru a putea fi salvate</string>
     <string name="ajutor_tv_Intrebarea6">6.Cum pot să-mi modific avatarul folosit pentru cont?</string>
     <string name="ajutor_tv_Raspuns6">Apasa pe avatarul pe care ti-l doresti si confirma modificarea!</string>
+    <string name="home_btn_contact">CONTACT</string>
+    <string name="title_activity_contact_maps">Map</string>
+    <string name="contactmaps_marker_dosbrains">DosBrains</string>
+    <string name="contact_tv_echipa">Echipa DosBrains: </string>
+    <string name="contact_tv_nda">Neagu Dragos Alexandru</string>
+    <string name="contact_tv_nge">Neata Georgiana Elena</string>
+    <string name="contact_tv_ni">Nechita Iulia</string>
+    <string name="contact_tv_nam">Nedelcu Andrada Mihaela</string>
+    <string name="contact_tv_nic">Nicolae Ionut Constantin</string>
+    <string name="contact_tv_facultate">Facultatea de Cibernetica,Statistica si Informatica Economica - Clădirea Virgil Madgearu, Academia de Studii Economice, Calea Dorobanți 15-17, București 010552</string>
+    <string name="contact_tv_coordonator">Coordonator echipa : Dita Alexandru</string>
+    <string name="contact_streetView">Street View</string>
+    <string name="Title_Contact">Contact</string>
 
 </resources>
