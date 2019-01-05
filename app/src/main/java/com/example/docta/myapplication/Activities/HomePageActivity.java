@@ -209,7 +209,6 @@ public class HomePageActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void initComponents(){
         btn_play =findViewById(R.id.home_btn_play);
-        btn_learn =findViewById(R.id.home_btn_learn);
         btn_my_avatars =findViewById(R.id.home_btn_myavatars);
         btn_ranking =findViewById(R.id.home_btn_ranking);
         btn_daily_question =findViewById(R.id.home_btn_dailyquestion);
@@ -247,7 +246,6 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
 
-        btn_learn.setOnClickListener(startToLearn());
         btn_play.setOnClickListener(startToPlay());
         btn_daily_question.setOnClickListener(openDailyQuestion());
         btn_daily_test.setOnClickListener(openDailyTest());
@@ -295,15 +293,6 @@ public class HomePageActivity extends AppCompatActivity {
             finish();
         }};
    }
-   private View.OnClickListener startToLearn(){
-       return new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(getApplicationContext(), LetsLearnActivity.class);
-               startActivity(intent);
-           }
-       };
-    }
     private View.OnClickListener startToPlay(){
         return new View.OnClickListener() {
             @Override

@@ -88,14 +88,7 @@ public class StudentSettingsActivity extends AppCompatActivity {
             }
         });
 
-        btn_design.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent=new Intent(getApplicationContext(), SetDesignActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
 
     }
@@ -107,7 +100,6 @@ public class StudentSettingsActivity extends AppCompatActivity {
         spn_difficulty.setAdapter(adapter);
 
         btn_back=findViewById(R.id.settings_btn_back);
-        btn_design=findViewById(R.id.settings_btn_design);
         btn_logout=findViewById(R.id.settings_btn_logout);
         btn_stergere=findViewById(R.id.settings_student_btn_stergere);
         btn_changename=findViewById(R.id.settings_btn_changename);

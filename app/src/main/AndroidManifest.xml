@@ -105,16 +105,10 @@
             android:name=".Activities.ResultActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.LetsLearnActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activities.LetsPlayActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.SettingsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activities.SetDesignActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.StudentSettingsActivity"
