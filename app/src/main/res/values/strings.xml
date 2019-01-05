@@ -397,5 +397,8 @@
     <string name="contact_tv_coordonator">Coordonator echipa : Dita Alexandru</string>
     <string name="contact_streetView">Street View</string>
     <string name="Title_Contact">Contact</string>
+    <string name="shared_rating">Rating</string>
+    <string name="pareri_incercare_repetata">V-ati exprimat parerea deja!</string>
+    <string name="pareri_inapoi">Inapoi</string>
 
 </resources>

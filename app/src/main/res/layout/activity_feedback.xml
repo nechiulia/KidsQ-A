@@ -50,6 +50,7 @@
             android:id="@+id/feedback_ratingB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:stepSize="1"
             />
         <ProgressBar
             android:id="@+id/feedback_progressB"

@@ -32,6 +32,8 @@ public interface DatabaseConstants {
     String STUDENT_COLUMN_GENDER="gender";
     String STUDENT_COLUMN_AGE="age";
     String STUDENT_COLUMN_SCORE="score";
+    String STUDENT_COLUMN_FEEDBACK="feedback";
+    String STUDENT_COLUMN_RATING="rating";
     String STUDENT_COLUMN_EMAIL_TEACHER="email_teacher";
   //  String STUDENT_COLUMN_ID_TEACHER="teacher_id";
 
@@ -53,6 +55,8 @@ public interface DatabaseConstants {
                     STUDENT_COLUMN_GENDER+ " INTEGER, "+
                     STUDENT_COLUMN_AGE+ " INTEGER, "+
                     STUDENT_COLUMN_SCORE+ " REAL, "+
+                    STUDENT_COLUMN_FEEDBACK+" TEXT, "+
+                    STUDENT_COLUMN_RATING+" REAL, "+
                     STUDENT_COLUMN_EMAIL_TEACHER+ " TEXT, " +
                     " FOREIGN KEY ( " + STUDENT_COLUMN_EMAIL_TEACHER +
                     " ) REFERENCES "+TEACHER_TABLE_NAME+" ( " + TEACHER_COLUMN_EMAIL + " ) ON DELETE SET NULL );";
@@ -64,11 +68,12 @@ public interface DatabaseConstants {
             STUDENT_COLUMN_GENDER +", " +
             STUDENT_COLUMN_AGE + ", " +
             STUDENT_COLUMN_SCORE + ", " +
-            STUDENT_COLUMN_EMAIL_TEACHER+ ") values(?,?,?,?,?,?)";
+            STUDENT_COLUMN_FEEDBACK+", "+
+            STUDENT_COLUMN_RATING+ ", "+
+            STUDENT_COLUMN_EMAIL_TEACHER+ ") values(?,?,?,?,?,?,?,?)";
     String QUERRY_LOGIN_STUDENT = "SELECT " + STUDENT_COLUMN_USERNAME +" FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
     String QUERRY_STUDENT_NAMES= "SELECT "+STUDENT_COLUMN_USERNAME +" FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
     String QUERRY_STUDENT_LIST = "SELECT * FROM " +STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_EMAIL_TEACHER + " =?" ;
-    //String QUERRY_UPDATA_PUNCTAJ = "UPDATE "
 
     ////////////////TESTRESULTS
     String TESTRESULTS_TABLE_NAME="TestResults";

@@ -3,6 +3,8 @@ package com.example.docta.myapplication.Classes.util;
 import java.util.ArrayList;
 
 public interface Constants {
+    String RATING_KEY="key_rating";
+
     int ADD_STUDENT_REQUEST_CODE = 101;
     String ADD_STUDENT_KEY = "adaugareElev";
     String STATUT_KEY="statutKey";

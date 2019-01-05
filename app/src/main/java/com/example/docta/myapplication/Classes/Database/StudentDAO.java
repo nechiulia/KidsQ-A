@@ -47,6 +47,8 @@ public class StudentDAO implements DatabaseConstants {
             insert.bindDouble(4,student.getAge());
             insert.bindDouble(5,student.getScore());
             insert.bindNull(6);
+            insert.bindNull(7);
+            insert.bindNull(8);
             insert.executeInsert();
             database.setTransactionSuccessful();
         }catch (SQLException e){
@@ -65,7 +67,9 @@ public class StudentDAO implements DatabaseConstants {
             insert.bindDouble(3,student.getGender());
             insert.bindDouble(4,student.getAge());
             insert.bindDouble(5,student.getScore());
-            insert.bindString(6,student.getEmail_teacher());
+            insert.bindNull(6);
+            insert.bindNull(7);
+            insert.bindString(8,student.getEmail_teacher());
             insert.executeInsert();
             database.setTransactionSuccessful();
         }catch (SQLException e){
@@ -176,9 +180,38 @@ public class StudentDAO implements DatabaseConstants {
         return score;
     }
 
+    public float findRatingByUser(String username){
+        String QUERRY_SELECT_RATING = "SELECT "+ STUDENT_COLUMN_RATING+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c=database.rawQuery(QUERRY_SELECT_RATING, new String[] {username});
+        float rating =0;
+        while (c.moveToNext()) {
+            rating = c.getInt(c.getColumnIndex(STUDENT_COLUMN_RATING));
+        }
+        return rating;
+    }
 
+    public void updateRating(float rating,String username){
+        String QUERRY_UPDATE_RATING = STUDENT_COLUMN_USERNAME + " =?";
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STUDENT_COLUMN_RATING,rating);
+        database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_RATING, new String[]{username});
+    }
 
+    public void updateFeedback(String feedback,String username){
+        String QUERRY_UPDATE_FEEDBACK = STUDENT_COLUMN_USERNAME + " =?";
 
-
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(STUDENT_COLUMN_FEEDBACK,feedback);
+        database.update(STUDENT_TABLE_NAME,contentValues,QUERRY_UPDATE_FEEDBACK, new String[]{username});
+    }
+    public String findFeedbackByUser(String username){
+        String QUERRY_SELECT_FEEDBACK = "SELECT "+ STUDENT_COLUMN_FEEDBACK+ " FROM " + STUDENT_TABLE_NAME + " WHERE " + STUDENT_COLUMN_USERNAME +" =?";
+        Cursor c=database.rawQuery(QUERRY_SELECT_FEEDBACK, new String[] {username});
+        String feedback ="";
+        while (c.moveToNext()) {
+            feedback = c.getString(c.getColumnIndex(STUDENT_COLUMN_FEEDBACK));
+        }
+        return feedback;
+    }
 }
